@@ -1,0 +1,7 @@
+.saturn {
+    background-image: url("./static/Saturn.svg");
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: rotate(20deg);
+}

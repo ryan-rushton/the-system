@@ -1,0 +1,7 @@
+.celestial-body {
+    border-radius: 50%;
+    position: absolute;
+
+    transition-property: all;
+    transition: linear;
+}

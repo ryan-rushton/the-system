@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Kaushan+Script");
+
+.the-system-app-title {
+    color: white;
+    font-family: "Kaushan Script", cursive;
+    font-size: 1.2vw;
+    left: 2vw;
+    position: fixed;
+    top: 2vh;
+    z-index: 2;
+}
