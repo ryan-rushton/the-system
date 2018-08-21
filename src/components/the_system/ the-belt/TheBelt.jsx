@@ -53,7 +53,9 @@ class TheBelt extends React.Component {
         const rocks = [];
 
         for (let i = 0; i < ROCK_COUNT; i += 1) {
-            const distance = this.innerBelt + this.beltSize * Math.random();
+            const distance =
+                this.innerBelt +
+                this.beltSize * Math.sin(Math.PI * Math.random());
             const theta = Math.random() * 360;
             const vals = {
                 x: distance * Math.cos(theta),
