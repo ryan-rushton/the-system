@@ -6,68 +6,30 @@ const UPDATE_INTERVAL = 200; // this is in ms
 const MS_PER_MIN = 60000;
 
 class CelestialBody extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            theta: Math.PI
+    getCssValuesForOrbit() {
+        const { radius, systemRadius, radiansPerMinute, distance } = this.props;
+        const center = systemRadius - distance - radius;
+        return {
+            animation: `orbit ${radiansPerMinute}s linear infinite`,
+            borderRadois: "50%",
+            height: `calc(2*(${distance}px + ${radius}px))`,
+            left: `calc(${center}px)`,
+            position: "absolute",
+            top: `calc(${center}px)`,
+            width: `calc(2*(${distance}px + ${radius}px))`
         };
     }
 
-    componentDidMount() {
-        const { distance } = this.props;
-
-        if (distance) {
-            this.interval = setInterval(
-                this.updateThetaInState.bind(this),
-                UPDATE_INTERVAL
-            );
-        }
-    }
-
-    componentWillUnmount() {
-        const { distance } = this.props;
-
-        if (distance) {
-            clearInterval(this.interval);
-        }
-    }
-
-    getCssValues() {
-        const { radius, systemRadius } = this.props;
-        const position = this.getPosition();
-
+    getCssValuesForPlanet() {
+        const { radius, distance } = this.props;
+        const top = distance > 0 ? "50%" : 0;
         return {
             height: `${radius * 2}px`,
-            left: `calc(${systemRadius}px + ${position.x}px - ${radius}px)`,
-            top: `calc(${systemRadius}px + ${position.y}px - ${radius}px)`,
-            transitionDuration: `${UPDATE_INTERVAL / 1000}s`,
+            left: 0,
+            position: "relative",
+            top,
             width: `${radius * 2}px`
         };
-    }
-
-    getPosition() {
-        const { theta, position } = this.state;
-        if (!(theta === undefined)) {
-            return this.getCoordinates();
-        }
-
-        return position;
-    }
-
-    getCoordinates() {
-        const { distance } = this.props;
-        const { theta } = this.state;
-        return {
-            x: distance * Math.cos(theta),
-            y: distance * -Math.sin(theta)
-        };
-    }
-
-    updateThetaInState() {
-        this.setState(oldState => ({
-            theta: this.updateTheta(oldState.theta)
-        }));
     }
 
     updateTheta(theta) {
@@ -84,10 +46,19 @@ class CelestialBody extends React.Component {
 
     render() {
         const { additionalClassNames } = this.props;
-        const classNames = ["celestial-body"].concat(additionalClassNames);
-        const className = classNames.join(" ");
+        const className = additionalClassNames.join(" ");
 
-        return <div className={className} style={this.getCssValues()} />;
+        return (
+            <div
+                className={`planet-orbit ${className}-orbit`}
+                style={this.getCssValuesForOrbit()}
+            >
+                <div
+                    className={`celestial-body ${className}`}
+                    style={this.getCssValuesForPlanet()}
+                />
+            </div>
+        );
     }
 }
 

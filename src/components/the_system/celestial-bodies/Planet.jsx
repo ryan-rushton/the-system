@@ -16,8 +16,7 @@ const Planet = props => {
         planetConstants.distance * multipliers.distanceMultiplier +
         SunConsts.radius * multipliers.sunSizeMultiplier;
     const radiansPerMinute =
-        (Math.PI / planetConstants.orbitalPeriod) *
-        multipliers.orbitalPeriodMultiplier;
+        planetConstants.orbitalPeriod * multipliers.orbitalPeriodMultiplier;
 
     return (
         <CelestialBody

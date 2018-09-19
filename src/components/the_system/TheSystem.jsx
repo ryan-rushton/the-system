@@ -22,9 +22,9 @@ const STAR_COUNT = 3000;
 
 const multipliers = {
     sizeMultiplier: 0.0005,
-    sunSizeMultiplier: 0.00025,
-    orbitalPeriodMultiplier: 500,
-    distanceMultiplier: 0.0000005
+    sunSizeMultiplier: 0.0005,
+    orbitalPeriodMultiplier: 0.3,
+    distanceMultiplier: 0.000005
 };
 
 const systemRadius =
