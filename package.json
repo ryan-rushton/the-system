@@ -26,9 +26,6 @@
         "eslint-plugin-react": "^7.11.1",
         "prettier": "^1.15.1"
     },
-    "prettier": {
-        "tabWidth": 4
-    },
     "browserslist": [
         ">0.2%",
         "not dead",
