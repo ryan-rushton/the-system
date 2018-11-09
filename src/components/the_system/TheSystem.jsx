@@ -17,7 +17,7 @@ import {
     PlutoConsts
 } from "./celestial-bodies/CelestialBodiesConstants";
 
-const EDGE_BUFFER = 100;
+const EDGE_BUFFER = 200;
 const STAR_COUNT = 3000;
 
 const multipliers = {
