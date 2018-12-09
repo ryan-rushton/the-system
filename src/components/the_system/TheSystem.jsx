@@ -5,26 +5,23 @@ import Sun from "./celestial-bodies/Sun";
 import TheBelt from "./ the-belt/TheBelt";
 import Mercury from "./celestial-bodies/Mercury";
 import Venus from "./celestial-bodies/Venus";
-import Earth from "./celestial-bodies/Earth";
+import Earth from "./celestial-bodies/earth/Earth";
 import Mars from "./celestial-bodies/Mars";
 import Jupiter from "./celestial-bodies/Jupiter";
 import Saturn from "./celestial-bodies/saturn/Saturn";
 import Uranus from "./celestial-bodies/Uranus";
 import Neptune from "./celestial-bodies/Neptune";
 import Pluto from "./celestial-bodies/Pluto";
-import {
-    SunConsts,
-    PlutoConsts
-} from "./celestial-bodies/CelestialBodiesConstants";
+import { SunConsts, PlutoConsts } from "./celestial-bodies/CelestialBodiesConstants";
 
-const EDGE_BUFFER = 200;
-const STAR_COUNT = 3000;
+const EDGE_BUFFER = 250;
+const STAR_COUNT = 6000;
 
 const multipliers = {
-    sizeMultiplier: 0.0005,
-    sunSizeMultiplier: 0.0005,
+    sizeMultiplier: 0.001,
+    sunSizeMultiplier: 0.0004,
     orbitalPeriodMultiplier: 0.3,
-    distanceMultiplier: 0.000005
+    distanceMultiplier: 0.0000025
 };
 
 const systemRadius =
@@ -74,28 +71,16 @@ class TheSystem extends React.Component {
         return (
             <div className="the-system" style={systemStyle}>
                 <div className="the-stars">{renderStars()}</div>
-                <TheBelt
-                    multipliers={multipliers}
-                    systemRadius={systemRadius}
-                />
+                <TheBelt multipliers={multipliers} systemRadius={systemRadius} />
                 <Sun multipliers={multipliers} systemRadius={systemRadius} />
-                <Mercury
-                    multipliers={multipliers}
-                    systemRadius={systemRadius}
-                />
+                <Mercury multipliers={multipliers} systemRadius={systemRadius} />
                 <Venus multipliers={multipliers} systemRadius={systemRadius} />
                 <Earth multipliers={multipliers} systemRadius={systemRadius} />
                 <Mars multipliers={multipliers} systemRadius={systemRadius} />
-                <Jupiter
-                    multipliers={multipliers}
-                    systemRadius={systemRadius}
-                />
+                <Jupiter multipliers={multipliers} systemRadius={systemRadius} />
                 <Saturn multipliers={multipliers} systemRadius={systemRadius} />
                 <Uranus multipliers={multipliers} systemRadius={systemRadius} />
-                <Neptune
-                    multipliers={multipliers}
-                    systemRadius={systemRadius}
-                />
+                <Neptune multipliers={multipliers} systemRadius={systemRadius} />
                 <Pluto multipliers={multipliers} systemRadius={systemRadius} />
             </div>
         );

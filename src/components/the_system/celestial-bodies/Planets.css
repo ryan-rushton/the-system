@@ -1,5 +1,5 @@
 .mercury {
-    background-color: darkred;
+    background-color: red;
 }
 
 .venus {
@@ -8,6 +8,10 @@
 
 .earth {
     background-color: aqua;
+}
+
+.moon {
+    background-color: whitesmoke;
 }
 
 .mars {

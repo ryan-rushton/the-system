@@ -6,11 +6,11 @@ import "./Planets.css";
 
 const Pluto = props => {
     const { multipliers, systemRadius } = props;
-    const additionalClassNames = ["pluto"];
+    const name = "pluto";
 
     return (
         <Planet
-            additionalClassNames={additionalClassNames}
+            name={name}
             multipliers={multipliers}
             planetConstants={PlutoConsts}
             systemRadius={systemRadius}

@@ -11,11 +11,11 @@ export const SaturnConsts = {
 
 const Saturn = props => {
     const { multipliers, systemRadius } = props;
-    const additionalClassNames = ["saturn"];
+    const name = "saturn";
 
     return (
         <Planet
-            additionalClassNames={additionalClassNames}
+            name={name}
             multipliers={multipliers}
             planetConstants={SaturnConsts}
             systemRadius={systemRadius}

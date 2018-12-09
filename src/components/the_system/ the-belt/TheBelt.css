@@ -1,3 +1,9 @@
-.the-belt {
-    animation: orbit 360s linear infinite;
+.the-belt-1st-layer {
+    animation: orbit 300s linear infinite;
+    position: absolute;
+}
+
+.the-belt-2nd-layer {
+    animation: orbit 500s linear infinite;
+    position: absolute;
 }

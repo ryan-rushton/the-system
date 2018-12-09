@@ -3,34 +3,52 @@ import PropTypes from "prop-types";
 import CelestialBody from "./CelestialBody";
 import { SunConsts } from "./CelestialBodiesConstants";
 
-const Planet = props => {
-    const {
-        additionalClassNames,
-        planetConstants,
-        multipliers,
-        systemRadius
-    } = props;
+const moonToCB = (moon, multipliers, planetRadius) => {
+    const { className, radius, orbitalPeriod, distance } = moon;
+    const { distanceMultiplier, orbitalPeriodMultiplier, sizeMultiplier } = multipliers;
+    const moonRadius = radius * sizeMultiplier;
 
-    const radius = planetConstants.radius * multipliers.sizeMultiplier;
-    const distance =
-        planetConstants.distance * multipliers.distanceMultiplier +
-        SunConsts.radius * multipliers.sunSizeMultiplier;
-    const radiansPerMinute =
-        planetConstants.orbitalPeriod * multipliers.orbitalPeriodMultiplier;
+    return {
+        className,
+        radius: moonRadius,
+        distance: distance * distanceMultiplier + planetRadius + moonRadius,
+        radiansPerMinute: orbitalPeriod * orbitalPeriodMultiplier,
+        systemRadius: planetRadius
+    };
+};
+
+const Planet = props => {
+    const { name, moons, planetConstants, multipliers, systemRadius } = props;
+    const {
+        distanceMultiplier,
+        orbitalPeriodMultiplier,
+        sizeMultiplier,
+        sunSizeMultiplier
+    } = multipliers;
+
+    const planetRadius = planetConstants.radius * sizeMultiplier;
+    const planetDistance = planetConstants.distance * distanceMultiplier;
+    const sunRadius = SunConsts.radius * sunSizeMultiplier;
+    const distance = planetDistance + sunRadius + planetRadius;
+    const radiansPerMinute = planetConstants.orbitalPeriod * orbitalPeriodMultiplier;
+
+    const satellites = moons.map(moon => moonToCB(moon, multipliers, planetRadius));
 
     return (
         <CelestialBody
-            additionalClassNames={additionalClassNames}
+            className={name}
             distance={distance}
             radiansPerMinute={radiansPerMinute}
-            radius={radius}
+            radius={planetRadius}
+            satellites={satellites}
             systemRadius={systemRadius}
         />
     );
 };
 
 Planet.propTypes = {
-    additionalClassNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+    name: PropTypes.string.isRequired,
+    moons: PropTypes.arrayOf(PropTypes.shape({})),
     multipliers: PropTypes.objectOf(PropTypes.number).isRequired,
     planetConstants: PropTypes.shape({
         radius: PropTypes.number.isRequired,
@@ -38,6 +56,10 @@ Planet.propTypes = {
         orbitalPeriod: PropTypes.number.isRequired
     }).isRequired,
     systemRadius: PropTypes.number.isRequired
+};
+
+Planet.defaultProps = {
+    moons: []
 };
 
 export default Planet;

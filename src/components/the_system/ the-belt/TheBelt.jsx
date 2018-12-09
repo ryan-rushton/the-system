@@ -8,7 +8,7 @@ import {
 
 import "./TheBelt.css";
 
-const ROCK_COUNT = 2500;
+const ROCK_COUNT = 3000;
 
 const BeltRock = ({ x, y, luminosity, size, beltRadius }) => {
     const style = {
@@ -52,7 +52,7 @@ class TheBelt extends React.Component {
     renderBelt() {
         const rocks = [];
 
-        for (let i = 0; i < ROCK_COUNT; i += 1) {
+        for (let i = 0; i < ROCK_COUNT / 2; i += 1) {
             const distance =
                 this.innerBelt +
                 this.beltSize * Math.sin(Math.PI * Math.random());
@@ -75,13 +75,18 @@ class TheBelt extends React.Component {
         const style = {
             height: this.outerBelt * 2,
             left: `calc(${systemRadius}px - ${this.outerBelt}px)`,
-            position: "absolute",
             top: `calc(${systemRadius}px - ${this.outerBelt}px)`,
             width: this.outerBelt * 2
         };
+
         return (
-            <div className="the-belt" style={style}>
-                {this.renderBelt()}
+            <div className="the-belt">
+                <div className="the-belt-1st-layer" style={style}>
+                    {this.renderBelt()}
+                </div>
+                <div className="the-belt-2nd-layer" style={style}>
+                    {this.renderBelt()}
+                </div>
             </div>
         );
     }

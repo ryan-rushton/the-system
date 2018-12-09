@@ -6,11 +6,11 @@ import "./Planets.css";
 
 const Uranus = props => {
     const { multipliers, systemRadius } = props;
-    const additionalClassNames = ["uranus"];
+    const name = "uranus";
 
     return (
         <Planet
-            additionalClassNames={additionalClassNames}
+            name={name}
             multipliers={multipliers}
             planetConstants={UranusConsts}
             systemRadius={systemRadius}

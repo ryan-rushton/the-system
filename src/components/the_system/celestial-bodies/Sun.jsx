@@ -6,12 +6,12 @@ import { SunConsts } from "./CelestialBodiesConstants";
 
 const Sun = props => {
     const { multipliers, systemRadius } = props;
-    const additionalClassNames = ["sun"];
+    const name = "sun";
     const radius = SunConsts.radius * multipliers.sunSizeMultiplier;
 
     return (
         <CelestialBody
-            additionalClassNames={additionalClassNames}
+            className={name}
             distance={0}
             radius={radius}
             radiansPerMinute={0}
