@@ -1,23 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-    SunConsts,
-    MarsConsts,
-    JupiterConsts
-} from "../celestial-bodies/CelestialBodiesConstants";
+import { SunConsts, MarsConsts, JupiterConsts } from "../celestial-bodies/CelestialBodiesConstants";
 
-import "./TheBelt.css";
+import "./TheBelt.scss";
 
 const ROCK_COUNT = 3000;
 
 const BeltRock = ({ x, y, luminosity, size, beltRadius }) => {
+    const left = beltRadius + x;
+    const top = beltRadius + y;
     const style = {
         backgroundColor: "rgb(210, 210, 210)",
         height: size,
-        left: `calc(${beltRadius}px + ${x}px)`,
+        left: `${left}px`,
         opacity: luminosity,
         position: "absolute",
-        top: `calc(${beltRadius}px + ${y}px)`,
+        top: `${top}px`,
         width: size
     };
     return <div className="belt-rock" style={style} />;
@@ -53,9 +51,7 @@ class TheBelt extends React.Component {
         const rocks = [];
 
         for (let i = 0; i < ROCK_COUNT / 2; i += 1) {
-            const distance =
-                this.innerBelt +
-                this.beltSize * Math.sin(Math.PI * Math.random());
+            const distance = this.innerBelt + this.beltSize * Math.sin(Math.PI * Math.random());
             const theta = Math.random() * 360;
             const vals = {
                 x: distance * Math.cos(theta),

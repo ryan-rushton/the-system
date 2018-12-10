@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Planet from "../Planet";
-import "./Saturn.css";
+import "./Saturn.scss";
 
 export const SaturnConsts = {
     radius: 138232,

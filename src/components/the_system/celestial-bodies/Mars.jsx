@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Planet from "./Planet";
 import { MarsConsts } from "./CelestialBodiesConstants";
-import "./Planets.css";
+import "./Planets.scss";
 
 const Mars = props => {
     const { multipliers, systemRadius } = props;

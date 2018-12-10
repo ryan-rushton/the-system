@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./CelestialBody.css";
+import "./CelestialBody.scss";
 
 const UPDATE_INTERVAL = 200; // this is in ms
 const MS_PER_MIN = 60000;

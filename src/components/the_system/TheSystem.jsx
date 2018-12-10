@@ -1,6 +1,5 @@
 import React from "react";
-import "./TheSystem.css";
-import Star from "./Star";
+import TheStars from "./TheStars";
 import Sun from "./celestial-bodies/Sun";
 import TheBelt from "./ the-belt/TheBelt";
 import Mercury from "./celestial-bodies/Mercury";
@@ -14,8 +13,10 @@ import Neptune from "./celestial-bodies/Neptune";
 import Pluto from "./celestial-bodies/Pluto";
 import { SunConsts, PlutoConsts } from "./celestial-bodies/CelestialBodiesConstants";
 
+import "./TheSystem.scss";
+
 const EDGE_BUFFER = 250;
-const STAR_COUNT = 6000;
+const STAR_COUNT = 12000;
 
 const multipliers = {
     sizeMultiplier: 0.001,
@@ -44,23 +45,6 @@ const getInitialScrollPoint = () => {
     };
 };
 
-const renderStars = () => {
-    const stars = [];
-    let vals = {};
-
-    for (let i = 0; i < STAR_COUNT; i += 1) {
-        vals = {
-            x: 2 * systemRadius * Math.random(),
-            y: 2 * systemRadius * Math.random(),
-            luminosity: Math.random(),
-            size: 2 * Math.random()
-        };
-        stars.push(<Star {...vals} key={`star-${i}`} />);
-    }
-
-    return stars;
-};
-
 class TheSystem extends React.Component {
     componentDidMount() {
         const initialScrollPoint = getInitialScrollPoint();
@@ -70,7 +54,7 @@ class TheSystem extends React.Component {
     render() {
         return (
             <div className="the-system" style={systemStyle}>
-                <div className="the-stars">{renderStars()}</div>
+                <TheStars starCount={STAR_COUNT} systemRadius={systemRadius} />
                 <TheBelt multipliers={multipliers} systemRadius={systemRadius} />
                 <Sun multipliers={multipliers} systemRadius={systemRadius} />
                 <Mercury multipliers={multipliers} systemRadius={systemRadius} />

@@ -1,6 +1,6 @@
 import React from "react";
 import TheSystem from "./components/the_system/TheSystem";
-import "./App.css";
+import "./App.scss";
 
 const title = () => <div className="the-system-app-title">The System</div>;
 
