@@ -11,7 +11,7 @@ import Saturn from "./celestial-bodies/saturn/Saturn";
 import Uranus from "./celestial-bodies/Uranus";
 import Neptune from "./celestial-bodies/Neptune";
 import Pluto from "./celestial-bodies/Pluto";
-import { SunConsts, PlutoConsts } from "./celestial-bodies/CelestialBodiesConstants";
+import { SunConsts, PlutoConsts } from "./celestial-bodies/PlanetConstants";
 
 import "./TheSystem.scss";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { SunConsts, MarsConsts, JupiterConsts } from "../celestial-bodies/CelestialBodiesConstants";
+import { SunConsts, MarsConsts, JupiterConsts } from "../celestial-bodies/PlanetConstants";
 
 import "./TheBelt.scss";
 
@@ -18,6 +18,7 @@ const BeltRock = ({ x, y, luminosity, size, beltRadius }) => {
         top: `${top}px`,
         width: size
     };
+
     return <div className="belt-rock" style={style} />;
 };
 

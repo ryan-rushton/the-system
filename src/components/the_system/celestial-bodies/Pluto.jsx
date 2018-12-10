@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Planet from "./Planet";
-import { PlutoConsts } from "./CelestialBodiesConstants";
+import { PlutoConsts } from "./PlanetConstants";
 import "./Planets.scss";
 
 const Pluto = props => {

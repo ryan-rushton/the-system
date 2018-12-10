@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Sun.css";
 import CelestialBody from "./CelestialBody";
-import { SunConsts } from "./CelestialBodiesConstants";
+import { SunConsts } from "./PlanetConstants";
+import "./Sun.scss";
 
 const Sun = props => {
     const { multipliers, systemRadius } = props;

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CelestialBody from "./CelestialBody";
-import { SunConsts } from "./CelestialBodiesConstants";
+import { SunConsts } from "./PlanetConstants";
 
 const moonToCB = (moon, multipliers, planetRadius) => {
     const { className, radius, orbitalPeriod, distance } = moon;
@@ -17,29 +17,27 @@ const moonToCB = (moon, multipliers, planetRadius) => {
     };
 };
 
+const applyMultipliers = (consts, mults) => ({
+    distance: consts.distance * mults.distanceMultiplier,
+    radius: consts.radius * mults.sizeMultiplier,
+    orbitalPeriod: consts.orbitalPeriod * mults.orbitalPeriodMultiplier
+});
+
 const Planet = props => {
     const { name, moons, planetConstants, multipliers, systemRadius } = props;
-    const {
-        distanceMultiplier,
-        orbitalPeriodMultiplier,
-        sizeMultiplier,
-        sunSizeMultiplier
-    } = multipliers;
+    const { distance, radius, orbitalPeriod } = applyMultipliers(planetConstants, multipliers);
 
-    const planetRadius = planetConstants.radius * sizeMultiplier;
-    const planetDistance = planetConstants.distance * distanceMultiplier;
-    const sunRadius = SunConsts.radius * sunSizeMultiplier;
-    const distance = planetDistance + sunRadius + planetRadius;
-    const radiansPerMinute = planetConstants.orbitalPeriod * orbitalPeriodMultiplier;
+    const sunRadius = SunConsts.radius * multipliers.sunSizeMultiplier;
+    const distanceFromCenter = distance + sunRadius + radius;
 
-    const satellites = moons.map(moon => moonToCB(moon, multipliers, planetRadius));
+    const satellites = moons.map(moon => moonToCB(moon, multipliers, radius));
 
     return (
         <CelestialBody
             className={name}
-            distance={distance}
-            radiansPerMinute={radiansPerMinute}
-            radius={planetRadius}
+            distance={distanceFromCenter}
+            radiansPerMinute={orbitalPeriod}
+            radius={radius}
             satellites={satellites}
             systemRadius={systemRadius}
         />

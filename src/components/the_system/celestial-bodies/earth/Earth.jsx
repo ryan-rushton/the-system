@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Planet from "../Planet";
-import { EarthConsts } from "../CelestialBodiesConstants";
+import { EarthConsts } from "../PlanetConstants";
 import "../Planets.scss";
 
 const moon = {
