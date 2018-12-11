@@ -5,20 +5,20 @@ import { SunConsts } from "./PlanetConstants";
 
 const moonToCB = (moon, multipliers, planetRadius) => {
     const { className, radius, orbitalPeriod, distance } = moon;
-    const { distanceMultiplier, orbitalPeriodMultiplier, sizeMultiplier } = multipliers;
+    const { satelliteDist, orbitalPeriodMultiplier, sizeMultiplier } = multipliers;
     const moonRadius = radius * sizeMultiplier;
 
     return {
         className,
         radius: moonRadius,
-        distance: distance * distanceMultiplier + planetRadius + moonRadius,
+        distance: distance * satelliteDist - planetRadius * sizeMultiplier - moonRadius,
         radiansPerMinute: orbitalPeriod * orbitalPeriodMultiplier,
         systemRadius: planetRadius
     };
 };
 
 const applyMultipliers = (consts, mults) => ({
-    distance: consts.distance * mults.distanceMultiplier,
+    distance: consts.distance * mults.distanceMultiplier - consts.radius * mults.sizeMultiplier,
     radius: consts.radius * mults.sizeMultiplier,
     orbitalPeriod: consts.orbitalPeriod * mults.orbitalPeriodMultiplier
 });
@@ -27,15 +27,12 @@ const Planet = props => {
     const { name, moons, planetConstants, multipliers, systemRadius } = props;
     const { distance, radius, orbitalPeriod } = applyMultipliers(planetConstants, multipliers);
 
-    const sunRadius = SunConsts.radius * multipliers.sunSizeMultiplier;
-    const distanceFromCenter = distance + sunRadius + radius;
-
     const satellites = moons.map(moon => moonToCB(moon, multipliers, radius));
 
     return (
         <CelestialBody
             className={name}
-            distance={distanceFromCenter}
+            distance={distance}
             radiansPerMinute={orbitalPeriod}
             radius={radius}
             satellites={satellites}

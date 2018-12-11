@@ -16,13 +16,14 @@ import { SunConsts, PlutoConsts } from "./celestial-bodies/PlanetConstants";
 import "./TheSystem.scss";
 
 const EDGE_BUFFER = 250;
-const STAR_COUNT = 12000;
+const STAR_COUNT = 16000;
 
 const multipliers = {
-    sizeMultiplier: 0.001,
-    sunSizeMultiplier: 0.0004,
-    orbitalPeriodMultiplier: 0.3,
-    distanceMultiplier: 0.0000025
+    sizeMultiplier: 0.0005,
+    sunSizeMultiplier: 0.0002,
+    orbitalPeriodMultiplier: 1,
+    distanceMultiplier: 0.000005,
+    satelliteDist: 0.00001
 };
 
 const systemRadius =

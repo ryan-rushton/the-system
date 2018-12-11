@@ -4,6 +4,34 @@ import Planet from "./Planet";
 import { JupiterConsts } from "./PlanetConstants";
 import "./Planets.scss";
 
+const io = {
+    className: "io",
+    distance: 421700,
+    orbitalPeriod: 1.77,
+    radius: 1822
+};
+
+const europa = {
+    className: "europa",
+    distance: 670900,
+    orbitalPeriod: 3.55,
+    radius: 1561
+};
+
+const ganymede = {
+    className: "ganymede",
+    distance: 1070400,
+    orbitalPeriod: 7.15,
+    radius: 2634
+};
+
+const callisto = {
+    className: "ganymede",
+    distance: 1882700,
+    orbitalPeriod: 16.69,
+    radius: 2410
+};
+
 const Jupiter = props => {
     const { multipliers, systemRadius } = props;
     const name = "jupiter";
@@ -13,6 +41,7 @@ const Jupiter = props => {
             name={name}
             multipliers={multipliers}
             planetConstants={JupiterConsts}
+            moons={[io, europa, ganymede, callisto]}
             systemRadius={systemRadius}
         />
     );
