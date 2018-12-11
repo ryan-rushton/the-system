@@ -21,7 +21,7 @@ const STAR_COUNT = 50000;
 const multipliers = {
     sizeMultiplier: 0.0005,
     sunSizeMultiplier: 0.0002,
-    orbitalPeriodMultiplier: 2,
+    orbitalPeriodMultiplier: 1,
     distanceMultiplier: 0.000005,
     satelliteDist: 0.000025
 };
