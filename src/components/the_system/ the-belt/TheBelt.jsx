@@ -4,7 +4,7 @@ import { SunConsts, MarsConsts, JupiterConsts } from "../celestial-bodies/Planet
 
 import "./TheBelt.scss";
 
-const ROCK_COUNT = 5000;
+const ROCK_COUNT = 10000;
 
 const BeltRock = ({ x, y, luminosity, size, beltRadius }) => {
     const left = beltRadius + x;
