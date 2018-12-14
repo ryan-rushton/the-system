@@ -26,7 +26,7 @@ const ganymede = {
 };
 
 const callisto = {
-    className: "ganymede",
+    className: "callisto",
     distance: 1882700,
     orbitalPeriod: 16.69,
     radius: 2410

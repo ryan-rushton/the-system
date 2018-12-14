@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 
 const Star = ({ x, y, luminosity, size }) => {
     const style = {
+        animation: `fadeIn 2s linear`,
+        backgroundColor: `rgb(255, 255, 255, ${luminosity})`,
         height: size,
         left: x,
-        opacity: luminosity,
         top: y,
         width: size
     };

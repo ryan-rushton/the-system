@@ -81,7 +81,11 @@ class CelestialBody extends React.Component {
 
         return (
             <div className={`planet-orbit ${className}-orbit`} style={styles}>
-                <div className={`celestial-body ${className}`} style={this.getCssValuesForBody()}>
+                <div
+                    className={`celestial-body ${className}`}
+                    title={className}
+                    style={this.getCssValuesForBody()}
+                >
                     {this.renderSatellites()}
                 </div>
             </div>

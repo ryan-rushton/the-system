@@ -9,6 +9,20 @@ export const SaturnConsts = {
     orbitalPeriod: 10747
 };
 
+const titan = {
+    className: "titan",
+    distance: 1221870,
+    orbitalPeriod: 15.95,
+    radius: 2574
+};
+
+const rhea = {
+    className: "rhea",
+    distance: 527108,
+    orbitalPeriod: 1.77,
+    radius: 764
+};
+
 const Saturn = props => {
     const { multipliers, systemRadius } = props;
     const name = "saturn";
@@ -16,6 +30,7 @@ const Saturn = props => {
     return (
         <Planet
             name={name}
+            moons={[rhea, titan]}
             multipliers={multipliers}
             planetConstants={SaturnConsts}
             systemRadius={systemRadius}

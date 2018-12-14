@@ -16,7 +16,7 @@ import { SunConsts, PlutoConsts } from "./celestial-bodies/PlanetConstants";
 import "./TheSystem.scss";
 
 const EDGE_BUFFER = 250;
-const STAR_COUNT = 50000;
+const STAR_COUNT = 30000;
 
 const multipliers = {
     sizeMultiplier: 0.0005,
@@ -37,39 +37,21 @@ const systemStyle = {
     width: `${2 * systemRadius}px`
 };
 
-const getInitialScrollPoint = () => {
-    const windowWidth = window.innerWidth || document.body.clientWidth;
-    const windowHeight = window.innerHeight || document.body.clientHeight;
-    return {
-        x: systemRadius - windowWidth / 2,
-        y: systemRadius - windowHeight / 2
-    };
-};
-
-class TheSystem extends React.Component {
-    componentDidMount() {
-        const initialScrollPoint = getInitialScrollPoint();
-        window.scrollTo(initialScrollPoint.x, initialScrollPoint.y);
-    }
-
-    render() {
-        return (
-            <div className="the-system" style={systemStyle}>
-                <TheStars starCount={STAR_COUNT} systemRadius={systemRadius} />
-                <TheBelt multipliers={multipliers} systemRadius={systemRadius} />
-                <Sun multipliers={multipliers} systemRadius={systemRadius} />
-                <Mercury multipliers={multipliers} systemRadius={systemRadius} />
-                <Venus multipliers={multipliers} systemRadius={systemRadius} />
-                <Earth multipliers={multipliers} systemRadius={systemRadius} />
-                <Mars multipliers={multipliers} systemRadius={systemRadius} />
-                <Jupiter multipliers={multipliers} systemRadius={systemRadius} />
-                <Saturn multipliers={multipliers} systemRadius={systemRadius} />
-                <Uranus multipliers={multipliers} systemRadius={systemRadius} />
-                <Neptune multipliers={multipliers} systemRadius={systemRadius} />
-                <Pluto multipliers={multipliers} systemRadius={systemRadius} />
-            </div>
-        );
-    }
-}
+const TheSystem = () => (
+    <div className="the-system" style={systemStyle}>
+        <TheStars starCount={STAR_COUNT} systemRadius={systemRadius} />
+        <TheBelt multipliers={multipliers} systemRadius={systemRadius} />
+        <Sun multipliers={multipliers} systemRadius={systemRadius} />
+        <Mercury multipliers={multipliers} systemRadius={systemRadius} />
+        <Venus multipliers={multipliers} systemRadius={systemRadius} />
+        <Earth multipliers={multipliers} systemRadius={systemRadius} />
+        <Mars multipliers={multipliers} systemRadius={systemRadius} />
+        <Jupiter multipliers={multipliers} systemRadius={systemRadius} />
+        <Saturn multipliers={multipliers} systemRadius={systemRadius} />
+        <Uranus multipliers={multipliers} systemRadius={systemRadius} />
+        <Neptune multipliers={multipliers} systemRadius={systemRadius} />
+        <Pluto multipliers={multipliers} systemRadius={systemRadius} />
+    </div>
+);
 
 export default TheSystem;
