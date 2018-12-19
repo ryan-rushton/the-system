@@ -1,8 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import CelestialBody from "./CelestialBody";
-import { SunConsts } from "./PlanetConstants";
+import CelestialBody from "./celestial-body/CelestialBody";
 import "./Sun.scss";
+
+export const SunConsts = {
+    radius: 695508,
+    distance: 0,
+    orbitalPeriod: 1
+};
 
 const Sun = props => {
     const { multipliers, systemRadius } = props;

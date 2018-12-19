@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { SunConsts, MarsConsts, JupiterConsts } from "../celestial-bodies/PlanetConstants";
+import { SunConsts } from "../celestial-bodies/Sun";
+import { MarsConsts } from "../celestial-bodies/Mars";
+import { JupiterConsts } from "../celestial-bodies/Jupiter";
 
 import "./TheBelt.scss";
 
@@ -58,7 +60,7 @@ class TheBelt extends React.Component {
             const vals = {
                 x: distance * Math.cos(theta),
                 y: distance * -Math.sin(theta),
-                luminosity: Math.min(Math.random(), 0.5),
+                luminosity: 0.5 * (1 + Math.random()),
                 size: 2 * Math.random(),
                 beltRadius: this.outerBelt
             };

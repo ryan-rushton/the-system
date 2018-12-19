@@ -1,8 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Planet from "./Planet";
-import { UranusConsts } from "./PlanetConstants";
-import "./Planets.scss";
+import Planet from "./planet/Planet";
+
+const UranusConsts = {
+    radius: 25559,
+    distance: 2872500000,
+    orbitalPeriod: 30589
+};
 
 const Uranus = props => {
     const { multipliers, systemRadius } = props;

@@ -1,8 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Planet from "./Planet";
-import { MercuryConsts } from "./PlanetConstants";
-import "./Planets.scss";
+import Planet from "./planet/Planet";
+
+const MercuryConsts = {
+    radius: 2440,
+    distance: 57900000,
+    orbitalPeriod: 88
+};
 
 const Mercury = props => {
     const { multipliers, systemRadius } = props;

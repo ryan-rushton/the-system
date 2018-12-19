@@ -1,6 +1,6 @@
 import React from "react";
-import TheStars from "./TheStars";
-import Sun from "./celestial-bodies/Sun";
+import TheStars from "./the-stars/TheStars";
+import Sun, { SunConsts } from "./celestial-bodies/Sun";
 import TheBelt from "./ the-belt/TheBelt";
 import Mercury from "./celestial-bodies/Mercury";
 import Venus from "./celestial-bodies/Venus";
@@ -10,10 +10,10 @@ import Jupiter from "./celestial-bodies/Jupiter";
 import Saturn from "./celestial-bodies/saturn/Saturn";
 import Uranus from "./celestial-bodies/Uranus";
 import Neptune from "./celestial-bodies/Neptune";
-import Pluto from "./celestial-bodies/Pluto";
-import { SunConsts, PlutoConsts } from "./celestial-bodies/PlanetConstants";
+import Pluto, { PlutoConsts } from "./celestial-bodies/Pluto";
 
 import "./TheSystem.scss";
+import "./celestial-bodies/Planets.scss";
 
 const EDGE_BUFFER = 250;
 const STAR_COUNT = 30000;

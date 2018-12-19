@@ -1,8 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Planet from "./Planet";
-import { PlutoConsts } from "./PlanetConstants";
-import "./Planets.scss";
+import Planet from "./planet/Planet";
+
+export const PlutoConsts = {
+    radius: 1185,
+    distance: 5906400000,
+    orbitalPeriod: 90560
+};
 
 const Pluto = props => {
     const { multipliers, systemRadius } = props;

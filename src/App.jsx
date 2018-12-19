@@ -1,4 +1,5 @@
 import React from "react";
+import NavMenu from "./components/nav_menu/NavMenu";
 import TheSystem from "./components/the_system/TheSystem";
 import "./App.scss";
 
@@ -35,6 +36,7 @@ class App extends React.Component {
                     <span>The System</span>
                     <span className={loadingClassName}> is loading</span>
                 </div>
+                <NavMenu />
                 {content}
             </div>
         );

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import CelestialBody from "./CelestialBody";
+import CelestialBody from "../celestial-body/CelestialBody";
 
 const moonToCB = (moon, multipliers, planetRadius) => {
     const { className, radius, orbitalPeriod, distance } = moon;

@@ -10,7 +10,7 @@ const getStars = (systemRadius, starCount) => {
         starValues = {
             x: 2 * systemRadius * Math.random(),
             y: 2 * systemRadius * Math.random(),
-            luminosity: Math.max(0.3, Math.random()),
+            luminosity: 0.3 + 0.7 * Math.random(),
             size: 1 + Math.random()
         };
         stars.push(<Star {...starValues} key={`star-${i}`} />);

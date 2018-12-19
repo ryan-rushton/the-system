@@ -1,0 +1,38 @@
+.the-system-nav {
+    color: white;
+    font-size: 3ex;
+    position: fixed;
+    right: 2vw;
+    top: 2vh;
+    z-index: 2;
+
+    :hover {
+        color: lightblue;
+        cursor: pointer;
+    }
+
+    .the-system-nav-header-button {
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .the-system-nav-dropdown {
+        $dropdown-width: 50px;
+
+        background-color: rgba(85, 85, 85, 0.7);
+        height: 50px;
+        margin: 3px 6px 0 -6px;
+        position: absolute;
+        width: 50px;
+        transition: transform 1s;
+
+        &.visible {
+            transform: translateX(0);
+        }
+
+        &.hidden {
+            transform: translateX(57px);
+        }
+    }
+}

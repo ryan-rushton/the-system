@@ -1,8 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Planet from "./Planet";
-import { JupiterConsts } from "./PlanetConstants";
-import "./Planets.scss";
+import Planet from "./planet/Planet";
+
+export const JupiterConsts = {
+    radius: 71498,
+    distance: 778600000,
+    orbitalPeriod: 4331
+};
 
 const io = {
     className: "io",

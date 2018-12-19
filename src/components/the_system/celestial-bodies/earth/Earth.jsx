@@ -1,8 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Planet from "../Planet";
-import { EarthConsts } from "../PlanetConstants";
-import "../Planets.scss";
+import Planet from "../planet/Planet";
+
+const earthConsts = {
+    radius: 6378,
+    distance: 149600000,
+    orbitalPeriod: 365.2
+};
 
 const moon = {
     className: "moon",
@@ -19,7 +23,7 @@ const Earth = props => {
         <Planet
             name={name}
             multipliers={multipliers}
-            planetConstants={EarthConsts}
+            planetConstants={earthConsts}
             moons={[moon]}
             systemRadius={systemRadius}
         />

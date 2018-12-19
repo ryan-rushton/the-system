@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Planet from "../Planet";
+import Planet from "../planet/Planet";
 import "./Saturn.scss";
 
+// This is radius including the rings
 export const SaturnConsts = {
-    radius: 138232,
+    radius: 58232,
     distance: 1433500000,
     orbitalPeriod: 10747
 };

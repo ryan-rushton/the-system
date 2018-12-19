@@ -2,9 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./CelestialBody.scss";
 
-const UPDATE_INTERVAL = 200; // this is in ms
-const MS_PER_MIN = 60000;
-
 class CelestialBody extends React.Component {
     getCssValuesForOrbitAbsolute() {
         const { radius, systemRadius, radiansPerMinute, distance } = this.props;
@@ -52,17 +49,6 @@ class CelestialBody extends React.Component {
             top,
             width: `${radius * 2}px`
         };
-    }
-
-    updateTheta(theta) {
-        if (!document.hidden) {
-            const { radiansPerMinute } = this.props;
-            const extraRadians = radiansPerMinute * (UPDATE_INTERVAL / MS_PER_MIN);
-            const newTheta = theta + extraRadians;
-            return newTheta % (2 * Math.PI);
-        }
-
-        return theta;
     }
 
     renderSatellites() {
