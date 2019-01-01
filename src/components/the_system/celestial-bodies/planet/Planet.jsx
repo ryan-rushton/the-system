@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import SystemContext from "../../SystemContext";
 import CelestialBody from "../celestial-body/CelestialBody";
 
 const moonToCB = (moon, multipliers, planetRadius) => {
@@ -12,7 +13,7 @@ const moonToCB = (moon, multipliers, planetRadius) => {
         radius: moonRadius,
         distance: distance * satelliteDist - planetRadius * sizeMultiplier - moonRadius,
         radiansPerMinute: orbitalPeriod * orbitalPeriodMultiplier,
-        systemRadius: planetRadius
+        planetRadius
     };
 };
 
@@ -22,8 +23,8 @@ const applyMultipliers = (consts, mults) => ({
     orbitalPeriod: consts.orbitalPeriod * mults.orbitalPeriodMultiplier
 });
 
-const Planet = props => {
-    const { name, moons, planetConstants, multipliers, systemRadius } = props;
+const planet = (name, moons, planetConstants, context) => {
+    const { multipliers } = context;
     const { distance, radius, orbitalPeriod } = applyMultipliers(planetConstants, multipliers);
 
     const satellites = moons.map(moon => moonToCB(moon, multipliers, radius));
@@ -35,21 +36,27 @@ const Planet = props => {
             radiansPerMinute={orbitalPeriod}
             radius={radius}
             satellites={satellites}
-            systemRadius={systemRadius}
         />
+    );
+};
+
+const Planet = props => {
+    const { name, moons, planetConstants } = props;
+    return (
+        <SystemContext.Consumer>
+            {context => planet(name, moons, planetConstants, context)}
+        </SystemContext.Consumer>
     );
 };
 
 Planet.propTypes = {
     name: PropTypes.string.isRequired,
     moons: PropTypes.arrayOf(PropTypes.shape({})),
-    multipliers: PropTypes.objectOf(PropTypes.number).isRequired,
     planetConstants: PropTypes.shape({
         radius: PropTypes.number.isRequired,
         distance: PropTypes.number.isRequired,
         orbitalPeriod: PropTypes.number.isRequired
-    }).isRequired,
-    systemRadius: PropTypes.number.isRequired
+    }).isRequired
 };
 
 Planet.defaultProps = {

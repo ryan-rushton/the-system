@@ -1,33 +1,26 @@
 import React from "react";
-import PropTypes from "prop-types";
+import SystemContext from "../SystemContext";
+import { SunConsts } from "../SharedConsts";
 import CelestialBody from "./celestial-body/CelestialBody";
 import "./Sun.scss";
 
-export const SunConsts = {
-    radius: 695508,
-    distance: 0,
-    orbitalPeriod: 1
-};
+const getRadius = mult => mult * SunConsts.radius;
 
-const Sun = props => {
-    const { multipliers, systemRadius } = props;
+const Sun = () => {
     const name = "sun";
-    const radius = SunConsts.radius * multipliers.sunSizeMultiplier;
 
     return (
-        <CelestialBody
-            className={name}
-            distance={0}
-            radius={radius}
-            radiansPerMinute={0}
-            systemRadius={systemRadius}
-        />
+        <SystemContext.Consumer>
+            {context => (
+                <CelestialBody
+                    className={name}
+                    distance={0}
+                    radius={getRadius(context.multipliers.sunSizeMultiplier)}
+                    radiansPerMinute={0}
+                />
+            )}
+        </SystemContext.Consumer>
     );
-};
-
-Sun.propTypes = {
-    multipliers: PropTypes.objectOf(PropTypes.number).isRequired,
-    systemRadius: PropTypes.number.isRequired
 };
 
 export default Sun;

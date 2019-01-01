@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Planet from "../planet/Planet";
 
 const earthConsts = {
@@ -15,24 +14,10 @@ const moon = {
     radius: 1737
 };
 
-const Earth = props => {
-    const { multipliers, systemRadius } = props;
+const Earth = () => {
     const name = "earth";
 
-    return (
-        <Planet
-            name={name}
-            multipliers={multipliers}
-            planetConstants={earthConsts}
-            moons={[moon]}
-            systemRadius={systemRadius}
-        />
-    );
-};
-
-Earth.propTypes = {
-    multipliers: PropTypes.objectOf(PropTypes.number).isRequired,
-    systemRadius: PropTypes.number.isRequired
+    return <Planet name={name} planetConstants={earthConsts} moons={[moon]} />;
 };
 
 export default Earth;

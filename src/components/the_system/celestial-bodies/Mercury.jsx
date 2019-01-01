@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Planet from "./planet/Planet";
 
 const MercuryConsts = {
@@ -8,23 +7,10 @@ const MercuryConsts = {
     orbitalPeriod: 88
 };
 
-const Mercury = props => {
-    const { multipliers, systemRadius } = props;
+const Mercury = () => {
     const name = "mercury";
 
-    return (
-        <Planet
-            name={name}
-            multipliers={multipliers}
-            planetConstants={MercuryConsts}
-            systemRadius={systemRadius}
-        />
-    );
-};
-
-Mercury.propTypes = {
-    multipliers: PropTypes.objectOf(PropTypes.number).isRequired,
-    systemRadius: PropTypes.number.isRequired
+    return <Planet name={name} planetConstants={MercuryConsts} />;
 };
 
 export default Mercury;

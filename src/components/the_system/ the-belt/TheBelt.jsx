@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { SunConsts } from "../celestial-bodies/Sun";
+import SystemContext from "../SystemContext";
+import { SunConsts } from "../SharedConsts";
 import { MarsConsts } from "../celestial-bodies/Mars";
 import { JupiterConsts } from "../celestial-bodies/Jupiter";
 
@@ -33,9 +34,9 @@ BeltRock.propTypes = {
 };
 
 class TheBelt extends React.Component {
-    constructor(props) {
+    constructor(props, context) {
         super(props);
-        const { multipliers } = props;
+        const { multipliers } = context;
         const { distanceMultiplier, sunSizeMultiplier, sizeMultiplier } = multipliers;
         const outerMars =
             MarsConsts.distance * distanceMultiplier +
@@ -71,7 +72,7 @@ class TheBelt extends React.Component {
     }
 
     render() {
-        const { systemRadius } = this.props;
+        const { systemRadius } = this.context;
         const style = {
             height: this.outerBelt * 2,
             left: `calc(${systemRadius}px - ${this.outerBelt}px)`,
@@ -92,9 +93,6 @@ class TheBelt extends React.Component {
     }
 }
 
-TheBelt.propTypes = {
-    multipliers: PropTypes.objectOf(PropTypes.number).isRequired,
-    systemRadius: PropTypes.number.isRequired
-};
+TheBelt.contextType = SystemContext;
 
 export default TheBelt;

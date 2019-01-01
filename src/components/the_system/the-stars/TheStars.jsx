@@ -1,5 +1,6 @@
 import React from "react";
 import { PropTypes } from "prop-types";
+import SystemContext from "../SystemContext";
 import Star from "./Star";
 
 const getStars = (systemRadius, starCount) => {
@@ -20,13 +21,18 @@ const getStars = (systemRadius, starCount) => {
 };
 
 const TheStars = props => {
-    const { systemRadius, starCount } = props;
+    const { starCount } = props;
 
-    return <div className="the-stars">{getStars(systemRadius, starCount)}</div>;
+    return (
+        <div className="the-stars">
+            <SystemContext.Consumer>
+                {context => getStars(context.systemRadius, starCount)}
+            </SystemContext.Consumer>
+        </div>
+    );
 };
 
 TheStars.propTypes = {
-    systemRadius: PropTypes.number.isRequired,
     starCount: PropTypes.number.isRequired
 };
 

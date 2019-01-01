@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import SystemContext from "../../SystemContext";
 import "./CelestialBody.scss";
 
 class CelestialBody extends React.Component {
     getCssValuesForOrbitAbsolute() {
-        const { radius, systemRadius, radiansPerMinute, distance } = this.props;
+        const { systemRadius } = this.context;
+        const { radius, radiansPerMinute, distance } = this.props;
         const center = systemRadius - distance - radius;
         const heightWidth = 2 * (distance + radius);
 
@@ -20,8 +22,8 @@ class CelestialBody extends React.Component {
     }
 
     getCssValuesForOrbitRelative() {
-        const { radius, radiansPerMinute, distance, systemRadius } = this.props;
-        const heightWidth = 2 * (distance + radius + systemRadius);
+        const { radius, radiansPerMinute, distance, planetRadius } = this.props;
+        const heightWidth = 2 * (distance + radius + planetRadius);
         const offset = -distance - radius;
 
         return {
@@ -82,16 +84,19 @@ class CelestialBody extends React.Component {
 CelestialBody.propTypes = {
     className: PropTypes.string.isRequired,
     distance: PropTypes.number.isRequired,
-    satellites: PropTypes.arrayOf(PropTypes.shape({})),
     orbitRelative: PropTypes.bool,
+    planetRadius: PropTypes.number,
     radiansPerMinute: PropTypes.number.isRequired,
     radius: PropTypes.number.isRequired,
-    systemRadius: PropTypes.number.isRequired
+    satellites: PropTypes.arrayOf(PropTypes.shape({}))
 };
 
 CelestialBody.defaultProps = {
-    satellites: [],
-    orbitRelative: false
+    orbitRelative: false,
+    planetRadius: null,
+    satellites: []
 };
+
+CelestialBody.contextType = SystemContext;
 
 export default CelestialBody;

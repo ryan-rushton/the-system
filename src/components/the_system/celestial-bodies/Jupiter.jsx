@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Planet from "./planet/Planet";
 
 export const JupiterConsts = {
@@ -36,24 +35,16 @@ const callisto = {
     radius: 2410
 };
 
-const Jupiter = props => {
-    const { multipliers, systemRadius } = props;
+const Jupiter = () => {
     const name = "jupiter";
 
     return (
         <Planet
             name={name}
-            multipliers={multipliers}
             planetConstants={JupiterConsts}
             moons={[io, europa, ganymede, callisto]}
-            systemRadius={systemRadius}
         />
     );
-};
-
-Jupiter.propTypes = {
-    multipliers: PropTypes.objectOf(PropTypes.number).isRequired,
-    systemRadius: PropTypes.number.isRequired
 };
 
 export default Jupiter;

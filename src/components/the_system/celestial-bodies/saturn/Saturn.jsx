@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Planet from "../planet/Planet";
 import "./Saturn.scss";
 
@@ -24,24 +23,10 @@ const rhea = {
     radius: 764
 };
 
-const Saturn = props => {
-    const { multipliers, systemRadius } = props;
+const Saturn = () => {
     const name = "saturn";
 
-    return (
-        <Planet
-            name={name}
-            moons={[rhea, titan]}
-            multipliers={multipliers}
-            planetConstants={SaturnConsts}
-            systemRadius={systemRadius}
-        />
-    );
-};
-
-Saturn.propTypes = {
-    multipliers: PropTypes.objectOf(PropTypes.number).isRequired,
-    systemRadius: PropTypes.number.isRequired
+    return <Planet name={name} moons={[rhea, titan]} planetConstants={SaturnConsts} />;
 };
 
 export default Saturn;
