@@ -1,4 +1,5 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 import Planet from "../planet/Planet";
 
 const earthConsts = {
@@ -14,10 +15,21 @@ const moon = {
     radius: 1737
 };
 
-const Earth = () => {
+const Earth = ({ scrollToRef }) => {
     const name = "earth";
 
-    return <Planet name={name} planetConstants={earthConsts} moons={[moon]} />;
+    return (
+        <Planet
+            name={name}
+            planetConstants={earthConsts}
+            moons={[moon]}
+            scrollToRef={scrollToRef}
+        />
+    );
+};
+
+Earth.propTypes = {
+    scrollToRef: PropTypes.shape({}).isRequired
 };
 
 export default Earth;

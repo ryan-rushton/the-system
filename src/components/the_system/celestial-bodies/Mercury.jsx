@@ -1,4 +1,5 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 import Planet from "./planet/Planet";
 
 const MercuryConsts = {
@@ -7,10 +8,14 @@ const MercuryConsts = {
     orbitalPeriod: 88
 };
 
-const Mercury = () => {
+const Mercury = ({ scrollToRef }) => {
     const name = "mercury";
 
-    return <Planet name={name} planetConstants={MercuryConsts} />;
+    return <Planet name={name} planetConstants={MercuryConsts} scrollToRef={scrollToRef} />;
+};
+
+Mercury.propTypes = {
+    scrollToRef: PropTypes.shape({}).isRequired
 };
 
 export default Mercury;

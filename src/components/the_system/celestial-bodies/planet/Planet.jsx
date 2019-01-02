@@ -23,7 +23,7 @@ const applyMultipliers = (consts, mults) => ({
     orbitalPeriod: consts.orbitalPeriod * mults.orbitalPeriodMultiplier
 });
 
-const planet = (name, moons, planetConstants, context) => {
+const planet = (name, moons, planetConstants, scrollToRef, context) => {
     const { multipliers } = context;
     const { distance, radius, orbitalPeriod } = applyMultipliers(planetConstants, multipliers);
 
@@ -36,15 +36,16 @@ const planet = (name, moons, planetConstants, context) => {
             radiansPerMinute={orbitalPeriod}
             radius={radius}
             satellites={satellites}
+            scrollToRef={scrollToRef}
         />
     );
 };
 
 const Planet = props => {
-    const { name, moons, planetConstants } = props;
+    const { name, moons, planetConstants, scrollToRef } = props;
     return (
         <SystemContext.Consumer>
-            {context => planet(name, moons, planetConstants, context)}
+            {context => planet(name, moons, planetConstants, scrollToRef, context)}
         </SystemContext.Consumer>
     );
 };
@@ -56,11 +57,13 @@ Planet.propTypes = {
         radius: PropTypes.number.isRequired,
         distance: PropTypes.number.isRequired,
         orbitalPeriod: PropTypes.number.isRequired
-    }).isRequired
+    }).isRequired,
+    scrollToRef: PropTypes.shape({})
 };
 
 Planet.defaultProps = {
-    moons: []
+    moons: [],
+    scrollToRef: null
 };
 
 export default Planet;

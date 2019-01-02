@@ -1,38 +1,47 @@
 .the-system-nav {
     color: white;
-    font-size: 3ex;
+    font-family: "Kaushan Script", cursive;
     position: fixed;
     right: 2vw;
     top: 2vh;
     z-index: 2;
 
-    :hover {
-        color: lightblue;
-        cursor: pointer;
-    }
-
     .the-system-nav-header-button {
+        font-size: 1.8em;
+
         &:focus {
             outline: none;
+        }
+
+        &:hover {
+            color: lightblue;
+            cursor: pointer;
         }
     }
 
     .the-system-nav-dropdown {
-        $dropdown-width: 50px;
-
-        background-color: rgba(85, 85, 85, 0.7);
-        height: 50px;
+        left: 58px;
         margin: 3px 6px 0 -6px;
+        padding: 3px;
         position: absolute;
-        width: 50px;
         transition: transform 1s;
 
-        &.visible {
-            transform: translateX(0);
+        .the-system-nav-dropdown-goto-header {
+            font-size: 1.5em;
         }
 
-        &.hidden {
-            transform: translateX(57px);
+        .the-system-nav-dropdown-goto-item {
+            font-size: 1.2em;
+            padding-left: 10px;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:hover {
+                color: lightblue;
+                cursor: pointer;
+            }
         }
     }
 }

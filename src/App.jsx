@@ -3,6 +3,49 @@ import NavMenu from "./components/nav_menu/NavMenu";
 import TheSystem from "./components/the_system/TheSystem";
 import "./App.scss";
 
+const pointsOfInterest = {
+    sun: {
+        ref: React.createRef(),
+        display: "Sun"
+    },
+    mercury: {
+        ref: React.createRef(),
+        display: "Mercury"
+    },
+    venus: {
+        ref: React.createRef(),
+        display: "Venus"
+    },
+    earth: {
+        ref: React.createRef(),
+        display: "Earth"
+    },
+    mars: {
+        ref: React.createRef(),
+        display: "Mars"
+    },
+    jupiter: {
+        ref: React.createRef(),
+        display: "Jupiter"
+    },
+    saturn: {
+        ref: React.createRef(),
+        display: "Saturn"
+    },
+    uranus: {
+        ref: React.createRef(),
+        display: "Uranus"
+    },
+    neptune: {
+        ref: React.createRef(),
+        display: "Neptune"
+    },
+    pluto: {
+        ref: React.createRef(),
+        display: "Pluto"
+    }
+};
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -19,7 +62,7 @@ class App extends React.Component {
     }
 
     renderTheSystem() {
-        return <TheSystem />;
+        return <TheSystem pointsOfInterest={pointsOfInterest} />;
     }
 
     renderLoading() {
@@ -36,7 +79,7 @@ class App extends React.Component {
                     <span>The System</span>
                     <span className={loadingClassName}> is loading</span>
                 </div>
-                <NavMenu />
+                <NavMenu pointsOfInterest={pointsOfInterest} />
                 {content}
             </div>
         );

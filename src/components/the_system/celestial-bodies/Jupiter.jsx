@@ -1,4 +1,5 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 import Planet from "./planet/Planet";
 
 export const JupiterConsts = {
@@ -35,7 +36,7 @@ const callisto = {
     radius: 2410
 };
 
-const Jupiter = () => {
+const Jupiter = ({ scrollToRef }) => {
     const name = "jupiter";
 
     return (
@@ -43,8 +44,13 @@ const Jupiter = () => {
             name={name}
             planetConstants={JupiterConsts}
             moons={[io, europa, ganymede, callisto]}
+            scrollToRef={scrollToRef}
         />
     );
+};
+
+Jupiter.propTypes = {
+    scrollToRef: PropTypes.shape({}).isRequired
 };
 
 export default Jupiter;

@@ -1,4 +1,5 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 import Planet from "../planet/Planet";
 import "./Saturn.scss";
 
@@ -23,10 +24,21 @@ const rhea = {
     radius: 764
 };
 
-const Saturn = () => {
+const Saturn = ({ scrollToRef }) => {
     const name = "saturn";
 
-    return <Planet name={name} moons={[rhea, titan]} planetConstants={SaturnConsts} />;
+    return (
+        <Planet
+            name={name}
+            moons={[rhea, titan]}
+            planetConstants={SaturnConsts}
+            scrollToRef={scrollToRef}
+        />
+    );
+};
+
+Saturn.propTypes = {
+    scrollToRef: PropTypes.shape({}).isRequired
 };
 
 export default Saturn;

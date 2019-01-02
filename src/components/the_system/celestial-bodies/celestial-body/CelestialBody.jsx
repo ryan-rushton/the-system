@@ -61,7 +61,7 @@ class CelestialBody extends React.Component {
     }
 
     render() {
-        const { className, orbitRelative } = this.props;
+        const { className, orbitRelative, scrollToRef } = this.props;
         const styles =
             orbitRelative === true
                 ? this.getCssValuesForOrbitRelative()
@@ -72,6 +72,7 @@ class CelestialBody extends React.Component {
                 <div
                     className={`celestial-body ${className}`}
                     title={className}
+                    ref={scrollToRef}
                     style={this.getCssValuesForBody()}
                 >
                     {this.renderSatellites()}
@@ -88,13 +89,15 @@ CelestialBody.propTypes = {
     planetRadius: PropTypes.number,
     radiansPerMinute: PropTypes.number.isRequired,
     radius: PropTypes.number.isRequired,
-    satellites: PropTypes.arrayOf(PropTypes.shape({}))
+    satellites: PropTypes.arrayOf(PropTypes.shape({})),
+    scrollToRef: PropTypes.shape({})
 };
 
 CelestialBody.defaultProps = {
     orbitRelative: false,
     planetRadius: null,
-    satellites: []
+    satellites: [],
+    scrollToRef: null
 };
 
 CelestialBody.contextType = SystemContext;
