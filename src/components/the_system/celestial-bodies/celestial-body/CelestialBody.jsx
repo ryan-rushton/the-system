@@ -45,8 +45,8 @@ class CelestialBody extends React.Component {
             borderRadius: "50%",
             height: `${radius * 2}px`,
             left: 0,
-            minHeight: "3px",
-            minWidth: "3px",
+            minHeight: "1px",
+            minWidth: "1px",
             position: "relative",
             top,
             width: `${radius * 2}px`
