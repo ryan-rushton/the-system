@@ -5,7 +5,7 @@ import "./Saturn.scss";
 
 // This is radius including the rings
 export const SaturnConsts = {
-    radius: 58232,
+    radius: 80000 + 58232,
     distance: 1433500000,
     orbitalPeriod: 10747
 };
