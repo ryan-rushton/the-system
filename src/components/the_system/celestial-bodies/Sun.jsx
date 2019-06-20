@@ -16,7 +16,7 @@ const Sun = ({ scrollToRef }) => {
                 <CelestialBody
                     className={name}
                     distance={0}
-                    radius={getRadius(context.multipliers.sunSizeMultiplier)}
+                    radius={getRadius(context.multipliers.sizeMultiplier)}
                     radiansPerMinute={0}
                     scrollToRef={scrollToRef}
                 />

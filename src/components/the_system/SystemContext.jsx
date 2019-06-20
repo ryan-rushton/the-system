@@ -5,7 +5,6 @@ const EDGE_BUFFER = 250;
 
 const multipliers = {
     sizeMultiplier: 0.0005,
-    sunSizeMultiplier: 0.0002,
     orbitalPeriodMultiplier: 1,
     distanceMultiplier: 0.000005,
     satelliteDist: 0.000025
@@ -14,7 +13,7 @@ const multipliers = {
 const systemRadius =
     multipliers.distanceMultiplier * PlutoConsts.distance +
     2 * multipliers.sizeMultiplier * PlutoConsts.radius +
-    multipliers.sunSizeMultiplier * SunConsts.radius +
+    multipliers.sizeMultiplier * SunConsts.radius +
     EDGE_BUFFER;
 
 export const defaultContext = {

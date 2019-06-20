@@ -27,7 +27,7 @@ class NavMenu extends React.Component {
 
         if (dropdownVisible) {
             return {
-                transform: `translateX(calc(-1vw - ${this.dropDown.current.offsetWidth}px))`
+                transform: `translateX(-4vw)`
             };
         }
 

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import SystemContext from "../../SystemContext";
 import CelestialBody from "../celestial-body/CelestialBody";
+import { SunConsts } from "../../SharedConsts";
 
 const moonToCB = (moon, multipliers, planetRadius) => {
     const { className, radius, orbitalPeriod, distance } = moon;
@@ -18,7 +19,9 @@ const moonToCB = (moon, multipliers, planetRadius) => {
 };
 
 const applyMultipliers = (consts, mults) => ({
-    distance: consts.distance * mults.distanceMultiplier - consts.radius * mults.sizeMultiplier,
+    distance:
+        consts.distance * mults.distanceMultiplier +
+        (SunConsts.radius - consts.radius) * mults.sizeMultiplier,
     radius: consts.radius * mults.sizeMultiplier,
     orbitalPeriod: consts.orbitalPeriod * mults.orbitalPeriodMultiplier
 });

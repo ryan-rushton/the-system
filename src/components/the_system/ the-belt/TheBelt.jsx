@@ -37,14 +37,14 @@ class TheBelt extends React.Component {
     constructor(props, context) {
         super(props);
         const { multipliers } = context;
-        const { distanceMultiplier, sunSizeMultiplier, sizeMultiplier } = multipliers;
+        const { distanceMultiplier, sizeMultiplier } = multipliers;
         const outerMars =
             MarsConsts.distance * distanceMultiplier +
-            SunConsts.radius * sunSizeMultiplier +
+            SunConsts.radius * sizeMultiplier +
             MarsConsts.radius * sizeMultiplier;
         const innerJupiter =
             JupiterConsts.distance * distanceMultiplier +
-            SunConsts.radius * sunSizeMultiplier -
+            SunConsts.radius * sizeMultiplier -
             JupiterConsts.radius * sizeMultiplier;
 
         this.innerBelt = outerMars + (innerJupiter - outerMars) * 0.1;
