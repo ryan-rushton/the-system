@@ -8,7 +8,7 @@ import Mercury from "./celestial-bodies/Mercury";
 import Venus from "./celestial-bodies/Venus";
 import Earth from "./celestial-bodies/earth/Earth";
 import Mars from "./celestial-bodies/Mars";
-import Jupiter from "./celestial-bodies/Jupiter";
+import Jupiter from "./celestial-bodies/jupiter/Jupiter";
 import Saturn from "./celestial-bodies/saturn/Saturn";
 import Uranus from "./celestial-bodies/Uranus";
 import Neptune from "./celestial-bodies/Neptune";

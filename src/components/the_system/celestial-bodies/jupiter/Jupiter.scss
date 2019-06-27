@@ -1,0 +1,14 @@
+.jupiter {
+    background-image: url("./assets/Jupiter.svg");
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(5deg);
+}
+
+.io,
+.europa,
+.ganymede,
+.callisto {
+    background-color: whitesmoke;
+}

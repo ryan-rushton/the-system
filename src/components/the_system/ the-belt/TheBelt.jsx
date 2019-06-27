@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import SystemContext from "../SystemContext";
 import { SunConsts } from "../SharedConsts";
 import { MarsConsts } from "../celestial-bodies/Mars";
-import { JupiterConsts } from "../celestial-bodies/Jupiter";
+import { JupiterConsts } from "../celestial-bodies/jupiter/Jupiter";
 
 import "./TheBelt.scss";
 

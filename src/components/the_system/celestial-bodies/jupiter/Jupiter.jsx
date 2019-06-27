@@ -1,6 +1,8 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import Planet from "./planet/Planet";
+import Planet from "../planet/Planet";
+
+import "./Jupiter.scss";
 
 export const JupiterConsts = {
     radius: 71498,

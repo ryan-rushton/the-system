@@ -24,15 +24,20 @@ class NavMenu extends React.Component {
 
     getTransformStyle() {
         const { dropdownVisible } = this.state;
+        const dropdownRef = this.dropDown.current;
+
+        if (!dropdownRef) {
+            return null;
+        }
 
         if (dropdownVisible) {
             return {
-                transform: `translateX(-4vw)`
+                transform: `translateX(calc(-8vw - ${dropdownRef.offsetWidth}px))`
             };
         }
 
         return {
-            transform: `translateX(0)`
+            transform: `translateX(0px)`
         };
     }
 

@@ -38,10 +38,11 @@ class CelestialBody extends React.Component {
     }
 
     getCssValuesForBody() {
-        const { radius, distance } = this.props;
+        const { radius, radiansPerMinute, distance } = this.props;
         const top = distance > 0 ? "50%" : 0;
 
         return {
+            animation: `planet-rotation ${radiansPerMinute}s linear infinite`,
             borderRadius: "50%",
             height: `${radius * 2}px`,
             left: 0,
