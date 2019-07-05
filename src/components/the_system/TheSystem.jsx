@@ -30,17 +30,17 @@ const TheSystem = ({ pointsOfInterest }) => (
             {context => (
                 <div className="the-system" style={systemStyle(context.systemRadius)}>
                     <TheStars starCount={STAR_COUNT} />
-                    <TheBelt />
-                    <Sun scrollToRef={pointsOfInterest.sun.ref} />
-                    <Mercury scrollToRef={pointsOfInterest.mercury.ref} />
-                    <Venus scrollToRef={pointsOfInterest.venus.ref} />
-                    <Earth scrollToRef={pointsOfInterest.earth.ref} />
-                    <Mars scrollToRef={pointsOfInterest.mars.ref} />
+                    <Pluto scrollToRef={pointsOfInterest.pluto.ref} />
+                    <Neptune scrollToRef={pointsOfInterest.neptune.ref} />
+                    <Uranus scrollToRef={pointsOfInterest.uranus.ref} />
                     <Jupiter scrollToRef={pointsOfInterest.jupiter.ref} />
                     <Saturn scrollToRef={pointsOfInterest.saturn.ref} />
-                    <Uranus scrollToRef={pointsOfInterest.uranus.ref} />
-                    <Neptune scrollToRef={pointsOfInterest.neptune.ref} />
-                    <Pluto scrollToRef={pointsOfInterest.pluto.ref} />
+                    <TheBelt />
+                    <Mars scrollToRef={pointsOfInterest.mars.ref} />
+                    <Earth scrollToRef={pointsOfInterest.earth.ref} />
+                    <Venus scrollToRef={pointsOfInterest.venus.ref} />
+                    <Mercury scrollToRef={pointsOfInterest.mercury.ref} />
+                    <Sun scrollToRef={pointsOfInterest.sun.ref} />
                 </div>
             )}
         </SystemContext.Consumer>
