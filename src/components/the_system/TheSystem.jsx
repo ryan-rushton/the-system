@@ -11,7 +11,7 @@ import Mars from "./celestial-bodies/Mars";
 import Jupiter from "./celestial-bodies/jupiter/Jupiter";
 import Saturn from "./celestial-bodies/saturn/Saturn";
 import Uranus from "./celestial-bodies/Uranus";
-import Neptune from "./celestial-bodies/Neptune";
+import Neptune from "./celestial-bodies/neptune/Neptune";
 import Pluto from "./celestial-bodies/Pluto";
 
 import "./TheSystem.scss";
@@ -48,7 +48,18 @@ const TheSystem = ({ pointsOfInterest }) => (
 );
 
 TheSystem.propTypes = {
-    pointsOfInterest: PropTypes.shape({}).isRequired
+    pointsOfInterest: PropTypes.shape({
+        pluto: PropTypes.func.isRequired,
+        neptune: PropTypes.func.isRequired,
+        uranus: PropTypes.func.isRequired,
+        jupiter: PropTypes.func.isRequired,
+        saturn: PropTypes.func.isRequired,
+        mars: PropTypes.func.isRequired,
+        earth: PropTypes.func.isRequired,
+        venus: PropTypes.func.isRequired,
+        mercury: PropTypes.func.isRequired,
+        sun: PropTypes.func.isRequired
+    }).isRequired
 };
 
 export default TheSystem;
