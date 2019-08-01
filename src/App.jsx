@@ -49,12 +49,25 @@ const pointsOfInterest = {
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { renderSystem: false };
+        this.state = { renderSystem: false, renderNav: false };
         this.startTheSystemRender = this.startTheSystemRender.bind(this);
+        this.startNavRender = this.startNavRender.bind(this);
     }
 
     componentDidMount() {
-        window.setTimeout(this.startTheSystemRender, 200);
+        window.setTimeout(this.startTheSystemRender, 300);
+    }
+
+    componentDidUpdate() {
+        const { renderNav } = this.state;
+
+        if (!renderNav) {
+            window.setTimeout(this.startNavRender, 300);
+        }
+    }
+
+    startNavRender() {
+        this.setState({ renderNav: true });
     }
 
     startTheSystemRender() {
@@ -70,8 +83,9 @@ class App extends React.Component {
     }
 
     render() {
-        const { renderSystem } = this.state;
+        const { renderSystem, renderNav } = this.state;
         const content = renderSystem ? this.renderTheSystem() : this.renderLoading();
+        const navBar = renderNav ? <NavMenu pointsOfInterest={pointsOfInterest} /> : null;
         const loadingClassName = renderSystem ? "is-hidden" : null;
         return (
             <div>
@@ -79,7 +93,7 @@ class App extends React.Component {
                     <span>The System</span>
                     <span className={loadingClassName}> is loading</span>
                 </div>
-                <NavMenu pointsOfInterest={pointsOfInterest} />
+                {navBar}
                 {content}
             </div>
         );

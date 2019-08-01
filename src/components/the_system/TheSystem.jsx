@@ -17,7 +17,7 @@ import Pluto from "./celestial-bodies/Pluto";
 import "./TheSystem.scss";
 import "./celestial-bodies/Planets.scss";
 
-const STAR_COUNT = 30000;
+const STAR_COUNT = 50000;
 
 const systemStyle = systemRadius => ({
     height: `${2 * systemRadius}px`,
@@ -49,16 +49,46 @@ const TheSystem = ({ pointsOfInterest }) => (
 
 TheSystem.propTypes = {
     pointsOfInterest: PropTypes.shape({
-        pluto: PropTypes.func.isRequired,
-        neptune: PropTypes.func.isRequired,
-        uranus: PropTypes.func.isRequired,
-        jupiter: PropTypes.func.isRequired,
-        saturn: PropTypes.func.isRequired,
-        mars: PropTypes.func.isRequired,
-        earth: PropTypes.func.isRequired,
-        venus: PropTypes.func.isRequired,
-        mercury: PropTypes.func.isRequired,
-        sun: PropTypes.func.isRequired
+        pluto: PropTypes.oneOfType([
+            PropTypes.func,
+            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+        ]),
+        neptune: PropTypes.oneOfType([
+            PropTypes.func,
+            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+        ]),
+        uranus: PropTypes.oneOfType([
+            PropTypes.func,
+            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+        ]),
+        jupiter: PropTypes.oneOfType([
+            PropTypes.func,
+            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+        ]),
+        saturn: PropTypes.oneOfType([
+            PropTypes.func,
+            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+        ]),
+        mars: PropTypes.oneOfType([
+            PropTypes.func,
+            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+        ]),
+        earth: PropTypes.oneOfType([
+            PropTypes.func,
+            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+        ]),
+        venus: PropTypes.oneOfType([
+            PropTypes.func,
+            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+        ]),
+        mercury: PropTypes.oneOfType([
+            PropTypes.func,
+            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+        ]),
+        sun: PropTypes.oneOfType([
+            PropTypes.func,
+            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+        ])
     }).isRequired
 };
 

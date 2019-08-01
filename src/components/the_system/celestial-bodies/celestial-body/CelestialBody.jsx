@@ -4,11 +4,13 @@ import SystemContext from "../../SystemContext";
 import "./CelestialBody.scss";
 
 class CelestialBody extends React.Component {
-    getCssValuesForOrbitAbsolute() {
+    getCssValuesForOrbits() {
         const { systemRadius } = this.context;
-        const { radius, radiansPerMinute, distance } = this.props;
-        const center = systemRadius - distance - radius;
-        const heightWidth = 2 * (distance + radius);
+        const { radius, radiansPerMinute, distance, isSatellite, planetRadius } = this.props;
+        const referencePoint = isSatellite ? 0 : systemRadius;
+        const referenePointRadius = isSatellite ? planetRadius : 0;
+        const center = referencePoint - distance - radius;
+        const heightWidth = 2 * (distance + radius + referenePointRadius);
 
         return {
             animation: `orbit ${radiansPerMinute}s linear infinite`,
@@ -17,22 +19,6 @@ class CelestialBody extends React.Component {
             left: `${center}px`,
             position: "absolute",
             top: `${center}px`,
-            width: `${heightWidth}px`
-        };
-    }
-
-    getCssValuesForOrbitRelative() {
-        const { radius, radiansPerMinute, distance, planetRadius } = this.props;
-        const heightWidth = 2 * (distance + radius + planetRadius);
-        const offset = -distance - radius;
-
-        return {
-            animation: `orbit ${radiansPerMinute}s linear infinite`,
-            borderRadius: "50%",
-            height: `${heightWidth}px`,
-            left: `${offset}px`,
-            position: "absolute",
-            top: `${offset}px`,
             width: `${heightWidth}px`
         };
     }
@@ -57,19 +43,15 @@ class CelestialBody extends React.Component {
     renderSatellites() {
         const { satellites } = this.props;
         return satellites.map(satellite => (
-            <CelestialBody key={`satellite-${satellite.className}`} orbitRelative {...satellite} />
+            <CelestialBody key={`satellite-${satellite.className}`} isSatellite {...satellite} />
         ));
     }
 
     render() {
-        const { className, orbitRelative, scrollToRef } = this.props;
-        const styles =
-            orbitRelative === true
-                ? this.getCssValuesForOrbitRelative()
-                : this.getCssValuesForOrbitAbsolute();
+        const { className, scrollToRef } = this.props;
 
         return (
-            <div className={`planet-orbit ${className}-orbit`} style={styles}>
+            <div className={`planet-orbit ${className}-orbit`} style={this.getCssValuesForOrbits()}>
                 <div
                     className={`celestial-body ${className}`}
                     title={className}
@@ -86,7 +68,7 @@ class CelestialBody extends React.Component {
 CelestialBody.propTypes = {
     className: PropTypes.string.isRequired,
     distance: PropTypes.number.isRequired,
-    orbitRelative: PropTypes.bool,
+    isSatellite: PropTypes.bool,
     planetRadius: PropTypes.number,
     radiansPerMinute: PropTypes.number.isRequired,
     radius: PropTypes.number.isRequired,
@@ -95,7 +77,7 @@ CelestialBody.propTypes = {
 };
 
 CelestialBody.defaultProps = {
-    orbitRelative: false,
+    isSatellite: false,
     planetRadius: null,
     satellites: [],
     scrollToRef: null

@@ -20,17 +20,23 @@ const getStars = (systemRadius, starCount) => {
     return stars;
 };
 
-const TheStars = props => {
-    const { starCount } = props;
+class TheStars extends React.Component {
+    shouldComponentUpdate() {
+        return false;
+    }
 
-    return (
-        <div className="the-stars">
-            <SystemContext.Consumer>
-                {context => getStars(context.systemRadius, starCount)}
-            </SystemContext.Consumer>
-        </div>
-    );
-};
+    render() {
+        const { starCount } = this.props;
+
+        return (
+            <div className="the-stars">
+                <SystemContext.Consumer>
+                    {context => getStars(context.systemRadius, starCount)}
+                </SystemContext.Consumer>
+            </div>
+        );
+    }
+}
 
 TheStars.propTypes = {
     starCount: PropTypes.number.isRequired
