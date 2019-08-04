@@ -1,6 +1,6 @@
 import React from "react";
-import NavMenu from "./components/nav_menu/NavMenu";
-import TheSystem from "./components/the_system/TheSystem";
+import NavMenu from "./components/nav-menu/NavMenu";
+import TheSystem from "./components/the-system/TheSystem";
 import "./App.scss";
 
 const pointsOfInterest = {
