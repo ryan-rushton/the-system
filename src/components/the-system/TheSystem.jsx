@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SystemContext, { defaultContext } from "./SystemContext";
-import TheStars from "./the-stars/TheStars";
 import Sun from "./celestial-bodies/Sun";
 import TheBelt from "./ the-belt/TheBelt";
 import Mercury from "./celestial-bodies/Mercury";
@@ -17,35 +16,41 @@ import Pluto from "./celestial-bodies/Pluto";
 import "./TheSystem.scss";
 import "./celestial-bodies/Planets.scss";
 
-const STAR_COUNT = 50000;
-
 const systemStyle = systemRadius => ({
     height: `${2 * systemRadius}px`,
     width: `${2 * systemRadius}px`
 });
 
-const TheSystem = ({ pointsOfInterest }) => (
-    <SystemContext.Provider value={defaultContext}>
-        <SystemContext.Consumer>
-            {context => (
-                <div className="the-system" style={systemStyle(context.systemRadius)}>
-                    <TheStars starCount={STAR_COUNT} />
-                    <Pluto scrollToRef={pointsOfInterest.pluto.ref} />
-                    <Neptune scrollToRef={pointsOfInterest.neptune.ref} />
-                    <Uranus scrollToRef={pointsOfInterest.uranus.ref} />
-                    <Jupiter scrollToRef={pointsOfInterest.jupiter.ref} />
-                    <Saturn scrollToRef={pointsOfInterest.saturn.ref} />
-                    <TheBelt />
-                    <Mars scrollToRef={pointsOfInterest.mars.ref} />
-                    <Earth scrollToRef={pointsOfInterest.earth.ref} />
-                    <Venus scrollToRef={pointsOfInterest.venus.ref} />
-                    <Mercury scrollToRef={pointsOfInterest.mercury.ref} />
-                    <Sun scrollToRef={pointsOfInterest.sun.ref} />
-                </div>
-            )}
-        </SystemContext.Consumer>
-    </SystemContext.Provider>
-);
+class TheSystem extends React.Component {
+    shouldComponentUpdate() {
+        return false;
+    }
+
+    render() {
+        const { pointsOfInterest } = this.props;
+        return (
+            <SystemContext.Provider value={defaultContext}>
+                <SystemContext.Consumer>
+                    {context => (
+                        <div className="the-system" style={systemStyle(context.systemRadius)}>
+                            <Pluto scrollToRef={pointsOfInterest.pluto.ref} />
+                            <Neptune scrollToRef={pointsOfInterest.neptune.ref} />
+                            <Uranus scrollToRef={pointsOfInterest.uranus.ref} />
+                            <Jupiter scrollToRef={pointsOfInterest.jupiter.ref} />
+                            <Saturn scrollToRef={pointsOfInterest.saturn.ref} />
+                            <TheBelt />
+                            <Mars scrollToRef={pointsOfInterest.mars.ref} />
+                            <Earth scrollToRef={pointsOfInterest.earth.ref} />
+                            <Venus scrollToRef={pointsOfInterest.venus.ref} />
+                            <Mercury scrollToRef={pointsOfInterest.mercury.ref} />
+                            <Sun scrollToRef={pointsOfInterest.sun.ref} />
+                        </div>
+                    )}
+                </SystemContext.Consumer>
+            </SystemContext.Provider>
+        );
+    }
+}
 
 TheSystem.propTypes = {
     pointsOfInterest: PropTypes.shape({

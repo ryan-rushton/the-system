@@ -7,7 +7,7 @@ import { JupiterConsts } from "../celestial-bodies/jupiter/Jupiter";
 
 import "./TheBelt.scss";
 
-const ROCK_COUNT = 10000;
+const ROCK_COUNT = 15000;
 
 const BeltRock = ({ x, y, luminosity, size, beltRadius }) => {
     const left = beltRadius + x;
@@ -50,6 +50,10 @@ class TheBelt extends React.Component {
         this.innerBelt = outerMars + (innerJupiter - outerMars) * 0.1;
         this.outerBelt = outerMars + (innerJupiter - outerMars) * 0.7;
         this.beltSize = this.outerBelt - this.innerBelt;
+    }
+
+    shouldComponentUpdate() {
+        return false;
     }
 
     renderBelt() {

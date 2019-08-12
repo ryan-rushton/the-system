@@ -46,58 +46,14 @@ const pointsOfInterest = {
     }
 };
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { renderSystem: false, renderNav: false };
-        this.startTheSystemRender = this.startTheSystemRender.bind(this);
-        this.startNavRender = this.startNavRender.bind(this);
-    }
-
-    componentDidMount() {
-        window.setTimeout(this.startTheSystemRender, 300);
-    }
-
-    componentDidUpdate() {
-        const { renderNav } = this.state;
-
-        if (!renderNav) {
-            window.setTimeout(this.startNavRender, 300);
-        }
-    }
-
-    startNavRender() {
-        this.setState({ renderNav: true });
-    }
-
-    startTheSystemRender() {
-        this.setState({ renderSystem: true });
-    }
-
-    renderTheSystem() {
-        return <TheSystem pointsOfInterest={pointsOfInterest} />;
-    }
-
-    renderLoading() {
-        return <div className="the-system-is-loading-bg" />;
-    }
-
-    render() {
-        const { renderSystem, renderNav } = this.state;
-        const content = renderSystem ? this.renderTheSystem() : this.renderLoading();
-        const navBar = renderNav ? <NavMenu pointsOfInterest={pointsOfInterest} /> : null;
-        const loadingClassName = renderSystem ? "is-hidden" : null;
-        return (
-            <div>
-                <div className="the-system-app-title">
-                    <span>The System</span>
-                    <span className={loadingClassName}> is loading</span>
-                </div>
-                {navBar}
-                {content}
-            </div>
-        );
-    }
-}
+const App = () => (
+    <div>
+        <div className="the-system-app-title">
+            <span>The System</span>
+        </div>
+        <NavMenu pointsOfInterest={pointsOfInterest} />
+        <TheSystem pointsOfInterest={pointsOfInterest} />
+    </div>
+);
 
 export default App;

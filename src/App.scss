@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway");
+
 .the-system-app-title {
     color: white;
     font-family: "Raleway", sans-serif;
@@ -7,15 +8,4 @@
     position: fixed;
     top: 2vh;
     z-index: 2;
-
-    .is-hidden {
-        transition: opacity 2.5s linear;
-        opacity: 0;
-    }
-}
-
-.the-system-is-loading-bg {
-    background-color: #050608;
-    height: 100vh;
-    width: 100vw;
 }
