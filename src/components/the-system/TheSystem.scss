@@ -1,5 +1,15 @@
 .the-system {
     background: url("./assets/stars-background.png") 50% repeat;
+    position: relative;
+
+    .the-system-suns-glow {
+        background: radial-gradient(
+            ellipse at center,
+            rgba(255, 255, 255, 0.2) 0%,
+            transparent 100%
+        );
+        position: absolute;
+    }
 }
 
 @-moz-keyframes orbit {

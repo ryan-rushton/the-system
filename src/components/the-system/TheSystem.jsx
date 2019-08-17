@@ -33,17 +33,22 @@ class TheSystem extends React.Component {
                 <SystemContext.Consumer>
                     {context => (
                         <div className="the-system" style={systemStyle(context.systemRadius)}>
-                            <Pluto scrollToRef={pointsOfInterest.pluto.ref} />
-                            <Neptune scrollToRef={pointsOfInterest.neptune.ref} />
-                            <Uranus scrollToRef={pointsOfInterest.uranus.ref} />
-                            <Jupiter scrollToRef={pointsOfInterest.jupiter.ref} />
-                            <Saturn scrollToRef={pointsOfInterest.saturn.ref} />
-                            <TheBelt />
-                            <Mars scrollToRef={pointsOfInterest.mars.ref} />
-                            <Earth scrollToRef={pointsOfInterest.earth.ref} />
-                            <Venus scrollToRef={pointsOfInterest.venus.ref} />
-                            <Mercury scrollToRef={pointsOfInterest.mercury.ref} />
-                            <Sun scrollToRef={pointsOfInterest.sun.ref} />
+                            <div
+                                className="the-system-suns-glow"
+                                style={systemStyle(context.systemRadius)}
+                            >
+                                <Pluto scrollToRef={pointsOfInterest.pluto.ref} />
+                                <Neptune scrollToRef={pointsOfInterest.neptune.ref} />
+                                <Uranus scrollToRef={pointsOfInterest.uranus.ref} />
+                                <Jupiter scrollToRef={pointsOfInterest.jupiter.ref} />
+                                <Saturn scrollToRef={pointsOfInterest.saturn.ref} />
+                                <TheBelt />
+                                <Mars scrollToRef={pointsOfInterest.mars.ref} />
+                                <Earth scrollToRef={pointsOfInterest.earth.ref} />
+                                <Venus scrollToRef={pointsOfInterest.venus.ref} />
+                                <Mercury scrollToRef={pointsOfInterest.mercury.ref} />
+                                <Sun scrollToRef={pointsOfInterest.sun.ref} />
+                            </div>
                         </div>
                     )}
                 </SystemContext.Consumer>
