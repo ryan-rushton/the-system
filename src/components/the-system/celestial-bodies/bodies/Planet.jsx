@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SystemContext from "../../../../SystemContext";
-import CelestialBody from "../celestial-body/CelestialBody";
+import CelestialBody from "./CelestialBody";
 import { SunConsts } from "../../../../SharedConsts";
 
 const moonToCB = (moon, multipliers, planetRadius) => {

@@ -2,7 +2,7 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import SystemContext from "../../../SystemContext";
 import { SunConsts } from "../../../SharedConsts";
-import CelestialBody from "./celestial-body/CelestialBody";
+import CelestialBody from "./bodies/CelestialBody";
 
 const getRadius = mult => mult * SunConsts.radius;
 

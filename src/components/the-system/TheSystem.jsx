@@ -7,7 +7,7 @@ import Earth from "./celestial-bodies/earth/Earth";
 import Jupiter from "./celestial-bodies/jupiter/Jupiter";
 import Saturn from "./celestial-bodies/saturn/Saturn";
 import Neptune from "./celestial-bodies/neptune/Neptune";
-import Planet from "./celestial-bodies/planet/Planet";
+import Planet from "./celestial-bodies/bodies/Planet";
 import { PlutoConsts } from "../../SharedConsts";
 
 import "./TheSystem.scss";

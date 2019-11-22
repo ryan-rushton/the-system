@@ -1,6 +1,6 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import Planet from "../planet/Planet";
+import Planet from "../bodies/Planet";
 
 const earthConsts = {
     radius: 6378,
