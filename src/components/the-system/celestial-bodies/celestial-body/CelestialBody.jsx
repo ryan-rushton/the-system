@@ -1,19 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SystemContext from "../../SystemContext";
+import SystemContext from "../../../../SystemContext";
 import "./CelestialBody.scss";
 
 class CelestialBody extends React.Component {
     getCssValuesForOrbits() {
         const { systemRadius } = this.context;
-        const { radius, radiansPerMinute, distance, isSatellite, planetRadius } = this.props;
+        const { radius, orbitalPeriod, distance, isSatellite, planetRadius } = this.props;
         const referencePoint = isSatellite ? 0 : systemRadius;
         const referenePointRadius = isSatellite ? planetRadius : 0;
         const center = referencePoint - distance - radius;
         const heightWidth = 2 * (distance + radius + referenePointRadius);
 
         return {
-            animation: `orbit ${radiansPerMinute}s linear infinite`,
+            animation: `orbit ${orbitalPeriod}s linear infinite`,
             borderRadius: "50%",
             height: `${heightWidth}px`,
             left: `${center}px`,
@@ -24,11 +24,11 @@ class CelestialBody extends React.Component {
     }
 
     getCssValuesForBody() {
-        const { radius, radiansPerMinute, distance } = this.props;
+        const { radius, orbitalPeriod, distance } = this.props;
         const top = distance > 0 ? "50%" : 0;
 
         return {
-            animation: `planet-rotation ${radiansPerMinute}s linear infinite`,
+            animation: `planet-rotation ${orbitalPeriod}s linear infinite`,
             borderRadius: "50%",
             height: `${radius * 2}px`,
             left: 0,
@@ -70,7 +70,7 @@ CelestialBody.propTypes = {
     distance: PropTypes.number.isRequired,
     isSatellite: PropTypes.bool,
     planetRadius: PropTypes.number,
-    radiansPerMinute: PropTypes.number.isRequired,
+    orbitalPeriod: PropTypes.number.isRequired,
     radius: PropTypes.number.isRequired,
     satellites: PropTypes.arrayOf(PropTypes.shape({})),
     scrollToRef: PropTypes.shape({})

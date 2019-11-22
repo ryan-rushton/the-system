@@ -10,6 +10,44 @@
         );
         position: absolute;
     }
+
+    .sun {
+        background: radial-gradient(
+            ellipse at center,
+            #ffd000 1%,
+            #f9b700 39%,
+            #f9b700 39%,
+            #e06317 100%
+        );
+    }
+
+    .mercury {
+        background-color: #aba49a;
+    }
+
+    .venus {
+        background-color: #c5aa75;
+    }
+
+    .earth {
+        background-color: #4a83a0;
+    }
+
+    .moon {
+        background-color: whitesmoke;
+    }
+
+    .mars {
+        background-color: #ca5202;
+    }
+
+    .uranus {
+        background-color: #c2eaee;
+    }
+
+    .pluto {
+        background-color: grey;
+    }
 }
 
 @-moz-keyframes orbit {

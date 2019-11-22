@@ -24,18 +24,14 @@ const rhea = {
     radius: 764
 };
 
-const Saturn = ({ scrollToRef }) => {
-    const name = "saturn";
-
-    return (
-        <Planet
-            name={name}
-            moons={[rhea, titan]}
-            planetConstants={SaturnConsts}
-            scrollToRef={scrollToRef}
-        />
-    );
-};
+const Saturn = ({ scrollToRef }) => (
+    <Planet
+        name="saturn"
+        moons={[rhea, titan]}
+        planetConstants={SaturnConsts}
+        scrollToRef={scrollToRef}
+    />
+);
 
 Saturn.propTypes = {
     scrollToRef: PropTypes.shape({}).isRequired

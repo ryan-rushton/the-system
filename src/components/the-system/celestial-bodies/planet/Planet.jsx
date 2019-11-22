@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SystemContext from "../../SystemContext";
+import SystemContext from "../../../../SystemContext";
 import CelestialBody from "../celestial-body/CelestialBody";
-import { SunConsts } from "../../SharedConsts";
+import { SunConsts } from "../../../../SharedConsts";
 
 const moonToCB = (moon, multipliers, planetRadius) => {
     const { className, radius, orbitalPeriod, distance } = moon;
@@ -13,7 +13,7 @@ const moonToCB = (moon, multipliers, planetRadius) => {
         className,
         radius: moonRadius,
         distance: distance * satelliteDist - planetRadius * sizeMultiplier - moonRadius,
-        radiansPerMinute: orbitalPeriod * orbitalPeriodMultiplier,
+        orbitalPeriod: orbitalPeriod * orbitalPeriodMultiplier,
         planetRadius
     };
 };
@@ -36,7 +36,7 @@ const planet = (name, moons, planetConstants, scrollToRef, context) => {
         <CelestialBody
             className={name}
             distance={distance}
-            radiansPerMinute={orbitalPeriod}
+            orbitalPeriod={orbitalPeriod}
             radius={radius}
             satellites={satellites}
             scrollToRef={scrollToRef}

@@ -10,11 +10,9 @@ const NeptuneConsts = {
     orbitalPeriod: 59800
 };
 
-const Neptune = ({ scrollToRef }) => {
-    const name = "neptune";
-
-    return <Planet name={name} planetConstants={NeptuneConsts} scrollToRef={scrollToRef} />;
-};
+const Neptune = ({ scrollToRef }) => (
+    <Planet name="neptune" planetConstants={NeptuneConsts} scrollToRef={scrollToRef} />
+);
 
 Neptune.propTypes = {
     scrollToRef: PropTypes.shape({}).isRequired

@@ -1,4 +1,5 @@
 import React from "react";
+import SystemContext, { defaultContext } from "./SystemContext";
 import NavMenu from "./components/nav-menu/NavMenu";
 import TheSystem from "./components/the-system/TheSystem";
 import "./App.scss";
@@ -47,13 +48,15 @@ const pointsOfInterest = {
 };
 
 const App = () => (
-    <div>
-        <div className="the-system-app-title">
-            <span>The System</span>
+    <SystemContext.Provider value={defaultContext}>
+        <div>
+            <div className="the-system-app-title">
+                <span>The System</span>
+            </div>
+            <NavMenu pointsOfInterest={pointsOfInterest} />
+            <TheSystem pointsOfInterest={pointsOfInterest} />
         </div>
-        <NavMenu pointsOfInterest={pointsOfInterest} />
-        <TheSystem pointsOfInterest={pointsOfInterest} />
-    </div>
+    </SystemContext.Provider>
 );
 
 export default App;

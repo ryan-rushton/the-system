@@ -12,11 +12,11 @@ class NavMenu extends React.Component {
             dropdownVisible: false
         };
 
-        this.onDropdownClick = this.onDropdownClick.bind(this);
+        this.onMenuClick = this.onMenuClick.bind(this);
         this.dropDown = React.createRef();
     }
 
-    onDropdownClick() {
+    onMenuClick() {
         this.setState(prevState => ({
             dropdownVisible: !prevState.dropdownVisible
         }));
@@ -66,7 +66,7 @@ class NavMenu extends React.Component {
     renderPointsOfInterest() {
         const { pointsOfInterest } = this.props;
 
-        return Object.entries(pointsOfInterest).map(poi => this.renderPointOfInterest(poi[1]));
+        return Object.values(pointsOfInterest).map(poi => this.renderPointOfInterest(poi));
     }
 
     render() {
@@ -76,8 +76,8 @@ class NavMenu extends React.Component {
                 <div className="the-system-nav-header">
                     <div
                         className="the-system-nav-header-button"
-                        onClick={this.onDropdownClick}
-                        onKeyPress={this.onDropdownClick}
+                        onClick={this.onMenuClick}
+                        onKeyPress={this.onMenuClick}
                         role="button"
                         tabIndex="0"
                     >

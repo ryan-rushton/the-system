@@ -1,25 +1,49 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SystemContext, { defaultContext } from "./SystemContext";
+import SystemContext from "../../SystemContext";
 import Sun from "./celestial-bodies/Sun";
 import TheBelt from "./ the-belt/TheBelt";
-import Mercury from "./celestial-bodies/Mercury";
-import Venus from "./celestial-bodies/Venus";
 import Earth from "./celestial-bodies/earth/Earth";
-import Mars from "./celestial-bodies/Mars";
 import Jupiter from "./celestial-bodies/jupiter/Jupiter";
 import Saturn from "./celestial-bodies/saturn/Saturn";
-import Uranus from "./celestial-bodies/Uranus";
 import Neptune from "./celestial-bodies/neptune/Neptune";
-import Pluto from "./celestial-bodies/Pluto";
+import Planet from "./celestial-bodies/planet/Planet";
+import { PlutoConsts } from "../../SharedConsts";
 
 import "./TheSystem.scss";
-import "./celestial-bodies/Planets.scss";
+
+const MercuryConsts = {
+    radius: 2440,
+    distance: 57900000,
+    orbitalPeriod: 88
+};
+
+const VenusConsts = {
+    radius: 6052,
+    distance: 108200000,
+    orbitalPeriod: 224.7
+};
+
+export const MarsConsts = {
+    radius: 3396,
+    distance: 227900000,
+    orbitalPeriod: 687
+};
+
+const UranusConsts = {
+    radius: 25559,
+    distance: 2872500000,
+    orbitalPeriod: 30589
+};
 
 const systemStyle = systemRadius => ({
     height: `${2 * systemRadius}px`,
     width: `${2 * systemRadius}px`
 });
+
+const createPlanet = (name, consts, scrollToRef) => (
+    <Planet name={name} planetConstants={consts} scrollToRef={scrollToRef} />
+);
 
 class TheSystem extends React.Component {
     shouldComponentUpdate() {
@@ -27,78 +51,59 @@ class TheSystem extends React.Component {
     }
 
     render() {
-        const { pointsOfInterest } = this.props;
+        const {
+            sun,
+            mercury,
+            venus,
+            earth,
+            mars,
+            jupiter,
+            saturn,
+            uranus,
+            neptune,
+            pluto
+        } = this.props.pointsOfInterest;
         return (
-            <SystemContext.Provider value={defaultContext}>
-                <SystemContext.Consumer>
-                    {context => (
-                        <div className="the-system" style={systemStyle(context.systemRadius)}>
-                            <div
-                                className="the-system-suns-glow"
-                                style={systemStyle(context.systemRadius)}
-                            >
-                                <Pluto scrollToRef={pointsOfInterest.pluto.ref} />
-                                <Neptune scrollToRef={pointsOfInterest.neptune.ref} />
-                                <Uranus scrollToRef={pointsOfInterest.uranus.ref} />
-                                <Jupiter scrollToRef={pointsOfInterest.jupiter.ref} />
-                                <Saturn scrollToRef={pointsOfInterest.saturn.ref} />
-                                <TheBelt />
-                                <Mars scrollToRef={pointsOfInterest.mars.ref} />
-                                <Earth scrollToRef={pointsOfInterest.earth.ref} />
-                                <Venus scrollToRef={pointsOfInterest.venus.ref} />
-                                <Mercury scrollToRef={pointsOfInterest.mercury.ref} />
-                                <Sun scrollToRef={pointsOfInterest.sun.ref} />
-                            </div>
+            <SystemContext.Consumer>
+                {({ systemRadius }) => (
+                    <div className="the-system" style={systemStyle(systemRadius)}>
+                        <div className="the-system-suns-glow" style={systemStyle(systemRadius)}>
+                            {createPlanet("pluto", PlutoConsts, pluto.ref)}
+                            <Neptune scrollToRef={neptune.ref} />
+                            {createPlanet("uranus", UranusConsts, uranus.ref)}
+                            <Jupiter scrollToRef={jupiter.ref} />
+                            <Saturn scrollToRef={saturn.ref} />
+                            <TheBelt />
+                            {createPlanet("mars", MarsConsts, mars.ref)}
+                            <Earth scrollToRef={earth.ref} />
+                            {createPlanet("venus", VenusConsts, venus.ref)}
+                            {createPlanet("mercury", MercuryConsts, mercury.ref)}
+                            <Sun scrollToRef={sun.ref} />
                         </div>
-                    )}
-                </SystemContext.Consumer>
-            </SystemContext.Provider>
+                    </div>
+                )}
+            </SystemContext.Consumer>
         );
     }
 }
 
+const refShape = PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+]);
+
 TheSystem.propTypes = {
     pointsOfInterest: PropTypes.shape({
-        pluto: PropTypes.oneOfType([
-            PropTypes.func,
-            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-        ]),
-        neptune: PropTypes.oneOfType([
-            PropTypes.func,
-            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-        ]),
-        uranus: PropTypes.oneOfType([
-            PropTypes.func,
-            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-        ]),
-        jupiter: PropTypes.oneOfType([
-            PropTypes.func,
-            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-        ]),
-        saturn: PropTypes.oneOfType([
-            PropTypes.func,
-            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-        ]),
-        mars: PropTypes.oneOfType([
-            PropTypes.func,
-            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-        ]),
-        earth: PropTypes.oneOfType([
-            PropTypes.func,
-            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-        ]),
-        venus: PropTypes.oneOfType([
-            PropTypes.func,
-            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-        ]),
-        mercury: PropTypes.oneOfType([
-            PropTypes.func,
-            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-        ]),
-        sun: PropTypes.oneOfType([
-            PropTypes.func,
-            PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-        ])
+        pluto: refShape,
+        neptune: refShape,
+        uranus: refShape,
+        jupiter: refShape,
+        saturn: refShape,
+        mars: refShape,
+        earth: refShape,
+        venus: refShape,
+        mercury: refShape,
+        sun: refShape
     }).isRequired
 };
 

@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SystemContext from "../SystemContext";
-import { SunConsts } from "../SharedConsts";
-import { MarsConsts } from "../celestial-bodies/Mars";
+import SystemContext from "../../../SystemContext";
+import { SunConsts } from "../../../SharedConsts";
+import { MarsConsts } from "../TheSystem";
 import { JupiterConsts } from "../celestial-bodies/jupiter/Jupiter";
 
 import "./TheBelt.scss";

@@ -1,5 +1,5 @@
 {
-    "extends": ["airbnb", "prettier", "prettier/react"],
+    "extends": ["react-app", "prettier", "prettier/react"],
     "plugins": ["react", "prettier"],
     "parserOptions": {
         "sourceType": "module",

@@ -15,18 +15,9 @@ const moon = {
     radius: 1737
 };
 
-const Earth = ({ scrollToRef }) => {
-    const name = "earth";
-
-    return (
-        <Planet
-            name={name}
-            planetConstants={earthConsts}
-            moons={[moon]}
-            scrollToRef={scrollToRef}
-        />
-    );
-};
+const Earth = ({ scrollToRef }) => (
+    <Planet name="earth" planetConstants={earthConsts} moons={[moon]} scrollToRef={scrollToRef} />
+);
 
 Earth.propTypes = {
     scrollToRef: PropTypes.shape({}).isRequired

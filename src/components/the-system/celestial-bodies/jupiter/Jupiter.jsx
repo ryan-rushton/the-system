@@ -38,18 +38,14 @@ const callisto = {
     radius: 2410
 };
 
-const Jupiter = ({ scrollToRef }) => {
-    const name = "jupiter";
-
-    return (
-        <Planet
-            name={name}
-            planetConstants={JupiterConsts}
-            moons={[io, europa, ganymede, callisto]}
-            scrollToRef={scrollToRef}
-        />
-    );
-};
+const Jupiter = ({ scrollToRef }) => (
+    <Planet
+        name="jupiter"
+        planetConstants={JupiterConsts}
+        moons={[io, europa, ganymede, callisto]}
+        scrollToRef={scrollToRef}
+    />
+);
 
 Jupiter.propTypes = {
     scrollToRef: PropTypes.shape({}).isRequired
