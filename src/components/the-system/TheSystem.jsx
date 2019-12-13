@@ -57,6 +57,7 @@ class TheSystem extends React.Component {
             venus,
             earth,
             mars,
+            theBelt,
             jupiter,
             saturn,
             uranus,
@@ -73,7 +74,7 @@ class TheSystem extends React.Component {
                             {createPlanet("uranus", UranusConsts, uranus.ref)}
                             <Jupiter scrollToRef={jupiter.ref} />
                             <Saturn scrollToRef={saturn.ref} />
-                            <TheBelt />
+                            <TheBelt scrollToRef={theBelt.ref} />
                             {createPlanet("mars", MarsConsts, mars.ref)}
                             <Earth scrollToRef={earth.ref} />
                             {createPlanet("venus", VenusConsts, venus.ref)}

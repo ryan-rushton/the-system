@@ -25,6 +25,10 @@ const pointsOfInterest = {
         ref: React.createRef(),
         display: "Mars"
     },
+    theBelt: {
+        ref: React.createRef(),
+        display: "The Belt"
+    },
     jupiter: {
         ref: React.createRef(),
         display: "Jupiter"

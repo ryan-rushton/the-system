@@ -9,7 +9,7 @@ import "./TheBelt.scss";
 
 const ROCK_COUNT = 15000;
 
-const BeltRock = ({ x, y, luminosity, size, beltRadius }) => {
+const BeltRock = ({ x, y, luminosity, size, beltRadius, scrollToRef }) => {
     const left = beltRadius + x;
     const top = beltRadius + y;
     const style = {
@@ -22,7 +22,7 @@ const BeltRock = ({ x, y, luminosity, size, beltRadius }) => {
         width: size
     };
 
-    return <div className="belt-rock" style={style} />;
+    return <div className="belt-rock" style={style} ref={scrollToRef} />;
 };
 
 BeltRock.propTypes = {
@@ -56,26 +56,40 @@ class TheBelt extends React.Component {
         return false;
     }
 
-    renderBelt() {
+    renderBelt(scrollToRef) {
         const rocks = [];
 
         for (let i = 0; i < ROCK_COUNT / 2; i += 1) {
             const distance = this.innerBelt + this.beltSize * Math.sin(Math.PI * Math.random());
             const theta = Math.random() * 360;
-            const vals = {
+            const values = {
                 x: distance * Math.cos(theta),
                 y: distance * -Math.sin(theta),
                 luminosity: 0.5 * (1 + Math.random()),
                 size: 2 * Math.random(),
                 beltRadius: this.outerBelt
             };
-            rocks.push(<BeltRock {...vals} key={`belt-rock-${i}`} />);
+            rocks.push(<BeltRock {...values} key={`belt-rock-${i}`} />);
+        }
+
+        if (scrollToRef) {
+            const distance = this.innerBelt;
+            const values = {
+                x: distance,
+                y: distance,
+                luminosity: 0,
+                size: 0,
+                beltRadius: this.outerBelt,
+                scrollToRef: scrollToRef
+            };
+            rocks.push(<BeltRock {...values} key="belt-ref" />);
         }
 
         return rocks;
     }
 
     render() {
+        const { scrollToRef } = this.props;
         const { systemRadius } = this.context;
         const style = {
             height: this.outerBelt * 2,
@@ -87,7 +101,7 @@ class TheBelt extends React.Component {
         return (
             <div className="the-belt">
                 <div className="the-belt-1st-layer" style={style}>
-                    {this.renderBelt()}
+                    {this.renderBelt(scrollToRef)}
                 </div>
                 <div className="the-belt-2nd-layer" style={style}>
                     {this.renderBelt()}

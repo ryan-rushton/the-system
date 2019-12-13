@@ -4,12 +4,11 @@
     font-family: "Raleway", sans-serif;
     position: fixed;
     right: 2vw;
+    text-align: right;
     top: 2vh;
     z-index: 2;
 
-    .the-system-nav-header-button {
-        font-size: 1.8em;
-
+    .the-system-nav-button {
         &:focus {
             outline: none;
         }
@@ -20,28 +19,65 @@
         }
     }
 
+    .the-system-nav-header-button {
+        font-size: 1.8em;
+    }
+
     .the-system-nav-dropdown {
         left: 10vw;
-        margin: 3px 6px;
-        padding: 3px;
+        overflow-y: scroll;
         position: absolute;
         transition: transform 1s;
 
-        .the-system-nav-dropdown-goto-header {
+        .the-system-nav-dropdown-subheader {
             font-size: 1.5em;
+            font-weight: bolder;
         }
 
-        .the-system-nav-dropdown-goto-item {
-            font-size: 1.2em;
-            padding-left: 10px;
+        .the-system-nav-goto-body {
+            overflow-y: hidden;
 
-            &:focus {
-                outline: none;
+            &.the-system-nav-goto-body-open {
+                max-height: 400px;
+                transition: max-height 1s linear;
             }
 
-            &:hover {
-                color: lightblue;
-                cursor: pointer;
+            &.the-system-nav-goto-body-closed {
+                max-height: 0;
+                transition: max-height 1s linear;
+            }
+
+            .the-system-nav-goto-item {
+                font-size: 1.2em;
+                padding-left: 10px;
+            }
+        }
+
+        .the-system-nav-info-body {
+            overflow-y: hidden;
+
+            &.the-system-nav-info-body-open {
+                max-height: 400px;
+                transition: max-height 1s linear;
+            }
+
+            &.the-system-nav-info-body-closed {
+                max-height: 0;
+                transition: max-height 1s linear;
+            }
+
+            .the-system-nav-info-body-heading {
+                font-weight: bold;
+                white-space: nowrap;
+            }
+
+            .the-system-nav-info-body-stat {
+                padding-bottom: 5px;
+                white-space: nowrap;
+
+                &:last-child {
+                    padding-bottom: 10px;
+                }
             }
         }
     }

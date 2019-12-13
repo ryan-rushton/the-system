@@ -1,4 +1,5 @@
 {
     "editor.formatOnSave": true,
-    "eslint.autoFixOnSave": true
+    "eslint.autoFixOnSave": true,
+    "cSpell.words": ["consts", "fortawesome", "fontawesome", "dropdown", "subheader"]
 }
