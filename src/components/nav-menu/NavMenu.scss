@@ -29,41 +29,18 @@
         position: absolute;
         transition: transform 1s;
 
-        .the-system-nav-dropdown-subheader {
+        .the-system-nav-dropdown-item-subheader {
             font-size: 1.5em;
             font-weight: bolder;
         }
 
-        .the-system-nav-goto-body {
+        .the-system-nav-dropdown-item-body {
             overflow-y: hidden;
-
-            &.the-system-nav-goto-body-open {
-                max-height: 400px;
-                transition: max-height 1s linear;
-            }
-
-            &.the-system-nav-goto-body-closed {
-                max-height: 0;
-                transition: max-height 1s linear;
-            }
+            transition: max-height 1s linear;
 
             .the-system-nav-goto-item {
                 font-size: 1.2em;
                 padding-left: 10px;
-            }
-        }
-
-        .the-system-nav-info-body {
-            overflow-y: hidden;
-
-            &.the-system-nav-info-body-open {
-                max-height: 400px;
-                transition: max-height 1s linear;
-            }
-
-            &.the-system-nav-info-body-closed {
-                max-height: 0;
-                transition: max-height 1s linear;
             }
 
             .the-system-nav-info-body-heading {

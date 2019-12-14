@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import SystemContext from "../../SystemContext";
 import Sun from "./celestial-bodies/Sun";
@@ -45,48 +45,40 @@ const createPlanet = (name, consts, scrollToRef) => (
     <Planet name={name} planetConstants={consts} scrollToRef={scrollToRef} />
 );
 
-class TheSystem extends React.Component {
-    shouldComponentUpdate() {
-        return false;
-    }
+const TheSystem = props => {
+    const {
+        sun,
+        mercury,
+        venus,
+        earth,
+        mars,
+        theBelt,
+        jupiter,
+        saturn,
+        uranus,
+        neptune,
+        pluto
+    } = props.pointsOfInterest;
+    const { systemRadius } = useContext(SystemContext);
 
-    render() {
-        const {
-            sun,
-            mercury,
-            venus,
-            earth,
-            mars,
-            theBelt,
-            jupiter,
-            saturn,
-            uranus,
-            neptune,
-            pluto
-        } = this.props.pointsOfInterest;
-        return (
-            <SystemContext.Consumer>
-                {({ systemRadius }) => (
-                    <div className="the-system" style={systemStyle(systemRadius)}>
-                        <div className="the-system-suns-glow" style={systemStyle(systemRadius)}>
-                            {createPlanet("pluto", PlutoConsts, pluto.ref)}
-                            <Neptune scrollToRef={neptune.ref} />
-                            {createPlanet("uranus", UranusConsts, uranus.ref)}
-                            <Jupiter scrollToRef={jupiter.ref} />
-                            <Saturn scrollToRef={saturn.ref} />
-                            <TheBelt scrollToRef={theBelt.ref} />
-                            {createPlanet("mars", MarsConsts, mars.ref)}
-                            <Earth scrollToRef={earth.ref} />
-                            {createPlanet("venus", VenusConsts, venus.ref)}
-                            {createPlanet("mercury", MercuryConsts, mercury.ref)}
-                            <Sun scrollToRef={sun.ref} />
-                        </div>
-                    </div>
-                )}
-            </SystemContext.Consumer>
-        );
-    }
-}
+    return (
+        <div className="the-system" style={systemStyle(systemRadius)}>
+            <div className="the-system-suns-glow" style={systemStyle(systemRadius)}>
+                {createPlanet("pluto", PlutoConsts, pluto.ref)}
+                <Neptune scrollToRef={neptune.ref} />
+                {createPlanet("uranus", UranusConsts, uranus.ref)}
+                <Jupiter scrollToRef={jupiter.ref} />
+                <Saturn scrollToRef={saturn.ref} />
+                <TheBelt scrollToRef={theBelt.ref} />
+                {createPlanet("mars", MarsConsts, mars.ref)}
+                <Earth scrollToRef={earth.ref} />
+                {createPlanet("venus", VenusConsts, venus.ref)}
+                {createPlanet("mercury", MercuryConsts, mercury.ref)}
+                <Sun scrollToRef={sun.ref} />
+            </div>
+        </div>
+    );
+};
 
 const refShape = PropTypes.oneOfType([
     PropTypes.func,

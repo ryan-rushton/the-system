@@ -8,9 +8,9 @@ class CelestialBody extends React.Component {
         const { systemRadius } = this.context;
         const { radius, orbitalPeriod, distance, isSatellite, planetRadius } = this.props;
         const referencePoint = isSatellite ? 0 : systemRadius;
-        const referenePointRadius = isSatellite ? planetRadius : 0;
+        const referencePointRadius = isSatellite ? planetRadius : 0;
         const center = referencePoint - distance - radius;
-        const heightWidth = 2 * (distance + radius + referenePointRadius);
+        const heightWidth = 2 * (distance + radius + referencePointRadius);
 
         return {
             animation: `orbit ${orbitalPeriod}s linear infinite`,

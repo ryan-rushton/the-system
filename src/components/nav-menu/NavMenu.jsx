@@ -84,15 +84,14 @@ class NavMenu extends React.Component {
         const { current } = ref;
         let actualHeight = 0;
 
-        if (current && current.childNodes && current.childNodes.length) {
+        if (current?.childNodes?.length) {
             for (const child of current.childNodes) {
                 actualHeight += child.offsetHeight;
             }
         }
 
         return {
-            maxHeight: isVisible ? actualHeight : 0,
-            transition: `max-height ${actualHeight / 200}s linear`
+            maxHeight: isVisible ? actualHeight : 0
         };
     }
 
@@ -121,22 +120,22 @@ class NavMenu extends React.Component {
         } = multipliers;
 
         const daysPerSecond = 1 * orbitalPeriodMultiplier;
-        const distancekmPerPixel = 1 * distanceMultiplier;
-        const satellitekmPerPixel = 1 * satelliteDist;
-        const sizekmPerPixel = 1 * sizeMultiplier;
+        const kmPerPixelDistance = Math.round(1 / distanceMultiplier).toLocaleString();
+        const kmPerPixelSatellite = Math.round(1 / satelliteDist).toLocaleString();
+        const kmPerPixelSize = Math.round(1 / sizeMultiplier).toLocaleString();
 
         return (
             <>
                 <div className="the-system-nav-info-body-heading">Time</div>
                 <div className="the-system-nav-info-body-stat">{`${daysPerSecond} s = 1 day`}</div>
                 <div className="the-system-nav-info-body-heading">Distance Between Planets</div>
-                <div className="the-system-nav-info-body-stat">{`1 pixel = ${distancekmPerPixel} km`}</div>
+                <div className="the-system-nav-info-body-stat">{`1 pixel = ${kmPerPixelDistance} km`}</div>
                 <div className="the-system-nav-info-body-heading">
                     Distance Between Planets And Moons
                 </div>
-                <div className="the-system-nav-info-body-stat">{`1 pixel = ${satellitekmPerPixel} km`}</div>
+                <div className="the-system-nav-info-body-stat">{`1 pixel = ${kmPerPixelSatellite} km`}</div>
                 <div className="the-system-nav-info-body-heading">Planet Size</div>
-                <div className="the-system-nav-info-body-stat">{`1 pixel = ${sizekmPerPixel} km`}</div>
+                <div className="the-system-nav-info-body-stat">{`1 pixel = ${kmPerPixelSize} km`}</div>
             </>
         );
     }
@@ -150,8 +149,7 @@ class NavMenu extends React.Component {
     render() {
         const { infoVisible, poiVisible } = this.state;
         const style = this.getTransformStyle();
-        const infoBodyClass = `the-system-nav-info-body-${infoVisible ? "open" : "closed"}`;
-        const gotoBodyClass = `the-system-nav-goto-body-${poiVisible ? "open" : "closed"}`;
+
         return (
             <div className="the-system-nav">
                 <div className="the-system-nav-header">
@@ -167,7 +165,7 @@ class NavMenu extends React.Component {
                 </div>
                 <div className="the-system-nav-dropdown" ref={this.dropDownRef} style={style}>
                     <div
-                        className="the-system-nav-button the-system-nav-dropdown-subheader"
+                        className="the-system-nav-button the-system-nav-dropdown-item-subheader"
                         onClick={this.onInfoClick}
                         onKeyPress={this.onInfoClick}
                         role="button"
@@ -176,14 +174,14 @@ class NavMenu extends React.Component {
                         Information
                     </div>
                     <div
-                        className={`the-system-nav-info-body ${infoBodyClass}`}
+                        className="the-system-nav-dropdown-item-body"
                         ref={this.infoRef}
                         style={this.getSlidingStylesForMenus(this.infoRef, infoVisible)}
                     >
                         {this.renderInformation()}
                     </div>
                     <div
-                        className="the-system-nav-button the-system-nav-dropdown-subheader"
+                        className="the-system-nav-button the-system-nav-dropdown-item-subheader"
                         onClick={this.onGotoClick}
                         onKeyPress={this.onGotoClick}
                         role="button"
@@ -192,7 +190,7 @@ class NavMenu extends React.Component {
                         Navigation
                     </div>
                     <div
-                        className={`the-system-nav-goto-body ${gotoBodyClass}`}
+                        className="the-system-nav-dropdown-item-body"
                         ref={this.gotoRef}
                         style={this.getSlidingStylesForMenus(this.gotoRef, poiVisible)}
                     >

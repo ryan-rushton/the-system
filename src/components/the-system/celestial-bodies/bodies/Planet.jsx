@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import SystemContext from "../../../../SystemContext";
 import CelestialBody from "./CelestialBody";
@@ -18,18 +18,18 @@ const moonToCB = (moon, multipliers, planetRadius) => {
     };
 };
 
-const applyMultipliers = (consts, mults) => ({
+const applyMultipliers = (consts, multipliers) => ({
     distance:
-        consts.distance * mults.distanceMultiplier +
-        (SunConsts.radius - consts.radius) * mults.sizeMultiplier,
-    radius: consts.radius * mults.sizeMultiplier,
-    orbitalPeriod: consts.orbitalPeriod * mults.orbitalPeriodMultiplier
+        consts.distance * multipliers.distanceMultiplier +
+        (SunConsts.radius - consts.radius) * multipliers.sizeMultiplier,
+    radius: consts.radius * multipliers.sizeMultiplier,
+    orbitalPeriod: consts.orbitalPeriod * multipliers.orbitalPeriodMultiplier
 });
 
-const planet = (name, moons, planetConstants, scrollToRef, context) => {
-    const { multipliers } = context;
+const Planet = props => {
+    const { name, moons, planetConstants, scrollToRef } = props;
+    const { multipliers } = useContext(SystemContext);
     const { distance, radius, orbitalPeriod } = applyMultipliers(planetConstants, multipliers);
-
     const satellites = moons.map(moon => moonToCB(moon, multipliers, radius));
 
     return (
@@ -41,15 +41,6 @@ const planet = (name, moons, planetConstants, scrollToRef, context) => {
             satellites={satellites}
             scrollToRef={scrollToRef}
         />
-    );
-};
-
-const Planet = props => {
-    const { name, moons, planetConstants, scrollToRef } = props;
-    return (
-        <SystemContext.Consumer>
-            {context => planet(name, moons, planetConstants, scrollToRef, context)}
-        </SystemContext.Consumer>
     );
 };
 
