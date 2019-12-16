@@ -4,7 +4,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./NavMenu.scss";
-import SystemContext from "../../SystemContext";
+import SystemContext, { systemSize } from "../../SystemContext";
 
 class NavMenu extends React.Component {
     constructor(props) {
@@ -34,6 +34,12 @@ class NavMenu extends React.Component {
         this.setState(prevState => ({
             dropdownVisible: !prevState.dropdownVisible
         }));
+    };
+
+    getOnSizeChangeClick = () => {
+        const { enhancedVisibility, evenSpace } = systemSize;
+        const systemSizeContext = evenSpace === this.context ? enhancedVisibility : evenSpace;
+        return () => this.props.toggleSystemSize(systemSizeContext);
     };
 
     // Event Handler Creators
@@ -123,6 +129,8 @@ class NavMenu extends React.Component {
         const kmPerPixelDistance = Math.round(1 / distanceMultiplier).toLocaleString();
         const kmPerPixelSatellite = Math.round(1 / satelliteDist).toLocaleString();
         const kmPerPixelSize = Math.round(1 / sizeMultiplier).toLocaleString();
+        const normaliseButtonStatus =
+            systemSize.evenSpace === this.context ? " the-system-nav-info-normalise-active" : "";
 
         return (
             <>
@@ -136,6 +144,15 @@ class NavMenu extends React.Component {
                 <div className="the-system-nav-info-body-stat">{`1 pixel = ${kmPerPixelSatellite} km`}</div>
                 <div className="the-system-nav-info-body-heading">Planet Size</div>
                 <div className="the-system-nav-info-body-stat">{`1 pixel = ${kmPerPixelSize} km`}</div>
+                <div
+                    className={`the-system-nav-info-normalise${normaliseButtonStatus}`}
+                    onClick={this.getOnSizeChangeClick()}
+                    onKeyPress={this.getOnSizeChangeClick()}
+                    role="button"
+                    tabIndex="0"
+                >
+                    Normalise Distance
+                </div>
             </>
         );
     }
@@ -203,7 +220,8 @@ class NavMenu extends React.Component {
 }
 
 NavMenu.propTypes = {
-    pointsOfInterest: PropTypes.shape({}).isRequired
+    pointsOfInterest: PropTypes.shape({}).isRequired,
+    toggleSystemSize: PropTypes.func.isRequired
 };
 
 NavMenu.contextType = SystemContext;

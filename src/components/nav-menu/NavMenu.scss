@@ -56,6 +56,30 @@
                     padding-bottom: 10px;
                 }
             }
+
+            .the-system-nav-info-normalise {
+                border: 1px solid white;
+                border-radius: 3px;
+                display: inline-block;
+                padding: 1px 3px;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &:hover {
+                    background-color: rgba(100, 100, 100, 0.3);
+                    color: lightblue;
+                    cursor: pointer;
+                    border-color: lightblue;
+                }
+
+                &.the-system-nav-info-normalise-active {
+                    color: lightblue;
+                    background-color: rgba(100, 100, 100, 0.3);
+                    border-color: lightblue;
+                }
+            }
         }
     }
 }

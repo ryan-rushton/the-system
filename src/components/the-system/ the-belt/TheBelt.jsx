@@ -33,10 +33,44 @@ BeltRock.propTypes = {
     beltRadius: PropTypes.number.isRequired
 };
 
+const renderBelt = (innerBelt, outerBelt, beltSize, scrollToRef) => {
+    const rocks = [];
+
+    for (let i = 0; i < ROCK_COUNT / 2; i += 1) {
+        const distance = innerBelt + beltSize * Math.sin(Math.PI * Math.random());
+        const theta = Math.random() * 360;
+        const values = {
+            x: distance * Math.cos(theta),
+            y: distance * -Math.sin(theta),
+            luminosity: 0.5 * (1 + Math.random()),
+            size: 1 + Math.random(),
+            beltRadius: outerBelt
+        };
+        rocks.push(<BeltRock {...values} key={`belt-rock-${i}`} />);
+    }
+
+    if (scrollToRef) {
+        const values = {
+            x: innerBelt,
+            y: innerBelt,
+            luminosity: 0.5 * (1 + Math.random()),
+            size: 1 + Math.random(),
+            beltRadius: outerBelt,
+            scrollToRef: scrollToRef
+        };
+        rocks.push(<BeltRock {...values} key="belt-ref" />);
+    }
+
+    return rocks;
+};
+
 class TheBelt extends React.Component {
     constructor(props, context) {
         super(props);
-        const { multipliers } = context;
+        this.beltCache = new Map();
+    }
+
+    getBeltSize(multipliers) {
         const { distanceMultiplier, sizeMultiplier } = multipliers;
         const outerMars =
             MarsConsts.distance * distanceMultiplier +
@@ -47,64 +81,59 @@ class TheBelt extends React.Component {
             SunConsts.radius * sizeMultiplier -
             JupiterConsts.radius * sizeMultiplier;
 
-        this.innerBelt = outerMars + (innerJupiter - outerMars) * 0.1;
-        this.outerBelt = outerMars + (innerJupiter - outerMars) * 0.7;
-        this.beltSize = this.outerBelt - this.innerBelt;
+        const innerBelt = outerMars + (innerJupiter - outerMars) * 0.1;
+        const outerBelt = outerMars + (innerJupiter - outerMars) * 0.7;
+        const beltSize = outerBelt - innerBelt;
+
+        return { innerBelt, outerBelt, beltSize };
     }
 
-    shouldComponentUpdate() {
-        return false;
+    getBeltStyle(innerBelt, outerBelt, isFirstLayer) {
+        const { multipliers, systemRadius } = this.context;
+        const baseOrbitalPeriod = isFirstLayer
+            ? MarsConsts.orbitalPeriod
+            : Math.floor(MarsConsts.orbitalPeriod / 100) * 100;
+        const orbitalPeriod = baseOrbitalPeriod * multipliers.orbitalPeriodMultiplier;
+        return {
+            animation: `orbit ${orbitalPeriod}s linear infinite`,
+            height: outerBelt * 2,
+            left: `calc(${systemRadius}px - ${outerBelt}px)`,
+            top: `calc(${systemRadius}px - ${outerBelt}px)`,
+            width: outerBelt * 2
+        };
     }
 
-    renderBelt(scrollToRef) {
-        const rocks = [];
+    memoizedRenderBelt(innerBelt, outerBelt, beltSize, scrollToRef) {
+        const start = performance.now();
+        const refStatus = scrollToRef ? "hasRef" : "noRef";
+        const key = `${innerBelt}-${outerBelt}-${beltSize}-${refStatus}`;
 
-        for (let i = 0; i < ROCK_COUNT / 2; i += 1) {
-            const distance = this.innerBelt + this.beltSize * Math.sin(Math.PI * Math.random());
-            const theta = Math.random() * 360;
-            const values = {
-                x: distance * Math.cos(theta),
-                y: distance * -Math.sin(theta),
-                luminosity: 0.5 * (1 + Math.random()),
-                size: 2 * Math.random(),
-                beltRadius: this.outerBelt
-            };
-            rocks.push(<BeltRock {...values} key={`belt-rock-${i}`} />);
+        if (!this.beltCache.has(key)) {
+            const result = renderBelt(innerBelt, outerBelt, beltSize, scrollToRef);
+            this.beltCache.set(key, result);
         }
 
-        if (scrollToRef) {
-            const distance = this.innerBelt;
-            const values = {
-                x: distance,
-                y: distance,
-                luminosity: 0,
-                size: 0,
-                beltRadius: this.outerBelt,
-                scrollToRef: scrollToRef
-            };
-            rocks.push(<BeltRock {...values} key="belt-ref" />);
-        }
+        const end = performance.now();
+        console.info(`Belt render took ${end - start}ms`);
 
-        return rocks;
+        return this.beltCache.get(key);
     }
 
     render() {
         const { scrollToRef } = this.props;
-        const { systemRadius } = this.context;
-        const style = {
-            height: this.outerBelt * 2,
-            left: `calc(${systemRadius}px - ${this.outerBelt}px)`,
-            top: `calc(${systemRadius}px - ${this.outerBelt}px)`,
-            width: this.outerBelt * 2
-        };
+        const { multipliers } = this.context;
+        const { innerBelt, outerBelt, beltSize } = this.getBeltSize(multipliers);
 
         return (
             <div className="the-belt">
-                <div className="the-belt-1st-layer" style={style}>
-                    {this.renderBelt(scrollToRef)}
+                <div
+                    className="the-belt-layer"
+                    style={this.getBeltStyle(innerBelt, outerBelt, true)}
+                >
+                    {this.memoizedRenderBelt(innerBelt, outerBelt, beltSize, scrollToRef)}
                 </div>
-                <div className="the-belt-2nd-layer" style={style}>
-                    {this.renderBelt()}
+                <div className="the-belt-layer" style={this.getBeltStyle(innerBelt, outerBelt)}>
+                    {this.memoizedRenderBelt(innerBelt, outerBelt, beltSize)}
                 </div>
             </div>
         );

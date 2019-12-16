@@ -1,5 +1,5 @@
 import React from "react";
-import SystemContext, { defaultContext } from "./SystemContext";
+import SystemContext, { systemSize } from "./SystemContext";
 import NavMenu from "./components/nav-menu/NavMenu";
 import TheSystem from "./components/the-system/TheSystem";
 import "./App.scss";
@@ -51,16 +51,30 @@ const pointsOfInterest = {
     }
 };
 
-const App = () => (
-    <SystemContext.Provider value={defaultContext}>
-        <div>
-            <div className="the-system-app-title">
-                <span>The System</span>
-            </div>
-            <NavMenu pointsOfInterest={pointsOfInterest} />
-            <TheSystem pointsOfInterest={pointsOfInterest} />
-        </div>
-    </SystemContext.Provider>
-);
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { systemSizeContext: systemSize.enhancedVisibility };
+    }
+
+    toggleSystemSize = systemSizeContext => this.setState({ systemSizeContext });
+
+    render() {
+        return (
+            <SystemContext.Provider value={this.state.systemSizeContext}>
+                <div>
+                    <div className="the-system-app-title">
+                        <span>The System</span>
+                    </div>
+                    <NavMenu
+                        pointsOfInterest={pointsOfInterest}
+                        toggleSystemSize={this.toggleSystemSize}
+                    />
+                    <TheSystem pointsOfInterest={pointsOfInterest} />
+                </div>
+            </SystemContext.Provider>
+        );
+    }
+}
 
 export default App;
