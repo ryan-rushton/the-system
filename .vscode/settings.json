@@ -1,6 +1,5 @@
 {
     "editor.formatOnSave": true,
-    "eslint.autoFixOnSave": true,
     "cSpell.words": [
         "consts",
         "dropdown",
@@ -9,5 +8,9 @@
         "memoized",
         "normalise",
         "subheader"
-    ]
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "eslint.packageManager": "yarn"
 }

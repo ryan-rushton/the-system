@@ -30,6 +30,7 @@
         transition: transform 1s;
 
         .the-system-nav-dropdown-item-subheader {
+            display: inline-block;
             font-size: 1.5em;
             font-weight: bolder;
         }
@@ -39,8 +40,13 @@
             transition: max-height 1s linear;
 
             .the-system-nav-goto-item {
+                display: inline-block;
                 font-size: 1.2em;
                 padding-left: 10px;
+
+                &.the-system-nav-goto-item-followed {
+                    color: skyblue;
+                }
             }
 
             .the-system-nav-info-body-heading {
@@ -75,9 +81,9 @@
                 }
 
                 &.the-system-nav-info-normalise-active {
-                    color: lightblue;
+                    color: skyblue;
                     background-color: rgba(100, 100, 100, 0.3);
-                    border-color: lightblue;
+                    border-color: skyblue;
                 }
             }
         }

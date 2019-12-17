@@ -1,6 +1,6 @@
 {
     "extends": ["react-app", "prettier", "prettier/react"],
-    "plugins": ["react", "prettier"],
+    "plugins": ["prettier"],
     "parserOptions": {
         "sourceType": "module",
         "ecmaFeatures": {
@@ -21,6 +21,7 @@
         "no-plusplus": [0, { "allowForLoopAfterthoughts": true }],
         "class-methods-use-this": [0],
         "prettier/prettier": "error",
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/prop-types": 2
     }
 }

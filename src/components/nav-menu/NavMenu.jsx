@@ -5,29 +5,35 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./NavMenu.scss";
 import SystemContext, { systemSize } from "../../SystemContext";
+import {
+    doCallbackAfterElementIsVisible,
+    scrollToElementIfNotVisible,
+    getDistanceToTop
+} from "./util/DomUtil";
+import NavMenuSubsection from "./NavMenuSubsection";
 
 class NavMenu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             dropdownVisible: false,
+            followedPoi: null,
             infoVisible: false,
-            poiVisible: false
+            gotoVisible: false
         };
 
         this.dropDownRef = React.createRef();
         this.infoRef = React.createRef();
         this.gotoRef = React.createRef();
+        this.follower = null;
     }
 
-    // Event Handlers
-
     onInfoClick = () => {
-        this.setState(prevState => ({ infoVisible: !prevState.infoVisible, poiVisible: false }));
+        this.setState(prevState => ({ infoVisible: !prevState.infoVisible, gotoVisible: false }));
     };
 
     onGotoClick = () => {
-        this.setState(prevState => ({ infoVisible: false, poiVisible: !prevState.poiVisible }));
+        this.setState(prevState => ({ infoVisible: false, gotoVisible: !prevState.gotoVisible }));
     };
 
     onMenuClick = () => {
@@ -42,19 +48,37 @@ class NavMenu extends React.Component {
         return () => this.props.toggleSystemSize(systemSizeContext);
     };
 
-    // Event Handler Creators
+    setFollower(poi, scrollOptions) {
+        this.follower = setInterval(() => scrollToElementIfNotVisible(poi.ref.current), 1000);
+    }
 
-    getOnPoiClick = poi => {
+    gotoPoiAndFollow(poi, scrollOptions) {
+        poi.ref.current.scrollIntoView(scrollOptions);
+        doCallbackAfterElementIsVisible(poi.ref.current, () =>
+            this.setFollower(poi, scrollOptions)
+        );
+    }
+
+    getPoiOnClick = poi => () => {
+        const { followedPoi } = this.state;
+        const { pointsOfInterest } = this.props;
         const scrollOptions = {
             behavior: "smooth",
             block: "center",
             inline: "center"
         };
 
-        return () => poi.ref.current.scrollIntoView(scrollOptions);
-    };
+        clearInterval(this.follower);
 
-    // Methods
+        if (poi === followedPoi) {
+            this.setState({ followedPoi: null });
+        } else if (poi === pointsOfInterest.sun || poi === pointsOfInterest.theBelt) {
+            poi.ref.current.scrollIntoView(scrollOptions);
+        } else {
+            this.gotoPoiAndFollow(poi, scrollOptions);
+            this.setState({ followedPoi: poi });
+        }
+    };
 
     getTransformStyle() {
         const { dropdownVisible } = this.state;
@@ -64,54 +88,27 @@ class NavMenu extends React.Component {
             return null;
         }
 
-        let elem = current;
-        let distanceToTop = 0;
-        while (elem) {
-            distanceToTop += elem.offsetTop;
-            elem = elem.offsetParent;
-        }
-
-        const maxHeight = `calc(100vh - ${distanceToTop}px)`;
-
-        if (dropdownVisible) {
-            return {
-                maxHeight,
-                transform: `translateX(calc(-8vw - ${current.offsetWidth}px))`
-            };
-        }
-
+        const maxHeight = `calc(100vh - ${getDistanceToTop(current)}px)`;
+        const visibleTransform = `translateX(calc(-8vw - ${current.offsetWidth}px))`;
         return {
             maxHeight,
-            transform: `translateX(0px)`
-        };
-    }
-
-    getSlidingStylesForMenus(ref, isVisible) {
-        const { current } = ref;
-        let actualHeight = 0;
-
-        if (current?.childNodes?.length) {
-            for (const child of current.childNodes) {
-                actualHeight += child.offsetHeight;
-            }
-        }
-
-        return {
-            maxHeight: isVisible ? actualHeight : 0
+            transform: dropdownVisible ? visibleTransform : "translateX(0px)"
         };
     }
 
     renderPointOfInterest(poi) {
+        const { followedPoi } = this.state;
+        const followedClass = followedPoi === poi ? " the-system-nav-goto-item-followed" : "";
         return (
-            <div
-                className="the-system-nav-button the-system-nav-goto-item"
-                role="button"
-                key={poi.display}
-                onClick={this.getOnPoiClick(poi)}
-                onKeyPress={this.getOnPoiClick(poi)}
-                tabIndex="0"
-            >
-                {poi.display}
+            <div key={poi.display}>
+                <div
+                    className={`the-system-nav-button the-system-nav-goto-item${followedClass}`}
+                    onClick={this.getPoiOnClick(poi)}
+                    role="button"
+                    tabIndex="0"
+                >
+                    {poi.display}
+                </div>
             </div>
         );
     }
@@ -147,7 +144,6 @@ class NavMenu extends React.Component {
                 <div
                     className={`the-system-nav-info-normalise${normaliseButtonStatus}`}
                     onClick={this.getOnSizeChangeClick()}
-                    onKeyPress={this.getOnSizeChangeClick()}
                     role="button"
                     tabIndex="0"
                 >
@@ -164,7 +160,7 @@ class NavMenu extends React.Component {
     }
 
     render() {
-        const { infoVisible, poiVisible } = this.state;
+        const { infoVisible, gotoVisible } = this.state;
         const style = this.getTransformStyle();
 
         return (
@@ -181,38 +177,20 @@ class NavMenu extends React.Component {
                     </div>
                 </div>
                 <div className="the-system-nav-dropdown" ref={this.dropDownRef} style={style}>
-                    <div
-                        className="the-system-nav-button the-system-nav-dropdown-item-subheader"
+                    <NavMenuSubsection
                         onClick={this.onInfoClick}
-                        onKeyPress={this.onInfoClick}
-                        role="button"
-                        tabIndex="0"
-                    >
-                        Information
-                    </div>
-                    <div
-                        className="the-system-nav-dropdown-item-body"
-                        ref={this.infoRef}
-                        style={this.getSlidingStylesForMenus(this.infoRef, infoVisible)}
-                    >
-                        {this.renderInformation()}
-                    </div>
-                    <div
-                        className="the-system-nav-button the-system-nav-dropdown-item-subheader"
+                        headerText="Information"
+                        bodyRef={this.infoRef}
+                        isVisible={infoVisible}
+                        content={this.renderInformation()}
+                    />
+                    <NavMenuSubsection
                         onClick={this.onGotoClick}
-                        onKeyPress={this.onGotoClick}
-                        role="button"
-                        tabIndex="0"
-                    >
-                        Navigation
-                    </div>
-                    <div
-                        className="the-system-nav-dropdown-item-body"
-                        ref={this.gotoRef}
-                        style={this.getSlidingStylesForMenus(this.gotoRef, poiVisible)}
-                    >
-                        {this.renderPointsOfInterest()}
-                    </div>
+                        headerText="Navigation"
+                        bodyRef={this.gotoRef}
+                        isVisible={gotoVisible}
+                        content={this.renderPointsOfInterest()}
+                    />
                 </div>
             </div>
         );
@@ -220,7 +198,10 @@ class NavMenu extends React.Component {
 }
 
 NavMenu.propTypes = {
-    pointsOfInterest: PropTypes.shape({}).isRequired,
+    pointsOfInterest: PropTypes.shape({
+        sun: PropTypes.shape({}).isRequired,
+        theBelt: PropTypes.shape({}).isRequired
+    }).isRequired,
     toggleSystemSize: PropTypes.func.isRequired
 };
 
