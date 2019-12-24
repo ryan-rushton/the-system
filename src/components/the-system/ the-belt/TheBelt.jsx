@@ -30,7 +30,8 @@ BeltRock.propTypes = {
     y: PropTypes.number.isRequired,
     luminosity: PropTypes.number.isRequired,
     size: PropTypes.number.isRequired,
-    beltRadius: PropTypes.number.isRequired
+    beltRadius: PropTypes.number.isRequired,
+    scrollToRef: PropTypes.shape({})
 };
 
 const renderBelt = (innerBelt, outerBelt, beltSize, scrollToRef) => {
@@ -67,7 +68,13 @@ const renderBelt = (innerBelt, outerBelt, beltSize, scrollToRef) => {
 class TheBelt extends React.Component {
     constructor(props, context) {
         super(props);
+        // TODO: optimise this further by moving the belt caching to HOC
         this.beltCache = new Map();
+    }
+
+    // We set this to false as a context change will force a re-render and thats the only time it should re-render.
+    shouldComponentUpdate() {
+        return false;
     }
 
     getBeltSize(multipliers) {
@@ -139,6 +146,10 @@ class TheBelt extends React.Component {
         );
     }
 }
+
+TheBelt.propTypes = {
+    scrollToRef: PropTypes.shape({})
+};
 
 TheBelt.contextType = SystemContext;
 

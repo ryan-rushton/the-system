@@ -9,3 +9,13 @@
     top: 2vh;
     z-index: 2;
 }
+
+.orbits-visible {
+    .orbit {
+        border: 1px solid rgba(255, 0, 0, 0.5);
+
+        &.sun-orbit {
+            border: none;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SystemContext, { systemSize } from "./SystemContext";
 import NavMenu from "./components/nav-menu/NavMenu";
 import TheSystem from "./components/the-system/TheSystem";
@@ -51,30 +51,32 @@ const pointsOfInterest = {
     }
 };
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { systemSizeContext: systemSize.enhancedVisibility };
-    }
+function App() {
+    const [state, setState] = useState({
+        systemSizeContext: systemSize.enhancedVisibility,
+        orbitsVisible: false
+    });
 
-    toggleSystemSize = systemSizeContext => this.setState({ systemSizeContext });
+    const toggleSystemSize = systemSizeContext => setState({ ...state, systemSizeContext });
+    const onOrbitsVisibleChange = orbitsVisible => setState({ ...state, orbitsVisible });
+    const appClassName = state.orbitsVisible ? "orbits-visible" : "";
 
-    render() {
-        return (
-            <SystemContext.Provider value={this.state.systemSizeContext}>
-                <div>
-                    <div className="the-system-app-title">
-                        <span>The System</span>
-                    </div>
-                    <NavMenu
-                        pointsOfInterest={pointsOfInterest}
-                        toggleSystemSize={this.toggleSystemSize}
-                    />
-                    <TheSystem pointsOfInterest={pointsOfInterest} />
+    return (
+        <SystemContext.Provider value={state.systemSizeContext}>
+            <div className={appClassName}>
+                <div className="the-system-app-title">
+                    <span>The System</span>
                 </div>
-            </SystemContext.Provider>
-        );
-    }
+                <NavMenu
+                    pointsOfInterest={pointsOfInterest}
+                    toggleSystemSize={toggleSystemSize}
+                    orbitsVisible={state.orbitsVisible}
+                    onOrbitsVisibleChange={onOrbitsVisibleChange}
+                />
+                <TheSystem pointsOfInterest={pointsOfInterest} />
+            </div>
+        </SystemContext.Provider>
+    );
 }
 
 export default App;

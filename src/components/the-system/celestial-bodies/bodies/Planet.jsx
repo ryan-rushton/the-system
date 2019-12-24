@@ -26,8 +26,7 @@ const applyMultipliers = (consts, multipliers) => ({
     orbitalPeriod: consts.orbitalPeriod * multipliers.orbitalPeriodMultiplier
 });
 
-const Planet = props => {
-    const { name, moons, planetConstants, scrollToRef } = props;
+const Planet = ({ name, moons, planetConstants, scrollToRef }) => {
     const { multipliers } = useContext(SystemContext);
     const { distance, radius, orbitalPeriod } = applyMultipliers(planetConstants, multipliers);
     const satellites = moons.map(moon => moonToCB(moon, multipliers, radius));

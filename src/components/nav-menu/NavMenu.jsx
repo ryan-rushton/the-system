@@ -28,6 +28,10 @@ class NavMenu extends React.Component {
         this.follower = null;
     }
 
+    componentWillUnmount() {
+        clearInterval(this.follower);
+    }
+
     onInfoClick = () => {
         this.setState(prevState => ({ infoVisible: !prevState.infoVisible, gotoVisible: false }));
     };
@@ -43,9 +47,16 @@ class NavMenu extends React.Component {
     };
 
     getOnSizeChangeClick = () => {
+        const { toggleSystemSize } = this.props;
         const { enhancedVisibility, evenSpace } = systemSize;
         const systemSizeContext = evenSpace === this.context ? enhancedVisibility : evenSpace;
-        return () => this.props.toggleSystemSize(systemSizeContext);
+        return () => toggleSystemSize(systemSizeContext);
+    };
+
+    getOnOrbitChangeClick = () => {
+        const { orbitsVisible, onOrbitsVisibleChange } = this.props;
+
+        return () => onOrbitsVisibleChange(!orbitsVisible);
     };
 
     setFollower(poi, scrollOptions) {
@@ -73,6 +84,7 @@ class NavMenu extends React.Component {
         if (poi === followedPoi) {
             this.setState({ followedPoi: null });
         } else if (poi === pointsOfInterest.sun || poi === pointsOfInterest.theBelt) {
+            this.setState({ followedPoi: null });
             poi.ref.current.scrollIntoView(scrollOptions);
         } else {
             this.gotoPoiAndFollow(poi, scrollOptions);
@@ -114,6 +126,7 @@ class NavMenu extends React.Component {
     }
 
     renderInformation() {
+        const { orbitsVisible } = this.props;
         const { multipliers } = this.context;
         const {
             orbitalPeriodMultiplier,
@@ -127,7 +140,8 @@ class NavMenu extends React.Component {
         const kmPerPixelSatellite = Math.round(1 / satelliteDist).toLocaleString();
         const kmPerPixelSize = Math.round(1 / sizeMultiplier).toLocaleString();
         const normaliseButtonStatus =
-            systemSize.evenSpace === this.context ? " the-system-nav-info-normalise-active" : "";
+            systemSize.evenSpace === this.context ? " the-system-nav-info-button-active" : "";
+        const orbitButtonStatus = orbitsVisible ? " the-system-nav-info-button-active" : "";
 
         return (
             <>
@@ -141,13 +155,25 @@ class NavMenu extends React.Component {
                 <div className="the-system-nav-info-body-stat">{`1 pixel = ${kmPerPixelSatellite} km`}</div>
                 <div className="the-system-nav-info-body-heading">Planet Size</div>
                 <div className="the-system-nav-info-body-stat">{`1 pixel = ${kmPerPixelSize} km`}</div>
-                <div
-                    className={`the-system-nav-info-normalise${normaliseButtonStatus}`}
-                    onClick={this.getOnSizeChangeClick()}
-                    role="button"
-                    tabIndex="0"
-                >
-                    Normalise Distance
+                <div className="the-system-nav-info-button-wrapper">
+                    <div
+                        className={`the-system-nav-info-button${normaliseButtonStatus}`}
+                        onClick={this.getOnSizeChangeClick()}
+                        role="button"
+                        tabIndex="0"
+                    >
+                        Normalise Distance
+                    </div>
+                </div>
+                <div className="the-system-nav-info-button-wrapper">
+                    <div
+                        className={`the-system-nav-info-button${orbitButtonStatus}`}
+                        onClick={this.getOnOrbitChangeClick()}
+                        role="button"
+                        tabIndex="0"
+                    >
+                        Show Orbits
+                    </div>
                 </div>
             </>
         );
@@ -202,7 +228,9 @@ NavMenu.propTypes = {
         sun: PropTypes.shape({}).isRequired,
         theBelt: PropTypes.shape({}).isRequired
     }).isRequired,
-    toggleSystemSize: PropTypes.func.isRequired
+    toggleSystemSize: PropTypes.func.isRequired,
+    orbitsVisible: PropTypes.bool,
+    onOrbitsVisibleChange: PropTypes.func.isRequired
 };
 
 NavMenu.contextType = SystemContext;
