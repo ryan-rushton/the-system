@@ -1183,9 +1183,9 @@
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
 "@ryan-rushton/eslint-config@>=1.x":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@ryan-rushton/eslint-config/-/eslint-config-1.0.0.tgz#3315868502cdf87f5dc5a05ce46801234188d820"
-  integrity sha512-VaYosYM0gEQer8DYE0gQ7FF4ytXzYo4Fc9b9SGeFHWfwJuxo0u0dV3BjPM6h77FPZsnyCshN2a8KjDdsiGmg8A==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@ryan-rushton/eslint-config/-/eslint-config-1.0.1.tgz#5e9cde1ed602aaa587c78c1ee4242926c2314b04"
+  integrity sha512-ByM7cZvzzvz+xBhxasHSPyjNvsUWrX16yHFhTgSstUz+tOtkazZX73PheFvDxcQd/MYHGhxOi2p2TpT7uR/krw==
 
 "@svgr/babel-plugin-add-jsx-attribute@^4.2.0":
   version "4.2.0"
