@@ -1,28 +1,3 @@
 {
-    "extends": ["react-app", "prettier", "prettier/react"],
-    "plugins": ["prettier"],
-    "parserOptions": {
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "jsx": true
-        }
-    },
-    "env": {
-        "browser": true,
-        "es6": true,
-        "jest": true,
-        "node": true
-    },
-    "globals": {
-        "window": true,
-        "document": true
-    },
-    "rules": {
-        "no-plusplus": [0, { "allowForLoopAfterthoughts": true }],
-        "class-methods-use-this": [0],
-        "prettier/prettier": "error",
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "react/no-unused-prop-types": 2,
-        "react/prop-types": 2
-    }
+    "extends": ["@ryan-rushton/eslint-config", "@ryan-rushton/eslint-config/react-prettier"]
 }
