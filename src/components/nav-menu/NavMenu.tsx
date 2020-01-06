@@ -50,10 +50,13 @@ class NavMenu extends React.Component<Props, State> {
     follower: NodeJS.Timeout | null;
 
     componentWillUnmount(): void {
-        this.follower && clearInterval(this.follower);
+        if (this.follower) {
+            clearInterval(this.follower);
+            this.follower = null;
+        }
     }
 
-    onInfoClick: () => void = () => {
+    onInfoClick: CallbackFunction = () => {
         this.setState(
             (prevState: State): State => ({
                 ...prevState,
@@ -63,7 +66,7 @@ class NavMenu extends React.Component<Props, State> {
         );
     };
 
-    onGotoClick: () => void = () => {
+    onGotoClick: CallbackFunction = () => {
         this.setState(
             (prevState: State): State => ({
                 ...prevState,
@@ -73,7 +76,7 @@ class NavMenu extends React.Component<Props, State> {
         );
     };
 
-    onMenuClick: () => void = () => {
+    onMenuClick: CallbackFunction = () => {
         this.setState(
             (prevState: State): State => ({
                 ...prevState,
@@ -82,21 +85,18 @@ class NavMenu extends React.Component<Props, State> {
         );
     };
 
-    getOnSizeChangeClick: () => () => void = () => {
+    onSizeChangeClick: CallbackFunction = () => {
         const { toggleSystemSize } = this.props;
         const { enhancedVisibility, evenSpace } = systemSize;
         const systemSizeContext = evenSpace === this.context ? enhancedVisibility : evenSpace;
-        return (): void => {
-            this.follower && clearInterval(this.follower);
-            toggleSystemSize(systemSizeContext);
-        };
+        this.follower && clearInterval(this.follower);
+        toggleSystemSize(systemSizeContext);
     };
 
-    getOnOrbitChangeClick(): () => void {
+    onOrbitChangeClick: CallbackFunction = () => {
         const { orbitsVisible, onOrbitsVisibleChange } = this.props;
-
-        return (): void => onOrbitsVisibleChange(!orbitsVisible);
-    }
+        onOrbitsVisibleChange(!orbitsVisible);
+    };
 
     setFollower(poi: PointOfInterest): void {
         this.follower = setInterval(() => scrollToElementIfNotVisible(poi.ref.current), 1000);
@@ -198,8 +198,8 @@ class NavMenu extends React.Component<Props, State> {
                 <div className="the-system-nav-info-button-wrapper">
                     <div
                         className={`the-system-nav-info-button${normaliseButtonStatus}`}
-                        onClick={this.getOnSizeChangeClick()}
-                        onKeyPress={getOnEnterPress(this.getOnSizeChangeClick())}
+                        onClick={this.onSizeChangeClick}
+                        onKeyPress={getOnEnterPress(this.onSizeChangeClick)}
                         role="button"
                         tabIndex={0}
                     >
@@ -209,8 +209,8 @@ class NavMenu extends React.Component<Props, State> {
                 <div className="the-system-nav-info-button-wrapper">
                     <div
                         className={`the-system-nav-info-button${orbitButtonStatus}`}
-                        onClick={this.getOnOrbitChangeClick()}
-                        onKeyPress={getOnEnterPress(this.getOnOrbitChangeClick())}
+                        onClick={this.onOrbitChangeClick}
+                        onKeyPress={getOnEnterPress(this.onOrbitChangeClick)}
                         role="button"
                         tabIndex={0}
                     >
@@ -231,7 +231,7 @@ class NavMenu extends React.Component<Props, State> {
                     <div
                         className="the-system-nav-button the-system-nav-header-button"
                         onClick={this.onMenuClick}
-                        // onKeyPress={getOnEnterPress(this.onMenuClick)}
+                        onKeyPress={getOnEnterPress(this.onMenuClick)}
                         role="button"
                         tabIndex={0}
                     >
