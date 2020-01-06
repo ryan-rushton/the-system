@@ -1,5 +1,4 @@
-import React from "react";
-import { PropTypes } from "prop-types";
+import React, { RefObject, ReactElement } from "react";
 import Planet from "../bodies/Planet";
 
 import "./Neptune.scss";
@@ -10,12 +9,12 @@ const NeptuneConsts = {
     orbitalPeriod: 59800
 };
 
-const Neptune = ({ scrollToRef }) => (
+interface Props {
+    scrollToRef: RefObject<HTMLDivElement>;
+}
+
+const Neptune = ({ scrollToRef }: Props): ReactElement => (
     <Planet name="neptune" planetConstants={NeptuneConsts} scrollToRef={scrollToRef} />
 );
-
-Neptune.propTypes = {
-    scrollToRef: PropTypes.shape({}).isRequired
-};
 
 export default Neptune;

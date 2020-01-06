@@ -1,3 +1,0 @@
-{
-    "extends": ["@ryan-rushton/eslint-config", "@ryan-rushton/eslint-config/react-prettier"]
-}

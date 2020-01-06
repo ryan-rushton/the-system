@@ -1,20 +1,35 @@
-import React from "react";
-import PropTypes from "prop-types";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import "./NavMenu.scss";
-import SystemContext, { systemSize } from "../../SystemContext";
+import React, { CSSProperties, ReactNode, RefObject } from "react";
+import { PointOfInterest, PointsOfInterest } from "../../App";
+import AppContext, { systemSize, SystemContext } from "../../SystemContext";
 import {
     doCallbackAfterElementIsVisible,
+    getDistanceToTop,
     scrollToElementIfNotVisible,
-    getDistanceToTop
+    scrollOptions
 } from "../../utils/DomUtil";
+import { getOnEnterPress } from "../../utils/EventUtils";
+import "./NavMenu.scss";
 import NavMenuSubsection from "./NavMenuSubsection";
-import { onEnterPress } from "../../utils/EventUtils";
+import { CallbackFunction } from "../../types";
 
-class NavMenu extends React.Component {
-    constructor(props) {
+interface Props {
+    orbitsVisible: boolean;
+    pointsOfInterest: PointsOfInterest;
+    onOrbitsVisibleChange(orbitsVisible: boolean): void;
+    toggleSystemSize(systemSizeContext: SystemContext): void;
+}
+
+interface State {
+    dropdownVisible: boolean;
+    followedPoi: PointOfInterest | null;
+    infoVisible: boolean;
+    gotoVisible: boolean;
+}
+
+class NavMenu extends React.Component<Props, State> {
+    constructor(props: Props) {
         super(props);
         this.state = {
             dropdownVisible: false,
@@ -29,110 +44,128 @@ class NavMenu extends React.Component {
         this.follower = null;
     }
 
-    componentWillUnmount() {
-        clearInterval(this.follower);
+    dropDownRef: RefObject<HTMLDivElement>;
+    infoRef: RefObject<HTMLDivElement>;
+    gotoRef: RefObject<HTMLDivElement>;
+    follower: NodeJS.Timeout | null;
+
+    componentWillUnmount(): void {
+        this.follower && clearInterval(this.follower);
     }
 
-    onInfoClick = () => {
-        this.setState(prevState => ({ infoVisible: !prevState.infoVisible, gotoVisible: false }));
+    onInfoClick: () => void = () => {
+        this.setState(
+            (prevState: State): State => ({
+                ...prevState,
+                infoVisible: !prevState.infoVisible,
+                gotoVisible: false
+            })
+        );
     };
 
-    onGotoClick = () => {
-        this.setState(prevState => ({ infoVisible: false, gotoVisible: !prevState.gotoVisible }));
+    onGotoClick: () => void = () => {
+        this.setState(
+            (prevState: State): State => ({
+                ...prevState,
+                infoVisible: false,
+                gotoVisible: !prevState.gotoVisible
+            })
+        );
     };
 
-    onMenuClick = () => {
-        this.setState(prevState => ({
-            dropdownVisible: !prevState.dropdownVisible
-        }));
+    onMenuClick: () => void = () => {
+        this.setState(
+            (prevState: State): State => ({
+                ...prevState,
+                dropdownVisible: !prevState.dropdownVisible
+            })
+        );
     };
 
-    getOnSizeChangeClick = () => {
+    getOnSizeChangeClick: () => () => void = () => {
         const { toggleSystemSize } = this.props;
         const { enhancedVisibility, evenSpace } = systemSize;
         const systemSizeContext = evenSpace === this.context ? enhancedVisibility : evenSpace;
-        return () => {
-            clearInterval(this.follower);
+        return (): void => {
+            this.follower && clearInterval(this.follower);
             toggleSystemSize(systemSizeContext);
         };
     };
 
-    getOnOrbitChangeClick = () => {
+    getOnOrbitChangeClick(): () => void {
         const { orbitsVisible, onOrbitsVisibleChange } = this.props;
 
-        return () => onOrbitsVisibleChange(!orbitsVisible);
-    };
+        return (): void => onOrbitsVisibleChange(!orbitsVisible);
+    }
 
-    setFollower(poi) {
+    setFollower(poi: PointOfInterest): void {
         this.follower = setInterval(() => scrollToElementIfNotVisible(poi.ref.current), 1000);
     }
 
-    gotoPoiAndFollow(poi, scrollOptions) {
-        poi.ref.current.scrollIntoView(scrollOptions);
-        doCallbackAfterElementIsVisible(poi.ref.current, () =>
-            this.setFollower(poi, scrollOptions)
-        );
+    gotoPoiAndFollow(poi: PointOfInterest): void {
+        if (poi.ref.current) {
+            poi.ref.current.scrollIntoView(scrollOptions);
+            doCallbackAfterElementIsVisible(poi.ref.current, () => this.setFollower(poi));
+        }
     }
 
-    getPoiOnClick = poi => () => {
+    getPoiOnClick(poi: PointOfInterest): CallbackFunction {
         const { followedPoi } = this.state;
         const { pointsOfInterest } = this.props;
-        const scrollOptions = {
-            behavior: "smooth",
-            block: "center",
-            inline: "center"
+
+        return (): void => {
+            this.follower && clearInterval(this.follower);
+
+            if (poi === followedPoi) {
+                this.setState({ followedPoi: null });
+            } else if (poi === pointsOfInterest.sun || poi === pointsOfInterest.theBelt) {
+                this.setState({ followedPoi: null });
+                poi.ref.current?.scrollIntoView(scrollOptions);
+            } else {
+                this.gotoPoiAndFollow(poi);
+                this.setState({ followedPoi: poi });
+            }
         };
+    }
 
-        clearInterval(this.follower);
-
-        if (poi === followedPoi) {
-            this.setState({ followedPoi: null });
-        } else if (poi === pointsOfInterest.sun || poi === pointsOfInterest.theBelt) {
-            this.setState({ followedPoi: null });
-            poi.ref.current.scrollIntoView(scrollOptions);
-        } else {
-            this.gotoPoiAndFollow(poi, scrollOptions);
-            this.setState({ followedPoi: poi });
-        }
-    };
-
-    getTransformStyle() {
+    getTransformStyle(): CSSProperties | undefined {
         const { dropdownVisible } = this.state;
         const { current } = this.dropDownRef;
 
-        if (!current) {
-            return null;
+        if (current) {
+            const maxHeight = `calc(100vh - ${getDistanceToTop(current)}px)`;
+            const visibleTransform = `translateX(calc(-8vw - ${current.offsetWidth}px))`;
+            return {
+                maxHeight,
+                transform: dropdownVisible ? visibleTransform : "translateX(0px)"
+            };
         }
-
-        const maxHeight = `calc(100vh - ${getDistanceToTop(current)}px)`;
-        const visibleTransform = `translateX(calc(-8vw - ${current.offsetWidth}px))`;
-        return {
-            maxHeight,
-            transform: dropdownVisible ? visibleTransform : "translateX(0px)"
-        };
     }
 
-    renderPointOfInterest(poi) {
+    renderPointsOfInterest(): ReactNode {
+        const { pointsOfInterest } = this.props;
         const { followedPoi } = this.state;
-        const followedClass = followedPoi === poi ? " the-system-nav-goto-item-followed" : "";
-        const title = followedPoi === poi && "Click again to stop following";
-        return (
-            <div key={poi.display}>
-                <div
-                    className={`the-system-nav-button the-system-nav-goto-item${followedClass}`}
-                    onClick={this.getPoiOnClick(poi)}
-                    onKeyPress={e => onEnterPress(e, this.getPoiOnClick(poi))}
-                    role="button"
-                    tabIndex="0"
-                    title={title}
-                >
-                    {poi.display}
+        return Object.values(pointsOfInterest).map((poi: PointOfInterest) => {
+            const followedClass = followedPoi === poi ? " the-system-nav-goto-item-followed" : "";
+            const title = followedPoi === poi ? "Click again to stop following" : undefined;
+            return (
+                <div key={poi.display}>
+                    <div
+                        className={`the-system-nav-button the-system-nav-goto-item${followedClass}`}
+                        onClick={this.getPoiOnClick(poi)}
+                        onKeyPress={getOnEnterPress(this.getPoiOnClick(poi))}
+                        role="button"
+                        tabIndex={0}
+                        title={title}
+                    >
+                        {poi.display}
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        });
     }
 
-    renderInformation() {
+    renderInformation(): ReactNode {
         const { orbitsVisible } = this.props;
         const { multipliers } = this.context;
         const {
@@ -166,9 +199,9 @@ class NavMenu extends React.Component {
                     <div
                         className={`the-system-nav-info-button${normaliseButtonStatus}`}
                         onClick={this.getOnSizeChangeClick()}
-                        onKeyPress={e => onEnterPress(e, this.getOnSizeChangeClick())}
+                        onKeyPress={getOnEnterPress(this.getOnSizeChangeClick())}
                         role="button"
-                        tabIndex="0"
+                        tabIndex={0}
                     >
                         Normalise Distance
                     </div>
@@ -177,9 +210,9 @@ class NavMenu extends React.Component {
                     <div
                         className={`the-system-nav-info-button${orbitButtonStatus}`}
                         onClick={this.getOnOrbitChangeClick()}
-                        onKeyPress={e => onEnterPress(e, this.getOnOrbitChangeClick())}
+                        onKeyPress={getOnEnterPress(this.getOnOrbitChangeClick())}
                         role="button"
-                        tabIndex="0"
+                        tabIndex={0}
                     >
                         Show Orbits
                     </div>
@@ -188,13 +221,7 @@ class NavMenu extends React.Component {
         );
     }
 
-    renderPointsOfInterest() {
-        const { pointsOfInterest } = this.props;
-
-        return Object.values(pointsOfInterest).map(poi => this.renderPointOfInterest(poi));
-    }
-
-    render() {
+    render(): ReactNode {
         const { infoVisible, gotoVisible } = this.state;
         const style = this.getTransformStyle();
 
@@ -204,9 +231,9 @@ class NavMenu extends React.Component {
                     <div
                         className="the-system-nav-button the-system-nav-header-button"
                         onClick={this.onMenuClick}
-                        onKeyPress={onEnterPress(this.onMenuClick)}
+                        // onKeyPress={getOnEnterPress(this.onMenuClick)}
                         role="button"
-                        tabIndex="0"
+                        tabIndex={0}
                     >
                         <FontAwesomeIcon icon={faBars} />
                     </div>
@@ -232,16 +259,6 @@ class NavMenu extends React.Component {
     }
 }
 
-NavMenu.propTypes = {
-    pointsOfInterest: PropTypes.shape({
-        sun: PropTypes.shape({}).isRequired,
-        theBelt: PropTypes.shape({}).isRequired
-    }).isRequired,
-    toggleSystemSize: PropTypes.func.isRequired,
-    orbitsVisible: PropTypes.bool,
-    onOrbitsVisibleChange: PropTypes.func.isRequired
-};
-
-NavMenu.contextType = SystemContext;
+NavMenu.contextType = AppContext;
 
 export default React.memo(NavMenu);

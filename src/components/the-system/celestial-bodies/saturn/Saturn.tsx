@@ -1,5 +1,4 @@
-import React from "react";
-import { PropTypes } from "prop-types";
+import React, { RefObject, ReactElement } from "react";
 import Planet from "../bodies/Planet";
 import "./Saturn.scss";
 
@@ -24,7 +23,11 @@ const rhea = {
     radius: 764
 };
 
-const Saturn = ({ scrollToRef }) => (
+interface Props {
+    scrollToRef: RefObject<HTMLDivElement>;
+}
+
+const Saturn = ({ scrollToRef }: Props): ReactElement => (
     <Planet
         name="saturn"
         moons={[rhea, titan]}
@@ -32,9 +35,5 @@ const Saturn = ({ scrollToRef }) => (
         scrollToRef={scrollToRef}
     />
 );
-
-Saturn.propTypes = {
-    scrollToRef: PropTypes.shape({}).isRequired
-};
 
 export default Saturn;

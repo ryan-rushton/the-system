@@ -1,10 +1,30 @@
-import React, { useState } from "react";
-import SystemContext, { systemSize } from "./SystemContext";
+import React, { ReactElement, RefObject, useState } from "react";
+import "./App.scss";
 import NavMenu from "./components/nav-menu/NavMenu";
 import TheSystem from "./components/the-system/TheSystem";
-import "./App.scss";
+import AppContext, { SystemContext, systemSize } from "./SystemContext";
 
-const pointsOfInterest = {
+export interface PointOfInterest {
+    ref: RefObject<HTMLDivElement>;
+    display: string;
+}
+
+type SystemNames =
+    | "sun"
+    | "mercury"
+    | "venus"
+    | "earth"
+    | "mars"
+    | "theBelt"
+    | "jupiter"
+    | "saturn"
+    | "uranus"
+    | "neptune"
+    | "pluto";
+
+export type PointsOfInterest = { [K in SystemNames]: PointOfInterest };
+
+const pointsOfInterest: PointsOfInterest = {
     sun: {
         ref: React.createRef(),
         display: "Sun"
@@ -51,18 +71,20 @@ const pointsOfInterest = {
     }
 };
 
-function App() {
+function App(): ReactElement {
     const [state, setState] = useState({
         systemSizeContext: systemSize.enhancedVisibility,
         orbitsVisible: false
     });
 
-    const toggleSystemSize = systemSizeContext => setState({ ...state, systemSizeContext });
-    const onOrbitsVisibleChange = orbitsVisible => setState({ ...state, orbitsVisible });
+    const toggleSystemSize = (systemSizeContext: SystemContext): void =>
+        setState({ ...state, systemSizeContext });
+    const onOrbitsVisibleChange = (orbitsVisible: boolean): void =>
+        setState({ ...state, orbitsVisible });
     const appClassName = state.orbitsVisible ? "orbits-visible" : "";
 
     return (
-        <SystemContext.Provider value={state.systemSizeContext}>
+        <AppContext.Provider value={state.systemSizeContext}>
             <div className={appClassName}>
                 <div className="the-system-app-title">
                     <span>The System</span>
@@ -75,7 +97,7 @@ function App() {
                 />
                 <TheSystem pointsOfInterest={pointsOfInterest} />
             </div>
-        </SystemContext.Provider>
+        </AppContext.Provider>
     );
 }
 

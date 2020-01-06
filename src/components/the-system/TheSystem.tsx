@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, CSSProperties, ReactElement } from "react";
 import PropTypes from "prop-types";
-import SystemContext from "../../SystemContext";
+import AppContext from "../../SystemContext";
 import Sun from "./celestial-bodies/Sun";
 import TheBelt from "./ the-belt/TheBelt";
 import Earth from "./celestial-bodies/earth/Earth";
@@ -11,6 +11,7 @@ import Planet from "./celestial-bodies/bodies/Planet";
 import { PlutoConsts } from "../../SharedConsts";
 
 import "./TheSystem.scss";
+import { PointsOfInterest } from "../../App";
 
 const MercuryConsts = {
     radius: 2440,
@@ -36,12 +37,18 @@ const UranusConsts = {
     orbitalPeriod: 30589
 };
 
-const systemStyle = systemRadius => ({
-    height: `${2 * systemRadius}px`,
-    width: `${2 * systemRadius}px`
-});
+function systemStyle(systemRadius: number): CSSProperties {
+    return {
+        height: `${2 * systemRadius}px`,
+        width: `${2 * systemRadius}px`
+    };
+}
 
-const TheSystem = props => {
+interface Props {
+    pointsOfInterest: PointsOfInterest;
+}
+
+function TheSystem(props: Props): ReactElement {
     const {
         sun,
         mercury,
@@ -55,7 +62,7 @@ const TheSystem = props => {
         neptune,
         pluto
     } = props.pointsOfInterest;
-    const { systemRadius } = useContext(SystemContext);
+    const { systemRadius } = useContext(AppContext);
 
     return (
         <div className="the-system" style={systemStyle(systemRadius)}>
@@ -78,7 +85,7 @@ const TheSystem = props => {
             </div>
         </div>
     );
-};
+}
 
 const refShape = PropTypes.oneOfType([
     PropTypes.func,

@@ -1,14 +1,23 @@
-import React from "react";
-import PropTypes from "prop-types";
-import SystemContext from "../../../../SystemContext";
+import React, { ReactElement, RefObject, CSSProperties, ReactNode } from "react";
+import AppContext from "../../../../SystemContext";
 import "./CelestialBody.scss";
 
-class CelestialBody extends React.Component {
-    getCssValuesForOrbits() {
+export interface CelestialBodyProps {
+    className: string;
+    distance: number;
+    orbitalPeriod: number;
+    radius: number;
+    planetRadius?: number;
+    satellites?: CelestialBodyProps[];
+    scrollToRef?: RefObject<HTMLDivElement>;
+}
+
+class CelestialBody extends React.Component<CelestialBodyProps> {
+    getCssValuesForOrbits(): CSSProperties {
         const { systemRadius } = this.context;
-        const { radius, orbitalPeriod, distance, isSatellite, planetRadius } = this.props;
-        const referencePoint = isSatellite ? 0 : systemRadius;
-        const referencePointRadius = isSatellite ? planetRadius : 0;
+        const { radius, orbitalPeriod, distance, planetRadius } = this.props;
+        const referencePoint = planetRadius ? 0 : systemRadius;
+        const referencePointRadius = planetRadius || 0;
         const center = referencePoint - distance - radius;
         const heightWidth = 2 * (distance + radius + referencePointRadius);
 
@@ -21,7 +30,7 @@ class CelestialBody extends React.Component {
         };
     }
 
-    getCssValuesForBody() {
+    getCssValuesForBody(): CSSProperties {
         const { radius, orbitalPeriod, distance } = this.props;
         // Assume something with distance 0 (this sun) is already centered
         const top = distance > 0 ? "50%" : 0;
@@ -36,14 +45,14 @@ class CelestialBody extends React.Component {
         };
     }
 
-    renderSatellites() {
+    renderSatellites(): ReactNode {
         const { satellites } = this.props;
-        return satellites.map(satellite => (
-            <CelestialBody key={`satellite-${satellite.className}`} isSatellite {...satellite} />
+        return satellites?.map((satellite: CelestialBodyProps) => (
+            <CelestialBody key={`satellite-${satellite.className}`} {...satellite} />
         ));
     }
 
-    render() {
+    render(): ReactElement {
         const { className, scrollToRef } = this.props;
 
         return (
@@ -61,24 +70,6 @@ class CelestialBody extends React.Component {
     }
 }
 
-CelestialBody.propTypes = {
-    className: PropTypes.string.isRequired,
-    distance: PropTypes.number.isRequired,
-    isSatellite: PropTypes.bool,
-    planetRadius: PropTypes.number,
-    orbitalPeriod: PropTypes.number.isRequired,
-    radius: PropTypes.number.isRequired,
-    satellites: PropTypes.arrayOf(PropTypes.shape({})),
-    scrollToRef: PropTypes.shape({})
-};
-
-CelestialBody.defaultProps = {
-    isSatellite: false,
-    planetRadius: null,
-    satellites: [],
-    scrollToRef: null
-};
-
-CelestialBody.contextType = SystemContext;
+CelestialBody.contextType = AppContext;
 
 export default CelestialBody;

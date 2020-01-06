@@ -1,5 +1,4 @@
-import React from "react";
-import { PropTypes } from "prop-types";
+import React, { ReactElement, RefObject } from "react";
 import Planet from "../bodies/Planet";
 
 import "./Jupiter.scss";
@@ -38,7 +37,11 @@ const callisto = {
     radius: 2410
 };
 
-const Jupiter = ({ scrollToRef }) => (
+interface Props {
+    scrollToRef: RefObject<HTMLDivElement>;
+}
+
+const Jupiter = ({ scrollToRef }: Props): ReactElement => (
     <Planet
         name="jupiter"
         planetConstants={JupiterConsts}
@@ -46,9 +49,5 @@ const Jupiter = ({ scrollToRef }) => (
         scrollToRef={scrollToRef}
     />
 );
-
-Jupiter.propTypes = {
-    scrollToRef: PropTypes.shape({}).isRequired
-};
 
 export default Jupiter;

@@ -14,5 +14,10 @@
         "source.fixAll.eslint": true
     },
     "eslint.packageManager": "yarn",
-    "eslint.enable": true
+    "eslint.enable": true,
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "html.autoClosingTags": false,
+    "auto-close-tag.enableAutoCloseSelfClosingTag": false,
+    "javascript.autoClosingTags": false,
+    "auto-close-tag.enableAutoCloseTag": false
 }

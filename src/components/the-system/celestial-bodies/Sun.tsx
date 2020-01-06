@@ -1,11 +1,14 @@
-import React, { useContext } from "react";
-import { PropTypes } from "prop-types";
-import SystemContext from "../../../SystemContext";
+import React, { useContext, RefObject, ReactElement } from "react";
+import AppContext from "../../../SystemContext";
 import { SunConsts } from "../../../SharedConsts";
 import CelestialBody from "./bodies/CelestialBody";
 
-const Sun = ({ scrollToRef }) => {
-    const context = useContext(SystemContext);
+interface Props {
+    scrollToRef: RefObject<HTMLDivElement>;
+}
+
+const Sun = ({ scrollToRef }: Props): ReactElement => {
+    const context = useContext(AppContext);
 
     return (
         <CelestialBody
@@ -16,10 +19,6 @@ const Sun = ({ scrollToRef }) => {
             scrollToRef={scrollToRef}
         />
     );
-};
-
-Sun.propTypes = {
-    scrollToRef: PropTypes.shape({}).isRequired
 };
 
 export default Sun;
