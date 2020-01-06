@@ -115,6 +115,7 @@ class NavMenu extends React.Component {
     renderPointOfInterest(poi) {
         const { followedPoi } = this.state;
         const followedClass = followedPoi === poi ? " the-system-nav-goto-item-followed" : "";
+        const title = followedPoi === poi && "Click again to stop following";
         return (
             <div key={poi.display}>
                 <div
@@ -123,6 +124,7 @@ class NavMenu extends React.Component {
                     onKeyPress={e => onEnterPress(e, this.getPoiOnClick(poi))}
                     role="button"
                     tabIndex="0"
+                    title={title}
                 >
                     {poi.display}
                 </div>

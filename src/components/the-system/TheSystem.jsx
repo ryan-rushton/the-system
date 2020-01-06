@@ -41,10 +41,6 @@ const systemStyle = systemRadius => ({
     width: `${2 * systemRadius}px`
 });
 
-const createPlanet = (name, consts, scrollToRef) => (
-    <Planet name={name} planetConstants={consts} scrollToRef={scrollToRef} />
-);
-
 const TheSystem = props => {
     const {
         sun,
@@ -64,16 +60,20 @@ const TheSystem = props => {
     return (
         <div className="the-system" style={systemStyle(systemRadius)}>
             <div className="the-system-suns-glow" style={systemStyle(systemRadius)}>
-                {createPlanet("pluto", PlutoConsts, pluto.ref)}
+                <Planet name={"pluto"} planetConstants={PlutoConsts} scrollToRef={pluto.ref} />
                 <Neptune scrollToRef={neptune.ref} />
-                {createPlanet("uranus", UranusConsts, uranus.ref)}
+                <Planet name={"uranus"} planetConstants={UranusConsts} scrollToRef={uranus.ref} />
                 <Jupiter scrollToRef={jupiter.ref} />
                 <Saturn scrollToRef={saturn.ref} />
                 <TheBelt scrollToRef={theBelt.ref} />
-                {createPlanet("mars", MarsConsts, mars.ref)}
+                <Planet name={"mars"} planetConstants={MarsConsts} scrollToRef={mars.ref} />
                 <Earth scrollToRef={earth.ref} />
-                {createPlanet("venus", VenusConsts, venus.ref)}
-                {createPlanet("mercury", MercuryConsts, mercury.ref)}
+                <Planet name={"venus"} planetConstants={VenusConsts} scrollToRef={venus.ref} />
+                <Planet
+                    name={"mercury"}
+                    planetConstants={MercuryConsts}
+                    scrollToRef={mercury.ref}
+                />
                 <Sun scrollToRef={sun.ref} />
             </div>
         </div>
