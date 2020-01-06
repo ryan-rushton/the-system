@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { onEnterPress } from "../../utils/EventUtils";
 
 const getSlidingStylesForMenus = (ref, isVisible) => {
     const { current } = ref;
@@ -21,6 +22,7 @@ const NavMenuSubsection = ({ onClick, headerText, bodyRef, isVisible, content })
         <div
             className="the-system-nav-button the-system-nav-dropdown-item-subheader"
             onClick={onClick}
+            onKeyPress={e => onEnterPress(e, onClick)}
             role="button"
             tabIndex="0"
         >
@@ -47,4 +49,4 @@ NavMenuSubsection.propTypes = {
     content: PropTypes.node.isRequired
 };
 
-export default NavMenuSubsection;
+export default React.memo(NavMenuSubsection);

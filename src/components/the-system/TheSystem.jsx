@@ -101,4 +101,4 @@ TheSystem.propTypes = {
     }).isRequired
 };
 
-export default TheSystem;
+export default React.memo(TheSystem);

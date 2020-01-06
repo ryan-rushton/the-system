@@ -66,7 +66,7 @@ const renderBelt = (innerBelt, outerBelt, beltSize, scrollToRef) => {
 };
 
 class TheBelt extends React.Component {
-    constructor(props, context) {
+    constructor(props) {
         super(props);
         // TODO: optimise this further by moving the belt caching to HOC
         this.beltCache = new Map();

@@ -21,7 +21,7 @@
     },
     "devDependencies": {
         "@ryan-rushton/eslint-config": ">=1.x",
-        "babel-eslint": "^10.0.3",
+        "babel-eslint": ">=10.x",
         "enzyme": ">=3.x",
         "eslint": ">=6.x",
         "eslint-config-prettier": ">=6.x",

@@ -9,8 +9,9 @@ import {
     doCallbackAfterElementIsVisible,
     scrollToElementIfNotVisible,
     getDistanceToTop
-} from "./util/DomUtil";
+} from "../../utils/DomUtil";
 import NavMenuSubsection from "./NavMenuSubsection";
+import { onEnterPress } from "../../utils/EventUtils";
 
 class NavMenu extends React.Component {
     constructor(props) {
@@ -50,7 +51,10 @@ class NavMenu extends React.Component {
         const { toggleSystemSize } = this.props;
         const { enhancedVisibility, evenSpace } = systemSize;
         const systemSizeContext = evenSpace === this.context ? enhancedVisibility : evenSpace;
-        return () => toggleSystemSize(systemSizeContext);
+        return () => {
+            clearInterval(this.follower);
+            toggleSystemSize(systemSizeContext);
+        };
     };
 
     getOnOrbitChangeClick = () => {
@@ -59,7 +63,7 @@ class NavMenu extends React.Component {
         return () => onOrbitsVisibleChange(!orbitsVisible);
     };
 
-    setFollower(poi, scrollOptions) {
+    setFollower(poi) {
         this.follower = setInterval(() => scrollToElementIfNotVisible(poi.ref.current), 1000);
     }
 
@@ -116,6 +120,7 @@ class NavMenu extends React.Component {
                 <div
                     className={`the-system-nav-button the-system-nav-goto-item${followedClass}`}
                     onClick={this.getPoiOnClick(poi)}
+                    onKeyPress={e => onEnterPress(e, this.getPoiOnClick(poi))}
                     role="button"
                     tabIndex="0"
                 >
@@ -159,6 +164,7 @@ class NavMenu extends React.Component {
                     <div
                         className={`the-system-nav-info-button${normaliseButtonStatus}`}
                         onClick={this.getOnSizeChangeClick()}
+                        onKeyPress={e => onEnterPress(e, this.getOnSizeChangeClick())}
                         role="button"
                         tabIndex="0"
                     >
@@ -169,6 +175,7 @@ class NavMenu extends React.Component {
                     <div
                         className={`the-system-nav-info-button${orbitButtonStatus}`}
                         onClick={this.getOnOrbitChangeClick()}
+                        onKeyPress={e => onEnterPress(e, this.getOnOrbitChangeClick())}
                         role="button"
                         tabIndex="0"
                     >
@@ -195,7 +202,7 @@ class NavMenu extends React.Component {
                     <div
                         className="the-system-nav-button the-system-nav-header-button"
                         onClick={this.onMenuClick}
-                        onKeyPress={this.onMenuClick}
+                        onKeyPress={onEnterPress(this.onMenuClick)}
                         role="button"
                         tabIndex="0"
                     >
@@ -235,4 +242,4 @@ NavMenu.propTypes = {
 
 NavMenu.contextType = SystemContext;
 
-export default NavMenu;
+export default React.memo(NavMenu);

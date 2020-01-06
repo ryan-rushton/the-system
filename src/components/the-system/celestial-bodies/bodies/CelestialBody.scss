@@ -1,7 +1,15 @@
+.orbit {
+    border: 1px solid rgba(255, 0, 0, 0);
+    border-radius: 50%;
+    box-sizing: border-box;
+    position: absolute;
+}
+
 .celestial-body {
     border-radius: 50%;
-    position: absolute;
-
+    min-height: 1px;
+    min-width: 1px;
+    position: relative;
     transition-property: all;
     transition: linear;
 }
