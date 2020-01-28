@@ -46,6 +46,7 @@ class SystemNavMenu extends React.Component<Props, State> {
 
     onChangeSystemSizeWithClear = (systemSizeContext: SystemContext): void => {
         const { onChangeSystemSize } = this.props;
+        this.setState({ followedPoi: null });
         this.clearFollower();
         return onChangeSystemSize(systemSizeContext);
     };
