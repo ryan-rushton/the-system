@@ -39,7 +39,7 @@ class NavMenu extends React.PureComponent<Props, State> {
         );
     };
 
-    onSubsectionClick: (openMenuIndex?: number) => void = (openMenuIndex: number | undefined) => {
+    onSubsectionClick = (openMenuIndex?: number): void => {
         this.setState(
             (prevState: State): State => ({
                 ...prevState,
@@ -62,10 +62,7 @@ class NavMenu extends React.PureComponent<Props, State> {
         }
     }
 
-    renderSubsection: (item: ReactNode, index: number) => ReactNode = (
-        item: ReactNode,
-        index: number
-    ) => {
+    renderSubsection = (item: ReactNode, index: number): ReactNode => {
         const { titles } = this.props;
         const { openMenuIndex } = this.state;
         return (

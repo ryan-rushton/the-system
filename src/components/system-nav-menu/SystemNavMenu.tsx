@@ -34,11 +34,21 @@ class SystemNavMenu extends React.Component<Props, State> {
     follower: NodeJS.Timeout | null;
 
     componentWillUnmount(): void {
+        this.clearFollower();
+    }
+
+    clearFollower = (): void => {
         if (this.follower) {
             clearInterval(this.follower);
             this.follower = null;
         }
-    }
+    };
+
+    onChangeSystemSizeWithClear = (systemSizeContext: SystemContext): void => {
+        const { onChangeSystemSize } = this.props;
+        this.clearFollower();
+        return onChangeSystemSize(systemSizeContext);
+    };
 
     setFollower(poi: PointOfInterest): void {
         this.follower = setInterval(() => scrollToElementIfNotVisible(poi.ref.current), 1000);
@@ -51,7 +61,7 @@ class SystemNavMenu extends React.Component<Props, State> {
         }
     }
 
-    poiOnClick: (poi: PointOfInterest) => void = (poi: PointOfInterest): void => {
+    poiOnClick = (poi: PointOfInterest): void => {
         const { followedPoi } = this.state;
         const { pointsOfInterest } = this.props;
 
@@ -69,19 +79,14 @@ class SystemNavMenu extends React.Component<Props, State> {
     };
 
     render(): ReactNode {
-        const {
-            orbitsVisible,
-            pointsOfInterest,
-            onOrbitsVisibleChange,
-            onChangeSystemSize
-        } = this.props;
+        const { orbitsVisible, pointsOfInterest, onOrbitsVisibleChange } = this.props;
         const { followedPoi } = this.state;
 
         return (
             <NavMenu titles={["Info", "Navigation"]}>
                 <InfoMenu
                     orbitsVisible={orbitsVisible}
-                    onChangeSystemSize={onChangeSystemSize}
+                    onChangeSystemSize={this.onChangeSystemSizeWithClear}
                     onOrbitsVisibleChange={onOrbitsVisibleChange}
                 />
                 <PointsOfInterestMenu

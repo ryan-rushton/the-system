@@ -22,7 +22,7 @@ module.exports = {
             "error",
             {
                 arrowParameter: true,
-                memberVariableDeclaration: true,
+                memberVariableDeclaration: false,
                 parameter: true,
                 propertyDeclaration: true
             }
