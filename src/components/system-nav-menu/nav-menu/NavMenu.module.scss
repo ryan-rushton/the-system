@@ -1,0 +1,41 @@
+.nav {
+    animation: fadeIn 2s linear;
+    color: white;
+    font-family: "Raleway", sans-serif;
+    position: fixed;
+    right: 2vw;
+    text-align: right;
+    top: 2vh;
+    z-index: 2;
+
+    .headerButton {
+        font-size: 1.8em;
+    }
+
+    .menu {
+        left: 10vw;
+        overflow-y: scroll;
+        position: absolute;
+        transition: transform 1s;
+
+        .menuItemSubheader {
+            display: inline-block;
+            font-size: 1.5em;
+            font-weight: bolder;
+        }
+
+        .menuItemBody {
+            overflow-y: hidden;
+            transition: max-height 0.75s linear;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -1,6 +1,6 @@
 import React, { ReactElement, RefObject, useState } from "react";
 import "./App.scss";
-import NavMenu from "./components/nav-menu/NavMenu";
+import SystemNavMenu from "./components/system-nav-menu/SystemNavMenu";
 import TheSystem from "./components/the-system/TheSystem";
 import AppContext, { SystemContext, systemSize } from "./SystemContext";
 
@@ -71,13 +71,13 @@ const pointsOfInterest: PointsOfInterest = {
     }
 };
 
-function App(): ReactElement {
+const App = (): ReactElement => {
     const [state, setState] = useState({
         systemSizeContext: systemSize.enhancedVisibility,
         orbitsVisible: false
     });
 
-    const toggleSystemSize = (systemSizeContext: SystemContext): void =>
+    const onChangeSystemSize = (systemSizeContext: SystemContext): void =>
         setState({ ...state, systemSizeContext });
     const onOrbitsVisibleChange = (orbitsVisible: boolean): void =>
         setState({ ...state, orbitsVisible });
@@ -89,16 +89,16 @@ function App(): ReactElement {
                 <div className="the-system-app-title">
                     <span>The System</span>
                 </div>
-                <NavMenu
+                <SystemNavMenu
                     pointsOfInterest={pointsOfInterest}
-                    toggleSystemSize={toggleSystemSize}
                     orbitsVisible={state.orbitsVisible}
+                    onChangeSystemSize={onChangeSystemSize}
                     onOrbitsVisibleChange={onOrbitsVisibleChange}
                 />
                 <TheSystem pointsOfInterest={pointsOfInterest} />
             </div>
         </AppContext.Provider>
     );
-}
+};
 
 export default App;

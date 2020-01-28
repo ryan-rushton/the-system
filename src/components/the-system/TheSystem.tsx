@@ -37,18 +37,18 @@ const UranusConsts = {
     orbitalPeriod: 30589
 };
 
-function systemStyle(systemRadius: number): CSSProperties {
+const getSystemDimensions = (systemRadius: number): CSSProperties => {
     return {
         height: `${2 * systemRadius}px`,
         width: `${2 * systemRadius}px`
     };
-}
+};
 
 interface Props {
     pointsOfInterest: PointsOfInterest;
 }
 
-function TheSystem(props: Props): ReactElement {
+const TheSystem = (props: Props): ReactElement => {
     const {
         sun,
         mercury,
@@ -65,8 +65,8 @@ function TheSystem(props: Props): ReactElement {
     const { systemRadius } = useContext(AppContext);
 
     return (
-        <div className="the-system" style={systemStyle(systemRadius)}>
-            <div className="the-system-suns-glow" style={systemStyle(systemRadius)}>
+        <div className="the-system" style={getSystemDimensions(systemRadius)}>
+            <div className="the-system-suns-glow" style={getSystemDimensions(systemRadius)}>
                 <Planet name={"pluto"} planetConstants={PlutoConsts} scrollToRef={pluto.ref} />
                 <Neptune scrollToRef={neptune.ref} />
                 <Planet name={"uranus"} planetConstants={UranusConsts} scrollToRef={uranus.ref} />
@@ -85,7 +85,7 @@ function TheSystem(props: Props): ReactElement {
             </div>
         </div>
     );
-}
+};
 
 const refShape = PropTypes.oneOfType([
     PropTypes.func,

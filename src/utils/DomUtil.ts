@@ -2,9 +2,9 @@ import { CallbackFunction } from "../types";
 
 type ParentElement = HTMLElement | null;
 
-function isParentElement(element: Element | null): element is ParentElement {
+const isParentElement = (element: Element | null): element is ParentElement => {
     return element === null || element instanceof HTMLElement;
-}
+};
 
 export const scrollOptions: ScrollIntoViewOptions = {
     behavior: "smooth",
@@ -12,7 +12,7 @@ export const scrollOptions: ScrollIntoViewOptions = {
     inline: "center"
 };
 
-export function getDistanceToTop(element: HTMLElement): number {
+export const getDistanceToTop = (element: HTMLElement): number => {
     let elem: HTMLElement | null = element;
     let distanceToTop = 0;
 
@@ -24,9 +24,9 @@ export function getDistanceToTop(element: HTMLElement): number {
     }
 
     return distanceToTop;
-}
+};
 
-function isElementInViewport(element: HTMLElement): boolean {
+const isElementInViewport = (element: HTMLElement): boolean => {
     const rect = element.getBoundingClientRect();
 
     return (
@@ -35,20 +35,20 @@ function isElementInViewport(element: HTMLElement): boolean {
         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
-}
+};
 
-export function doCallbackAfterElementIsVisible(
+export const doCallbackAfterElementIsVisible = (
     element: HTMLElement,
     callback: CallbackFunction
-): void {
+): void => {
     if (!isElementInViewport(element)) {
         setTimeout(() => doCallbackAfterElementIsVisible(element, callback), 100);
     } else {
         callback();
     }
-}
+};
 
-export function scrollToElementIfNotVisible(element: HTMLDivElement | null): void {
+export const scrollToElementIfNotVisible = (element: HTMLDivElement | null): void => {
     const scrollOptions: ScrollIntoViewOptions = {
         behavior: "smooth",
         block: "center",
@@ -58,4 +58,4 @@ export function scrollToElementIfNotVisible(element: HTMLDivElement | null): voi
     if (element && !isElementInViewport(element)) {
         element?.scrollIntoView(scrollOptions);
     }
-}
+};

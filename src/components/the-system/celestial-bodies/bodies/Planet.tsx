@@ -41,7 +41,7 @@ interface Props {
     moons?: MoonDetails[];
 }
 
-function Planet({ name, moons, planetConstants, scrollToRef }: Props): ReactElement {
+const Planet = ({ name, moons, planetConstants, scrollToRef }: Props): ReactElement => {
     const { multipliers } = useContext(AppContext);
     const { distance, radius, orbitalPeriod } = applyMultipliers(planetConstants, multipliers);
     const satellites = moons?.map((moon: MoonDetails) => moonToCB(moon, multipliers, radius));
@@ -56,7 +56,7 @@ function Planet({ name, moons, planetConstants, scrollToRef }: Props): ReactElem
             scrollToRef={scrollToRef}
         />
     );
-}
+};
 
 Planet.propTypes = {
     name: PropTypes.string.isRequired,

@@ -1,0 +1,37 @@
+.heading {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.stat {
+    padding-bottom: 5px;
+    white-space: nowrap;
+}
+
+.buttonWrapper {
+    padding-bottom: 5px;
+}
+
+.button {
+    border: 1px solid white;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 1px 3px;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        background-color: rgba(100, 100, 100, 0.3);
+        color: lightblue;
+        cursor: pointer;
+        border-color: lightblue;
+    }
+}
+
+.buttonActive {
+    color: skyblue;
+    background-color: rgba(100, 100, 100, 0.3);
+    border-color: skyblue;
+}

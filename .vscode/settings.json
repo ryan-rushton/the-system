@@ -1,23 +1,38 @@
 {
-    "editor.formatOnSave": true,
+    "auto-close-tag.enableAutoCloseSelfClosingTag": false,
+    "auto-close-tag.enableAutoCloseTag": false,
     "cSpell.words": [
         "consts",
         "dropdown",
+        "elem",
         "fontawesome",
         "fortawesome",
         "memoized",
         "normalise",
+        "stat",
         "subheader",
         "unmount"
     ],
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
-    "eslint.packageManager": "yarn",
+    "editor.formatOnSave": true,
     "eslint.enable": true,
-    "typescript.tsdk": "node_modules/typescript/lib",
+    "eslint.packageManager": "yarn",
     "html.autoClosingTags": false,
-    "auto-close-tag.enableAutoCloseSelfClosingTag": false,
     "javascript.autoClosingTags": false,
-    "auto-close-tag.enableAutoCloseTag": false
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "cSpell.enabledLanguageIds": [
+        "css",
+        "git-commit",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "markdown",
+        "plaintext",
+        "scss",
+        "text",
+        "typescript",
+        "typescriptreact"
+    ]
 }

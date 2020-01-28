@@ -30,13 +30,13 @@ const enhancedVisibilityMultipliers: SystemMultipliers = {
 /**
  * Need to make sure that the outer edge includes the space needed for the pluto orbit div to rotate
  */
-function getSystemRadius({ distanceMultiplier, sizeMultiplier }: SystemMultipliers): number {
+const getSystemRadius = ({ distanceMultiplier, sizeMultiplier }: SystemMultipliers): number => {
     const sunRadius = sizeMultiplier * SunConsts.radius;
     const plutoDistance = sunRadius + distanceMultiplier * PlutoConsts.distance;
     const plutoOuterEdge = plutoDistance + 2 * sizeMultiplier * PlutoConsts.radius;
 
     return Math.sqrt(2 * plutoOuterEdge ** 2);
-}
+};
 
 const enhancedVisibility: SystemContext = {
     multipliers: enhancedVisibilityMultipliers,

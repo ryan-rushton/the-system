@@ -17,7 +17,7 @@ interface BeltRockProps {
     scrollToRef?: RefObject<HTMLDivElement>;
 }
 
-function BeltRock(props: BeltRockProps): ReactElement {
+const BeltRock = (props: BeltRockProps): ReactElement => {
     const { x, y, luminosity, size, beltRadius, scrollToRef } = props;
     const left = beltRadius + x;
     const top = beltRadius + y;
@@ -32,7 +32,7 @@ function BeltRock(props: BeltRockProps): ReactElement {
     };
 
     return <div className="belt-rock" style={style} ref={scrollToRef} />;
-}
+};
 
 interface BeltProperties {
     innerBelt: number;
@@ -53,7 +53,7 @@ class TheBelt extends React.Component<Props> {
 
     beltCache: Map<string, ReactElement[]>;
 
-    // We set this to false as a context change will force a re-render and thats the only time it should re-render.
+    // We set this to false as a context change will force a re-render and that's the only time it should re-render.
     shouldComponentUpdate(): boolean {
         return false;
     }

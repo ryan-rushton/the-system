@@ -2,16 +2,19 @@ module.exports = {
     parser: "@typescript-eslint/parser",
     parserOptions: {
         tsconfigRootDir: __dirname,
-        project: ["./tsconfig.json"]
+        project: ["./tsconfig.json"],
+        ecmaFeatures: {
+            jsx: true
+        }
     },
     plugins: ["@typescript-eslint"],
     extends: [
         "@ryan-rushton/eslint-config",
         "@ryan-rushton/eslint-config/react-prettier",
-        "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:import/typescript",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+        "prettier/@typescript-eslint"
     ],
     rules: {
         "react/prop-types": "off",
@@ -24,5 +27,13 @@ module.exports = {
                 propertyDeclaration: true
             }
         ]
+    },
+    settings: {
+        "import/resolver": {
+            node: {
+                extensions: [".js", ".ts", ".jsx", ".tsx", ".json", ".module.scss$"]
+            }
+        },
+        "import/extensions": [".js", ".ts", ".jsx", ".tsx", ".module.scss$"]
     }
 };
