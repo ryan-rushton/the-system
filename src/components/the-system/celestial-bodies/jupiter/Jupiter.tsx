@@ -1,7 +1,7 @@
 import React, { ReactElement, RefObject } from "react";
 import Planet from "../bodies/Planet";
 
-import "./Jupiter.scss";
+import styles from "./Jupiter.module.scss";
 
 export const JupiterConsts = {
     radius: 71498,
@@ -10,28 +10,28 @@ export const JupiterConsts = {
 };
 
 const io = {
-    className: "io",
+    className: styles.io,
     distance: 421700,
     orbitalPeriod: 1.77,
     radius: 1822
 };
 
 const europa = {
-    className: "europa",
+    className: styles.europa,
     distance: 670900,
     orbitalPeriod: 3.55,
     radius: 1561
 };
 
 const ganymede = {
-    className: "ganymede",
+    className: styles.ganymede,
     distance: 1070400,
     orbitalPeriod: 7.15,
     radius: 2634
 };
 
 const callisto = {
-    className: "callisto",
+    className: styles.callisto,
     distance: 1882700,
     orbitalPeriod: 16.69,
     radius: 2410
@@ -43,7 +43,7 @@ interface Props {
 
 const Jupiter = ({ scrollToRef }: Props): ReactElement => (
     <Planet
-        name="jupiter"
+        name={styles.jupiter}
         planetConstants={JupiterConsts}
         moons={[io, europa, ganymede, callisto]}
         scrollToRef={scrollToRef}

@@ -4,7 +4,7 @@ import { SunConsts } from "../../../SharedConsts";
 import { MarsConsts } from "../TheSystem";
 import { JupiterConsts } from "../celestial-bodies/jupiter/Jupiter";
 
-import "./TheBelt.scss";
+import styles from "./TheBelt.module.scss";
 
 const ROCK_COUNT = 15000;
 
@@ -152,15 +152,15 @@ class TheBelt extends React.Component<Props> {
         const { innerBelt, outerBelt } = beltProperties;
 
         return (
-            <div className="the-belt">
+            <div>
                 <div
-                    className="the-belt-layer"
+                    className={styles.beltLayer}
                     style={this.getBeltStyle(innerBelt, outerBelt, true)}
                 >
                     {this.memoizedRenderBelt(beltProperties, scrollToRef)}
                 </div>
                 <div
-                    className="the-belt-layer"
+                    className={styles.beltLayer}
                     style={this.getBeltStyle(innerBelt, outerBelt, false)}
                 >
                     {this.memoizedRenderBelt(beltProperties, null)}

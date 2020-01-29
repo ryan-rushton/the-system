@@ -1,8 +1,8 @@
 import React, { ReactElement, RefObject, useState } from "react";
-import "./App.scss";
 import SystemNavMenu from "./components/system-nav-menu/SystemNavMenu";
 import TheSystem from "./components/the-system/TheSystem";
 import AppContext, { SystemContext, systemSize } from "./SystemContext";
+import styles from "./App.module.scss";
 
 export interface PointOfInterest {
     ref: RefObject<HTMLDivElement>;
@@ -81,12 +81,12 @@ const App = (): ReactElement => {
         setState({ ...state, systemSizeContext });
     const onOrbitsVisibleChange = (orbitsVisible: boolean): void =>
         setState({ ...state, orbitsVisible });
-    const appClassName = state.orbitsVisible ? "orbits-visible" : "";
+    const appClassName = state.orbitsVisible ? styles.orbitsVisible : "";
 
     return (
         <AppContext.Provider value={state.systemSizeContext}>
             <div className={appClassName}>
-                <div className="the-system-app-title">
+                <div className={styles.title}>
                     <span>The System</span>
                 </div>
                 <SystemNavMenu

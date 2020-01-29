@@ -1,6 +1,6 @@
 import React, { RefObject, ReactElement } from "react";
 import Planet from "../bodies/Planet";
-import "./Saturn.scss";
+import styles from "./Saturn.module.scss";
 
 // This is radius including the rings
 export const SaturnConsts = {
@@ -10,14 +10,14 @@ export const SaturnConsts = {
 };
 
 const titan = {
-    className: "titan",
+    className: styles.titan,
     distance: 1221870,
     orbitalPeriod: 15.95,
     radius: 2574
 };
 
 const rhea = {
-    className: "rhea",
+    className: styles.rhea,
     distance: 527108,
     orbitalPeriod: 1.77,
     radius: 764
@@ -29,7 +29,7 @@ interface Props {
 
 const Saturn = ({ scrollToRef }: Props): ReactElement => (
     <Planet
-        name="saturn"
+        name={styles.saturn}
         moons={[rhea, titan]}
         planetConstants={SaturnConsts}
         scrollToRef={scrollToRef}

@@ -1,12 +1,14 @@
-import React, { ReactElement, RefObject, CSSProperties, ReactNode } from "react";
+import React, { ReactElement, RefObject, CSSProperties } from "react";
 import AppContext from "../../../../SystemContext";
-import "./CelestialBody.scss";
+import styles from "./CelestialBody.module.scss";
+import "./CelestialBodyAnimations.scss";
 
 export interface CelestialBodyProps {
     className: string;
     distance: number;
     orbitalPeriod: number;
     radius: number;
+    hasOrbitLine?: boolean;
     planetRadius?: number;
     satellites?: CelestialBodyProps[];
     scrollToRef?: RefObject<HTMLDivElement>;
@@ -45,25 +47,24 @@ class CelestialBody extends React.Component<CelestialBodyProps> {
         };
     }
 
-    renderSatellites(): ReactNode {
-        const { satellites } = this.props;
-        return satellites?.map((satellite: CelestialBodyProps) => (
-            <CelestialBody key={`satellite-${satellite.className}`} {...satellite} />
-        ));
-    }
-
     render(): ReactElement {
-        const { className, scrollToRef } = this.props;
+        const { className, hasOrbitLine, satellites, scrollToRef } = this.props;
+        const orbitLineClass = hasOrbitLine ? " orbit-line" : "";
 
         return (
-            <div className={`orbit ${className}-orbit`} style={this.getCssValuesForOrbits()}>
+            <div
+                className={`${styles.orbit}${orbitLineClass}`}
+                style={this.getCssValuesForOrbits()}
+            >
                 <div
-                    className={`celestial-body ${className}`}
+                    className={`${styles.celestialBody} ${className}`}
                     title={className}
                     ref={scrollToRef}
                     style={this.getCssValuesForBody()}
                 >
-                    {this.renderSatellites()}
+                    {satellites?.map((satellite: CelestialBodyProps) => (
+                        <CelestialBody key={`satellite-${satellite.className}`} {...satellite} />
+                    ))}
                 </div>
             </div>
         );

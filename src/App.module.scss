@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 
-.the-system-app-title {
+.title {
     color: white;
     cursor: default;
     font-family: "Raleway", sans-serif;
@@ -11,12 +11,8 @@
     z-index: 2;
 }
 
-.orbits-visible {
-    .orbit {
+.orbitsVisible {
+    :global .orbit-line {
         border-color: rgba(255, 0, 0, 0.5);
-
-        &.sun-orbit {
-            border: none;
-        }
     }
 }

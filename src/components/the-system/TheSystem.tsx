@@ -1,7 +1,7 @@
 import React, { useContext, CSSProperties, ReactElement } from "react";
 import PropTypes from "prop-types";
 import AppContext from "../../SystemContext";
-import Sun from "./celestial-bodies/Sun";
+import Sun from "./celestial-bodies/sun/Sun";
 import TheBelt from "./ the-belt/TheBelt";
 import Earth from "./celestial-bodies/earth/Earth";
 import Jupiter from "./celestial-bodies/jupiter/Jupiter";
@@ -9,8 +9,7 @@ import Saturn from "./celestial-bodies/saturn/Saturn";
 import Neptune from "./celestial-bodies/neptune/Neptune";
 import Planet from "./celestial-bodies/bodies/Planet";
 import { PlutoConsts } from "../../SharedConsts";
-
-import "./TheSystem.scss";
+import styles from "./TheSystem.module.scss";
 import { PointsOfInterest } from "../../App";
 
 const MercuryConsts = {
@@ -64,20 +63,26 @@ const TheSystem = (props: Props): ReactElement => {
     } = props.pointsOfInterest;
     const { systemRadius } = useContext(AppContext);
 
+    console.log("rendering system");
+
     return (
-        <div className="the-system" style={getSystemDimensions(systemRadius)}>
-            <div className="the-system-suns-glow" style={getSystemDimensions(systemRadius)}>
-                <Planet name={"pluto"} planetConstants={PlutoConsts} scrollToRef={pluto.ref} />
+        <div className={styles.theSystem} style={getSystemDimensions(systemRadius)}>
+            <div className={styles.sunsGlow} style={getSystemDimensions(systemRadius)}>
+                <Planet name={styles.pluto} planetConstants={PlutoConsts} scrollToRef={pluto.ref} />
                 <Neptune scrollToRef={neptune.ref} />
-                <Planet name={"uranus"} planetConstants={UranusConsts} scrollToRef={uranus.ref} />
+                <Planet
+                    name={styles.uranus}
+                    planetConstants={UranusConsts}
+                    scrollToRef={uranus.ref}
+                />
                 <Jupiter scrollToRef={jupiter.ref} />
                 <Saturn scrollToRef={saturn.ref} />
                 <TheBelt scrollToRef={theBelt.ref} />
-                <Planet name={"mars"} planetConstants={MarsConsts} scrollToRef={mars.ref} />
+                <Planet name={styles.mars} planetConstants={MarsConsts} scrollToRef={mars.ref} />
                 <Earth scrollToRef={earth.ref} />
-                <Planet name={"venus"} planetConstants={VenusConsts} scrollToRef={venus.ref} />
+                <Planet name={styles.venus} planetConstants={VenusConsts} scrollToRef={venus.ref} />
                 <Planet
-                    name={"mercury"}
+                    name={styles.mercury}
                     planetConstants={MercuryConsts}
                     scrollToRef={mercury.ref}
                 />

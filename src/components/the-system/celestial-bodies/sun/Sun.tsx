@@ -1,7 +1,8 @@
 import React, { useContext, RefObject, ReactElement } from "react";
-import AppContext from "../../../SystemContext";
-import { SunConsts } from "../../../SharedConsts";
-import CelestialBody from "./bodies/CelestialBody";
+import AppContext from "../../../../SystemContext";
+import { SunConsts } from "../../../../SharedConsts";
+import CelestialBody from "../bodies/CelestialBody";
+import styles from "./Sun.module.scss";
 
 interface Props {
     scrollToRef: RefObject<HTMLDivElement>;
@@ -12,7 +13,7 @@ const Sun = ({ scrollToRef }: Props): ReactElement => {
 
     return (
         <CelestialBody
-            className="sun"
+            className={styles.sun}
             distance={0}
             radius={context.multipliers.sizeMultiplier * SunConsts.radius}
             orbitalPeriod={0}

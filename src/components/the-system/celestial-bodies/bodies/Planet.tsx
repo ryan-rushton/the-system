@@ -19,7 +19,8 @@ const moonToCB = (
         radius: moonRadius,
         distance: distance * satelliteDist - planetRadius * sizeMultiplier - moonRadius,
         orbitalPeriod: orbitalPeriod * orbitalPeriodMultiplier,
-        planetRadius
+        planetRadius,
+        hasOrbitLine: true
     };
 };
 
@@ -50,6 +51,7 @@ const Planet = ({ name, moons, planetConstants, scrollToRef }: Props): ReactElem
         <CelestialBody
             className={name}
             distance={distance}
+            hasOrbitLine
             orbitalPeriod={orbitalPeriod}
             radius={radius}
             satellites={satellites}
