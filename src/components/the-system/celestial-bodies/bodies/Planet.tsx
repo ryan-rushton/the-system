@@ -1,5 +1,4 @@
-import React, { useContext, RefObject, ReactElement } from "react";
-import PropTypes from "prop-types";
+import React, { useContext, RefObject, FC } from "react";
 import AppContext, { SystemMultipliers } from "../../../../SystemContext";
 import CelestialBody, { CelestialBodyProps } from "./CelestialBody";
 import { SunConsts } from "../../../../SharedConsts";
@@ -42,7 +41,7 @@ interface Props {
     moons?: MoonDetails[];
 }
 
-const Planet = ({ name, moons, planetConstants, scrollToRef }: Props): ReactElement => {
+const Planet: FC<Props> = ({ name, moons, planetConstants, scrollToRef }) => {
     const { multipliers } = useContext(AppContext);
     const { distance, radius, orbitalPeriod } = applyMultipliers(planetConstants, multipliers);
     const satellites = moons?.map((moon: MoonDetails) => moonToCB(moon, multipliers, radius));
@@ -58,22 +57,6 @@ const Planet = ({ name, moons, planetConstants, scrollToRef }: Props): ReactElem
             scrollToRef={scrollToRef}
         />
     );
-};
-
-Planet.propTypes = {
-    name: PropTypes.string.isRequired,
-    moons: PropTypes.arrayOf(PropTypes.shape({})),
-    planetConstants: PropTypes.shape({
-        radius: PropTypes.number.isRequired,
-        distance: PropTypes.number.isRequired,
-        orbitalPeriod: PropTypes.number.isRequired
-    }).isRequired,
-    scrollToRef: PropTypes.shape({})
-};
-
-Planet.defaultProps = {
-    moons: [],
-    scrollToRef: null
 };
 
 export default Planet;

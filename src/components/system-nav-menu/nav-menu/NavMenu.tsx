@@ -104,4 +104,4 @@ class NavMenu extends React.PureComponent<Props, State> {
     }
 }
 
-export default React.memo(NavMenu);
+export default NavMenu;

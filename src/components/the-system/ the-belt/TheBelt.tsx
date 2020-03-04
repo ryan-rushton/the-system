@@ -1,4 +1,4 @@
-import React, { RefObject, ReactElement, CSSProperties, ReactNode } from "react";
+import React, { RefObject, ReactElement, CSSProperties, ReactNode, FC } from "react";
 import AppContext, { SystemMultipliers } from "../../../SystemContext";
 import { SunConsts } from "../../../SharedConsts";
 import { MarsConsts } from "../TheSystem";
@@ -17,8 +17,7 @@ interface BeltRockProps {
     scrollToRef?: RefObject<HTMLDivElement>;
 }
 
-const BeltRock = (props: BeltRockProps): ReactElement => {
-    const { x, y, luminosity, size, beltRadius, scrollToRef } = props;
+const BeltRock: FC<BeltRockProps> = ({ x, y, luminosity, size, beltRadius, scrollToRef }) => {
     const left = beltRadius + x;
     const top = beltRadius + y;
     const style: CSSProperties = {
@@ -145,7 +144,7 @@ class TheBelt extends React.Component<Props> {
         return this.beltCache.get(key);
     }
 
-    render(): ReactElement {
+    render(): ReactNode {
         const { scrollToRef } = this.props;
         const { multipliers } = this.context;
         const beltProperties = this.getBeltSize(multipliers);

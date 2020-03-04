@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, FC } from "react";
 import AppContext, { systemSize, SystemContext } from "../../../SystemContext";
 import { getOnEnterPress } from "../../../utils/EventUtils";
 import { CallbackFunction } from "../../../types";
@@ -10,8 +10,7 @@ interface Props {
     onChangeSystemSize(newContext: SystemContext): void;
 }
 
-const InfoMenu = (props: Props): JSX.Element => {
-    const { orbitsVisible, onChangeSystemSize, onOrbitsVisibleChange } = props;
+const InfoMenu: FC<Props> = ({ orbitsVisible, onChangeSystemSize, onOrbitsVisibleChange }) => {
     const context = useContext(AppContext);
     const {
         orbitalPeriodMultiplier,

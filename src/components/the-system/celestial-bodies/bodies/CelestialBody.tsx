@@ -1,4 +1,4 @@
-import React, { ReactElement, RefObject, CSSProperties } from "react";
+import React, { RefObject, CSSProperties, ReactNode } from "react";
 import AppContext from "../../../../SystemContext";
 import styles from "./CelestialBody.module.scss";
 import "./CelestialBodyAnimations.scss";
@@ -47,7 +47,7 @@ class CelestialBody extends React.Component<CelestialBodyProps> {
         };
     }
 
-    render(): ReactElement {
+    render(): ReactNode {
         const { className, hasOrbitLine, satellites, scrollToRef } = this.props;
         const orbitLineClass = hasOrbitLine ? " orbit-line" : "";
 

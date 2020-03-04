@@ -1,5 +1,4 @@
-import React, { useContext, CSSProperties, ReactElement } from "react";
-import PropTypes from "prop-types";
+import React, { useContext, CSSProperties, FC } from "react";
 import AppContext from "../../SystemContext";
 import Sun from "./celestial-bodies/sun/Sun";
 import TheBelt from "./ the-belt/TheBelt";
@@ -47,7 +46,7 @@ interface Props {
     pointsOfInterest: PointsOfInterest;
 }
 
-const TheSystem = (props: Props): ReactElement => {
+const TheSystem: FC<Props> = props => {
     const {
         sun,
         mercury,
@@ -90,27 +89,6 @@ const TheSystem = (props: Props): ReactElement => {
             </div>
         </div>
     );
-};
-
-const refShape = PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-]);
-
-TheSystem.propTypes = {
-    pointsOfInterest: PropTypes.shape({
-        pluto: refShape,
-        neptune: refShape,
-        uranus: refShape,
-        saturn: refShape,
-        jupiter: refShape,
-        theBelt: refShape,
-        mars: refShape,
-        earth: refShape,
-        venus: refShape,
-        mercury: refShape,
-        sun: refShape
-    }).isRequired
 };
 
 export default React.memo(TheSystem);

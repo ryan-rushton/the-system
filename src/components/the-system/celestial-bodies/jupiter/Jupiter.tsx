@@ -1,4 +1,4 @@
-import React, { ReactElement, RefObject } from "react";
+import React, { FC, RefObject } from "react";
 import Planet from "../bodies/Planet";
 
 import styles from "./Jupiter.module.scss";
@@ -41,7 +41,7 @@ interface Props {
     scrollToRef: RefObject<HTMLDivElement>;
 }
 
-const Jupiter = ({ scrollToRef }: Props): ReactElement => (
+const Jupiter: FC<Props> = ({ scrollToRef }) => (
     <Planet
         name={styles.jupiter}
         planetConstants={JupiterConsts}

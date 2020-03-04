@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { PointsOfInterest, PointOfInterest } from "../../../App";
 import { getOnEnterPress } from "../../../utils/EventUtils";
 import styles from "./PointsOfInterestMenu.module.scss";
@@ -10,11 +10,7 @@ interface Props {
     onPoiClick(poi: PointOfInterest): void;
 }
 
-const PointsOfInterestMenu = ({
-    pointsOfInterest,
-    followedPoi,
-    onPoiClick
-}: Props): JSX.Element => {
+const PointsOfInterestMenu: FC<Props> = ({ pointsOfInterest, followedPoi, onPoiClick }) => {
     return (
         <>
             {Object.values(pointsOfInterest).map((poi: PointOfInterest) => {

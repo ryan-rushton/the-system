@@ -1,4 +1,4 @@
-import React, { ReactElement, RefObject, useState } from "react";
+import React, { RefObject, useState, FC } from "react";
 import SystemNavMenu from "./components/system-nav-menu/SystemNavMenu";
 import TheSystem from "./components/the-system/TheSystem";
 import AppContext, { SystemContext, systemSize } from "./SystemContext";
@@ -71,7 +71,7 @@ const pointsOfInterest: PointsOfInterest = {
     }
 };
 
-const App = (): ReactElement => {
+const App: FC = () => {
     const [state, setState] = useState({
         systemSizeContext: systemSize.enhancedVisibility,
         orbitsVisible: false
