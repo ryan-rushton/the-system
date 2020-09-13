@@ -26,7 +26,7 @@
     "devDependencies": {
         "@ryan-rushton/eslint-config": "^1.0.6",
         "@testing-library/jest-dom": "^5.11.4",
-        "@testing-library/react": "^11.0.2",
+        "@testing-library/react": "^11.0.4",
         "@testing-library/user-event": "^12.1.4",
         "@typescript-eslint/eslint-plugin": "^2.34.0",
         "@typescript-eslint/parser": "^2.34.0",
