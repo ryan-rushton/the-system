@@ -4,7 +4,7 @@ import AppContext, { SystemContext } from "../../SystemContext";
 import {
     doCallbackAfterElementIsVisible,
     scrollOptions,
-    scrollToElementIfNotVisible
+    scrollToElementIfNotVisible,
 } from "../../utils/DomUtil";
 import InfoMenu from "./sub-menus/InfoMenu";
 import NavMenu from "./nav-menu/NavMenu";
@@ -25,7 +25,7 @@ class SystemNavMenu extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            followedPoi: null
+            followedPoi: null,
         };
 
         this.follower = null;

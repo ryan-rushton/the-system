@@ -9,7 +9,7 @@ const isParentElement = (element: Element | null): element is ParentElement => {
 export const scrollOptions: ScrollIntoViewOptions = {
     behavior: "smooth",
     block: "center",
-    inline: "center"
+    inline: "center",
 };
 
 export const getDistanceToTop = (element: HTMLElement): number => {
@@ -52,7 +52,7 @@ export const scrollToElementIfNotVisible = (element: HTMLDivElement | null): voi
     const scrollOptions: ScrollIntoViewOptions = {
         behavior: "smooth",
         block: "center",
-        inline: "center"
+        inline: "center",
     };
 
     if (element && !isElementInViewport(element)) {

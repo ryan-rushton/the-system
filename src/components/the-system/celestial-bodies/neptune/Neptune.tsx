@@ -6,7 +6,7 @@ import styles from "./Neptune.module.scss";
 const NeptuneConsts = {
     radius: 24764,
     distance: 4495100000,
-    orbitalPeriod: 59800
+    orbitalPeriod: 59800,
 };
 
 interface Props {

@@ -17,14 +17,14 @@ const evenSpaceMultipliers: SystemMultipliers = {
     sizeMultiplier: 0.0005,
     orbitalPeriodMultiplier: 20,
     distanceMultiplier: 0.0005,
-    satelliteDist: 0.0005
+    satelliteDist: 0.0005,
 };
 
 const enhancedVisibilityMultipliers: SystemMultipliers = {
     sizeMultiplier: 0.0005,
     orbitalPeriodMultiplier: 1,
     distanceMultiplier: 0.00001,
-    satelliteDist: 0.0001
+    satelliteDist: 0.0001,
 };
 
 /**
@@ -40,17 +40,17 @@ const getSystemRadius = ({ distanceMultiplier, sizeMultiplier }: SystemMultiplie
 
 const enhancedVisibility: SystemContext = {
     multipliers: enhancedVisibilityMultipliers,
-    systemRadius: getSystemRadius(enhancedVisibilityMultipliers)
+    systemRadius: getSystemRadius(enhancedVisibilityMultipliers),
 };
 
 const evenSpace: SystemContext = {
     multipliers: evenSpaceMultipliers,
-    systemRadius: getSystemRadius(evenSpaceMultipliers)
+    systemRadius: getSystemRadius(evenSpaceMultipliers),
 };
 
 export const systemSize: { enhancedVisibility: SystemContext; evenSpace: SystemContext } = {
     enhancedVisibility,
-    evenSpace
+    evenSpace,
 };
 
 const AppContext: React.Context<SystemContext> = React.createContext<SystemContext>(

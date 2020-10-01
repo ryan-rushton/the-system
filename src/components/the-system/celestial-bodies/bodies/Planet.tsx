@@ -19,7 +19,7 @@ const moonToCB = (
         distance: distance * satelliteDist - planetRadius * sizeMultiplier - moonRadius,
         orbitalPeriod: orbitalPeriod * orbitalPeriodMultiplier,
         planetRadius,
-        hasOrbitLine: true
+        hasOrbitLine: true,
     };
 };
 
@@ -31,7 +31,7 @@ const applyMultipliers = (
         consts.distance * multipliers.distanceMultiplier +
         (SunConsts.radius - consts.radius) * multipliers.sizeMultiplier,
     radius: consts.radius * multipliers.sizeMultiplier,
-    orbitalPeriod: consts.orbitalPeriod * multipliers.orbitalPeriodMultiplier
+    orbitalPeriod: consts.orbitalPeriod * multipliers.orbitalPeriodMultiplier,
 });
 
 interface Props {

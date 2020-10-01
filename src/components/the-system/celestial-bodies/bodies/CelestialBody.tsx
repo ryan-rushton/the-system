@@ -15,6 +15,9 @@ export interface CelestialBodyProps {
 }
 
 class CelestialBody extends React.Component<CelestialBodyProps> {
+    static contextType = AppContext;
+    context!: React.ContextType<typeof AppContext>;
+
     getCssValuesForOrbits(): CSSProperties {
         const { systemRadius } = this.context;
         const { radius, orbitalPeriod, distance, planetRadius } = this.props;
@@ -28,7 +31,7 @@ class CelestialBody extends React.Component<CelestialBodyProps> {
             height: `${heightWidth}px`,
             left: `${center}px`,
             top: `${center}px`,
-            width: `${heightWidth}px`
+            width: `${heightWidth}px`,
         };
     }
 
@@ -43,7 +46,7 @@ class CelestialBody extends React.Component<CelestialBodyProps> {
             height: `${radius * 2}px`,
             left,
             top,
-            width: `${radius * 2}px`
+            width: `${radius * 2}px`,
         };
     }
 
@@ -70,7 +73,5 @@ class CelestialBody extends React.Component<CelestialBodyProps> {
         );
     }
 }
-
-CelestialBody.contextType = AppContext;
 
 export default CelestialBody;

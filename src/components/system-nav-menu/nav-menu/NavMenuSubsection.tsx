@@ -32,7 +32,7 @@ class NavMenuSubsection extends React.PureComponent<Props> {
         }
 
         return {
-            maxHeight: isVisible ? actualHeight : 0
+            maxHeight: isVisible ? actualHeight : 0,
         };
     }
 

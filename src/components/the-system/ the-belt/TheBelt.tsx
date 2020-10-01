@@ -1,5 +1,5 @@
 import React, { RefObject, ReactElement, CSSProperties, ReactNode, FC } from "react";
-import AppContext, { SystemMultipliers } from "../../../SystemContext";
+import AppContext, { SystemContext, SystemMultipliers } from "../../../SystemContext";
 import { SunConsts } from "../../../SharedConsts";
 import { MarsConsts } from "../TheSystem";
 import { JupiterConsts } from "../celestial-bodies/jupiter/Jupiter";
@@ -27,7 +27,7 @@ const BeltRock: FC<BeltRockProps> = ({ x, y, luminosity, size, beltRadius, scrol
         opacity: luminosity,
         position: "absolute",
         top: `${top}px`,
-        width: size
+        width: size,
     };
 
     return <div className="belt-rock" style={style} ref={scrollToRef} />;
@@ -43,11 +43,14 @@ interface Props {
     scrollToRef: RefObject<HTMLDivElement>;
 }
 
-class TheBelt extends React.Component<Props> {
+class TheBelt extends React.Component<Props, unknown, React.Context<SystemContext>> {
+    static contextType = AppContext;
+    context!: React.ContextType<typeof AppContext>;
+
     constructor(props: Props) {
         super(props);
         // TODO: optimise this further by moving the belt caching to HOC
-        this.beltCache = new Map();
+        this.beltCache = new Map<string, ReactElement[]>();
     }
 
     beltCache: Map<string, ReactElement[]>;
@@ -86,7 +89,7 @@ class TheBelt extends React.Component<Props> {
             height: outerBelt * 2,
             left: `calc(${systemRadius}px - ${outerBelt}px)`,
             top: `calc(${systemRadius}px - ${outerBelt}px)`,
-            width: outerBelt * 2
+            width: outerBelt * 2,
         };
     }
 
@@ -104,7 +107,7 @@ class TheBelt extends React.Component<Props> {
                 y: distance * -Math.sin(theta),
                 luminosity: 0.5 * (1 + Math.random()),
                 size: 1 + Math.random(),
-                beltRadius: outerBelt
+                beltRadius: outerBelt,
             };
             rocks.push(<BeltRock {...values} key={`belt-rock-${i}`} />);
         }
@@ -116,7 +119,7 @@ class TheBelt extends React.Component<Props> {
                 luminosity: 0.5 * (1 + Math.random()),
                 size: 1 + Math.random(),
                 beltRadius: outerBelt,
-                scrollToRef: scrollToRef
+                scrollToRef: scrollToRef,
             };
             rocks.push(<BeltRock {...values} key="belt-ref" />);
         }
@@ -168,7 +171,5 @@ class TheBelt extends React.Component<Props> {
         );
     }
 }
-
-TheBelt.contextType = AppContext;
 
 export default TheBelt;

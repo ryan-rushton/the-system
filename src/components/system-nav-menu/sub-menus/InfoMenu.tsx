@@ -16,7 +16,7 @@ const InfoMenu: FC<Props> = ({ orbitsVisible, onChangeSystemSize, onOrbitsVisibl
         orbitalPeriodMultiplier,
         distanceMultiplier,
         sizeMultiplier,
-        satelliteDist
+        satelliteDist,
     } = context.multipliers;
 
     const daysPerSecond = 1 * orbitalPeriodMultiplier;

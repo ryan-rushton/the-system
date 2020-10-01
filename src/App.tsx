@@ -27,54 +27,54 @@ export type PointsOfInterest = { [K in SystemNames]: PointOfInterest };
 const pointsOfInterest: PointsOfInterest = {
     sun: {
         ref: React.createRef(),
-        display: "Sun"
+        display: "Sun",
     },
     mercury: {
         ref: React.createRef(),
-        display: "Mercury"
+        display: "Mercury",
     },
     venus: {
         ref: React.createRef(),
-        display: "Venus"
+        display: "Venus",
     },
     earth: {
         ref: React.createRef(),
-        display: "Earth"
+        display: "Earth",
     },
     mars: {
         ref: React.createRef(),
-        display: "Mars"
+        display: "Mars",
     },
     theBelt: {
         ref: React.createRef(),
-        display: "The Belt"
+        display: "The Belt",
     },
     jupiter: {
         ref: React.createRef(),
-        display: "Jupiter"
+        display: "Jupiter",
     },
     saturn: {
         ref: React.createRef(),
-        display: "Saturn"
+        display: "Saturn",
     },
     uranus: {
         ref: React.createRef(),
-        display: "Uranus"
+        display: "Uranus",
     },
     neptune: {
         ref: React.createRef(),
-        display: "Neptune"
+        display: "Neptune",
     },
     pluto: {
         ref: React.createRef(),
-        display: "Pluto"
-    }
+        display: "Pluto",
+    },
 };
 
 const App: FC = () => {
     const [state, setState] = useState({
         systemSizeContext: systemSize.enhancedVisibility,
-        orbitsVisible: false
+        orbitsVisible: false,
     });
 
     const onChangeSystemSize = (systemSizeContext: SystemContext): void =>

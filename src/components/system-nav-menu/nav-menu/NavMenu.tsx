@@ -22,7 +22,7 @@ class NavMenu extends React.PureComponent<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            menuVisible: false
+            menuVisible: false,
         };
 
         this.menuRef = React.createRef<HTMLDivElement>();
@@ -34,7 +34,7 @@ class NavMenu extends React.PureComponent<Props, State> {
         this.setState(
             (prevState: State): State => ({
                 ...prevState,
-                menuVisible: !prevState.menuVisible
+                menuVisible: !prevState.menuVisible,
             })
         );
     };
@@ -43,7 +43,8 @@ class NavMenu extends React.PureComponent<Props, State> {
         this.setState(
             (prevState: State): State => ({
                 ...prevState,
-                openMenuIndex: openMenuIndex === prevState.openMenuIndex ? undefined : openMenuIndex
+                openMenuIndex:
+                    openMenuIndex === prevState.openMenuIndex ? undefined : openMenuIndex,
             })
         );
     };
@@ -57,7 +58,7 @@ class NavMenu extends React.PureComponent<Props, State> {
             const visibleTransform = `translateX(calc(-8vw - ${current.offsetWidth}px))`;
             return {
                 maxHeight,
-                transform: menuVisible ? visibleTransform : "translateX(0px)"
+                transform: menuVisible ? visibleTransform : "translateX(0px)",
             };
         }
     }

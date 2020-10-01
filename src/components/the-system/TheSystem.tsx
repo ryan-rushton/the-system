@@ -14,31 +14,31 @@ import { PointsOfInterest } from "../../App";
 const MercuryConsts = {
     radius: 2440,
     distance: 57900000,
-    orbitalPeriod: 88
+    orbitalPeriod: 88,
 };
 
 const VenusConsts = {
     radius: 6052,
     distance: 108200000,
-    orbitalPeriod: 224.7
+    orbitalPeriod: 224.7,
 };
 
 export const MarsConsts = {
     radius: 3396,
     distance: 227900000,
-    orbitalPeriod: 687
+    orbitalPeriod: 687,
 };
 
 const UranusConsts = {
     radius: 25559,
     distance: 2872500000,
-    orbitalPeriod: 30589
+    orbitalPeriod: 30589,
 };
 
 const getSystemDimensions = (systemRadius: number): CSSProperties => {
     return {
         height: `${2 * systemRadius}px`,
-        width: `${2 * systemRadius}px`
+        width: `${2 * systemRadius}px`,
     };
 };
 
@@ -46,7 +46,7 @@ interface Props {
     pointsOfInterest: PointsOfInterest;
 }
 
-const TheSystem: FC<Props> = props => {
+const TheSystem: FC<Props> = (props) => {
     const {
         sun,
         mercury,
@@ -58,7 +58,7 @@ const TheSystem: FC<Props> = props => {
         saturn,
         uranus,
         neptune,
-        pluto
+        pluto,
     } = props.pointsOfInterest;
     const { systemRadius } = useContext(AppContext);
 
