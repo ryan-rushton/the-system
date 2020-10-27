@@ -40,6 +40,7 @@ const SystemNavMenu: FC<Props> = ({ orbitsVisible, pointsOfInterest, onOrbitsVis
       clearFollower();
       poi.ref.current?.scrollIntoView(scrollOptions);
     } else if (poi.ref.current) {
+      clearFollower();
       poi.ref.current.scrollIntoView(scrollOptions);
       doCallbackAfterElementIsVisible(poi.ref.current, () => {
         const interval = setInterval(() => scrollToElementIfNotVisible(poi.ref.current), 1000);

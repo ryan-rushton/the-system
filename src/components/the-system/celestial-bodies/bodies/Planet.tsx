@@ -7,7 +7,7 @@ import { MoonDetails, PlanetDetails } from "../../../../types";
 const moonToCB = (moon: MoonDetails, multipliers: SystemMultipliers, planetRadius: number): CelestialBodyProps => {
   const { className, radius, orbitalPeriod, distance } = moon;
   const { satelliteDist, orbitalPeriodMultiplier, sizeMultiplier } = multipliers;
-  const moonRadius = radius * sizeMultiplier;
+  const moonRadius = Math.max(0.5, radius * sizeMultiplier);
 
   return {
     className,
