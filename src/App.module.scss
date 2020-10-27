@@ -1,18 +1,18 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 
 .title {
-    color: white;
-    cursor: default;
-    font-family: "Raleway", sans-serif;
-    font-size: 3ex;
-    left: 2vw;
-    position: fixed;
-    top: 2vh;
-    z-index: 2;
+  color: white;
+  cursor: default;
+  font-family: "Raleway", sans-serif;
+  font-size: 3ex;
+  left: 2vw;
+  position: fixed;
+  top: 2vh;
+  z-index: 2;
 }
 
 .orbitsVisible {
-    :global .orbit-line {
-        border-color: rgba(255, 0, 0, 0.5);
-    }
+  :global .orbit-line {
+    border-color: rgba(255, 0, 0, 0.5);
+  }
 }

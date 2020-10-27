@@ -1,29 +1,29 @@
 .theSystem {
-    background: url("./assets/stars-background.png") 50% repeat;
-    position: relative;
+  background: url("./assets/stars-background.png") 50% repeat;
+  position: relative;
 }
 
 .sunsGlow {
-    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
-    position: absolute;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+  position: absolute;
 }
 
 .mercury {
-    background-color: #aba49a;
+  background-color: #aba49a;
 }
 
 .venus {
-    background-color: #c5aa75;
+  background-color: #c5aa75;
 }
 
 .mars {
-    background-color: #ca5202;
+  background-color: #ca5202;
 }
 
 .uranus {
-    background-color: #c2eaee;
+  background-color: #c2eaee;
 }
 
 .pluto {
-    background-color: grey;
+  background-color: grey;
 }

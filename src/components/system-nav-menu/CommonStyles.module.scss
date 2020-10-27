@@ -1,10 +1,10 @@
 .button {
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 
-    &:hover {
-        color: lightblue;
-        cursor: pointer;
-    }
+  &:hover {
+    color: lightblue;
+    cursor: pointer;
+  }
 }

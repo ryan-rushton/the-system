@@ -1,17 +1,17 @@
 @keyframes orbit {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(-359deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-359deg);
+  }
 }
 
 @keyframes planet-rotation {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(359deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }

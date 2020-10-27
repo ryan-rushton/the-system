@@ -5,35 +5,35 @@ import styles from "./PointsOfInterestMenu.module.scss";
 import commonStyles from "../CommonStyles.module.scss";
 
 interface Props {
-    pointsOfInterest: PointsOfInterest;
-    followedPoi?: PointOfInterest;
-    onPoiClick(poi: PointOfInterest): void;
+  pointsOfInterest: PointsOfInterest;
+  followedPoi?: PointOfInterest;
+  onPoiClick(poi: PointOfInterest): void;
 }
 
 const PointsOfInterestMenu: FC<Props> = ({ pointsOfInterest, followedPoi, onPoiClick }) => {
-    return (
-        <>
-            {Object.values(pointsOfInterest).map((poi: PointOfInterest) => {
-                const followedClass = followedPoi === poi ? ` ${styles.navItemFollowed}` : "";
-                const title = followedPoi === poi ? "Click again to stop following" : undefined;
-                const onClick = (): void => onPoiClick(poi);
-                return (
-                    <div key={poi.display}>
-                        <div
-                            className={`${commonStyles.button} ${styles.navItem}${followedClass}`}
-                            onClick={onClick}
-                            onKeyPress={getOnEnterPress(onClick)}
-                            role="button"
-                            tabIndex={0}
-                            title={title}
-                        >
-                            {poi.display}
-                        </div>
-                    </div>
-                );
-            })}
-        </>
-    );
+  return (
+    <>
+      {Object.values(pointsOfInterest).map((poi: PointOfInterest) => {
+        const followedClass = followedPoi === poi ? ` ${styles.navItemFollowed}` : "";
+        const title = followedPoi === poi ? "Click again to stop following" : undefined;
+        const onClick = (): void => onPoiClick(poi);
+        return (
+          <div key={poi.display}>
+            <div
+              className={`${commonStyles.button} ${styles.navItem}${followedClass}`}
+              onClick={onClick}
+              onKeyPress={getOnEnterPress(onClick)}
+              role="button"
+              tabIndex={0}
+              title={title}
+            >
+              {poi.display}
+            </div>
+          </div>
+        );
+      })}
+    </>
+  );
 };
 
 export default PointsOfInterestMenu;
