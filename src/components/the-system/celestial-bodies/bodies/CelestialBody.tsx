@@ -1,4 +1,4 @@
-import React, { RefObject, CSSProperties, ReactNode } from "react";
+import React, { RefObject, CSSProperties, FC, useContext } from "react";
 import AppContext from "../../../../SystemContext";
 import styles from "./CelestialBody.module.scss";
 import "./CelestialBodyAnimations.scss";
@@ -14,13 +14,20 @@ export interface CelestialBodyProps {
     scrollToRef?: RefObject<HTMLDivElement>;
 }
 
-class CelestialBody extends React.Component<CelestialBodyProps> {
-    static contextType = AppContext;
-    context!: React.ContextType<typeof AppContext>;
+const CelestialBody: FC<CelestialBodyProps> = ({
+    className,
+    distance,
+    orbitalPeriod,
+    radius,
+    hasOrbitLine,
+    planetRadius,
+    satellites,
+    scrollToRef,
+}) => {
+    const context = useContext(AppContext);
 
-    getCssValuesForOrbits(): CSSProperties {
-        const { systemRadius } = this.context;
-        const { radius, orbitalPeriod, distance, planetRadius } = this.props;
+    const getCssValuesForOrbits = (): CSSProperties => {
+        const { systemRadius } = context;
         const referencePoint = planetRadius ? 0 : systemRadius;
         const referencePointRadius = planetRadius || 0;
         const center = referencePoint - distance - radius;
@@ -33,11 +40,10 @@ class CelestialBody extends React.Component<CelestialBodyProps> {
             top: `${center}px`,
             width: `${heightWidth}px`,
         };
-    }
+    };
 
-    getCssValuesForBody(): CSSProperties {
-        const { radius, orbitalPeriod, distance } = this.props;
-        // Assume something with distance 0 (this sun) is already centered
+    const getCssValuesForBody = (): CSSProperties => {
+        // Assume something with distance 0 (this sun) is already centred
         const top = distance > 0 ? "50%" : 0;
         const left = distance > 0 ? `${-radius}px` : 0;
 
@@ -48,30 +54,24 @@ class CelestialBody extends React.Component<CelestialBodyProps> {
             top,
             width: `${radius * 2}px`,
         };
-    }
+    };
 
-    render(): ReactNode {
-        const { className, hasOrbitLine, satellites, scrollToRef } = this.props;
-        const orbitLineClass = hasOrbitLine ? " orbit-line" : "";
+    const orbitLineClass = hasOrbitLine ? " orbit-line" : "";
 
-        return (
+    return (
+        <div className={`${styles.orbit}${orbitLineClass}`} style={getCssValuesForOrbits()}>
             <div
-                className={`${styles.orbit}${orbitLineClass}`}
-                style={this.getCssValuesForOrbits()}
+                className={`${styles.celestialBody} ${className}`}
+                title={className}
+                ref={scrollToRef}
+                style={getCssValuesForBody()}
             >
-                <div
-                    className={`${styles.celestialBody} ${className}`}
-                    title={className}
-                    ref={scrollToRef}
-                    style={this.getCssValuesForBody()}
-                >
-                    {satellites?.map((satellite: CelestialBodyProps) => (
-                        <CelestialBody key={`satellite-${satellite.className}`} {...satellite} />
-                    ))}
-                </div>
+                {satellites?.map((satellite) => (
+                    <CelestialBody key={`satellite-${satellite.className}`} {...satellite} />
+                ))}
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
 export default CelestialBody;

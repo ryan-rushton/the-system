@@ -62,8 +62,6 @@ const TheSystem: FC<Props> = (props) => {
     } = props.pointsOfInterest;
     const { systemRadius } = useContext(AppContext);
 
-    console.log("rendering system");
-
     return (
         <div className={styles.theSystem} style={getSystemDimensions(systemRadius)}>
             <div className={styles.sunsGlow} style={getSystemDimensions(systemRadius)}>

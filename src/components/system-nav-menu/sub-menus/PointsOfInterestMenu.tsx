@@ -6,7 +6,7 @@ import commonStyles from "../CommonStyles.module.scss";
 
 interface Props {
     pointsOfInterest: PointsOfInterest;
-    followedPoi: PointOfInterest | null;
+    followedPoi?: PointOfInterest;
     onPoiClick(poi: PointOfInterest): void;
 }
 
@@ -31,7 +31,7 @@ const PointsOfInterestMenu: FC<Props> = ({ pointsOfInterest, followedPoi, onPoiC
                         </div>
                     </div>
                 );
-            })}{" "}
+            })}
         </>
     );
 };

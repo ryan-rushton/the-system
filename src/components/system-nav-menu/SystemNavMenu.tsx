@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
+import React, { FC, useState } from "react";
 import { PointOfInterest, PointsOfInterest } from "../../App";
-import AppContext, { SystemContext } from "../../SystemContext";
+import { SystemContext } from "../../SystemContext";
 import {
     doCallbackAfterElementIsVisible,
     scrollOptions,
@@ -17,89 +17,63 @@ interface Props {
     onChangeSystemSize(systemSizeContext: SystemContext): void;
 }
 
-interface State {
-    followedPoi: PointOfInterest | null;
+interface FollowerState {
+    pointOfInterest?: PointOfInterest;
+    interval?: NodeJS.Timeout;
 }
 
-class SystemNavMenu extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-        this.state = {
-            followedPoi: null,
-        };
+const SystemNavMenu: FC<Props> = ({
+    orbitsVisible,
+    pointsOfInterest,
+    onOrbitsVisibleChange,
+    onChangeSystemSize,
+}) => {
+    const [follower, setFollower] = useState<FollowerState>({});
 
-        this.follower = null;
-    }
-
-    follower: NodeJS.Timeout | null;
-
-    componentWillUnmount(): void {
-        this.clearFollower();
-    }
-
-    clearFollower = (): void => {
-        if (this.follower) {
-            clearInterval(this.follower);
-            this.follower = null;
+    const clearFollower = () => {
+        if (follower.interval) {
+            clearInterval(follower.interval);
         }
+        setFollower({});
     };
 
-    onChangeSystemSizeWithClear = (systemSizeContext: SystemContext): void => {
-        const { onChangeSystemSize } = this.props;
-        this.setState({ followedPoi: null });
-        this.clearFollower();
+    const onChangeSystemSizeWithClear = (systemSizeContext: SystemContext): void => {
+        clearFollower();
         return onChangeSystemSize(systemSizeContext);
     };
 
-    setFollower(poi: PointOfInterest): void {
-        this.follower = setInterval(() => scrollToElementIfNotVisible(poi.ref.current), 1000);
-    }
-
-    gotoPoiAndFollow(poi: PointOfInterest): void {
-        if (poi.ref.current) {
-            poi.ref.current.scrollIntoView(scrollOptions);
-            doCallbackAfterElementIsVisible(poi.ref.current, () => this.setFollower(poi));
-        }
-    }
-
-    poiOnClick = (poi: PointOfInterest): void => {
-        const { followedPoi } = this.state;
-        const { pointsOfInterest } = this.props;
-
-        this.follower && clearInterval(this.follower);
-
-        if (poi === followedPoi) {
-            this.setState({ followedPoi: null });
+    const poiOnClick = (poi: PointOfInterest): void => {
+        if (poi === follower.pointOfInterest) {
+            clearFollower();
         } else if (poi === pointsOfInterest.sun || poi === pointsOfInterest.theBelt) {
-            this.setState({ followedPoi: null });
+            clearFollower();
             poi.ref.current?.scrollIntoView(scrollOptions);
-        } else {
-            this.gotoPoiAndFollow(poi);
-            this.setState({ followedPoi: poi });
+        } else if (poi.ref.current) {
+            poi.ref.current.scrollIntoView(scrollOptions);
+            doCallbackAfterElementIsVisible(poi.ref.current, () => {
+                const interval = setInterval(
+                    () => scrollToElementIfNotVisible(poi.ref.current),
+                    1000
+                );
+                setFollower({ pointOfInterest: poi, interval });
+            });
         }
     };
 
-    render(): ReactNode {
-        const { orbitsVisible, pointsOfInterest, onOrbitsVisibleChange } = this.props;
-        const { followedPoi } = this.state;
+    return (
+        <NavMenu titles={["Info", "Navigation"]}>
+            <InfoMenu
+                orbitsVisible={orbitsVisible}
+                onChangeSystemSize={onChangeSystemSizeWithClear}
+                onOrbitsVisibleChange={onOrbitsVisibleChange}
+            />
+            <PointsOfInterestMenu
+                pointsOfInterest={pointsOfInterest}
+                onPoiClick={poiOnClick}
+                followedPoi={follower.pointOfInterest}
+            />
+        </NavMenu>
+    );
+};
 
-        return (
-            <NavMenu titles={["Info", "Navigation"]}>
-                <InfoMenu
-                    orbitsVisible={orbitsVisible}
-                    onChangeSystemSize={this.onChangeSystemSizeWithClear}
-                    onOrbitsVisibleChange={onOrbitsVisibleChange}
-                />
-                <PointsOfInterestMenu
-                    pointsOfInterest={pointsOfInterest}
-                    onPoiClick={this.poiOnClick}
-                    followedPoi={followedPoi}
-                />
-            </NavMenu>
-        );
-    }
-}
-
-SystemNavMenu.contextType = AppContext;
-
-export default React.memo(SystemNavMenu);
+export default SystemNavMenu;
