@@ -1,38 +1,38 @@
 {
-    "auto-close-tag.enableAutoCloseSelfClosingTag": false,
-    "auto-close-tag.enableAutoCloseTag": false,
-    "cSpell.words": [
-        "consts",
-        "dropdown",
-        "elem",
-        "fontawesome",
-        "fortawesome",
-        "memoized",
-        "normalise",
-        "stat",
-        "subheader",
-        "unmount"
-    ],
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    "editor.formatOnSave": true,
-    "eslint.enable": true,
-    "eslint.packageManager": "yarn",
-    "html.autoClosingTags": false,
-    "javascript.autoClosingTags": false,
-    "typescript.tsdk": "node_modules/typescript/lib",
-    "cSpell.enabledLanguageIds": [
-        "css",
-        "git-commit",
-        "html",
-        "javascript",
-        "javascriptreact",
-        "markdown",
-        "plaintext",
-        "scss",
-        "text",
-        "typescript",
-        "typescriptreact"
-    ]
+  "auto-close-tag.enableAutoCloseSelfClosingTag": false,
+  "auto-close-tag.enableAutoCloseTag": false,
+  "cSpell.words": [
+    "consts",
+    "dropdown",
+    "elem",
+    "fontawesome",
+    "fortawesome",
+    "memoized",
+    "normalise",
+    "stat",
+    "subheader",
+    "unmount"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": true,
+  "eslint.packageManager": "yarn",
+  "html.autoClosingTags": false,
+  "javascript.autoClosingTags": false,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.enabledLanguageIds": [
+    "css",
+    "git-commit",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "markdown",
+    "plaintext",
+    "scss",
+    "text",
+    "typescript",
+    "typescriptreact"
+],
+"editor.tabSize": 2
 }
