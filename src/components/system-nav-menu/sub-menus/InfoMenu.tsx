@@ -1,15 +1,23 @@
-import React, { useContext, FC } from "react";
-import AppContext, { systemSize, SystemContext } from "../../../SystemContext";
-import { getOnEnterPress } from "../../../utils/EventUtils";
-import { CallbackFunction } from "../../../types";
-import styles from "./InfoMenu.module.scss";
+import React, { useContext, FC } from 'react';
+
+import AppContext, { systemSize, SystemContext } from '../../../SystemContext';
+import styles from './InfoMenu.module.scss';
+import useClickAndEnterKeyDown from '../../../hooks/useClickAndEnterKeydown';
 
 interface Props {
+  /** Whether the red orbit lines are visible */
   orbitsVisible: boolean;
+  /** Change handler for showing the red orbit lines. */
   onOrbitsVisibleChange(newOrbitsVisible: boolean): void;
+  /** Change handler for normalising km per pixel. */
   onChangeSystemSize(newContext: SystemContext): void;
 }
 
+/**
+ * An info menu for the system. This shows a bunch of stats like km per pixel for different distances
+ * (not all distances are equal by default). It also has buttons to show the red orbit lines and to
+ * normalise the distances per pixel.
+ */
 const InfoMenu: FC<Props> = ({ orbitsVisible, onChangeSystemSize, onOrbitsVisibleChange }) => {
   const context = useContext(AppContext);
   const { orbitalPeriodMultiplier, distanceMultiplier, sizeMultiplier, satelliteDist } = context.multipliers;
@@ -18,16 +26,18 @@ const InfoMenu: FC<Props> = ({ orbitsVisible, onChangeSystemSize, onOrbitsVisibl
   const kmPerPixelDistance = Math.round(1 / distanceMultiplier).toLocaleString();
   const kmPerPixelSatellite = Math.round(1 / satelliteDist).toLocaleString();
   const kmPerPixelSize = Math.round(1 / sizeMultiplier).toLocaleString();
-  const normaliseButtonStatus = systemSize.evenSpace === context ? ` ${styles.buttonActive}` : "";
-  const orbitButtonStatus = orbitsVisible ? ` ${styles.buttonActive}` : "";
+  const normaliseButtonStatus = systemSize.evenSpace === context ? ` ${styles.buttonActive}` : '';
+  const orbitButtonStatus = orbitsVisible ? ` ${styles.buttonActive}` : '';
 
-  const onOrbitChangeClick = (): void => onOrbitsVisibleChange(!orbitsVisible);
+  const [onOrbitChangeClick, onOrbitChangeEnter] = useClickAndEnterKeyDown((): void =>
+    onOrbitsVisibleChange(!orbitsVisible)
+  );
 
-  const onSizeChangeClick: CallbackFunction = () => {
+  const [onSizeChangeClick, onSizeChangeEnter] = useClickAndEnterKeyDown(() => {
     const { enhancedVisibility, evenSpace } = systemSize;
     const systemSizeContext = evenSpace === context ? enhancedVisibility : evenSpace;
     onChangeSystemSize(systemSizeContext);
-  };
+  });
 
   return (
     <>
@@ -43,9 +53,10 @@ const InfoMenu: FC<Props> = ({ orbitsVisible, onChangeSystemSize, onOrbitsVisibl
         <div
           className={`${styles.button}${normaliseButtonStatus}`}
           onClick={onSizeChangeClick}
-          onKeyPress={getOnEnterPress(onSizeChangeClick)}
+          onKeyPress={onOrbitChangeEnter}
           role="button"
           tabIndex={0}
+          aria-label="Normalise Distance"
         >
           Normalise Distance
         </div>
@@ -54,9 +65,10 @@ const InfoMenu: FC<Props> = ({ orbitsVisible, onChangeSystemSize, onOrbitsVisibl
         <div
           className={`${styles.button}${orbitButtonStatus}`}
           onClick={onOrbitChangeClick}
-          onKeyPress={getOnEnterPress(onOrbitChangeClick)}
+          onKeyPress={onSizeChangeEnter}
           role="button"
           tabIndex={0}
+          aria-label="Show Orbits"
         >
           Show Orbits
         </div>

@@ -1,4 +1,4 @@
-import { CallbackFunction } from "../types";
+import { CallbackFunction } from '../types';
 
 type ParentElement = HTMLElement | null;
 
@@ -7,9 +7,9 @@ const isParentElement = (element: Element | null): element is ParentElement => {
 };
 
 export const scrollOptions: ScrollIntoViewOptions = {
-  behavior: "smooth",
-  block: "center",
-  inline: "center",
+  behavior: 'smooth',
+  block: 'center',
+  inline: 'center',
 };
 
 export const getDistanceToTop = (element: HTMLElement): number => {
@@ -47,9 +47,9 @@ export const doCallbackAfterElementIsVisible = (element: HTMLElement, callback: 
 
 export const scrollToElementIfNotVisible = (element: HTMLDivElement | null): void => {
   const scrollOptions: ScrollIntoViewOptions = {
-    behavior: "smooth",
-    block: "center",
-    inline: "center",
+    behavior: 'smooth',
+    block: 'center',
+    inline: 'center',
   };
 
   if (element && !isElementInViewport(element)) {

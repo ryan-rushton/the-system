@@ -1,5 +1,6 @@
-import React, { FC, RefObject } from "react";
-import BeltRock from "./BeltRock";
+import React, { FC, RefObject } from 'react';
+
+import BeltRock from './BeltRock';
 
 const ROCK_COUNT = 15000;
 

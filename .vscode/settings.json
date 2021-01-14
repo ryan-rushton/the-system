@@ -2,6 +2,7 @@
   "auto-close-tag.enableAutoCloseSelfClosingTag": false,
   "auto-close-tag.enableAutoCloseTag": false,
   "cSpell.words": [
+    "clsx",
     "consts",
     "dropdown",
     "elem",

@@ -1,6 +1,7 @@
-import React, { RefObject, FC } from "react";
-import Planet from "../bodies/Planet";
-import styles from "./Earth.module.scss";
+import React, { RefObject, FC } from 'react';
+
+import Planet from '../bodies/Planet';
+import styles from './Earth.module.scss';
 
 const earthConsts = {
   radius: 6378,

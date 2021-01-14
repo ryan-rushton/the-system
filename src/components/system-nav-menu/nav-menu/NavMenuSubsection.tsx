@@ -1,7 +1,8 @@
-import React, { ReactNode, FC, useRef } from "react";
-import { getOnEnterPress } from "../../../utils/EventUtils";
-import styles from "./NavMenu.module.scss";
-import commonStyles from "../CommonStyles.module.scss";
+import React, { ReactNode, FC, useRef } from 'react';
+
+import { getOnEnterPress } from '../../../utils/EventUtils';
+import styles from './NavMenu.module.scss';
+import commonStyles from '../CommonStyles.module.scss';
 
 interface Props {
   header: ReactNode;

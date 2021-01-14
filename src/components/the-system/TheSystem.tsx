@@ -1,15 +1,16 @@
-import React, { useContext, CSSProperties, FC } from "react";
-import AppContext from "../../SystemContext";
-import Sun from "./celestial-bodies/sun/Sun";
-import TheBelt from "./ the-belt/TheBelt";
-import Earth from "./celestial-bodies/earth/Earth";
-import Jupiter from "./celestial-bodies/jupiter/Jupiter";
-import Saturn from "./celestial-bodies/saturn/Saturn";
-import Neptune from "./celestial-bodies/neptune/Neptune";
-import Planet from "./celestial-bodies/bodies/Planet";
-import { PlutoConsts } from "../../SharedConsts";
-import styles from "./TheSystem.module.scss";
-import { PointsOfInterest } from "../../App";
+import React, { useContext, CSSProperties, FC } from 'react';
+
+import AppContext from '../../SystemContext';
+import Sun from './celestial-bodies/sun/Sun';
+import TheBelt from './ the-belt/TheBelt';
+import Earth from './celestial-bodies/earth/Earth';
+import Jupiter from './celestial-bodies/jupiter/Jupiter';
+import Saturn from './celestial-bodies/saturn/Saturn';
+import Neptune from './celestial-bodies/neptune/Neptune';
+import Planet from './celestial-bodies/bodies/Planet';
+import { PlutoConsts } from '../../SharedConsts';
+import styles from './TheSystem.module.scss';
+import { PointsOfInterest } from '../../App';
 
 const MercuryConsts = {
   radius: 2440,

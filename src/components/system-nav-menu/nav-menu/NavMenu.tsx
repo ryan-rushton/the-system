@@ -1,23 +1,33 @@
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { CSSProperties, ReactNodeArray, FC, useState, useRef, useCallback, Children } from "react";
-import { getDistanceToTop } from "../../../utils/DomUtil";
-import { getOnEnterPress } from "../../../utils/EventUtils";
-import NavMenuSubsection from "./NavMenuSubsection";
-import styles from "./NavMenu.module.scss";
-import commonStyles from "../CommonStyles.module.scss";
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { CSSProperties, FC, useState, useRef, useCallback, ReactNode } from 'react';
+
+import { getDistanceToTop } from '../../../utils/DomUtil';
+import { getOnEnterPress } from '../../../utils/EventUtils';
+import NavMenuSubsection from './NavMenuSubsection';
+import styles from './NavMenu.module.scss';
 
 interface Props {
-  titles: ReactNodeArray;
+  /** The menu elements. */
+  elements: {
+    /** The title for the menu element. This is always visible. */
+    title: string;
+    /** The content of the menu, this is visible one the title is clicked. */
+    content: ReactNode;
+  }[];
 }
 
 interface State {
   menuVisible: boolean;
-  openMenuIndex?: number;
+  openMenuTitle?: string;
 }
 
-const NavMenu: FC<Props> = ({ children, titles }) => {
-  const [{ menuVisible, openMenuIndex }, setState] = useState<State>({ menuVisible: false });
+/**
+ * A sliding nav menu. When the burger icon is clicked the menu will slide into view. Each section will slide
+ * open on clicking the title for it, any other open section will be closed at this point.
+ */
+const NavMenu: FC<Props> = ({ elements }) => {
+  const [{ menuVisible, openMenuTitle }, setState] = useState<State>({ menuVisible: false });
   const menuRef = useRef<HTMLDivElement>(null);
 
   const onMenuClick = useCallback(() => {
@@ -30,11 +40,11 @@ const NavMenu: FC<Props> = ({ children, titles }) => {
   }, [setState]);
 
   const onSubsectionClick = useCallback(
-    (openMenuIndex: number) => {
+    (openMenuTitle: string) => {
       setState(
         (prevState: State): State => ({
           ...prevState,
-          openMenuIndex: openMenuIndex === prevState.openMenuIndex ? undefined : openMenuIndex,
+          openMenuTitle: openMenuTitle === prevState.openMenuTitle ? undefined : openMenuTitle,
         })
       );
     },
@@ -43,23 +53,18 @@ const NavMenu: FC<Props> = ({ children, titles }) => {
 
   const transformStyles: CSSProperties = {};
 
-  if (Children.count(children) !== titles.length) {
-    console.error("NavMenu: children and titles props must equal length.");
-    return null;
-  }
-
   if (menuRef.current) {
     const maxHeight = `calc(100vh - ${getDistanceToTop(menuRef.current)}px)`;
     const visibleTransform = `translateX(calc(-8vw - ${menuRef.current.offsetWidth}px))`;
     transformStyles.maxHeight = maxHeight;
-    transformStyles.transform = menuVisible ? visibleTransform : "translateX(0px)";
+    transformStyles.transform = menuVisible ? visibleTransform : 'translateX(0px)';
   }
 
   return (
     <div className={styles.nav}>
       <div className={styles.header}>
         <div
-          className={`${commonStyles.button} ${styles.headerButton}`}
+          className={`${styles.headerButton}`}
           onClick={onMenuClick}
           onKeyPress={getOnEnterPress(onMenuClick)}
           role="button"
@@ -69,19 +74,16 @@ const NavMenu: FC<Props> = ({ children, titles }) => {
         </div>
       </div>
       <div className={styles.menu} ref={menuRef} style={transformStyles}>
-        {
-          // using indexes as keys is bad but these items are static in the lifetime of the app
-          Children.map(children, (child, index) => (
-            <NavMenuSubsection
-              key={index}
-              onClick={(): void => onSubsectionClick(index)}
-              header={titles[index]}
-              isVisible={index === openMenuIndex}
-            >
-              {child}
-            </NavMenuSubsection>
-          ))
-        }
+        {elements.map(({ title, content }) => (
+          <NavMenuSubsection
+            key={title}
+            onClick={(): void => onSubsectionClick(title)}
+            header={title}
+            isVisible={title === openMenuTitle}
+          >
+            {content}
+          </NavMenuSubsection>
+        ))}
       </div>
     </div>
   );

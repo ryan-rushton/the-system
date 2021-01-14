@@ -1,7 +1,8 @@
-import React, { RefObject, CSSProperties, FC, useContext } from "react";
-import AppContext from "../../../../SystemContext";
-import styles from "./CelestialBody.module.scss";
-import "./CelestialBodyAnimations.scss";
+import React, { RefObject, CSSProperties, FC, useContext } from 'react';
+
+import AppContext from '../../../../SystemContext';
+import styles from './CelestialBody.module.scss';
+import './CelestialBodyAnimations.scss';
 
 export interface CelestialBodyProps {
   className: string;
@@ -44,7 +45,7 @@ const CelestialBody: FC<CelestialBodyProps> = ({
 
   const getCssValuesForBody = (): CSSProperties => {
     // Assume something with distance 0 (this sun) is already centred
-    const top = distance > 0 ? "50%" : 0;
+    const top = distance > 0 ? '50%' : 0;
     const left = distance > 0 ? `${-radius - 1}px` : 0;
 
     return {
@@ -56,7 +57,7 @@ const CelestialBody: FC<CelestialBodyProps> = ({
     };
   };
 
-  const orbitLineClass = hasOrbitLine ? " orbit-line" : "";
+  const orbitLineClass = hasOrbitLine ? ' orbit-line' : '';
 
   return (
     <div className={`${styles.orbit}${orbitLineClass}`} style={getCssValuesForOrbits()}>

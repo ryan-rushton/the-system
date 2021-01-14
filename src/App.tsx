@@ -1,8 +1,9 @@
-import React, { RefObject, useState, FC } from "react";
-import SystemNavMenu from "./components/system-nav-menu/SystemNavMenu";
-import TheSystem from "./components/the-system/TheSystem";
-import AppContext, { SystemContext, systemSize } from "./SystemContext";
-import styles from "./App.module.scss";
+import React, { RefObject, useState, FC } from 'react';
+
+import SystemNavMenu from './components/system-nav-menu/SystemNavMenu';
+import TheSystem from './components/the-system/TheSystem';
+import AppContext, { SystemContext, systemSize } from './SystemContext';
+import styles from './App.module.scss';
 
 export interface PointOfInterest {
   ref: RefObject<HTMLDivElement>;
@@ -10,64 +11,64 @@ export interface PointOfInterest {
 }
 
 type SystemNames =
-  | "sun"
-  | "mercury"
-  | "venus"
-  | "earth"
-  | "mars"
-  | "theBelt"
-  | "jupiter"
-  | "saturn"
-  | "uranus"
-  | "neptune"
-  | "pluto";
+  | 'sun'
+  | 'mercury'
+  | 'venus'
+  | 'earth'
+  | 'mars'
+  | 'theBelt'
+  | 'jupiter'
+  | 'saturn'
+  | 'uranus'
+  | 'neptune'
+  | 'pluto';
 
 export type PointsOfInterest = { [K in SystemNames]: PointOfInterest };
 
 const pointsOfInterest: PointsOfInterest = {
   sun: {
     ref: React.createRef(),
-    display: "Sun",
+    display: 'Sun',
   },
   mercury: {
     ref: React.createRef(),
-    display: "Mercury",
+    display: 'Mercury',
   },
   venus: {
     ref: React.createRef(),
-    display: "Venus",
+    display: 'Venus',
   },
   earth: {
     ref: React.createRef(),
-    display: "Earth",
+    display: 'Earth',
   },
   mars: {
     ref: React.createRef(),
-    display: "Mars",
+    display: 'Mars',
   },
   theBelt: {
     ref: React.createRef(),
-    display: "The Belt",
+    display: 'The Belt',
   },
   jupiter: {
     ref: React.createRef(),
-    display: "Jupiter",
+    display: 'Jupiter',
   },
   saturn: {
     ref: React.createRef(),
-    display: "Saturn",
+    display: 'Saturn',
   },
   uranus: {
     ref: React.createRef(),
-    display: "Uranus",
+    display: 'Uranus',
   },
   neptune: {
     ref: React.createRef(),
-    display: "Neptune",
+    display: 'Neptune',
   },
   pluto: {
     ref: React.createRef(),
-    display: "Pluto",
+    display: 'Pluto',
   },
 };
 
@@ -79,7 +80,7 @@ const App: FC = () => {
 
   const onChangeSystemSize = (systemSizeContext: SystemContext): void => setState({ ...state, systemSizeContext });
   const onOrbitsVisibleChange = (orbitsVisible: boolean): void => setState({ ...state, orbitsVisible });
-  const appClassName = state.orbitsVisible ? styles.orbitsVisible : "";
+  const appClassName = state.orbitsVisible ? styles.orbitsVisible : '';
 
   return (
     <AppContext.Provider value={state.systemSizeContext}>

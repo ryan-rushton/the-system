@@ -1,8 +1,9 @@
-import React, { useContext, RefObject, ReactElement } from "react";
-import AppContext from "../../../../SystemContext";
-import { SunConsts } from "../../../../SharedConsts";
-import CelestialBody from "../bodies/CelestialBody";
-import styles from "./Sun.module.scss";
+import React, { useContext, RefObject, ReactElement } from 'react';
+
+import AppContext from '../../../../SystemContext';
+import { SunConsts } from '../../../../SharedConsts';
+import CelestialBody from '../bodies/CelestialBody';
+import styles from './Sun.module.scss';
 
 interface Props {
   scrollToRef: RefObject<HTMLDivElement>;
