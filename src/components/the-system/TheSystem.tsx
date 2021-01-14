@@ -10,7 +10,7 @@ import Neptune from './celestial-bodies/neptune/Neptune';
 import Planet from './celestial-bodies/bodies/Planet';
 import { PlutoConsts } from '../../SharedConsts';
 import styles from './TheSystem.module.scss';
-import { PointsOfInterest } from '../../App';
+import { PointsOfInterestMap } from '../../App';
 
 const MercuryConsts = {
   radius: 2440,
@@ -44,7 +44,7 @@ const getSystemDimensions = (systemRadius: number): CSSProperties => {
 };
 
 interface Props {
-  pointsOfInterest: PointsOfInterest;
+  pointsOfInterest: PointsOfInterestMap;
 }
 
 const TheSystem: FC<Props> = ({ pointsOfInterest }) => {

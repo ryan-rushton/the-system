@@ -6,6 +6,8 @@ import useClickAndEnterKeyDown from '../../../hooks/useClickAndEnterKeydown';
 import styles from './PointOfInterestButton.module.scss';
 
 interface Props {
+  /** Whether the component is currently visible. */
+  isVisible: boolean;
   /** Point of interest object. */
   pointOfInterest: PointOfInterest;
   /** Whether the point of interest is currently being followed on screen. */
@@ -18,7 +20,7 @@ interface Props {
  * A button for points of interest. When Clicked the screen will follow the poi until
  * the button is clicked again or another poi is clicked.
  */
-const PointOfInterestButton: FC<Props> = ({ pointOfInterest, isBeingFollowed, onPoiClick }) => {
+const PointOfInterestButton: FC<Props> = ({ isVisible, pointOfInterest, isBeingFollowed, onPoiClick }) => {
   const title = isBeingFollowed ? 'Click again to stop following.' : undefined;
 
   const [onClick, onEnter] = useClickAndEnterKeyDown(onPoiClick);
@@ -29,7 +31,7 @@ const PointOfInterestButton: FC<Props> = ({ pointOfInterest, isBeingFollowed, on
         onClick={onClick}
         onKeyDown={onEnter}
         role="button"
-        tabIndex={0}
+        tabIndex={isVisible ? 0 : undefined}
         title={title}
         aria-label={pointOfInterest.display}
       >

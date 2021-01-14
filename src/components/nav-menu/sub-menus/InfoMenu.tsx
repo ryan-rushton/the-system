@@ -5,6 +5,8 @@ import styles from './InfoMenu.module.scss';
 import useClickAndEnterKeyDown from '../../../hooks/useClickAndEnterKeydown';
 
 interface Props {
+  /** Whether the component is currently visible. */
+  isVisible: boolean;
   /** Whether the red orbit lines are visible */
   orbitsVisible: boolean;
   /** Change handler for showing the red orbit lines. */
@@ -18,7 +20,7 @@ interface Props {
  * (not all distances are equal by default). It also has buttons to show the red orbit lines and to
  * normalise the distances per pixel.
  */
-const InfoMenu: FC<Props> = ({ orbitsVisible, onChangeSystemSize, onOrbitsVisibleChange }) => {
+const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onOrbitsVisibleChange }) => {
   const context = useContext(AppContext);
   const { orbitalPeriodMultiplier, distanceMultiplier, sizeMultiplier, satelliteDist } = context.multipliers;
 
@@ -55,7 +57,7 @@ const InfoMenu: FC<Props> = ({ orbitsVisible, onChangeSystemSize, onOrbitsVisibl
           onClick={onSizeChangeClick}
           onKeyDown={onSizeChangeEnter}
           role="button"
-          tabIndex={0}
+          tabIndex={isVisible ? 0 : undefined}
           aria-label="Normalise Distance"
         >
           {'Normalise Distance'}
@@ -67,7 +69,7 @@ const InfoMenu: FC<Props> = ({ orbitsVisible, onChangeSystemSize, onOrbitsVisibl
           onClick={onOrbitChangeClick}
           onKeyDown={onOrbitChangeEnter}
           role="button"
-          tabIndex={0}
+          tabIndex={isVisible ? 0 : undefined}
           aria-label="Show Orbits"
         >
           {'Show Orbits'}
