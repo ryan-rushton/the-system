@@ -31,6 +31,9 @@ type OpenSubsectionState = 'info' | 'nav' | undefined;
 /**
  * A sliding nav menu. When the burger icon is clicked the menu will slide into view. Each section will slide
  * open on clicking the title for it, any other open section will be closed at this point.
+ *
+ * There are no unit tests for this unfortunately as all the logic is based around extracting details from refs.
+ * TODO Browser tests
  */
 const NavMenu: FC<Props> = ({
   orbitsVisible,
