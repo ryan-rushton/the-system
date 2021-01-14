@@ -8,7 +8,7 @@ const useClickAndEnterKeyDown = (callback: () => void): [() => void, (event: Key
   const onClick = useCallback(callback, [callback]);
   const onEnter = useCallback(
     (event: KeyboardEvent<HTMLElement>) => {
-      if (event.key === 'Enter') {
+      if (event.key === 'Enter' || event.keyCode === 13) {
         callback();
       }
     },

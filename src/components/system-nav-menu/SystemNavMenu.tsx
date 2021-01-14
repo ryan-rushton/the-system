@@ -29,7 +29,7 @@ interface FollowerState {
 }
 
 /**
- * A nav menu for the app. It contains the buttons to scroll to different points of interest arount the solar system
+ * A nav menu for the app. It contains the buttons to scroll to different points of interest around the solar system
  * as well as some informational content and buttons to change how orbits and km per pixel are displayed.
  *
  * Note that handlers are not memoised using useCallback as this should only re-render on context change at which

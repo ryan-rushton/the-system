@@ -40,40 +40,40 @@ const InfoMenu: FC<Props> = ({ orbitsVisible, onChangeSystemSize, onOrbitsVisibl
   });
 
   return (
-    <>
+    <div data-testid="InfoMenu.tsx">
       <div className={styles.heading}>Time</div>
-      <div className={styles.stat}>{`${daysPerSecond} s = 1 day`}</div>
+      <div data-testid="time" className={styles.stat}>{`${daysPerSecond} s = 1 day`}</div>
       <div className={styles.heading}>Distance Between Planets</div>
-      <div className={styles.stat}>{`1 pixel = ${kmPerPixelDistance} km`}</div>
+      <div data-testid="planet-distance" className={styles.stat}>{`1 pixel = ${kmPerPixelDistance} km`}</div>
       <div className={styles.heading}>Distance Between Planets And Moons</div>
-      <div className={styles.stat}>{`1 pixel = ${kmPerPixelSatellite} km`}</div>
+      <div data-testid="satellite-distance" className={styles.stat}>{`1 pixel = ${kmPerPixelSatellite} km`}</div>
       <div className={styles.heading}>Planet Size</div>
-      <div className={styles.stat}>{`1 pixel = ${kmPerPixelSize} km`}</div>
+      <div data-testid="planet-size" className={styles.stat}>{`1 pixel = ${kmPerPixelSize} km`}</div>
       <div className={styles.buttonWrapper}>
         <div
           className={`${styles.button}${normaliseButtonStatus}`}
           onClick={onSizeChangeClick}
-          onKeyPress={onOrbitChangeEnter}
+          onKeyDown={onSizeChangeEnter}
           role="button"
           tabIndex={0}
           aria-label="Normalise Distance"
         >
-          Normalise Distance
+          {'Normalise Distance'}
         </div>
       </div>
       <div className={styles.buttonWrapper}>
         <div
           className={`${styles.button}${orbitButtonStatus}`}
           onClick={onOrbitChangeClick}
-          onKeyPress={onSizeChangeEnter}
+          onKeyDown={onOrbitChangeEnter}
           role="button"
           tabIndex={0}
           aria-label="Show Orbits"
         >
-          Show Orbits
+          {'Show Orbits'}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

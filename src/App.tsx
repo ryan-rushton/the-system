@@ -80,6 +80,7 @@ const App: FC = () => {
 
   const onChangeSystemSize = (systemSizeContext: SystemContext): void => setState({ ...state, systemSizeContext });
   const onOrbitsVisibleChange = (orbitsVisible: boolean): void => setState({ ...state, orbitsVisible });
+
   const appClassName = state.orbitsVisible ? styles.orbitsVisible : '';
 
   return (

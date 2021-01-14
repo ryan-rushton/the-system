@@ -12,6 +12,7 @@
     "normalise",
     "stat",
     "subheader",
+    "testid",
     "unmount"
   ],
   "editor.codeActionsOnSave": {

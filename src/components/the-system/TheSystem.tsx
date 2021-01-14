@@ -47,8 +47,8 @@ interface Props {
   pointsOfInterest: PointsOfInterest;
 }
 
-const TheSystem: FC<Props> = (props) => {
-  const { sun, mercury, venus, earth, mars, theBelt, jupiter, saturn, uranus, neptune, pluto } = props.pointsOfInterest;
+const TheSystem: FC<Props> = ({ pointsOfInterest }) => {
+  const { sun, mercury, venus, earth, mars, theBelt, jupiter, saturn, uranus, neptune, pluto } = pointsOfInterest;
   const { systemRadius } = useContext(AppContext);
 
   return (

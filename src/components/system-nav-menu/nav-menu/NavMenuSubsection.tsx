@@ -1,17 +1,19 @@
 import React, { ReactNode, FC, useRef } from 'react';
 
-import { getOnEnterPress } from '../../../utils/EventUtils';
 import styles from './NavMenu.module.scss';
 import commonStyles from '../CommonStyles.module.scss';
+import useClickAndEnterKeyDown from '../../../hooks/useClickAndEnterKeydown';
 
 interface Props {
   header: ReactNode;
   isVisible: boolean;
-  onClick(): void;
+  onHeaderClick(): void;
 }
 
-const NavMenuSubsection: FC<Props> = ({ children, header, isVisible, onClick }) => {
+const NavMenuSubsection: FC<Props> = ({ children, header, isVisible, onHeaderClick }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [onClick, onEnter] = useClickAndEnterKeyDown(onHeaderClick);
+
   let actualHeight = 0;
 
   if (ref.current?.children) {
@@ -27,7 +29,7 @@ const NavMenuSubsection: FC<Props> = ({ children, header, isVisible, onClick }) 
       <div
         className={`${commonStyles.button} ${styles.menuItemSubheader}`}
         onClick={onClick}
-        onKeyPress={getOnEnterPress(onClick)}
+        onKeyDown={onEnter}
         role="button"
         tabIndex={0}
       >

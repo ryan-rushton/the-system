@@ -77,7 +77,7 @@ const NavMenu: FC<Props> = ({ elements }) => {
         {elements.map(({ title, content }) => (
           <NavMenuSubsection
             key={title}
-            onClick={(): void => onSubsectionClick(title)}
+            onHeaderClick={() => onSubsectionClick(title)}
             header={title}
             isVisible={title === openMenuTitle}
           >

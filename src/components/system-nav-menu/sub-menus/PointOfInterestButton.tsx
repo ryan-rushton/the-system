@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 import { PointOfInterest } from '../../../App';
 import useClickAndEnterKeyDown from '../../../hooks/useClickAndEnterKeydown';
-import styles from './PointsOfInterestButton.module.scss';
+import styles from './PointOfInterestButton.module.scss';
 
 interface Props {
   /** Point of interest object. */
@@ -27,7 +27,7 @@ const PointOfInterestButton: FC<Props> = ({ pointOfInterest, isBeingFollowed, on
       <div
         className={clsx(styles.navItem, { [styles.navItemFollowed]: isBeingFollowed })}
         onClick={onClick}
-        onKeyPress={onEnter}
+        onKeyDown={onEnter}
         role="button"
         tabIndex={0}
         title={title}
