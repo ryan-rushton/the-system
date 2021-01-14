@@ -48,6 +48,8 @@ const NavMenu: FC<Props> = ({
   const menuRef = useRef<HTMLDivElement>(null);
 
   const [onMenuClick, onMenuEnter] = useClickAndEnterKeyDown(() => setMenuVisible((oldState) => !oldState));
+  const onSubsectionClick = (clicked: 'info' | 'nav') =>
+    setOpenSubsection((oldState) => (clicked === oldState ? undefined : clicked));
 
   const transformStyles: CSSProperties = {};
 
@@ -59,7 +61,7 @@ const NavMenu: FC<Props> = ({
   }
 
   return (
-    <div className={styles.nav}>
+    <div data-testid="nav-menu" className={styles.nav}>
       <div className={styles.header}>
         <div
           className={`${styles.headerButton}`}
@@ -75,7 +77,7 @@ const NavMenu: FC<Props> = ({
         <NavMenuSubsection
           title={'Info'}
           isVisible={openSubsection === 'info'}
-          onHeaderClick={() => setOpenSubsection('info')}
+          onHeaderClick={() => onSubsectionClick('info')}
         >
           <InfoMenu
             isVisible={openSubsection === 'info'}
@@ -87,7 +89,7 @@ const NavMenu: FC<Props> = ({
         <NavMenuSubsection
           title={'Navigation'}
           isVisible={openSubsection === 'nav'}
-          onHeaderClick={() => setOpenSubsection('nav')}
+          onHeaderClick={() => onSubsectionClick('nav')}
         >
           <>
             {Object.values(pointsOfInterestMap).map((poi) => (

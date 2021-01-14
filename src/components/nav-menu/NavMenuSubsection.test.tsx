@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import NavMenuSubsection from './NavMenuSubsection';
 
-describe('PointOfInterestButton', () => {
+describe('NavMenuSubsection', () => {
   test('it renders', () => {
     render(
       <NavMenuSubsection title="Some menu" isVisible={true} onHeaderClick={jest.fn()}>
