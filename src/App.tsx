@@ -1,4 +1,4 @@
-import React, { RefObject, useState, FC, useEffect } from 'react';
+import React, { RefObject, useState, FC, useEffect, useCallback } from 'react';
 import clsx from 'clsx';
 
 import TheSystem from './components/the-system/TheSystem';
@@ -89,17 +89,17 @@ const App: FC = () => {
   const [orbitsVisible, setOrbitsVisible] = useState(false);
   const [follower, setFollower] = useState<FollowerState>({});
 
-  const clearFollower = () => {
+  const clearFollower = useCallback(() => {
     if (follower.interval) {
       clearInterval(follower.interval);
     }
     setFollower({});
-  };
+  }, [follower, setFollower]);
 
   // Make sure we cleanup the follower timeout when the component unmounts.
   useEffect(() => {
-    return clearFollower;
-  });
+    return () => follower.interval && clearInterval(follower.interval);
+  }, [follower.interval]);
 
   const onChangeSystemSizeWithClear = (newSystemSizeContext: SystemContext): void => {
     clearFollower();
@@ -113,21 +113,24 @@ const App: FC = () => {
    * If the sun or the belt is selected it will just scroll them into view.
    * If anything else is selected it will set an interval to scroll the element into view if it isn't already
    * */
-  const poiOnClick = (poi: PointOfInterest): void => {
-    if (poi === follower.pointOfInterest) {
-      clearFollower();
-    } else if (poi === pointsOfInterest.sun || poi === pointsOfInterest.theBelt) {
-      clearFollower();
-      poi.ref.current?.scrollIntoView(scrollOptions);
-    } else if (poi.ref.current) {
-      clearFollower();
-      poi.ref.current.scrollIntoView(scrollOptions);
-      doCallbackAfterElementIsVisible(poi.ref.current, () => {
-        const interval = setInterval(() => scrollToElementIfNotVisible(poi.ref.current), 1000);
-        setFollower({ pointOfInterest: poi, interval });
-      });
-    }
-  };
+  const poiOnClick = useCallback(
+    (pointOfInterest: PointOfInterest): void => {
+      if (pointOfInterest === follower.pointOfInterest) {
+        clearFollower();
+      } else if (pointOfInterest === pointsOfInterest.sun || pointOfInterest === pointsOfInterest.theBelt) {
+        clearFollower();
+        pointOfInterest.ref.current?.scrollIntoView(scrollOptions);
+      } else if (pointOfInterest.ref.current) {
+        clearFollower();
+        pointOfInterest.ref.current.scrollIntoView(scrollOptions);
+        doCallbackAfterElementIsVisible(pointOfInterest.ref.current, () => {
+          const interval = setInterval(() => scrollToElementIfNotVisible(pointOfInterest.ref.current), 1000);
+          setFollower({ pointOfInterest, interval });
+        });
+      }
+    },
+    [clearFollower, follower]
+  );
 
   return (
     <AppContext.Provider value={systemSizeContext}>
