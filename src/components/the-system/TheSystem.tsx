@@ -1,15 +1,16 @@
-import React, { useContext, CSSProperties, FC } from "react";
-import AppContext from "../../SystemContext";
-import Sun from "./celestial-bodies/sun/Sun";
-import TheBelt from "./ the-belt/TheBelt";
-import Earth from "./celestial-bodies/earth/Earth";
-import Jupiter from "./celestial-bodies/jupiter/Jupiter";
-import Saturn from "./celestial-bodies/saturn/Saturn";
-import Neptune from "./celestial-bodies/neptune/Neptune";
-import Planet from "./celestial-bodies/bodies/Planet";
-import { PlutoConsts } from "../../SharedConsts";
-import styles from "./TheSystem.module.scss";
-import { PointsOfInterest } from "../../App";
+import React, { useContext, CSSProperties, FC } from 'react';
+
+import AppContext from '../../SystemContext';
+import Sun from './celestial-bodies/sun/Sun';
+import TheBelt from './ the-belt/TheBelt';
+import Earth from './celestial-bodies/earth/Earth';
+import Jupiter from './celestial-bodies/jupiter/Jupiter';
+import Saturn from './celestial-bodies/saturn/Saturn';
+import Neptune from './celestial-bodies/neptune/Neptune';
+import Planet from './celestial-bodies/bodies/Planet';
+import { PlutoConsts } from '../../SharedConsts';
+import styles from './TheSystem.module.scss';
+import { PointsOfInterestMap } from '../../App';
 
 const MercuryConsts = {
   radius: 2440,
@@ -43,11 +44,11 @@ const getSystemDimensions = (systemRadius: number): CSSProperties => {
 };
 
 interface Props {
-  pointsOfInterest: PointsOfInterest;
+  pointsOfInterest: PointsOfInterestMap;
 }
 
-const TheSystem: FC<Props> = (props) => {
-  const { sun, mercury, venus, earth, mars, theBelt, jupiter, saturn, uranus, neptune, pluto } = props.pointsOfInterest;
+const TheSystem: FC<Props> = ({ pointsOfInterest }) => {
+  const { sun, mercury, venus, earth, mars, theBelt, jupiter, saturn, uranus, neptune, pluto } = pointsOfInterest;
   const { systemRadius } = useContext(AppContext);
 
   return (

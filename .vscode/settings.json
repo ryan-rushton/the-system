@@ -2,6 +2,7 @@
   "auto-close-tag.enableAutoCloseSelfClosingTag": false,
   "auto-close-tag.enableAutoCloseTag": false,
   "cSpell.words": [
+    "clsx",
     "consts",
     "dropdown",
     "elem",
@@ -11,6 +12,7 @@
     "normalise",
     "stat",
     "subheader",
+    "testid",
     "unmount"
   ],
   "editor.codeActionsOnSave": {

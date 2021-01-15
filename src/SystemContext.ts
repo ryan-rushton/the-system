@@ -1,5 +1,6 @@
-import React from "react";
-import { SunConsts, PlutoConsts } from "./SharedConsts";
+import React from 'react';
+
+import { SunConsts, PlutoConsts } from './SharedConsts';
 
 export interface SystemMultipliers {
   sizeMultiplier: number;

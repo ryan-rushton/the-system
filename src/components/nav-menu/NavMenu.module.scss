@@ -1,0 +1,30 @@
+.nav {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  position: fixed;
+  right: 2vw;
+  text-align: right;
+  top: 2vh;
+  z-index: 2;
+}
+
+.headerButton {
+  composes: button from './CommonStyles.module.scss';
+  font-size: 1.8em;
+}
+
+.menu {
+  left: 10vw;
+  overflow-y: scroll;
+  position: absolute;
+  transition: transform 0.6s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

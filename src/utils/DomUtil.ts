@@ -1,25 +1,26 @@
-import { CallbackFunction } from "../types";
-
-type ParentElement = HTMLElement | null;
-
-const isParentElement = (element: Element | null): element is ParentElement => {
-  return element === null || element instanceof HTMLElement;
+const isHTMLElement = (element: Element | null): element is HTMLElement => {
+  return Boolean(element && element instanceof HTMLElement);
 };
 
+/**
+ * The default scroll options used in the app.
+ */
 export const scrollOptions: ScrollIntoViewOptions = {
-  behavior: "smooth",
-  block: "center",
-  inline: "center",
+  behavior: 'smooth',
+  block: 'center',
+  inline: 'center',
 };
 
 export const getDistanceToTop = (element: HTMLElement): number => {
-  let elem: HTMLElement | null = element;
+  let elem: HTMLElement = element;
   let distanceToTop = 0;
 
   while (elem) {
     distanceToTop += elem.offsetTop;
-    if (isParentElement(elem.offsetParent)) {
+    if (isHTMLElement(elem.offsetParent)) {
       elem = elem.offsetParent;
+    } else {
+      break;
     }
   }
 
@@ -37,7 +38,7 @@ const isElementInViewport = (element: HTMLElement): boolean => {
   );
 };
 
-export const doCallbackAfterElementIsVisible = (element: HTMLElement, callback: CallbackFunction): void => {
+export const doCallbackAfterElementIsVisible = (element: HTMLElement, callback: () => void): void => {
   if (!isElementInViewport(element)) {
     setTimeout(() => doCallbackAfterElementIsVisible(element, callback), 100);
   } else {
@@ -47,9 +48,9 @@ export const doCallbackAfterElementIsVisible = (element: HTMLElement, callback: 
 
 export const scrollToElementIfNotVisible = (element: HTMLDivElement | null): void => {
   const scrollOptions: ScrollIntoViewOptions = {
-    behavior: "smooth",
-    block: "center",
-    inline: "center",
+    behavior: 'smooth',
+    block: 'center',
+    inline: 'center',
   };
 
   if (element && !isElementInViewport(element)) {

@@ -1,8 +1,9 @@
-import React, { useContext, RefObject, FC } from "react";
-import AppContext, { SystemMultipliers } from "../../../../SystemContext";
-import CelestialBody, { CelestialBodyProps } from "./CelestialBody";
-import { SunConsts } from "../../../../SharedConsts";
-import { MoonDetails, PlanetDetails } from "../../../../types";
+import React, { useContext, RefObject, FC } from 'react';
+
+import AppContext, { SystemMultipliers } from '../../../../SystemContext';
+import CelestialBody, { CelestialBodyProps } from './CelestialBody';
+import { SunConsts } from '../../../../SharedConsts';
+import { MoonDetails, PlanetDetails } from '../../../../types';
 
 const moonToCB = (moon: MoonDetails, multipliers: SystemMultipliers, planetRadius: number): CelestialBodyProps => {
   const { className, radius, orbitalPeriod, distance } = moon;

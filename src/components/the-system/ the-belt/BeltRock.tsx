@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC, RefObject } from "react";
+import React, { CSSProperties, FC, RefObject } from 'react';
 
 interface BeltRockProps {
   x: number;
@@ -13,11 +13,11 @@ const BeltRock: FC<BeltRockProps> = ({ x, y, luminosity, size, beltRadius, scrol
   const left = beltRadius + x;
   const top = beltRadius + y;
   const style: CSSProperties = {
-    backgroundColor: "rgb(210, 210, 210)",
+    backgroundColor: 'rgb(210, 210, 210)',
     height: size,
     left: `${left}px`,
     opacity: luminosity,
-    position: "absolute",
+    position: 'absolute',
     top: `${top}px`,
     width: size,
   };

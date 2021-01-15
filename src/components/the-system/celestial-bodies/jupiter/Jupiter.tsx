@@ -1,7 +1,7 @@
-import React, { FC, RefObject } from "react";
-import Planet from "../bodies/Planet";
+import React, { FC, RefObject } from 'react';
 
-import styles from "./Jupiter.module.scss";
+import Planet from '../bodies/Planet';
+import styles from './Jupiter.module.scss';
 
 export const JupiterConsts = {
   radius: 71498,

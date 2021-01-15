@@ -1,8 +1,11 @@
-import React, { RefObject, useState, FC } from "react";
-import SystemNavMenu from "./components/system-nav-menu/SystemNavMenu";
-import TheSystem from "./components/the-system/TheSystem";
-import AppContext, { SystemContext, systemSize } from "./SystemContext";
-import styles from "./App.module.scss";
+import React, { RefObject, useState, FC, useEffect, useCallback } from 'react';
+import clsx from 'clsx';
+
+import TheSystem from './components/the-system/TheSystem';
+import AppContext, { SystemContext, systemSize } from './SystemContext';
+import styles from './App.module.scss';
+import NavMenu from './components/nav-menu/NavMenu';
+import { doCallbackAfterElementIsVisible, scrollOptions, scrollToElementIfNotVisible } from './utils/DomUtil';
 
 export interface PointOfInterest {
   ref: RefObject<HTMLDivElement>;
@@ -10,88 +13,138 @@ export interface PointOfInterest {
 }
 
 type SystemNames =
-  | "sun"
-  | "mercury"
-  | "venus"
-  | "earth"
-  | "mars"
-  | "theBelt"
-  | "jupiter"
-  | "saturn"
-  | "uranus"
-  | "neptune"
-  | "pluto";
+  | 'sun'
+  | 'mercury'
+  | 'venus'
+  | 'earth'
+  | 'mars'
+  | 'theBelt'
+  | 'jupiter'
+  | 'saturn'
+  | 'uranus'
+  | 'neptune'
+  | 'pluto';
 
-export type PointsOfInterest = { [K in SystemNames]: PointOfInterest };
+export type PointsOfInterestMap = { [K in SystemNames]: PointOfInterest };
 
-const pointsOfInterest: PointsOfInterest = {
+const pointsOfInterest: PointsOfInterestMap = {
   sun: {
     ref: React.createRef(),
-    display: "Sun",
+    display: 'Sun',
   },
   mercury: {
     ref: React.createRef(),
-    display: "Mercury",
+    display: 'Mercury',
   },
   venus: {
     ref: React.createRef(),
-    display: "Venus",
+    display: 'Venus',
   },
   earth: {
     ref: React.createRef(),
-    display: "Earth",
+    display: 'Earth',
   },
   mars: {
     ref: React.createRef(),
-    display: "Mars",
+    display: 'Mars',
   },
   theBelt: {
     ref: React.createRef(),
-    display: "The Belt",
+    display: 'The Belt',
   },
   jupiter: {
     ref: React.createRef(),
-    display: "Jupiter",
+    display: 'Jupiter',
   },
   saturn: {
     ref: React.createRef(),
-    display: "Saturn",
+    display: 'Saturn',
   },
   uranus: {
     ref: React.createRef(),
-    display: "Uranus",
+    display: 'Uranus',
   },
   neptune: {
     ref: React.createRef(),
-    display: "Neptune",
+    display: 'Neptune',
   },
   pluto: {
     ref: React.createRef(),
-    display: "Pluto",
+    display: 'Pluto',
   },
 };
 
-const App: FC = () => {
-  const [state, setState] = useState({
-    systemSizeContext: systemSize.enhancedVisibility,
-    orbitsVisible: false,
-  });
+interface FollowerState {
+  /** The point of interest being followed. */
+  pointOfInterest?: PointOfInterest;
+  /**
+   * The interval at which the point of interest is being checked to see whether it is visible on screen.
+   * This can be cleared when the point of interest is no longer being followed.
+   */
+  interval?: NodeJS.Timeout;
+}
 
-  const onChangeSystemSize = (systemSizeContext: SystemContext): void => setState({ ...state, systemSizeContext });
-  const onOrbitsVisibleChange = (orbitsVisible: boolean): void => setState({ ...state, orbitsVisible });
-  const appClassName = state.orbitsVisible ? styles.orbitsVisible : "";
+const App: FC = () => {
+  const [systemSizeContext, setSystemSizeContext] = useState(systemSize.enhancedVisibility);
+  const [orbitsVisible, setOrbitsVisible] = useState(false);
+  const [follower, setFollower] = useState<FollowerState>({});
+
+  const clearFollower = useCallback(() => {
+    if (follower.interval) {
+      clearInterval(follower.interval);
+    }
+    setFollower({});
+  }, [follower, setFollower]);
+
+  // Make sure we cleanup the follower timeout when the component unmounts.
+  useEffect(() => {
+    return () => follower.interval && clearInterval(follower.interval);
+  }, [follower.interval]);
+
+  const onChangeSystemSizeWithClear = (newSystemSizeContext: SystemContext): void => {
+    clearFollower();
+    setSystemSizeContext(newSystemSizeContext);
+  };
+
+  /**
+   * Function for following points of interest around the solar system.
+   *
+   * If something is already being followed, calling this will stop following.
+   * If the sun or the belt is selected it will just scroll them into view.
+   * If anything else is selected it will set an interval to scroll the element into view if it isn't already
+   * */
+  const poiOnClick = useCallback(
+    (pointOfInterest: PointOfInterest): void => {
+      if (pointOfInterest === follower.pointOfInterest) {
+        clearFollower();
+      } else if (pointOfInterest === pointsOfInterest.sun || pointOfInterest === pointsOfInterest.theBelt) {
+        clearFollower();
+        pointOfInterest.ref.current?.scrollIntoView(scrollOptions);
+      } else if (pointOfInterest.ref.current) {
+        clearFollower();
+        pointOfInterest.ref.current.scrollIntoView(scrollOptions);
+        doCallbackAfterElementIsVisible(pointOfInterest.ref.current, () => {
+          const interval = setInterval(() => scrollToElementIfNotVisible(pointOfInterest.ref.current), 1000);
+          setFollower({ pointOfInterest, interval });
+        });
+      }
+    },
+    [clearFollower, follower]
+  );
 
   return (
-    <AppContext.Provider value={state.systemSizeContext}>
-      <div className={appClassName}>
+    <AppContext.Provider value={systemSizeContext}>
+      <div className={clsx({ [styles.orbitsVisible]: orbitsVisible })}>
         <div className={styles.title}>
           <span>The System</span>
         </div>
-        <SystemNavMenu
-          pointsOfInterest={pointsOfInterest}
-          orbitsVisible={state.orbitsVisible}
-          onChangeSystemSize={onChangeSystemSize}
-          onOrbitsVisibleChange={onOrbitsVisibleChange}
+        <NavMenu
+          orbitsVisible={orbitsVisible}
+          pointsOfInterestMap={pointsOfInterest}
+          followedPointOfInterest={follower.pointOfInterest}
+          onChangeSystemSize={onChangeSystemSizeWithClear}
+          onOrbitsVisibleChange={setOrbitsVisible}
+          onFollowPointOfInterest={poiOnClick}
         />
         <TheSystem pointsOfInterest={pointsOfInterest} />
       </div>

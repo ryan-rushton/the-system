@@ -1,4 +1,5 @@
 .navItem {
+  composes: button from '../CommonStyles.module.scss';
   display: inline-block;
   font-size: 1.2em;
   padding-left: 10px;

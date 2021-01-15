@@ -1,11 +1,11 @@
-import React, { RefObject, ReactElement, CSSProperties, ReactNode, FC, useContext } from "react";
-import AppContext from "../../../SystemContext";
-import { SunConsts } from "../../../SharedConsts";
-import { MarsConsts } from "../TheSystem";
-import { JupiterConsts } from "../celestial-bodies/jupiter/Jupiter";
+import React, { RefObject, ReactElement, CSSProperties, ReactNode, FC, useContext } from 'react';
 
-import styles from "./TheBelt.module.scss";
-import BeltLayer from "./BeltLayer";
+import AppContext from '../../../SystemContext';
+import { SunConsts } from '../../../SharedConsts';
+import { MarsConsts } from '../TheSystem';
+import { JupiterConsts } from '../celestial-bodies/jupiter/Jupiter';
+import styles from './TheBelt.module.scss';
+import BeltLayer from './BeltLayer';
 
 interface Props {
   scrollToRef: RefObject<HTMLDivElement>;
@@ -48,7 +48,7 @@ const TheBelt: FC<Props> = ({ scrollToRef }) => {
   };
 
   const memoizedLayer = (includedRef?: RefObject<HTMLDivElement>): ReactNode => {
-    const refStatus = includedRef ? "hasRef" : "noRef";
+    const refStatus = includedRef ? 'hasRef' : 'noRef';
     const key = `${innerBelt}-${outerBelt}-${beltSize}-${refStatus}`;
 
     if (!beltCache.has(key)) {

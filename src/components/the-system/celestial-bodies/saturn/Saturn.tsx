@@ -1,6 +1,7 @@
-import React, { RefObject, FC } from "react";
-import Planet from "../bodies/Planet";
-import styles from "./Saturn.module.scss";
+import React, { RefObject, FC } from 'react';
+
+import Planet from '../bodies/Planet';
+import styles from './Saturn.module.scss';
 
 // This is radius including the rings
 export const SaturnConsts = {
