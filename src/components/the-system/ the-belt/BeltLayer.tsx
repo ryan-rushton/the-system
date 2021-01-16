@@ -1,7 +1,7 @@
 import React, { CSSProperties, FC, RefObject } from 'react';
 
 /** The number of divs each layer of the belt renders */
-const ROCK_COUNT = 15_000;
+const ROCK_COUNT = 7_500;
 
 const ROCK_COLOUR = '#d2d2d2';
 
@@ -15,22 +15,25 @@ interface Props {
 }
 
 /**
- * A single layer of 15k divs that make up the asteroid belt.
+ * A single layer of divs that make up the asteroid belt.
  */
 const BeltLayer: FC<Props> = ({ innerBoundary, outerBoundary, scrollToRef }) => {
   const rocks = [];
   const beltWidth = outerBoundary - innerBoundary;
 
-  for (let i = 0; i < ROCK_COUNT / 2; i += 1) {
+  for (let i = 0; i < ROCK_COUNT; i += 1) {
     // Distance from the center of the sun
     const distance = innerBoundary + beltWidth * Math.sin(Math.PI * Math.random());
     // Randomise the starting angular position.
     const angularPosition = 2 * Math.PI * Math.random();
     // Randomise the size between 1 and 2 pixels
     const size = 1 + Math.random();
-    // x & y coordinates relative to the center of the sun.
+
+    // x & y coordinates relative to the center of the sun. Probably not needed but they make it clear how left
+    // and top are calculated
     const x = distance * Math.cos(angularPosition);
     const y = distance * Math.sin(angularPosition);
+
     // By adding outerBoundary we are simulating starting at the center of the sun, x/y can be positive or negative.
     const left = outerBoundary + x;
     const top = outerBoundary + y;

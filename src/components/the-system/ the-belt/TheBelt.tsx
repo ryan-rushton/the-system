@@ -22,10 +22,12 @@ const beltCache = new Map<string, ReactElement>();
  * The belt is a large collection of divs that represents the asteroid belt in the solar system. There
  * are two layers rotating at different speeds so it appears objects are moving at different speeds.
  *
+ * When context is set to evenSpace, this still exists but the system is so large its hard to notice it!
+ *
  * It would be much faster and a better user experience to generate an image which we use on the main
  * element but this project was initially an investigation into React performance when dealing with large
- * collections of elements. It lead to the discovery of an issue in React Dev Tools,
- * https://github.com/facebook/react/issues/16501.
+ * collections of elements. I wanted to keep some of that since it is now just a demo project. It lead to
+ * the discovery of an issue in React Dev Tools, https://github.com/facebook/react/issues/16501.
  */
 const TheBelt: FC<Props> = ({ scrollToRef }) => {
   const {
@@ -59,6 +61,9 @@ const TheBelt: FC<Props> = ({ scrollToRef }) => {
         JupiterConsts.radius * sizeMultiplier;
 
       const distanceBetweenMarsAndJupiter = innerJupiter - outerMars;
+
+      // I couldn't find any decent numbers on how far the belt is from Mars and Jupiter so I went with
+      // some values that looked good with the enhanced visibility context.
       const innerBelt = outerMars + distanceBetweenMarsAndJupiter * 0.1;
       const outerBelt = outerMars + distanceBetweenMarsAndJupiter * 0.7;
       const distanceFromSystemOuterEdge = systemRadius - outerBelt;
