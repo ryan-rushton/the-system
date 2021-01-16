@@ -1,4 +1,4 @@
-import React, { RefObject, ReactElement, CSSProperties, ReactNode, FC, useContext } from 'react';
+import React, { RefObject, ReactElement, ReactNode, FC, useContext } from 'react';
 
 import AppContext from '../../../SystemContext';
 import { SunConsts } from '../../../SharedConsts';
@@ -8,53 +8,77 @@ import styles from './TheBelt.module.scss';
 import BeltLayer from './BeltLayer';
 
 interface Props {
+  /** The ref to place in the belt so we can scroll to the edge of the belt. */
   scrollToRef: RefObject<HTMLDivElement>;
 }
 
+/**
+ * We cache both sizes of the belt as the are relatively expensive to generate. Memo would
+ * only cache one, this allows us to cache both sizes each with two layers.
+ */
 const beltCache = new Map<string, ReactElement>();
 
+/**
+ * The belt is a large collection of divs that represents the asteroid belt in the solar system. There
+ * are two layers rotating at different speeds so it appears objects are moving at different speeds.
+ *
+ * It would be much faster and a better user experience to generate an image which we use on the main
+ * element but this project was initially an investigation into React performance when dealing with large
+ * collections of elements. It lead to the discovery of an issue in React Dev Tools,
+ * https://github.com/facebook/react/issues/16501.
+ */
 const TheBelt: FC<Props> = ({ scrollToRef }) => {
   const {
     multipliers: { distanceMultiplier, sizeMultiplier, orbitalPeriodMultiplier },
     systemRadius,
   } = useContext(AppContext);
 
-  const outerMars =
-    MarsConsts.distance * distanceMultiplier + SunConsts.radius * sizeMultiplier + MarsConsts.radius * sizeMultiplier;
-
-  const innerJupiter =
-    JupiterConsts.distance * distanceMultiplier +
-    SunConsts.radius * sizeMultiplier -
-    JupiterConsts.radius * sizeMultiplier;
-
-  const innerBelt = outerMars + (innerJupiter - outerMars) * 0.1;
-  const outerBelt = outerMars + (innerJupiter - outerMars) * 0.7;
-  const beltSize = outerBelt - innerBelt;
-
-  const getBeltStyle = (isFirstLayer: boolean): CSSProperties => {
-    const baseOrbitalPeriod = isFirstLayer
-      ? MarsConsts.orbitalPeriod
-      : Math.floor(MarsConsts.orbitalPeriod / 100) * 100;
-
-    const orbitalPeriod = baseOrbitalPeriod * orbitalPeriodMultiplier;
-
-    return {
-      animation: `orbit ${orbitalPeriod}s linear infinite`,
-      height: outerBelt * 2,
-      left: `calc(${systemRadius}px - ${outerBelt}px)`,
-      top: `calc(${systemRadius}px - ${outerBelt}px)`,
-      width: outerBelt * 2,
-    };
-  };
-
-  const memoizedLayer = (includedRef?: RefObject<HTMLDivElement>): ReactNode => {
+  /**
+   * Get the memoized belt layer. They are expensive to generate so this will create the belt layer the first
+   * time and get the cached result every other time the relevant context is used again.
+   *
+   * @param baseOrbitalPeriod The orbital period for the layer of the belt
+   * @param includedRef The ref so we can scroll to the edge of the belt
+   */
+  const memoizedLayer = (baseOrbitalPeriod: number, includedRef?: RefObject<HTMLDivElement>): ReactNode => {
     const refStatus = includedRef ? 'hasRef' : 'noRef';
-    const key = `${innerBelt}-${outerBelt}-${beltSize}-${refStatus}`;
+    // The system radius should identify which context we are using.
+    const key = `${systemRadius}-${baseOrbitalPeriod}-${refStatus}`;
 
     if (!beltCache.has(key)) {
+      // The distance from the middle of the sun to the furthest point of Mats.
+      const outerMars =
+        MarsConsts.distance * distanceMultiplier +
+        SunConsts.radius * sizeMultiplier +
+        MarsConsts.radius * sizeMultiplier;
+
+      // The distance from the middle of the sun to the closet point of Jupiter
+      const innerJupiter =
+        JupiterConsts.distance * distanceMultiplier +
+        SunConsts.radius * sizeMultiplier -
+        JupiterConsts.radius * sizeMultiplier;
+
+      const distanceBetweenMarsAndJupiter = innerJupiter - outerMars;
+      const innerBelt = outerMars + distanceBetweenMarsAndJupiter * 0.1;
+      const outerBelt = outerMars + distanceBetweenMarsAndJupiter * 0.7;
+      const distanceFromSystemOuterEdge = systemRadius - outerBelt;
+
+      const orbitalPeriod = baseOrbitalPeriod * orbitalPeriodMultiplier;
+
+      const style = {
+        animation: `orbit ${orbitalPeriod}s linear infinite`,
+        height: outerBelt * 2,
+        left: distanceFromSystemOuterEdge,
+        top: distanceFromSystemOuterEdge,
+        width: outerBelt * 2,
+      };
+
       const result = (
-        <BeltLayer innerBoundary={innerBelt} outerBoundary={outerBelt} size={beltSize} scrollToRef={includedRef} />
+        <div className={styles.beltLayer} style={style}>
+          <BeltLayer innerBoundary={innerBelt} outerBoundary={outerBelt} scrollToRef={includedRef} />
+        </div>
       );
+
       beltCache.set(key, result);
     }
 
@@ -63,12 +87,8 @@ const TheBelt: FC<Props> = ({ scrollToRef }) => {
 
   return (
     <div>
-      <div className={styles.beltLayer} style={getBeltStyle(true)}>
-        {memoizedLayer(scrollToRef)}
-      </div>
-      <div className={styles.beltLayer} style={getBeltStyle(false)}>
-        {memoizedLayer()}
-      </div>
+      {memoizedLayer(500, scrollToRef)}
+      {memoizedLayer(600)}
     </div>
   );
 };
