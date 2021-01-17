@@ -1,5 +1,6 @@
-import React, { FC, RefObject } from 'react';
+import React, { FC } from 'react';
 
+import { pointsOfInterest } from '../../../../PointsOfInterest';
 import Planet from '../bodies/Planet';
 import styles from './Jupiter.module.scss';
 
@@ -37,16 +38,12 @@ const callisto = {
   radius: 2410,
 };
 
-interface Props {
-  scrollToRef: RefObject<HTMLDivElement>;
-}
-
-const Jupiter: FC<Props> = ({ scrollToRef }) => (
+const Jupiter: FC = () => (
   <Planet
     name={styles.jupiter}
     planetConstants={JupiterConsts}
     moons={[io, europa, ganymede, callisto]}
-    scrollToRef={scrollToRef}
+    scrollToRef={pointsOfInterest.jupiter.ref}
   />
 );
 

@@ -7,7 +7,7 @@ import NavMenuSubsection from './NavMenuSubsection';
 import styles from './NavMenu.module.scss';
 import InfoMenu from './sub-menus/InfoMenu';
 import PointOfInterestButton from './sub-menus/PointOfInterestButton';
-import { PointOfInterest, PointsOfInterestMap } from '../../App';
+import { PointOfInterest, PointsOfInterestMap } from '../../PointsOfInterest';
 import { SystemContext } from '../../SystemContext';
 import useClickAndEnterKeyDown from '../../hooks/useClickAndEnterKeydown';
 

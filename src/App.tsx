@@ -1,4 +1,4 @@
-import React, { RefObject, useState, FC, useEffect, useCallback } from 'react';
+import React, { useState, FC, useEffect, useCallback } from 'react';
 import clsx from 'clsx';
 
 import TheSystem from './components/the-system/TheSystem';
@@ -6,73 +6,7 @@ import AppContext, { SystemContext, systemSize } from './SystemContext';
 import styles from './App.module.scss';
 import NavMenu from './components/nav-menu/NavMenu';
 import { doCallbackAfterElementIsVisible, scrollOptions, scrollToElementIfNotVisible } from './utils/DomUtil';
-
-export interface PointOfInterest {
-  ref: RefObject<HTMLDivElement>;
-  display: string;
-}
-
-type SystemNames =
-  | 'sun'
-  | 'mercury'
-  | 'venus'
-  | 'earth'
-  | 'mars'
-  | 'theBelt'
-  | 'jupiter'
-  | 'saturn'
-  | 'uranus'
-  | 'neptune'
-  | 'pluto';
-
-export type PointsOfInterestMap = { [K in SystemNames]: PointOfInterest };
-
-const pointsOfInterest: PointsOfInterestMap = {
-  sun: {
-    ref: React.createRef(),
-    display: 'Sun',
-  },
-  mercury: {
-    ref: React.createRef(),
-    display: 'Mercury',
-  },
-  venus: {
-    ref: React.createRef(),
-    display: 'Venus',
-  },
-  earth: {
-    ref: React.createRef(),
-    display: 'Earth',
-  },
-  mars: {
-    ref: React.createRef(),
-    display: 'Mars',
-  },
-  theBelt: {
-    ref: React.createRef(),
-    display: 'The Belt',
-  },
-  jupiter: {
-    ref: React.createRef(),
-    display: 'Jupiter',
-  },
-  saturn: {
-    ref: React.createRef(),
-    display: 'Saturn',
-  },
-  uranus: {
-    ref: React.createRef(),
-    display: 'Uranus',
-  },
-  neptune: {
-    ref: React.createRef(),
-    display: 'Neptune',
-  },
-  pluto: {
-    ref: React.createRef(),
-    display: 'Pluto',
-  },
-};
+import { pointsOfInterest, PointOfInterest } from './PointsOfInterest';
 
 interface FollowerState {
   /** The point of interest being followed. */

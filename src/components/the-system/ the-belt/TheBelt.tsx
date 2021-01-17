@@ -6,11 +6,7 @@ import { MarsConsts } from '../TheSystem';
 import { JupiterConsts } from '../celestial-bodies/jupiter/Jupiter';
 import styles from './TheBelt.module.scss';
 import BeltLayer from './BeltLayer';
-
-interface Props {
-  /** The ref to place in the belt so we can scroll to the edge of the belt. */
-  scrollToRef: RefObject<HTMLDivElement>;
-}
+import { pointsOfInterest } from '../../../PointsOfInterest';
 
 /**
  * We cache both sizes of the belt as the are relatively expensive to generate. Memo would
@@ -29,11 +25,13 @@ const beltCache = new Map<string, ReactElement>();
  * collections of elements. I wanted to keep some of that since it is now just a demo project. It lead to
  * the discovery of an issue in React Dev Tools, https://github.com/facebook/react/issues/16501.
  */
-const TheBelt: FC<Props> = ({ scrollToRef }) => {
+const TheBelt: FC = () => {
   const {
     multipliers: { distanceMultiplier, sizeMultiplier, orbitalPeriodMultiplier },
     systemRadius,
   } = useContext(AppContext);
+
+  const scrollToRef = pointsOfInterest.theBelt.ref;
 
   /**
    * Get the memoized belt layer. They are expensive to generate so this will create the belt layer the first
