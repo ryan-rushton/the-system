@@ -41,9 +41,8 @@ const TheBelt: FC = () => {
    * @param includedRef The ref so we can scroll to the edge of the belt
    */
   const memoizedLayer = (baseOrbitalPeriod: number, includedRef?: RefObject<HTMLDivElement>): ReactNode => {
-    const refStatus = includedRef ? 'hasRef' : 'noRef';
     // The system radius should identify which context we are using.
-    const key = `${systemRadius}-${baseOrbitalPeriod}-${refStatus}`;
+    const key = `${systemRadius}-${baseOrbitalPeriod}-${Boolean(includedRef)}`;
 
     if (!beltCache.has(key)) {
       // The distance from the middle of the sun to the furthest point of Mats.
@@ -89,7 +88,7 @@ const TheBelt: FC = () => {
   };
 
   return (
-    <div>
+    <div data-testid="the-belt">
       {memoizedLayer(500, scrollToRef)}
       {memoizedLayer(600)}
     </div>

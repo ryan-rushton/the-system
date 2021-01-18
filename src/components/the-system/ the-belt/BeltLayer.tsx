@@ -48,7 +48,7 @@ const BeltLayer: FC<Props> = ({ innerBoundary, outerBoundary, scrollToRef }) => 
       width: size,
     };
 
-    rocks.push(<div key={`belt-rock-${i}`} style={style} ref={scrollToRef} />);
+    rocks.push(<div data-testid="belt-rock" key={`belt-rock-${i}`} style={style} ref={scrollToRef} />);
   }
 
   // We add an extra div with a ref to scroll to if scrollToRef is present.
@@ -64,7 +64,7 @@ const BeltLayer: FC<Props> = ({ innerBoundary, outerBoundary, scrollToRef }) => 
       width: 2,
     };
 
-    rocks.push(<div key={`belt-ref`} style={style} ref={scrollToRef} />);
+    rocks.push(<div data-testid="belt-ref" key={`belt-ref`} style={style} ref={scrollToRef} />);
   }
 
   return <>{rocks}</>;
