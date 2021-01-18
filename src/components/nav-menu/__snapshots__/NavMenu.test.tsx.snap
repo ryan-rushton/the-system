@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavMenu it matches snapshot 1`] = `
+<div
+  class="nav"
+  data-testid="nav-menu"
+>
+  <div
+    class="header"
+  >
+    <div
+      class="headerButton"
+      role="button"
+      tabindex="0"
+    >
+      <svg
+        aria-hidden="true"
+        class="svg-inline--fa fa-bars fa-w-14 "
+        data-icon="bars"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        viewBox="0 0 448 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+  </div>
+  <div
+    class="menu"
+  >
+    <div
+      class="title"
+      role="button"
+      tabindex="0"
+    >
+      Info
+    </div>
+    <div
+      class="content"
+      style="max-height: 0;"
+    >
+      <div
+        data-testid="info-menu"
+      >
+        <div
+          class="heading"
+        >
+          Time
+        </div>
+        <div
+          class="stat"
+          data-testid="time"
+        >
+          1 s = 1 day
+        </div>
+        <div
+          class="heading"
+        >
+          Distance Between Planets
+        </div>
+        <div
+          class="stat"
+          data-testid="planet-distance"
+        >
+          1 pixel = 100,000 km
+        </div>
+        <div
+          class="heading"
+        >
+          Distance Between Planets And Moons
+        </div>
+        <div
+          class="stat"
+          data-testid="satellite-distance"
+        >
+          1 pixel = 10,000 km
+        </div>
+        <div
+          class="heading"
+        >
+          Planet Size
+        </div>
+        <div
+          class="stat"
+          data-testid="planet-size"
+        >
+          1 pixel = 2,000 km
+        </div>
+        <div
+          class="buttonWrapper"
+        >
+          <div
+            aria-label="Normalise Distance"
+            class="button"
+            role="button"
+          >
+            Normalise Distance
+          </div>
+        </div>
+        <div
+          class="buttonWrapper"
+        >
+          <div
+            aria-label="Show Orbits"
+            class="button"
+            role="button"
+          >
+            Show Orbits
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="title"
+      role="button"
+      tabindex="0"
+    >
+      Navigation
+    </div>
+    <div
+      class="content"
+      style="max-height: 0;"
+    >
+      <div>
+        <div
+          aria-label="Sun"
+          class="navItem"
+          role="button"
+        >
+          Sun
+        </div>
+      </div>
+      <div>
+        <div
+          aria-label="Mercury"
+          class="navItem"
+          role="button"
+        >
+          Mercury
+        </div>
+      </div>
+      <div>
+        <div
+          aria-label="Venus"
+          class="navItem"
+          role="button"
+        >
+          Venus
+        </div>
+      </div>
+      <div>
+        <div
+          aria-label="Earth"
+          class="navItem"
+          role="button"
+        >
+          Earth
+        </div>
+      </div>
+      <div>
+        <div
+          aria-label="Mars"
+          class="navItem"
+          role="button"
+        >
+          Mars
+        </div>
+      </div>
+      <div>
+        <div
+          aria-label="The Belt"
+          class="navItem"
+          role="button"
+        >
+          The Belt
+        </div>
+      </div>
+      <div>
+        <div
+          aria-label="Jupiter"
+          class="navItem"
+          role="button"
+        >
+          Jupiter
+        </div>
+      </div>
+      <div>
+        <div
+          aria-label="Saturn"
+          class="navItem"
+          role="button"
+        >
+          Saturn
+        </div>
+      </div>
+      <div>
+        <div
+          aria-label="Uranus"
+          class="navItem"
+          role="button"
+        >
+          Uranus
+        </div>
+      </div>
+      <div>
+        <div
+          aria-label="Neptune"
+          class="navItem"
+          role="button"
+        >
+          Neptune
+        </div>
+      </div>
+      <div>
+        <div
+          aria-label="Pluto"
+          class="navItem"
+          role="button"
+        >
+          Pluto
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Planet it matches the snapshot 1`] = `
+<div
+  class="orbit orbitLine"
+  data-testid="celestial-body"
+  style="animation: orbit 4331s linear infinite; height: 16267.508000000002px; left: 75888.8301142454px; top: 75888.8301142454px; width: 16267.508000000002px;"
+>
+  <div
+    class="celestialBody some-styles"
+    style="animation: planet-rotation 4331s linear infinite; height: 71.498px; left: -35.749px; top: 50%; width: 71.498px;"
+    title="some-styles"
+  >
+    <div
+      class="orbit orbitLine"
+      data-testid="celestial-body"
+      style="animation: orbit 1.77s linear infinite; height: 155.83800000000002px; left: -42.17000000000001px; top: -42.17000000000001px; width: 155.83800000000002px;"
+    >
+      <div
+        class="celestialBody satellite"
+        style="animation: planet-rotation 1.77s linear infinite; height: 2px; left: -1px; top: 50%; width: 2px;"
+        title="satellite"
+      />
+    </div>
+    <div
+      class="orbit orbitLine"
+      data-testid="celestial-body"
+      style="animation: orbit 3.55s linear infinite; height: 205.678px; left: -67.09px; top: -67.09px; width: 205.678px;"
+    >
+      <div
+        class="celestialBody satellite"
+        style="animation: planet-rotation 3.55s linear infinite; height: 2px; left: -1px; top: 50%; width: 2px;"
+        title="satellite"
+      />
+    </div>
+    <div
+      class="orbit orbitLine"
+      data-testid="celestial-body"
+      style="animation: orbit 7.15s linear infinite; height: 285.57800000000003px; left: -107.04px; top: -107.04px; width: 285.57800000000003px;"
+    >
+      <div
+        class="celestialBody satellite"
+        style="animation: planet-rotation 7.15s linear infinite; height: 2.634px; left: -1.317px; top: 50%; width: 2.634px;"
+        title="satellite"
+      />
+    </div>
+    <div
+      class="orbit orbitLine"
+      data-testid="celestial-body"
+      style="animation: orbit 16.69s linear infinite; height: 448.038px; left: -188.27px; top: -188.27px; width: 448.038px;"
+    >
+      <div
+        class="celestialBody satellite"
+        style="animation: planet-rotation 16.69s linear infinite; height: 2.41px; left: -1.205px; top: 50%; width: 2.41px;"
+        title="satellite"
+      />
+    </div>
+  </div>
+</div>
+`;

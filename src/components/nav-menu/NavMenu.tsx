@@ -1,29 +1,27 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { CSSProperties, FC, useState, useRef } from 'react';
+import React, { CSSProperties, FC, useState, useRef, RefObject } from 'react';
 
 import { getDistanceToTop } from '../../utils/DomUtil';
 import NavMenuSubsection from './NavMenuSubsection';
 import styles from './NavMenu.module.scss';
 import InfoMenu from './sub-menus/InfoMenu';
 import PointOfInterestButton from './sub-menus/PointOfInterestButton';
-import { PointOfInterest, PointsOfInterestMap } from '../../PointsOfInterest';
-import { SystemContext } from '../../SystemContext';
+import { pointsOfInterest } from '../../PointsOfInterest';
+import { SystemContext } from '../../context/SystemContext';
 import useClickAndEnterKeyDown from '../../hooks/useClickAndEnterKeydown';
 
 interface Props {
   /** Whether the red orbit lines are visible. */
   orbitsVisible: boolean;
-  /** The collection of points of interest. */
-  pointsOfInterestMap: PointsOfInterestMap;
   /** The point of interest currently being followed. */
-  followedPointOfInterest?: PointOfInterest;
+  followedPointOfInterest?: { ref: RefObject<HTMLDivElement> };
   /** Change handler for whether the red orbit lines are visible. */
   onOrbitsVisibleChange(orbitsVisible: boolean): void;
   /** Change handler for normalising km per pixel. */
   onChangeSystemSize(systemSizeContext: SystemContext): void;
   /** A handler for following a point of interest around the solar system. */
-  onFollowPointOfInterest(pointOfInterest: PointOfInterest): void;
+  onFollowPointOfInterest(pointOfInterest: { ref: RefObject<HTMLDivElement> }): void;
 }
 
 type OpenSubsectionState = 'info' | 'nav' | undefined;
@@ -37,7 +35,6 @@ type OpenSubsectionState = 'info' | 'nav' | undefined;
  */
 const NavMenu: FC<Props> = ({
   orbitsVisible,
-  pointsOfInterestMap,
   followedPointOfInterest,
   onChangeSystemSize,
   onOrbitsVisibleChange,
@@ -63,13 +60,7 @@ const NavMenu: FC<Props> = ({
   return (
     <div data-testid="nav-menu" className={styles.nav}>
       <div className={styles.header}>
-        <div
-          className={`${styles.headerButton}`}
-          onClick={onMenuClick}
-          onKeyPress={onMenuEnter}
-          role="button"
-          tabIndex={0}
-        >
+        <div className={styles.headerButton} onClick={onMenuClick} onKeyPress={onMenuEnter} role="button" tabIndex={0}>
           <FontAwesomeIcon icon={faBars} />
         </div>
       </div>
@@ -92,12 +83,12 @@ const NavMenu: FC<Props> = ({
           onHeaderClick={() => onSubsectionClick('nav')}
         >
           <>
-            {Object.values(pointsOfInterestMap).map((poi) => (
+            {Object.values(pointsOfInterest).map((poi) => (
               <PointOfInterestButton
+                isBeingFollowed={poi === followedPointOfInterest}
                 isVisible={openSubsection === 'nav'}
                 key={poi.display}
                 pointOfInterest={poi}
-                isBeingFollowed={poi === followedPointOfInterest}
                 onPoiClick={() => onFollowPointOfInterest(poi)}
               />
             ))}

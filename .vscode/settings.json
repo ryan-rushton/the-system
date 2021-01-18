@@ -4,12 +4,16 @@
   "cSpell.words": [
     "clsx",
     "consts",
+    "divs",
     "dropdown",
     "elem",
     "fontawesome",
     "fortawesome",
+    "janky",
     "memoized",
     "normalise",
+    "precached",
+    "rerender",
     "stat",
     "subheader",
     "testid",
@@ -35,6 +39,6 @@
     "text",
     "typescript",
     "typescriptreact"
-],
-"editor.tabSize": 2
+  ],
+  "editor.tabSize": 2
 }

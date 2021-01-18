@@ -1,6 +1,7 @@
 import React, { useContext, FC } from 'react';
+import clsx from 'clsx';
 
-import AppContext, { systemSize, SystemContext } from '../../../SystemContext';
+import AppContext, { systemSize, SystemContext } from '../../../context/SystemContext';
 import styles from './InfoMenu.module.scss';
 import useClickAndEnterKeyDown from '../../../hooks/useClickAndEnterKeydown';
 
@@ -28,8 +29,6 @@ const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onO
   const kmPerPixelDistance = Math.round(1 / distanceMultiplier).toLocaleString();
   const kmPerPixelSatellite = Math.round(1 / satelliteDist).toLocaleString();
   const kmPerPixelSize = Math.round(1 / sizeMultiplier).toLocaleString();
-  const normaliseButtonStatus = systemSize.evenSpace === context ? ` ${styles.buttonActive}` : '';
-  const orbitButtonStatus = orbitsVisible ? ` ${styles.buttonActive}` : '';
 
   const [onOrbitChangeClick, onOrbitChangeEnter] = useClickAndEnterKeyDown((): void =>
     onOrbitsVisibleChange(!orbitsVisible)
@@ -42,7 +41,7 @@ const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onO
   });
 
   return (
-    <div data-testid="InfoMenu.tsx">
+    <div data-testid="info-menu">
       <div className={styles.heading}>Time</div>
       <div data-testid="time" className={styles.stat}>{`${daysPerSecond} s = 1 day`}</div>
       <div className={styles.heading}>Distance Between Planets</div>
@@ -53,7 +52,7 @@ const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onO
       <div data-testid="planet-size" className={styles.stat}>{`1 pixel = ${kmPerPixelSize} km`}</div>
       <div className={styles.buttonWrapper}>
         <div
-          className={`${styles.button}${normaliseButtonStatus}`}
+          className={clsx(styles.button, { [styles.buttonActive]: systemSize.evenSpace === context })}
           onClick={onSizeChangeClick}
           onKeyDown={onSizeChangeEnter}
           role="button"
@@ -65,7 +64,7 @@ const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onO
       </div>
       <div className={styles.buttonWrapper}>
         <div
-          className={`${styles.button}${orbitButtonStatus}`}
+          className={clsx(styles.button, { [styles.buttonActive]: orbitsVisible })}
           onClick={onOrbitChangeClick}
           onKeyDown={onOrbitChangeEnter}
           role="button"

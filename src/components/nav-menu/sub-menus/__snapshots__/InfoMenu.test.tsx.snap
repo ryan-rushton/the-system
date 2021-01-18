@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoMenu it matches snapshot 1`] = `
+<div
+  data-testid="info-menu"
+>
+  <div
+    class="heading"
+  >
+    Time
+  </div>
+  <div
+    class="stat"
+    data-testid="time"
+  >
+    1 s = 1 day
+  </div>
+  <div
+    class="heading"
+  >
+    Distance Between Planets
+  </div>
+  <div
+    class="stat"
+    data-testid="planet-distance"
+  >
+    1 pixel = 100,000 km
+  </div>
+  <div
+    class="heading"
+  >
+    Distance Between Planets And Moons
+  </div>
+  <div
+    class="stat"
+    data-testid="satellite-distance"
+  >
+    1 pixel = 10,000 km
+  </div>
+  <div
+    class="heading"
+  >
+    Planet Size
+  </div>
+  <div
+    class="stat"
+    data-testid="planet-size"
+  >
+    1 pixel = 2,000 km
+  </div>
+  <div
+    class="buttonWrapper"
+  >
+    <div
+      aria-label="Normalise Distance"
+      class="button"
+      role="button"
+    >
+      Normalise Distance
+    </div>
+  </div>
+  <div
+    class="buttonWrapper"
+  >
+    <div
+      aria-label="Show Orbits"
+      class="button"
+      role="button"
+    >
+      Show Orbits
+    </div>
+  </div>
+</div>
+`;

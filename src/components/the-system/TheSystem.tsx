@@ -1,48 +1,18 @@
 import React, { useContext, FC } from 'react';
 
-import AppContext from '../../SystemContext';
-import Sun from './celestial-bodies/sun/Sun';
+import AppContext from '../../context/SystemContext';
 import TheBelt from './ the-belt/TheBelt';
-import Earth from './celestial-bodies/earth/Earth';
-import Jupiter from './celestial-bodies/jupiter/Jupiter';
-import Saturn from './celestial-bodies/saturn/Saturn';
-import Neptune from './celestial-bodies/neptune/Neptune';
-import Planet from './celestial-bodies/bodies/Planet';
-import { PlutoConsts } from '../../SharedConsts';
+import Planet from './Planet';
 import styles from './TheSystem.module.scss';
-import { PointsOfInterestMap } from '../../PointsOfInterest';
+import { pointsOfInterest } from '../../PointsOfInterest';
+import CelestialBody from './celestial-body/CelestialBody';
 
-const MercuryConsts = {
-  radius: 2440,
-  distance: 57900000,
-  orbitalPeriod: 88,
-};
-
-const VenusConsts = {
-  radius: 6052,
-  distance: 108200000,
-  orbitalPeriod: 224.7,
-};
-
-export const MarsConsts = {
-  radius: 3396,
-  distance: 227900000,
-  orbitalPeriod: 687,
-};
-
-const UranusConsts = {
-  radius: 25559,
-  distance: 2872500000,
-  orbitalPeriod: 30589,
-};
-
-interface Props {
-  pointsOfInterest: PointsOfInterestMap;
-}
-
-const TheSystem: FC<Props> = ({ pointsOfInterest }) => {
-  const { mercury, venus, mars, uranus, pluto } = pointsOfInterest;
-  const { systemRadius } = useContext(AppContext);
+/**
+ * The Solar System! It is memoized so this only re-renders when the context is changed.
+ */
+const TheSystem: FC = () => {
+  const { sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto } = pointsOfInterest;
+  const { systemRadius, multipliers } = useContext(AppContext);
 
   const systemStyle = {
     height: 2 * systemRadius,
@@ -52,17 +22,81 @@ const TheSystem: FC<Props> = ({ pointsOfInterest }) => {
   return (
     <div className={styles.theSystem} style={systemStyle}>
       <div className={styles.sunsGlow} style={systemStyle}>
-        <Planet name={styles.pluto} planetConstants={PlutoConsts} scrollToRef={pluto.ref} />
-        <Neptune />
-        <Planet name={styles.uranus} planetConstants={UranusConsts} scrollToRef={uranus.ref} />
-        <Jupiter />
-        <Saturn />
+        <Planet
+          className={styles.pluto}
+          distance={pluto.distance}
+          orbitalPeriod={pluto.orbitalPeriod}
+          radius={pluto.radius}
+          scrollToRef={pluto.ref}
+        />
+        <Planet
+          className={styles.neptune}
+          distance={neptune.distance}
+          orbitalPeriod={neptune.orbitalPeriod}
+          radius={neptune.radius}
+          scrollToRef={neptune.ref}
+        />
+        <Planet
+          className={styles.uranus}
+          distance={uranus.distance}
+          orbitalPeriod={uranus.orbitalPeriod}
+          radius={uranus.radius}
+          scrollToRef={uranus.ref}
+        />
+        <Planet
+          className={styles.saturn}
+          distance={saturn.distance}
+          orbitalPeriod={saturn.orbitalPeriod}
+          radius={saturn.radius}
+          satellites={saturn.satellites}
+          scrollToRef={saturn.ref}
+        />
+        <Planet
+          className={styles.jupiter}
+          distance={jupiter.distance}
+          orbitalPeriod={jupiter.orbitalPeriod}
+          radius={jupiter.radius}
+          satellites={jupiter.satellites}
+          scrollToRef={jupiter.ref}
+        />
         <TheBelt />
-        <Planet name={styles.mars} planetConstants={MarsConsts} scrollToRef={mars.ref} />
-        <Earth />
-        <Planet name={styles.venus} planetConstants={VenusConsts} scrollToRef={venus.ref} />
-        <Planet name={styles.mercury} planetConstants={MercuryConsts} scrollToRef={mercury.ref} />
-        <Sun />
+        <Planet
+          className={styles.mars}
+          distance={mars.distance}
+          orbitalPeriod={mars.orbitalPeriod}
+          radius={mars.radius}
+          scrollToRef={mars.ref}
+        />
+        <Planet
+          className={styles.earth}
+          distance={earth.distance}
+          orbitalPeriod={earth.orbitalPeriod}
+          radius={earth.radius}
+          satellites={earth.satellites}
+          scrollToRef={earth.ref}
+        />
+        <Planet
+          className={styles.venus}
+          distance={venus.distance}
+          orbitalPeriod={venus.orbitalPeriod}
+          radius={venus.radius}
+          scrollToRef={venus.ref}
+        />
+        <Planet
+          className={styles.mercury}
+          distance={mercury.distance}
+          orbitalPeriod={mercury.orbitalPeriod}
+          radius={mercury.radius}
+          scrollToRef={mercury.ref}
+        />
+        <CelestialBody
+          className={styles.sun}
+          distance={0}
+          orbitalPeriod={0}
+          radius={multipliers.sizeMultiplier * sun.radius}
+          referenceRadius={systemRadius}
+          scrollToRef={pointsOfInterest.sun.ref}
+        />
       </div>
     </div>
   );

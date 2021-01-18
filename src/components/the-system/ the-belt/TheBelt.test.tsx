@@ -10,9 +10,9 @@ describe('TheBelt', () => {
   });
 
   test('the belt cache works', () => {
-    const intitalRenderStart = performance.now();
+    const initialRenderStart = performance.now();
     const { rerender } = render(<TheBelt />);
-    const initialRenderTime = performance.now() - intitalRenderStart;
+    const initialRenderTime = performance.now() - initialRenderStart;
 
     console.info(`Initial render of the belt took ${initialRenderTime}ms`);
 

@@ -3,6 +3,10 @@
   position: relative;
 }
 
+.sun {
+  background: radial-gradient(ellipse at center, #ffd000 1%, #f9b700 39%, #f9b700 39%, #e06317 100%);
+}
+
 .sunsGlow {
   background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
   position: absolute;
@@ -16,12 +20,39 @@
   background-color: #c5aa75;
 }
 
+.earth {
+  background-color: #4a83a0;
+}
+
 .mars {
   background-color: #ca5202;
 }
 
 .uranus {
   background-color: #c2eaee;
+}
+
+.jupiter {
+  background-image: url('./assets/Jupiter.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: rotate(5deg);
+}
+
+.saturn {
+  background-image: url('./assets/Saturn.svg');
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: rotate(20deg);
+}
+
+.neptune {
+  background-image: url('./assets/Neptune.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .pluto {

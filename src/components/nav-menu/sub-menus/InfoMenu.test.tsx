@@ -3,14 +3,22 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import InfoMenu from './InfoMenu';
-import AppContext, { systemSize } from '../../../SystemContext';
+import AppContext, { systemSize } from '../../../context/SystemContext';
 
 describe('InfoMenu', () => {
   test('it renders', () => {
     render(<InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={jest.fn()} />);
-    const element = screen.getByTestId('InfoMenu.tsx');
+    const element = screen.getByTestId('info-menu');
 
     expect(element).toBeInTheDocument();
+  });
+
+  test('it matches snapshot', () => {
+    const { container } = render(
+      <InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={jest.fn()} />
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test('it changes orbits visible when Show Orbits clicked', () => {
