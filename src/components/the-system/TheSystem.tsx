@@ -8,7 +8,7 @@ import { pointsOfInterest } from '../../PointsOfInterest';
 import CelestialBody from './celestial-body/CelestialBody';
 
 /**
- * The Solar System! It is memoized so this only rerenders when the context is changed.
+ * The Solar System! It is memoized so this only re-renders when the context is changed.
  */
 const TheSystem: FC = () => {
   const { sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto } = pointsOfInterest;

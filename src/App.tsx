@@ -40,7 +40,7 @@ const App: FC = () => {
     setSystemSizeContext(newSystemSizeContext);
   };
 
-  const setFollowerInterval = (pointOfInterest: { ref: RefObject<HTMLDivElement> }) => {
+  const createIntervalAndSetFollower = (pointOfInterest: { ref: RefObject<HTMLDivElement> }) => {
     const interval = setInterval(() => scrollToElementIfNotVisible(pointOfInterest.ref.current), 1000);
     setFollower({ pointOfInterest, interval });
   };
@@ -65,7 +65,9 @@ const App: FC = () => {
         // scroll and set follower for most object
         clearFollower();
         pointOfInterest.ref.current.scrollIntoView(scrollOptions);
-        doCallbackAfterElementIsVisible(pointOfInterest.ref.current, () => setFollowerInterval(pointOfInterest));
+        doCallbackAfterElementIsVisible(pointOfInterest.ref.current, () =>
+          createIntervalAndSetFollower(pointOfInterest)
+        );
       }
     },
     [clearFollower, follower]

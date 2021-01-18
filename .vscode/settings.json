@@ -9,8 +9,10 @@
     "elem",
     "fontawesome",
     "fortawesome",
+    "janky",
     "memoized",
     "normalise",
+    "precached",
     "rerender",
     "stat",
     "subheader",
@@ -37,6 +39,6 @@
     "text",
     "typescript",
     "typescriptreact"
-],
-"editor.tabSize": 2
+  ],
+  "editor.tabSize": 2
 }
