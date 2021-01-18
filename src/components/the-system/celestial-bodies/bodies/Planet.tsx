@@ -35,6 +35,7 @@ interface Props {
  */
 const Planet: FC<Props> = ({ className, distance, radius, orbitalPeriod, scrollToRef, satellites }) => {
   const {
+    systemRadius,
     multipliers: { distanceMultiplier, sizeMultiplier, orbitalPeriodMultiplier, satelliteDist },
   } = useContext(AppContext);
 
@@ -49,9 +50,9 @@ const Planet: FC<Props> = ({ className, distance, radius, orbitalPeriod, scrollT
     return {
       className: styles.satellite,
       radius: satelliteRadius,
-      distance: satellite.distance * satelliteDist - adjustedRadius - satelliteRadius,
+      distance: satellite.distance * satelliteDist + adjustedRadius - satelliteRadius,
       orbitalPeriod: satellite.orbitalPeriod * orbitalPeriodMultiplier,
-      planetRadius: adjustedRadius,
+      referenceRadius: adjustedRadius,
       hasOrbitLine: true,
     };
   };
@@ -64,6 +65,7 @@ const Planet: FC<Props> = ({ className, distance, radius, orbitalPeriod, scrollT
       orbitalPeriod={adjustedOrbitalPeriod}
       radius={adjustedRadius}
       satellites={satellites?.map(satelliteToCelestialBody)}
+      referenceRadius={systemRadius}
       scrollToRef={scrollToRef}
     />
   );

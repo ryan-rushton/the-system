@@ -1,7 +1,6 @@
 import clsx from 'clsx';
-import React, { RefObject, FC, useContext } from 'react';
+import React, { RefObject, FC } from 'react';
 
-import AppContext from '../../../../SystemContext';
 import styles from './CelestialBody.module.scss';
 import './CelestialBodyAnimations.scss';
 
@@ -17,10 +16,11 @@ export interface CelestialBodyProps {
   /** Whether the red orbit line is visible. */
   hasOrbitLine?: boolean;
   /**
-   * If this is a satellite, this planet radius will be populated.
-   * It is so we can figure out how far the center of orbit is.
+   * This is the reference point the left and top calculations are referencing.
+   *
+   * This should either be the system radius for planets/sun or the radius of whatever the satellite is orbiting.
    * */
-  planetRadius?: number;
+  referenceRadius: number;
   /** Any satellites that are orbiting this body. */
   satellites?: CelestialBodyProps[];
   /** A ref so that we can scroll to this body. */
@@ -42,30 +42,27 @@ const CelestialBody: FC<CelestialBodyProps> = ({
   orbitalPeriod,
   radius,
   hasOrbitLine,
-  planetRadius,
+  referenceRadius,
   satellites,
   scrollToRef,
 }) => {
-  const { systemRadius } = useContext(AppContext);
-
   // orbit calcs and style
-  const referencePoint = planetRadius ? 0 : systemRadius;
-  const referencePointRadius = planetRadius || 0;
-  const center = referencePoint - distance - radius;
-  const heightWidth = 2 * (distance + radius + referencePointRadius);
+  const edgeOffset = referenceRadius - distance - radius;
+  const heightWidth = 2 * (distance + radius);
 
   const orbitStyles = {
     animation: `orbit ${orbitalPeriod}s linear infinite`,
     height: heightWidth,
-    left: center,
-    top: center,
+    left: edgeOffset,
+    top: edgeOffset,
     width: heightWidth,
   };
 
   // body calcs and style
   // Assume something with distance 0 (this sun) is already centred
   const top = distance > 0 ? '50%' : 0;
-  const left = distance > 0 ? `${-radius - 1}px` : 0;
+  // left needs to be negative so the center of the body sits on the orbit line.
+  const left = distance > 0 ? `${-radius}px` : 0;
 
   const bodyStyle = {
     animation: `planet-rotation ${orbitalPeriod}s linear infinite`,

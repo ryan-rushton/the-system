@@ -95,6 +95,7 @@ const TheSystem: FC = () => {
           radius={multipliers.sizeMultiplier * sun.radius}
           orbitalPeriod={0}
           scrollToRef={pointsOfInterest.sun.ref}
+          referenceRadius={systemRadius}
         />
       </div>
     </div>
