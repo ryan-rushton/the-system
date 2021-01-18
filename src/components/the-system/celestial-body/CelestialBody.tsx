@@ -62,18 +62,18 @@ const CelestialBody: FC<CelestialBodyProps> = ({
   // Assume something with distance 0 (this sun) is already centred
   const top = distance > 0 ? '50%' : 0;
   // left needs to be negative so the center of the body sits on the orbit line.
-  const left = distance > 0 ? `${-radius}px` : 0;
+  const left = distance > 0 ? -radius : 0;
 
   const bodyStyle = {
     animation: `planet-rotation ${orbitalPeriod}s linear infinite`,
-    height: `${radius * 2}px`,
+    height: radius * 2,
     left,
     top,
-    width: `${radius * 2}px`,
+    width: radius * 2,
   };
 
   return (
-    <div className={clsx(styles.orbit, { orbitLine: hasOrbitLine })} style={orbitStyles}>
+    <div data-testid="celestial-body" className={clsx(styles.orbit, { orbitLine: hasOrbitLine })} style={orbitStyles}>
       <div className={clsx(styles.celestialBody, className)} title={className} ref={scrollToRef} style={bodyStyle}>
         {satellites?.map((satellite) => (
           <CelestialBody key={`satellite-${satellite.className}`} {...satellite} />
