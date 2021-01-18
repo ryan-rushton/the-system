@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import InfoMenu from './InfoMenu';
-import AppContext, { systemSize } from '../../../SystemContext';
+import AppContext, { systemSize } from '../../../context/SystemContext';
 
 describe('InfoMenu', () => {
   test('it renders', () => {

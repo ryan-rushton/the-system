@@ -8,7 +8,7 @@ import styles from './NavMenu.module.scss';
 import InfoMenu from './sub-menus/InfoMenu';
 import PointOfInterestButton from './sub-menus/PointOfInterestButton';
 import { pointsOfInterest } from '../../PointsOfInterest';
-import { SystemContext } from '../../SystemContext';
+import { SystemContext } from '../../context/SystemContext';
 import useClickAndEnterKeyDown from '../../hooks/useClickAndEnterKeydown';
 
 interface Props {

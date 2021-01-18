@@ -1,11 +1,11 @@
 import React, { useContext, FC } from 'react';
 
-import AppContext from '../../SystemContext';
+import AppContext from '../../context/SystemContext';
 import TheBelt from './ the-belt/TheBelt';
-import Planet from './celestial-bodies/bodies/Planet';
+import Planet from './Planet';
 import styles from './TheSystem.module.scss';
 import { pointsOfInterest } from '../../PointsOfInterest';
-import CelestialBody from './celestial-bodies/bodies/CelestialBody';
+import CelestialBody from './celestial-body/CelestialBody';
 
 /**
  * The Solar System! It is memoized so this only rerenders when the context is changed.

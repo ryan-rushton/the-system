@@ -1,8 +1,8 @@
 import React, { useContext, RefObject, FC } from 'react';
 
-import AppContext from '../../../../SystemContext';
-import CelestialBody, { CelestialBodyProps } from './CelestialBody';
-import { pointsOfInterest } from '../../../../PointsOfInterest';
+import AppContext from '../../context/SystemContext';
+import CelestialBody, { CelestialBodyProps } from './celestial-body/CelestialBody';
+import { pointsOfInterest } from '../../PointsOfInterest';
 import styles from './Planet.module.scss';
 
 /** Represents details used for the moon of a planet. */
@@ -16,7 +16,7 @@ interface Satellite {
 }
 
 interface Props {
-  /** Classname to give the element, passed to CelestialBody. */
+  /** Class name to give the element, passed to CelestialBody. */
   className: string;
   /** A ref so that we can scroll to planet when it is selected in the nav menu. */
   scrollToRef: RefObject<HTMLDivElement>;
@@ -44,8 +44,8 @@ const Planet: FC<Props> = ({ className, distance, radius, orbitalPeriod, scrollT
   const adjustedOrbitalPeriod = orbitalPeriod * orbitalPeriodMultiplier;
 
   const satelliteToCelestialBody = (satellite: Satellite): CelestialBodyProps => {
-    // Make sure the moons are at lease 0.5px so they render.
-    const satelliteRadius = Math.max(0.5, satellite.radius * sizeMultiplier);
+    // Make sure the moons are at least 1px so they can be seen.
+    const satelliteRadius = Math.max(1, satellite.radius * sizeMultiplier);
 
     return {
       className: styles.satellite,

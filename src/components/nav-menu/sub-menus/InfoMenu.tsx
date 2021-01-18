@@ -1,7 +1,7 @@
 import React, { useContext, FC } from 'react';
 import clsx from 'clsx';
 
-import AppContext, { systemSize, SystemContext } from '../../../SystemContext';
+import AppContext, { systemSize, SystemContext } from '../../../context/SystemContext';
 import styles from './InfoMenu.module.scss';
 import useClickAndEnterKeyDown from '../../../hooks/useClickAndEnterKeydown';
 
