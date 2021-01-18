@@ -7,15 +7,13 @@ import NavMenuSubsection from './NavMenuSubsection';
 import styles from './NavMenu.module.scss';
 import InfoMenu from './sub-menus/InfoMenu';
 import PointOfInterestButton from './sub-menus/PointOfInterestButton';
-import { PointsOfInterestMap } from '../../PointsOfInterest';
+import { pointsOfInterest } from '../../PointsOfInterest';
 import { SystemContext } from '../../SystemContext';
 import useClickAndEnterKeyDown from '../../hooks/useClickAndEnterKeydown';
 
 interface Props {
   /** Whether the red orbit lines are visible. */
   orbitsVisible: boolean;
-  /** The collection of points of interest. */
-  pointsOfInterestMap: PointsOfInterestMap;
   /** The point of interest currently being followed. */
   followedPointOfInterest?: { ref: RefObject<HTMLDivElement> };
   /** Change handler for whether the red orbit lines are visible. */
@@ -37,7 +35,6 @@ type OpenSubsectionState = 'info' | 'nav' | undefined;
  */
 const NavMenu: FC<Props> = ({
   orbitsVisible,
-  pointsOfInterestMap,
   followedPointOfInterest,
   onChangeSystemSize,
   onOrbitsVisibleChange,
@@ -86,7 +83,7 @@ const NavMenu: FC<Props> = ({
           onHeaderClick={() => onSubsectionClick('nav')}
         >
           <>
-            {Object.values(pointsOfInterestMap).map((poi) => (
+            {Object.values(pointsOfInterest).map((poi) => (
               <PointOfInterestButton
                 isVisible={openSubsection === 'nav'}
                 key={poi.display}

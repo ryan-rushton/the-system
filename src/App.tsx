@@ -40,6 +40,11 @@ const App: FC = () => {
     setSystemSizeContext(newSystemSizeContext);
   };
 
+  const setFollowerInterval = (pointOfInterest: { ref: RefObject<HTMLDivElement> }) => {
+    const interval = setInterval(() => scrollToElementIfNotVisible(pointOfInterest.ref.current), 1000);
+    setFollower({ pointOfInterest, interval });
+  };
+
   /**
    * Function for following points of interest around the solar system.
    *
@@ -50,17 +55,17 @@ const App: FC = () => {
   const poiOnClick = useCallback(
     (pointOfInterest: { ref: RefObject<HTMLDivElement> }): void => {
       if (pointOfInterest === follower.pointOfInterest) {
+        // clear if already followed
         clearFollower();
       } else if (pointOfInterest === pointsOfInterest.sun || pointOfInterest === pointsOfInterest.theBelt) {
+        // scroll to without follow for sun and the belt
         clearFollower();
         pointOfInterest.ref.current?.scrollIntoView(scrollOptions);
       } else if (pointOfInterest.ref.current) {
+        // scroll and set follower for most object
         clearFollower();
         pointOfInterest.ref.current.scrollIntoView(scrollOptions);
-        doCallbackAfterElementIsVisible(pointOfInterest.ref.current, () => {
-          const interval = setInterval(() => scrollToElementIfNotVisible(pointOfInterest.ref.current), 1000);
-          setFollower({ pointOfInterest, interval });
-        });
+        doCallbackAfterElementIsVisible(pointOfInterest.ref.current, () => setFollowerInterval(pointOfInterest));
       }
     },
     [clearFollower, follower]
@@ -74,13 +79,12 @@ const App: FC = () => {
         </div>
         <NavMenu
           orbitsVisible={orbitsVisible}
-          pointsOfInterestMap={pointsOfInterest}
           followedPointOfInterest={follower.pointOfInterest}
           onChangeSystemSize={onChangeSystemSizeWithClear}
           onOrbitsVisibleChange={setOrbitsVisible}
           onFollowPointOfInterest={poiOnClick}
         />
-        <TheSystem pointsOfInterest={pointsOfInterest} />
+        <TheSystem />
       </div>
     </AppContext.Provider>
   );

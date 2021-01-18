@@ -1,5 +1,18 @@
 import React from 'react';
 
+/**
+ * All the points of interest in the solar system that get rendered.
+ * Values are obtained from either https://nssdc.gsfc.nasa.gov/planetary/factsheet/ or wikipedia.
+ *
+ * The following properties may or may not exist on each point of interest,
+ * - ref: RefObject<HTMLDivElement> - A ref so that we can scroll to the object when it is selected in the nav menu.
+ * - display: string - The name of the point.
+ * - radius: number - The radius of the point of interest (includes rings if visible), units are km.
+ * - distance: number - The points distance from the sun, units are km.
+ * - orbitalPeriod: number - How many days it takes the point to orbit the sun.
+ * - Satellites: PointOfInterest[] - An array of satellites that orbit the point. These have radius, distance,
+ *  orbitalPeriod just like the points.
+ */
 export const pointsOfInterest = {
   sun: {
     ref: React.createRef<HTMLDivElement>(),
@@ -28,7 +41,7 @@ export const pointsOfInterest = {
     radius: 6378,
     distance: 149600000,
     orbitalPeriod: 365.2,
-    satellites: [{ display: 'Moon', distance: 384400, orbitalPeriod: 27.3, radius: 1737 }],
+    satellites: [{ /* moon */ distance: 384400, orbitalPeriod: 27.3, radius: 1737 }],
   },
   mars: {
     ref: React.createRef<HTMLDivElement>(),
@@ -49,25 +62,25 @@ export const pointsOfInterest = {
     orbitalPeriod: 4331,
     satellites: [
       {
-        display: 'Io',
+        /* io */
         distance: 421700,
         orbitalPeriod: 1.77,
         radius: 1822,
       },
       {
-        display: 'Europa',
+        /* europa */
         distance: 670900,
         orbitalPeriod: 3.55,
         radius: 1561,
       },
       {
-        display: 'Ganymede',
+        /* ganymede */
         distance: 1070400,
         orbitalPeriod: 7.15,
         radius: 2634,
       },
       {
-        display: 'Callisto',
+        /* callisto */
         distance: 1882700,
         orbitalPeriod: 16.69,
         radius: 2410,
@@ -77,18 +90,18 @@ export const pointsOfInterest = {
   saturn: {
     ref: React.createRef<HTMLDivElement>(),
     display: 'Saturn',
-    radius: 80000 + 58232,
+    radius: 80000 + 58232, // making the ring radius clear
     distance: 1433500000,
     orbitalPeriod: 10747,
     satellites: [
       {
-        display: 'Titan',
+        /* titan */
         distance: 1221870,
         orbitalPeriod: 15.95,
         radius: 2574,
       },
       {
-        display: 'Rhea',
+        /* rhea */
         distance: 527108,
         orbitalPeriod: 1.77,
         radius: 764,
@@ -117,5 +130,3 @@ export const pointsOfInterest = {
     orbitalPeriod: 90560,
   },
 } as const;
-
-export type PointsOfInterestMap = typeof pointsOfInterest;
