@@ -1,5 +1,6 @@
-import React, { RefObject, FC } from 'react';
+import React, { FC } from 'react';
 
+import { pointsOfInterest } from '../../../../PointsOfInterest';
 import Planet from '../bodies/Planet';
 import styles from './Neptune.module.scss';
 
@@ -9,12 +10,8 @@ const NeptuneConsts = {
   orbitalPeriod: 59800,
 };
 
-interface Props {
-  scrollToRef: RefObject<HTMLDivElement>;
-}
-
-const Neptune: FC<Props> = ({ scrollToRef }) => (
-  <Planet name={styles.neptune} planetConstants={NeptuneConsts} scrollToRef={scrollToRef} />
+const Neptune: FC = () => (
+  <Planet name={styles.neptune} planetConstants={NeptuneConsts} scrollToRef={pointsOfInterest.neptune.ref} />
 );
 
 export default Neptune;

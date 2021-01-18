@@ -1,5 +1,6 @@
-import React, { RefObject, FC } from 'react';
+import React, { FC } from 'react';
 
+import { pointsOfInterest } from '../../../../PointsOfInterest';
 import Planet from '../bodies/Planet';
 import styles from './Saturn.module.scss';
 
@@ -24,12 +25,13 @@ const rhea = {
   radius: 764,
 };
 
-interface Props {
-  scrollToRef: RefObject<HTMLDivElement>;
-}
-
-const Saturn: FC<Props> = ({ scrollToRef }) => (
-  <Planet name={styles.saturn} moons={[rhea, titan]} planetConstants={SaturnConsts} scrollToRef={scrollToRef} />
+const Saturn: FC = () => (
+  <Planet
+    name={styles.saturn}
+    moons={[rhea, titan]}
+    planetConstants={SaturnConsts}
+    scrollToRef={pointsOfInterest.saturn.ref}
+  />
 );
 
 export default Saturn;
