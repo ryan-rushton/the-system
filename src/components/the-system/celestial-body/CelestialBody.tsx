@@ -13,14 +13,14 @@ export interface CelestialBodyProps {
   orbitalPeriod: number;
   /** Radius for the body with size multiplier context applied */
   radius: number;
-  /** Whether the red orbit line is visible. */
-  hasOrbitLine?: boolean;
   /**
    * This is the reference point the left and top calculations are referencing.
    *
    * This should either be the system radius for planets/sun or the radius of whatever the satellite is orbiting.
    * */
   referenceRadius: number;
+  /** Whether the red orbit line is visible. */
+  hasOrbitLine?: boolean;
   /** Any satellites that are orbiting this body. */
   satellites?: CelestialBodyProps[];
   /** A ref so that we can scroll to this body. */

@@ -24,78 +24,78 @@ const TheSystem: FC = () => {
       <div className={styles.sunsGlow} style={systemStyle}>
         <Planet
           className={styles.pluto}
-          scrollToRef={pluto.ref}
-          radius={pluto.radius}
           distance={pluto.distance}
           orbitalPeriod={pluto.orbitalPeriod}
+          radius={pluto.radius}
+          scrollToRef={pluto.ref}
         />
         <Planet
           className={styles.neptune}
-          scrollToRef={neptune.ref}
-          radius={neptune.radius}
           distance={neptune.distance}
           orbitalPeriod={neptune.orbitalPeriod}
+          radius={neptune.radius}
+          scrollToRef={neptune.ref}
         />
         <Planet
           className={styles.uranus}
-          scrollToRef={uranus.ref}
-          radius={uranus.radius}
           distance={uranus.distance}
           orbitalPeriod={uranus.orbitalPeriod}
+          radius={uranus.radius}
+          scrollToRef={uranus.ref}
         />
         <Planet
           className={styles.saturn}
-          scrollToRef={saturn.ref}
-          radius={saturn.radius}
           distance={saturn.distance}
           orbitalPeriod={saturn.orbitalPeriod}
+          radius={saturn.radius}
           satellites={saturn.satellites}
+          scrollToRef={saturn.ref}
         />
         <Planet
           className={styles.jupiter}
-          scrollToRef={jupiter.ref}
-          radius={jupiter.radius}
           distance={jupiter.distance}
           orbitalPeriod={jupiter.orbitalPeriod}
+          radius={jupiter.radius}
           satellites={jupiter.satellites}
+          scrollToRef={jupiter.ref}
         />
         <TheBelt />
         <Planet
           className={styles.mars}
-          scrollToRef={mars.ref}
-          radius={mars.radius}
           distance={mars.distance}
           orbitalPeriod={mars.orbitalPeriod}
+          radius={mars.radius}
+          scrollToRef={mars.ref}
         />
         <Planet
           className={styles.earth}
-          scrollToRef={earth.ref}
-          radius={earth.radius}
           distance={earth.distance}
           orbitalPeriod={earth.orbitalPeriod}
+          radius={earth.radius}
           satellites={earth.satellites}
+          scrollToRef={earth.ref}
         />
         <Planet
           className={styles.venus}
-          scrollToRef={venus.ref}
-          radius={venus.radius}
           distance={venus.distance}
           orbitalPeriod={venus.orbitalPeriod}
+          radius={venus.radius}
+          scrollToRef={venus.ref}
         />
         <Planet
           className={styles.mercury}
-          scrollToRef={mercury.ref}
-          radius={mercury.radius}
           distance={mercury.distance}
           orbitalPeriod={mercury.orbitalPeriod}
+          radius={mercury.radius}
+          scrollToRef={mercury.ref}
         />
         <CelestialBody
           className={styles.sun}
           distance={0}
-          radius={multipliers.sizeMultiplier * sun.radius}
           orbitalPeriod={0}
-          scrollToRef={pointsOfInterest.sun.ref}
+          radius={multipliers.sizeMultiplier * sun.radius}
           referenceRadius={systemRadius}
+          scrollToRef={pointsOfInterest.sun.ref}
         />
       </div>
     </div>

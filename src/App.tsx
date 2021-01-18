@@ -78,11 +78,11 @@ const App: FC = () => {
           <span>The System</span>
         </div>
         <NavMenu
-          orbitsVisible={orbitsVisible}
           followedPointOfInterest={follower.pointOfInterest}
           onChangeSystemSize={onChangeSystemSizeWithClear}
-          onOrbitsVisibleChange={setOrbitsVisible}
           onFollowPointOfInterest={poiOnClick}
+          onOrbitsVisibleChange={setOrbitsVisible}
+          orbitsVisible={orbitsVisible}
         />
         <TheSystem />
       </div>

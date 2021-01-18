@@ -1,20 +1,19 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
-import { pointsOfInterest } from '../../PointsOfInterest';
-import Planet from './Planet';
+import { pointsOfInterest } from '../../../PointsOfInterest';
+import CelestialBody from './CelestialBody';
 
-describe('Planet', () => {
+describe('C', () => {
   test('it matches the snapshot', () => {
     const { jupiter } = pointsOfInterest;
     const { container } = render(
-      <Planet
+      <CelestialBody
         className={'some-styles'}
         distance={jupiter.distance}
         orbitalPeriod={jupiter.orbitalPeriod}
         radius={jupiter.radius}
-        satellites={jupiter.satellites}
-        scrollToRef={jupiter.ref}
+        referenceRadius={1000}
       />
     );
 
@@ -24,13 +23,13 @@ describe('Planet', () => {
   test('it renders the correct number of celestial bodies', () => {
     const { jupiter } = pointsOfInterest;
     render(
-      <Planet
+      <CelestialBody
         className={'some-styles'}
         distance={jupiter.distance}
         orbitalPeriod={jupiter.orbitalPeriod}
         radius={jupiter.radius}
+        referenceRadius={1000}
         satellites={jupiter.satellites}
-        scrollToRef={jupiter.ref}
       />
     );
     expect(screen.getAllByTestId('celestial-body').length).toBe(1 + jupiter.satellites.length);

@@ -41,7 +41,7 @@ const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onO
   });
 
   return (
-    <div data-testid="InfoMenu.tsx">
+    <div data-testid="info-menu">
       <div className={styles.heading}>Time</div>
       <div data-testid="time" className={styles.stat}>{`${daysPerSecond} s = 1 day`}</div>
       <div className={styles.heading}>Distance Between Planets</div>

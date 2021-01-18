@@ -49,11 +49,11 @@ const Planet: FC<Props> = ({ className, distance, radius, orbitalPeriod, scrollT
 
     return {
       className: styles.satellite,
-      radius: satelliteRadius,
       distance: satellite.distance * satelliteDist + adjustedRadius - satelliteRadius,
-      orbitalPeriod: satellite.orbitalPeriod * orbitalPeriodMultiplier,
-      referenceRadius: adjustedRadius,
       hasOrbitLine: true,
+      orbitalPeriod: satellite.orbitalPeriod * orbitalPeriodMultiplier,
+      radius: satelliteRadius,
+      referenceRadius: adjustedRadius,
     };
   };
 
@@ -64,8 +64,8 @@ const Planet: FC<Props> = ({ className, distance, radius, orbitalPeriod, scrollT
       hasOrbitLine={true}
       orbitalPeriod={adjustedOrbitalPeriod}
       radius={adjustedRadius}
-      satellites={satellites?.map(satelliteToCelestialBody)}
       referenceRadius={systemRadius}
+      satellites={satellites?.map(satelliteToCelestialBody)}
       scrollToRef={scrollToRef}
     />
   );

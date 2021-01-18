@@ -85,10 +85,10 @@ const NavMenu: FC<Props> = ({
           <>
             {Object.values(pointsOfInterest).map((poi) => (
               <PointOfInterestButton
+                isBeingFollowed={poi === followedPointOfInterest}
                 isVisible={openSubsection === 'nav'}
                 key={poi.display}
                 pointOfInterest={poi}
-                isBeingFollowed={poi === followedPointOfInterest}
                 onPoiClick={() => onFollowPointOfInterest(poi)}
               />
             ))}

@@ -13,6 +13,15 @@ describe('PointOfInterestButton', () => {
     expect(element).toBeInTheDocument();
   });
 
+  test('it matches snapshot', () => {
+    const poi = { display: 'Some point', ref: React.createRef() };
+    const { container } = render(
+      <PointOfInterestButton pointOfInterest={poi} isBeingFollowed={false} onPoiClick={jest.fn()} />
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   test('it changes orbits visible when Show Orbits clicked', () => {
     const poi = { display: 'Some point', ref: React.createRef() };
     const onPoiClick = jest.fn();
