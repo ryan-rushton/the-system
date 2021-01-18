@@ -1,9 +1,6 @@
 import React, { RefObject, ReactElement, ReactNode, FC, useContext } from 'react';
 
 import AppContext from '../../../SystemContext';
-import { SunConsts } from '../../../SharedConsts';
-import { MarsConsts } from '../TheSystem';
-import { JupiterConsts } from '../celestial-bodies/jupiter/Jupiter';
 import styles from './TheBelt.module.scss';
 import BeltLayer from './BeltLayer';
 import { pointsOfInterest } from '../../../PointsOfInterest';
@@ -43,19 +40,15 @@ const TheBelt: FC = () => {
   const memoizedLayer = (baseOrbitalPeriod: number, includedRef?: RefObject<HTMLDivElement>): ReactNode => {
     // The system radius should identify which context we are using.
     const key = `${systemRadius}-${baseOrbitalPeriod}-${Boolean(includedRef)}`;
+    const { mars, sun, jupiter } = pointsOfInterest;
 
     if (!beltCache.has(key)) {
       // The distance from the middle of the sun to the furthest point of Mats.
-      const outerMars =
-        MarsConsts.distance * distanceMultiplier +
-        SunConsts.radius * sizeMultiplier +
-        MarsConsts.radius * sizeMultiplier;
+      const outerMars = mars.distance * distanceMultiplier + sun.radius * sizeMultiplier + mars.radius * sizeMultiplier;
 
       // The distance from the middle of the sun to the closet point of Jupiter
       const innerJupiter =
-        JupiterConsts.distance * distanceMultiplier +
-        SunConsts.radius * sizeMultiplier -
-        JupiterConsts.radius * sizeMultiplier;
+        jupiter.distance * distanceMultiplier + sun.radius * sizeMultiplier - jupiter.radius * sizeMultiplier;
 
       const distanceBetweenMarsAndJupiter = innerJupiter - outerMars;
 

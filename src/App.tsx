@@ -1,4 +1,4 @@
-import React, { useState, FC, useEffect, useCallback } from 'react';
+import React, { useState, FC, useEffect, useCallback, RefObject } from 'react';
 import clsx from 'clsx';
 
 import TheSystem from './components/the-system/TheSystem';
@@ -6,11 +6,11 @@ import AppContext, { SystemContext, systemSize } from './SystemContext';
 import styles from './App.module.scss';
 import NavMenu from './components/nav-menu/NavMenu';
 import { doCallbackAfterElementIsVisible, scrollOptions, scrollToElementIfNotVisible } from './utils/DomUtil';
-import { pointsOfInterest, PointOfInterest } from './PointsOfInterest';
+import { pointsOfInterest } from './PointsOfInterest';
 
 interface FollowerState {
   /** The point of interest being followed. */
-  pointOfInterest?: PointOfInterest;
+  pointOfInterest?: { ref: RefObject<HTMLDivElement> };
   /**
    * The interval at which the point of interest is being checked to see whether it is visible on screen.
    * This can be cleared when the point of interest is no longer being followed.
@@ -48,7 +48,7 @@ const App: FC = () => {
    * If anything else is selected it will set an interval to scroll the element into view if it isn't already
    * */
   const poiOnClick = useCallback(
-    (pointOfInterest: PointOfInterest): void => {
+    (pointOfInterest: { ref: RefObject<HTMLDivElement> }): void => {
       if (pointOfInterest === follower.pointOfInterest) {
         clearFollower();
       } else if (pointOfInterest === pointsOfInterest.sun || pointOfInterest === pointsOfInterest.theBelt) {

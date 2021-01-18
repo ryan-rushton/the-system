@@ -1,53 +1,62 @@
 import React, { useContext, RefObject, FC } from 'react';
 
-import AppContext, { SystemMultipliers } from '../../../../SystemContext';
+import AppContext from '../../../../SystemContext';
 import CelestialBody, { CelestialBodyProps } from './CelestialBody';
-import { SunConsts } from '../../../../SharedConsts';
-import { MoonDetails, PlanetDetails } from '../../../../types';
+import { pointsOfInterest } from '../../../../PointsOfInterest';
+import styles from './Planet.module.scss';
 
-const moonToCB = (moon: MoonDetails, multipliers: SystemMultipliers, planetRadius: number): CelestialBodyProps => {
-  const { className, radius, orbitalPeriod, distance } = moon;
-  const { satelliteDist, orbitalPeriodMultiplier, sizeMultiplier } = multipliers;
-  const moonRadius = Math.max(0.5, radius * sizeMultiplier);
-
-  return {
-    className,
-    radius: moonRadius,
-    distance: distance * satelliteDist - planetRadius * sizeMultiplier - moonRadius,
-    orbitalPeriod: orbitalPeriod * orbitalPeriodMultiplier,
-    planetRadius,
-    hasOrbitLine: true,
-  };
-};
-
-const applyMultipliers = (consts: PlanetDetails, multipliers: SystemMultipliers): PlanetDetails => ({
-  distance:
-    consts.distance * multipliers.distanceMultiplier + (SunConsts.radius - consts.radius) * multipliers.sizeMultiplier,
-  radius: consts.radius * multipliers.sizeMultiplier,
-  orbitalPeriod: consts.orbitalPeriod * multipliers.orbitalPeriodMultiplier,
-});
-
-interface Props {
-  name: string;
-  planetConstants: PlanetDetails;
-  scrollToRef: RefObject<HTMLDivElement>;
-  moons?: MoonDetails[];
+interface Satellite {
+  display: string;
+  radius: number;
+  distance: number;
+  orbitalPeriod: number;
 }
 
-const Planet: FC<Props> = ({ name, moons, planetConstants, scrollToRef }) => {
-  const { multipliers } = useContext(AppContext);
-  const { distance, radius, orbitalPeriod } = applyMultipliers(planetConstants, multipliers);
-  const satellites = moons?.map((moon: MoonDetails) => moonToCB(moon, multipliers, radius));
+interface Props {
+  className: string;
+  planet: {
+    ref: RefObject<HTMLDivElement>;
+    display: string;
+    radius: number;
+    distance: number;
+    orbitalPeriod: number;
+    satellites?: readonly Satellite[];
+  };
+}
+
+const Planet: FC<Props> = ({ className, planet }) => {
+  const {
+    multipliers: { distanceMultiplier, sizeMultiplier, orbitalPeriodMultiplier, satelliteDist },
+  } = useContext(AppContext);
+  const { distance, radius, orbitalPeriod, ref, satellites } = planet;
+
+  const adjustedDistance = distance * distanceMultiplier + (pointsOfInterest.sun.radius - radius) * sizeMultiplier;
+  const adjustRadius = radius * sizeMultiplier;
+  const adjustedOrbitalPeriod = orbitalPeriod * orbitalPeriodMultiplier;
+
+  const satelliteToCelestialBody = (satellite: Satellite): CelestialBodyProps => {
+    // Make sure the moons are at lease 0.5px so they render.
+    const satelliteRadius = Math.max(0.5, satellite.radius * sizeMultiplier);
+
+    return {
+      className: styles.satellite,
+      radius: satelliteRadius,
+      distance: satellite.distance * satelliteDist - adjustRadius - satelliteRadius,
+      orbitalPeriod: satellite.orbitalPeriod * orbitalPeriodMultiplier,
+      planetRadius: adjustRadius,
+      hasOrbitLine: true,
+    };
+  };
 
   return (
     <CelestialBody
-      className={name}
-      distance={distance}
-      hasOrbitLine
-      orbitalPeriod={orbitalPeriod}
-      radius={radius}
-      satellites={satellites}
-      scrollToRef={scrollToRef}
+      className={className}
+      distance={adjustedDistance}
+      hasOrbitLine={true}
+      orbitalPeriod={adjustedOrbitalPeriod}
+      radius={adjustRadius}
+      satellites={satellites?.map(satelliteToCelestialBody)}
+      scrollToRef={ref}
     />
   );
 };

@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import clsx from 'clsx';
 
-import { PointOfInterest } from '../../../PointsOfInterest';
 import useClickAndEnterKeyDown from '../../../hooks/useClickAndEnterKeydown';
 import styles from './PointOfInterestButton.module.scss';
 
@@ -9,7 +8,7 @@ interface Props {
   /** Whether the component is currently visible. */
   isVisible: boolean;
   /** Point of interest object. */
-  pointOfInterest: PointOfInterest;
+  pointOfInterest: { display: string };
   /** Whether the point of interest is currently being followed on screen. */
   isBeingFollowed: boolean;
   /** Click handler for when the button is clicked. */

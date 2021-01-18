@@ -46,7 +46,7 @@ export const doCallbackAfterElementIsVisible = (element: HTMLElement, callback: 
   }
 };
 
-export const scrollToElementIfNotVisible = (element: HTMLDivElement | null): void => {
+export const scrollToElementIfNotVisible = (element?: HTMLDivElement | null): void => {
   const scrollOptions: ScrollIntoViewOptions = {
     behavior: 'smooth',
     block: 'center',

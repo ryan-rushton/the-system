@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React, { RefObject, CSSProperties, FC, useContext } from 'react';
 
 import AppContext from '../../../../SystemContext';
@@ -36,10 +37,10 @@ const CelestialBody: FC<CelestialBodyProps> = ({
 
     return {
       animation: `orbit ${orbitalPeriod}s linear infinite`,
-      height: `${heightWidth}px`,
-      left: `${center}px`,
-      top: `${center}px`,
-      width: `${heightWidth}px`,
+      height: heightWidth,
+      left: center,
+      top: center,
+      width: heightWidth,
     };
   };
 
@@ -57,12 +58,10 @@ const CelestialBody: FC<CelestialBodyProps> = ({
     };
   };
 
-  const orbitLineClass = hasOrbitLine ? ' orbit-line' : '';
-
   return (
-    <div className={`${styles.orbit}${orbitLineClass}`} style={getCssValuesForOrbits()}>
+    <div className={clsx(styles.orbit, { orbitLine: hasOrbitLine })} style={getCssValuesForOrbits()}>
       <div
-        className={`${styles.celestialBody} ${className}`}
+        className={clsx(styles.celestialBody, className)}
         title={className}
         ref={scrollToRef}
         style={getCssValuesForBody()}
