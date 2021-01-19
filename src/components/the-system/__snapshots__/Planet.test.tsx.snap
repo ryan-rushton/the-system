@@ -3,11 +3,12 @@
 exports[`Planet it matches the snapshot 1`] = `
 <div
   class="orbit orbitLine"
-  data-testid="undefined-orbit-line"
+  data-testid="jupiter-orbit-line"
   style="animation: orbit 4331s linear infinite; height: 16267.508000000002px; left: 75888.8301142454px; top: 75888.8301142454px; width: 16267.508000000002px;"
 >
   <div
     class="celestialBody some-styles"
+    data-testid="jupiter"
     style="animation: planet-rotation 4331s linear infinite; height: 71.498px; left: -35.749px; top: 50%; width: 71.498px;"
     title="some-styles"
   >

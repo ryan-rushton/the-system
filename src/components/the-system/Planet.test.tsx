@@ -9,6 +9,7 @@ describe('Planet', () => {
     const { jupiter } = pointsOfInterest;
     const { container } = render(
       <Planet
+        testId={jupiter.testId}
         className={'some-styles'}
         distance={jupiter.distance}
         orbitalPeriod={jupiter.orbitalPeriod}
