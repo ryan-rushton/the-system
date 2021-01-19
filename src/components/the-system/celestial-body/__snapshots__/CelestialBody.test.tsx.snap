@@ -3,7 +3,7 @@
 exports[`C it matches the snapshot 1`] = `
 <div
   class="orbit"
-  data-testid="celestial-body"
+  data-testid="undefined-orbit-line"
   style="animation: orbit 4331s linear infinite; height: 1557342996px; left: -778670498px; top: -778670498px; width: 1557342996px;"
 >
   <div
