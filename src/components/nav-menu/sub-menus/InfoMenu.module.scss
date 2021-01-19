@@ -20,14 +20,14 @@
 
   &:hover {
     background-color: rgba(100, 100, 100, 0.3);
-    color: lightblue;
+    color: rgb(173, 216, 230);
     cursor: pointer;
-    border-color: lightblue;
+    border-color: rgb(173, 216, 230);
   }
 }
 
 .buttonActive {
-  color: skyblue;
+  color: rgb(135, 206, 235);
   background-color: rgba(100, 100, 100, 0.3);
-  border-color: skyblue;
+  border-color: rgb(135, 206, 235);
 }

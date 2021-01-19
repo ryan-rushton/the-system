@@ -33,6 +33,7 @@ describe('C', () => {
         satellites={jupiter.satellites.map((s) => ({ ...s, referenceRadius: jupiter.radius }))}
       />
     );
+
     expect(screen.getByTestId('jupiter')).toBeInTheDocument();
     for (const satellite of jupiter.satellites) {
       expect(screen.getByTestId(satellite.testId)).toBeInTheDocument();

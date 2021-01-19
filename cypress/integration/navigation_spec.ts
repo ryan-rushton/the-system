@@ -1,4 +1,11 @@
+/**
+ * Tests for navigation around the system. This tests the scrolling interactions around the page when
+ * an item is selected in the navigation menu.
+ *
+ */
 describe('System navigation', () => {
+  const activeButtonColor = 'rgb(135, 206, 235)';
+
   before(() => {
     cy.visit('http://localhost:3000');
   });
@@ -22,5 +29,25 @@ describe('System navigation', () => {
   it('can navigate to a planet', () => {
     cy.get('[data-testid=nav-menu').contains('Neptune').click();
     cy.get('[data-testid=neptune').should('be.visible');
+  });
+
+  it('follows a planet', () => {
+    cy.get('[data-testid=nav-menu').contains('Venus').click();
+    cy.get('[data-testid=nav-menu').contains('Venus').should('have.css', 'border-color', activeButtonColor);
+    cy.isInViewport('[data-testid=venus');
+    cy.get('[data-testid=jupiter').scrollIntoView();
+    cy.isInViewport('[data-testid=venus');
+  });
+
+  it('a second click cancels following a planet', () => {
+    cy.get('[data-testid=nav-menu').contains('Earth').click();
+    cy.get('[data-testid=nav-menu').contains('Earth').should('have.css', 'border-color', activeButtonColor);
+
+    cy.isInViewport('[data-testid=earth');
+    cy.get('[data-testid=nav-menu').contains('Earth').click();
+    cy.get('[data-testid=nav-menu').contains('Earth').should('not.have.css', 'border-color', activeButtonColor);
+
+    cy.get('[data-testid=jupiter').scrollIntoView();
+    cy.isNotInViewport('[data-testid=earth');
   });
 });
