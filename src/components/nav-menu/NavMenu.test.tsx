@@ -15,7 +15,7 @@ describe('NavMenu', () => {
       />
     );
 
-    expect(screen.getByTestId('nav-menu')).toBeInTheDocument();
+    expect(screen.getByTestId('nav-menu-button')).toBeInTheDocument();
   });
 
   test('it matches snapshot', () => {

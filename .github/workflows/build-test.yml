@@ -58,3 +58,8 @@ jobs:
 
       - name: Build
         run: yarn build
+
+      - name: Cypress Browser Tests
+        uses: cypress-io/github-action@v2
+        with:
+          start: yarn start

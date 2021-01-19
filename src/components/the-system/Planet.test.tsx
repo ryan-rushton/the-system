@@ -25,6 +25,7 @@ describe('Planet', () => {
     const { jupiter } = pointsOfInterest;
     render(
       <Planet
+        testId={jupiter.testId}
         className={'some-styles'}
         distance={jupiter.distance}
         orbitalPeriod={jupiter.orbitalPeriod}
@@ -33,6 +34,9 @@ describe('Planet', () => {
         scrollToRef={jupiter.ref}
       />
     );
-    expect(screen.getAllByTestId('celestial-body').length).toBe(1 + jupiter.satellites.length);
+    expect(screen.getByTestId('jupiter')).toBeInTheDocument();
+    for (const satellite of jupiter.satellites) {
+      expect(screen.getByTestId(satellite.testId)).toBeInTheDocument();
+    }
   });
 });

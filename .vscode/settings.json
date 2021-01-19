@@ -40,5 +40,8 @@
     "typescript",
     "typescriptreact"
   ],
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "jest.restartJestOnSnapshotUpdate": true,
+  "jest.runAllTestsFirst": false,
+  "jest.disabledWorkspaceFolders": ["node_modules/", "cypress/"]
 }

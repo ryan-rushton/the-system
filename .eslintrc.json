@@ -7,7 +7,8 @@
     "react-hooks",
     "jest",
     "testing-library",
-    "jest-dom"
+    "jest-dom",
+    "cypress"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -44,7 +45,8 @@
     "commonjs": true,
     "es2020": true,
     "jest": true,
-    "node": true
+    "node": true,
+    "cypress/globals": true
   },
   "settings": {
     "import/parsers": {
@@ -73,5 +75,21 @@
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "[iI]gnored" }],
     "@typescript-eslint/restrict-template-expressions": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": "cypress/**/*",
+      "parserOptions": {
+        "ecmaFeatures": {
+          "jsx": true
+        },
+        "sourceType": "module",
+        "project": ["./cypress/tsconfig.json"]
+      },
+      "extends": ["plugin:cypress/recommended"],
+      "rules": {
+        "jest/expect-expect": "off"
+      }
+    }
+  ]
 }

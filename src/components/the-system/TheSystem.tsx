@@ -20,9 +20,10 @@ const TheSystem: FC = () => {
   };
 
   return (
-    <div className={styles.theSystem} style={systemStyle}>
+    <div data-testid="the-system" className={styles.theSystem} style={systemStyle}>
       <div className={styles.sunsGlow} style={systemStyle}>
         <Planet
+          testId={pluto.testId}
           className={styles.pluto}
           distance={pluto.distance}
           orbitalPeriod={pluto.orbitalPeriod}
@@ -30,6 +31,7 @@ const TheSystem: FC = () => {
           scrollToRef={pluto.ref}
         />
         <Planet
+          testId={neptune.testId}
           className={styles.neptune}
           distance={neptune.distance}
           orbitalPeriod={neptune.orbitalPeriod}
@@ -37,6 +39,7 @@ const TheSystem: FC = () => {
           scrollToRef={neptune.ref}
         />
         <Planet
+          testId={uranus.testId}
           className={styles.uranus}
           distance={uranus.distance}
           orbitalPeriod={uranus.orbitalPeriod}
@@ -44,6 +47,7 @@ const TheSystem: FC = () => {
           scrollToRef={uranus.ref}
         />
         <Planet
+          testId={saturn.testId}
           className={styles.saturn}
           distance={saturn.distance}
           orbitalPeriod={saturn.orbitalPeriod}
@@ -52,6 +56,7 @@ const TheSystem: FC = () => {
           scrollToRef={saturn.ref}
         />
         <Planet
+          testId={jupiter.testId}
           className={styles.jupiter}
           distance={jupiter.distance}
           orbitalPeriod={jupiter.orbitalPeriod}
@@ -61,6 +66,7 @@ const TheSystem: FC = () => {
         />
         <TheBelt />
         <Planet
+          testId={mars.testId}
           className={styles.mars}
           distance={mars.distance}
           orbitalPeriod={mars.orbitalPeriod}
@@ -68,6 +74,7 @@ const TheSystem: FC = () => {
           scrollToRef={mars.ref}
         />
         <Planet
+          testId={earth.testId}
           className={styles.earth}
           distance={earth.distance}
           orbitalPeriod={earth.orbitalPeriod}
@@ -76,6 +83,7 @@ const TheSystem: FC = () => {
           scrollToRef={earth.ref}
         />
         <Planet
+          testId={venus.testId}
           className={styles.venus}
           distance={venus.distance}
           orbitalPeriod={venus.orbitalPeriod}
@@ -83,6 +91,7 @@ const TheSystem: FC = () => {
           scrollToRef={venus.ref}
         />
         <Planet
+          testId={mercury.testId}
           className={styles.mercury}
           distance={mercury.distance}
           orbitalPeriod={mercury.orbitalPeriod}
@@ -90,6 +99,7 @@ const TheSystem: FC = () => {
           scrollToRef={mercury.ref}
         />
         <CelestialBody
+          testId={sun.testId}
           className={styles.sun}
           distance={0}
           orbitalPeriod={0}

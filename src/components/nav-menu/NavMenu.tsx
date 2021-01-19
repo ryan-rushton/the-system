@@ -58,13 +58,13 @@ const NavMenu: FC<Props> = ({
   }
 
   return (
-    <div data-testid="nav-menu" className={styles.nav}>
+    <div data-testid="nav-menu-button" className={styles.nav}>
       <div className={styles.header}>
         <div className={styles.headerButton} onClick={onMenuClick} onKeyPress={onMenuEnter} role="button" tabIndex={0}>
           <FontAwesomeIcon icon={faBars} />
         </div>
       </div>
-      <div className={styles.menu} ref={menuRef} style={transformStyles}>
+      <div data-testid="nav-menu" className={styles.menu} ref={menuRef} style={transformStyles}>
         <NavMenuSubsection
           title={'Info'}
           isVisible={openSubsection === 'info'}
