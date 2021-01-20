@@ -54,13 +54,17 @@ jobs:
           start: yarn start
 
       - name: Archive Cypress screenshots
+        if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
           name: cypress-screenshots
           path: cypress/screenshots/**/*
+          retention-days: 5
 
       - name: Archive Cypress videos
+        if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
           name: cypress-videos
           path: cypress/videos/**/*
+          retention-days: 5
