@@ -3,13 +3,13 @@
 exports[`NavMenu it matches snapshot 1`] = `
 <div
   class="nav"
-  data-testid="nav-menu-button"
 >
   <div
     class="header"
   >
     <div
       class="headerButton"
+      data-testid="nav-menu-button"
       role="button"
       tabindex="0"
     >
@@ -39,7 +39,7 @@ exports[`NavMenu it matches snapshot 1`] = `
       role="button"
       tabindex="0"
     >
-      Info
+      info
     </div>
     <div
       class="content"
@@ -51,67 +51,67 @@ exports[`NavMenu it matches snapshot 1`] = `
         <div
           class="heading"
         >
-          Time
+          infoMenu.time
         </div>
         <div
           class="stat"
           data-testid="time"
         >
-          1 s = 1 day
+          infoMenu.secondsForOneDay
         </div>
         <div
           class="heading"
         >
-          Distance Between Planets
+          infoMenu.distanceBetweenPlanets
         </div>
         <div
           class="stat"
           data-testid="planet-distance"
         >
-          1 pixel = 100,000 km
+          infoMenu.kmPerPixel
         </div>
         <div
           class="heading"
         >
-          Distance Between Planets And Moons
+          infoMenu.distanceBetweenPlanetsAndMoons
         </div>
         <div
           class="stat"
           data-testid="satellite-distance"
         >
-          1 pixel = 10,000 km
+          infoMenu.kmPerPixel
         </div>
         <div
           class="heading"
         >
-          Planet Size
+          infoMenu.planetSize
         </div>
         <div
           class="stat"
           data-testid="planet-size"
         >
-          1 pixel = 2,000 km
+          infoMenu.kmPerPixel
         </div>
         <div
           class="buttonWrapper"
         >
           <div
-            aria-label="Normalise Distance"
+            aria-label="infoMenu.normaliseDistance"
             class="button"
             role="button"
           >
-            Normalise Distance
+            infoMenu.normaliseDistance
           </div>
         </div>
         <div
           class="buttonWrapper"
         >
           <div
-            aria-label="Show Orbits"
+            aria-label="infoMenu.showOrbits"
             class="button"
             role="button"
           >
-            Show Orbits
+            infoMenu.showOrbits
           </div>
         </div>
       </div>
@@ -121,109 +121,113 @@ exports[`NavMenu it matches snapshot 1`] = `
       role="button"
       tabindex="0"
     >
-      Navigation
+      navigation
     </div>
     <div
       class="content"
       style="max-height: 0;"
     >
-      <div>
-        <div
-          aria-label="Sun"
-          class="navItem"
-          role="button"
-        >
-          Sun
+      <div
+        class="navButtons"
+      >
+        <div>
+          <div
+            aria-label="pointsOfInterest.sun"
+            class="navItem"
+            role="button"
+          >
+            pointsOfInterest.sun
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Mercury"
-          class="navItem"
-          role="button"
-        >
-          Mercury
+        <div>
+          <div
+            aria-label="pointsOfInterest.mercury"
+            class="navItem"
+            role="button"
+          >
+            pointsOfInterest.mercury
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Venus"
-          class="navItem"
-          role="button"
-        >
-          Venus
+        <div>
+          <div
+            aria-label="pointsOfInterest.venus"
+            class="navItem"
+            role="button"
+          >
+            pointsOfInterest.venus
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Earth"
-          class="navItem"
-          role="button"
-        >
-          Earth
+        <div>
+          <div
+            aria-label="pointsOfInterest.earth"
+            class="navItem"
+            role="button"
+          >
+            pointsOfInterest.earth
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Mars"
-          class="navItem"
-          role="button"
-        >
-          Mars
+        <div>
+          <div
+            aria-label="pointsOfInterest.mars"
+            class="navItem"
+            role="button"
+          >
+            pointsOfInterest.mars
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="The Belt"
-          class="navItem"
-          role="button"
-        >
-          The Belt
+        <div>
+          <div
+            aria-label="pointsOfInterest.theBelt"
+            class="navItem"
+            role="button"
+          >
+            pointsOfInterest.theBelt
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Jupiter"
-          class="navItem"
-          role="button"
-        >
-          Jupiter
+        <div>
+          <div
+            aria-label="pointsOfInterest.jupiter"
+            class="navItem"
+            role="button"
+          >
+            pointsOfInterest.jupiter
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Saturn"
-          class="navItem"
-          role="button"
-        >
-          Saturn
+        <div>
+          <div
+            aria-label="pointsOfInterest.saturn"
+            class="navItem"
+            role="button"
+          >
+            pointsOfInterest.saturn
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Uranus"
-          class="navItem"
-          role="button"
-        >
-          Uranus
+        <div>
+          <div
+            aria-label="pointsOfInterest.uranus"
+            class="navItem"
+            role="button"
+          >
+            pointsOfInterest.uranus
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Neptune"
-          class="navItem"
-          role="button"
-        >
-          Neptune
+        <div>
+          <div
+            aria-label="pointsOfInterest.neptune"
+            class="navItem"
+            role="button"
+          >
+            pointsOfInterest.neptune
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Pluto"
-          class="navItem"
-          role="button"
-        >
-          Pluto
+        <div>
+          <div
+            aria-label="pointsOfInterest.pluto"
+            class="navItem"
+            role="button"
+          >
+            pointsOfInterest.pluto
+          </div>
         </div>
       </div>
     </div>

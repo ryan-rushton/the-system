@@ -3,3 +3,8 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+:focus {
+  outline: skyblue auto 2px;
+  outline-offset: 1px;
+}

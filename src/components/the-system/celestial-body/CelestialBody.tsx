@@ -6,7 +6,7 @@ import './CelestialBodyAnimations.scss';
 
 export interface CelestialBodyProps {
   /** A value to use on data-testid for cypress tests. Likely the display from pointsOfInterest. */
-  testId: string;
+  id: string;
   /** Class name for the celestial body */
   className: string;
   /** Distance from the sun with distance multiplier context applied */
@@ -39,7 +39,7 @@ export interface CelestialBodyProps {
  * Basically this whole things is a bunch of spinning discs sitting on top of one another.
  */
 const CelestialBody: FC<CelestialBodyProps> = ({
-  testId,
+  id,
   className,
   distance,
   orbitalPeriod,
@@ -77,12 +77,12 @@ const CelestialBody: FC<CelestialBodyProps> = ({
 
   return (
     <div
-      data-testid={`${testId}-orbit-line`}
+      data-testid={`${id}-orbit-line`}
       className={clsx(styles.orbit, { orbitLine: hasOrbitLine })}
       style={orbitStyles}
     >
       <div
-        data-testid={testId}
+        data-testid={id}
         className={clsx(styles.celestialBody, className)}
         title={className}
         ref={scrollToRef}
@@ -93,11 +93,11 @@ const CelestialBody: FC<CelestialBodyProps> = ({
             className={satellite.className}
             distance={satellite.distance}
             hasOrbitLine={hasOrbitLine}
-            key={satellite.testId}
+            key={satellite.id}
             orbitalPeriod={satellite.orbitalPeriod}
             radius={satellite.radius}
             referenceRadius={satellite.referenceRadius}
-            testId={satellite.testId}
+            id={satellite.id}
           />
         ))}
       </div>

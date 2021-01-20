@@ -9,7 +9,7 @@ describe('Planet', () => {
     const { jupiter } = pointsOfInterest;
     const { container } = render(
       <Planet
-        testId={jupiter.testId}
+        id={jupiter.id}
         className={'some-styles'}
         distance={jupiter.distance}
         orbitalPeriod={jupiter.orbitalPeriod}
@@ -26,7 +26,7 @@ describe('Planet', () => {
     const { jupiter } = pointsOfInterest;
     render(
       <Planet
-        testId={jupiter.testId}
+        id={jupiter.id}
         className={'some-styles'}
         distance={jupiter.distance}
         orbitalPeriod={jupiter.orbitalPeriod}
@@ -37,7 +37,7 @@ describe('Planet', () => {
     );
     expect(screen.getByTestId('jupiter')).toBeInTheDocument();
     for (const satellite of jupiter.satellites) {
-      expect(screen.getByTestId(satellite.testId)).toBeInTheDocument();
+      expect(screen.getByTestId(satellite.id)).toBeInTheDocument();
     }
   });
 });

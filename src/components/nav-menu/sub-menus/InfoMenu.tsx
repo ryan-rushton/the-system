@@ -1,5 +1,6 @@
 import React, { useContext, FC } from 'react';
 import clsx from 'clsx';
+import { useTranslation } from 'react-i18next';
 
 import AppContext, { systemSize, SystemContext } from '../../../context/SystemContext';
 import styles from './InfoMenu.module.scss';
@@ -23,9 +24,10 @@ interface Props {
  */
 const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onOrbitsVisibleChange }) => {
   const context = useContext(AppContext);
+  const { t } = useTranslation();
   const { orbitalPeriodMultiplier, distanceMultiplier, sizeMultiplier, satelliteDist } = context.multipliers;
 
-  const daysPerSecond = 1 * orbitalPeriodMultiplier;
+  const secondsInOneDay = 1 * orbitalPeriodMultiplier;
   const kmPerPixelDistance = Math.round(1 / distanceMultiplier).toLocaleString();
   const kmPerPixelSatellite = Math.round(1 / satelliteDist).toLocaleString();
   const kmPerPixelSize = Math.round(1 / sizeMultiplier).toLocaleString();
@@ -42,14 +44,22 @@ const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onO
 
   return (
     <div data-testid="info-menu">
-      <div className={styles.heading}>Time</div>
-      <div data-testid="time" className={styles.stat}>{`${daysPerSecond} s = 1 day`}</div>
-      <div className={styles.heading}>Distance Between Planets</div>
-      <div data-testid="planet-distance" className={styles.stat}>{`1 pixel = ${kmPerPixelDistance} km`}</div>
-      <div className={styles.heading}>Distance Between Planets And Moons</div>
-      <div data-testid="satellite-distance" className={styles.stat}>{`1 pixel = ${kmPerPixelSatellite} km`}</div>
-      <div className={styles.heading}>Planet Size</div>
-      <div data-testid="planet-size" className={styles.stat}>{`1 pixel = ${kmPerPixelSize} km`}</div>
+      <div className={styles.heading}>{t('infoMenu.time')}</div>
+      <div data-testid="time" className={styles.stat}>
+        {t('infoMenu.secondsForOneDay', { seconds: secondsInOneDay })}
+      </div>
+      <div className={styles.heading}>{t('infoMenu.distanceBetweenPlanets')}</div>
+      <div data-testid="planet-distance" className={styles.stat}>
+        {t('infoMenu.kmPerPixel', { km: kmPerPixelDistance })}
+      </div>
+      <div className={styles.heading}>{t('infoMenu.distanceBetweenPlanetsAndMoons')}</div>
+      <div data-testid="satellite-distance" className={styles.stat}>
+        {t('infoMenu.kmPerPixel', { km: kmPerPixelSatellite })}
+      </div>
+      <div className={styles.heading}>{t('infoMenu.planetSize')}</div>
+      <div data-testid="planet-size" className={styles.stat}>
+        {t('infoMenu.kmPerPixel', { km: kmPerPixelSize })}
+      </div>
       <div className={styles.buttonWrapper}>
         <div
           className={clsx(styles.button, { [styles.buttonActive]: systemSize.evenSpace === context })}
@@ -57,9 +67,9 @@ const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onO
           onKeyDown={onSizeChangeEnter}
           role="button"
           tabIndex={isVisible ? 0 : undefined}
-          aria-label="Normalise Distance"
+          aria-label={t('infoMenu.normaliseDistance')}
         >
-          {'Normalise Distance'}
+          {t('infoMenu.normaliseDistance')}
         </div>
       </div>
       <div className={styles.buttonWrapper}>
@@ -69,9 +79,9 @@ const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onO
           onKeyDown={onOrbitChangeEnter}
           role="button"
           tabIndex={isVisible ? 0 : undefined}
-          aria-label="Show Orbits"
+          aria-label={t('infoMenu.showOrbits')}
         >
-          {'Show Orbits'}
+          {t('infoMenu.showOrbits')}
         </div>
       </div>
     </div>

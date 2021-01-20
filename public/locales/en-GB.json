@@ -1,0 +1,28 @@
+{
+  "theSystem": "The System",
+  "navigation": "Navigation",
+  "info": "Info",
+  "infoMenu": {
+    "time": "Time",
+    "secondsForOneDay": "{{seconds}} s = 1 day",
+    "distanceBetweenPlanets": "Distance Between Planets",
+    "distanceBetweenPlanetsAndMoons": "Distance Between Planets And Moons",
+    "kmPerPixel": "1 pixel = {{km}} km",
+    "planetSize": "Planet Size",
+    "normaliseDistance": "Normalise Distance",
+    "showOrbits": "Show Orbits"
+  },
+  "pointsOfInterest": {
+    "sun": "Sun",
+    "mercury": "Mercury",
+    "venus": "Venus",
+    "earth": "Earth",
+    "mars": "Mars",
+    "theBelt": "The Belt",
+    "jupiter": "Jupiter",
+    "saturn": "Saturn",
+    "uranus": "Uranus",
+    "neptune": "Neptune",
+    "pluto": "Pluto"
+  }
+}
