@@ -7,67 +7,67 @@ exports[`InfoMenu it matches snapshot 1`] = `
   <div
     class="heading"
   >
-    infoMenu.time
+    Time
   </div>
   <div
     class="stat"
     data-testid="time"
   >
-    infoMenu.secondsForOneDay
+    1 s = 1 day
   </div>
   <div
     class="heading"
   >
-    infoMenu.distanceBetweenPlanets
+    Distance Between Planets
   </div>
   <div
     class="stat"
     data-testid="planet-distance"
   >
-    infoMenu.kmPerPixel
+    1 pixel = 100,000 km
   </div>
   <div
     class="heading"
   >
-    infoMenu.distanceBetweenPlanetsAndMoons
+    Distance Between Planets And Moons
   </div>
   <div
     class="stat"
     data-testid="satellite-distance"
   >
-    infoMenu.kmPerPixel
+    1 pixel = 10,000 km
   </div>
   <div
     class="heading"
   >
-    infoMenu.planetSize
+    Planet Size
   </div>
   <div
     class="stat"
     data-testid="planet-size"
   >
-    infoMenu.kmPerPixel
+    1 pixel = 2,000 km
   </div>
   <div
     class="buttonWrapper"
   >
     <div
-      aria-label="infoMenu.normaliseDistance"
+      aria-label="Normalise Distance"
       class="button"
       role="button"
     >
-      infoMenu.normaliseDistance
+      Normalise Distance
     </div>
   </div>
   <div
     class="buttonWrapper"
   >
     <div
-      aria-label="infoMenu.showOrbits"
+      aria-label="Show Orbits"
       class="button"
       role="button"
     >
-      infoMenu.showOrbits
+      Show Orbits
     </div>
   </div>
 </div>

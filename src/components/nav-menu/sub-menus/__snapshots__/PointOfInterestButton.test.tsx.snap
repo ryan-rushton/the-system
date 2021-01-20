@@ -3,11 +3,11 @@
 exports[`PointOfInterestButton it matches snapshot 1`] = `
 <div>
   <div
-    aria-label="pointsOfInterest.undefined"
+    aria-label="Some point"
     class="navItem"
     role="button"
   >
-    pointsOfInterest.undefined
+    Some point
   </div>
 </div>
 `;
