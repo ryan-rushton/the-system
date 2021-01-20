@@ -1,7 +1,5 @@
-import React from 'react';
 import i18n from 'i18next';
-import { initReactI18next, I18nextProvider } from 'react-i18next';
-import { render as rtlRender } from '@testing-library/react';
+import { initReactI18next } from 'react-i18next';
 
 import translations from '../public/locales/en-GB.json';
 
@@ -25,14 +23,5 @@ i18n.use(initReactI18next).init({
     },
   },
 });
-
-export const renderWithI18n = (ui, options) => {
-  function Wrapper({ children }) {
-    return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
-  }
-  return {
-    ...rtlRender(ui, { wrapper: Wrapper, ...options }),
-  };
-};
 
 export default i18n;
