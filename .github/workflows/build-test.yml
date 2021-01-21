@@ -50,6 +50,8 @@ jobs:
 
       - name: Cypress Browser Tests
         uses: cypress-io/github-action@v2
+        env:
+          REACT_APP_DEBUG: ON
         with:
           browser: chrome
           start: yarn start
