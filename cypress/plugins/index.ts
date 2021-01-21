@@ -1,4 +1,4 @@
-import logToOutput from 'cypress-log-to-output';
+import * as logToOutput from 'cypress-log-to-output';
 
 /// <reference types="cypress" />
 // ***********************************************************

@@ -6,7 +6,7 @@ import translations from '../public/locales/en-GB.json';
 i18n.use(initReactI18next).init({
   lng: 'en',
   fallbackLng: 'en',
-  debug: true,
+  debug: !process.env.CI, // don't span the ci logs with setup logs
   interpolation: {
     escapeValue: false, // not needed for react!!
   },
