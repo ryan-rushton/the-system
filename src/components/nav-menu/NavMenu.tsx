@@ -77,10 +77,11 @@ const NavMenu: FC<Props> = ({
         <NavMenuSubsection
           title={t('info')}
           isVisible={openSubsection === 'info'}
+          canTabInto={menuVisible}
           onHeaderClick={() => onSubsectionClick('info')}
         >
           <InfoMenu
-            isVisible={openSubsection === 'info'}
+            isVisible={menuVisible && openSubsection === 'info'}
             orbitsVisible={orbitsVisible}
             onChangeSystemSize={onChangeSystemSize}
             onOrbitsVisibleChange={onOrbitsVisibleChange}
@@ -89,13 +90,14 @@ const NavMenu: FC<Props> = ({
         <NavMenuSubsection
           title={t('navigation')}
           isVisible={openSubsection === 'nav'}
+          canTabInto={menuVisible}
           onHeaderClick={() => onSubsectionClick('nav')}
         >
           <div className={styles.navButtons}>
             {Object.values(pointsOfInterest).map((poi) => (
               <PointOfInterestButton
                 isBeingFollowed={poi === followedPointOfInterest}
-                isVisible={openSubsection === 'nav'}
+                isVisible={menuVisible && openSubsection === 'nav'}
                 key={poi.id}
                 pointOfInterest={poi}
                 onPoiClick={() => onFollowPointOfInterest(poi)}
