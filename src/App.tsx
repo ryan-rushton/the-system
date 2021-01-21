@@ -1,6 +1,7 @@
 import React, { useState, FC, useEffect, useCallback, RefObject } from 'react';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
+import * as Sentry from '@sentry/react';
 
 import TheSystem from './components/the-system/TheSystem';
 import AppContext, { SystemContext, systemSize } from './context/SystemContext';
@@ -81,13 +82,22 @@ const App: FC = () => {
         <div className={styles.title}>
           <span>{t('theSystem')}</span>
         </div>
-        <NavMenu
-          followedPointOfInterest={follower.pointOfInterest}
-          onChangeSystemSize={onChangeSystemSizeWithClear}
-          onFollowPointOfInterest={poiOnClick}
-          onOrbitsVisibleChange={setOrbitsVisible}
-          orbitsVisible={orbitsVisible}
-        />
+        {/* Wrap the nav menu in a sentry error boundary so users can still scroll around manually. */}
+        <Sentry.ErrorBoundary
+          fallback={() => null}
+          showDialog={true}
+          beforeCapture={(scope) => {
+            scope.setTag('location', 'nav-menu');
+          }}
+        >
+          <NavMenu
+            followedPointOfInterest={follower.pointOfInterest}
+            onChangeSystemSize={onChangeSystemSizeWithClear}
+            onFollowPointOfInterest={poiOnClick}
+            onOrbitsVisibleChange={setOrbitsVisible}
+            orbitsVisible={orbitsVisible}
+          />
+        </Sentry.ErrorBoundary>
         <TheSystem />
       </div>
     </AppContext.Provider>

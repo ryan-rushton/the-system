@@ -2,6 +2,7 @@
   "theSystem": "The System",
   "navigation": "Navigation",
   "info": "Info",
+  "systemFailedToLoad": "The System failed to load",
   "infoMenu": {
     "time": "Time",
     "secondsForOneDay": "{{seconds}} s = 1 day",
