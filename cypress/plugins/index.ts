@@ -1,3 +1,5 @@
+import logToOutput from 'cypress-log-to-output';
+
 /// <reference types="cypress" />
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -15,8 +17,8 @@
 /**
  * @type {Cypress.PluginConfig}
  */
-module.exports = (on, config) => {
+module.exports = (on) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-  require('cypress-log-to-output').install(on);
+  logToOutput.install(on);
 };
