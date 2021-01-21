@@ -1,8 +1,7 @@
-import React, { useContext, RefObject, FC } from 'react';
-
+import React, { FC, RefObject, useContext } from 'react';
 import AppContext from '../../context/SystemContext';
-import CelestialBody, { CelestialBodyProps } from './celestial-body/CelestialBody';
 import { pointsOfInterest } from '../../PointsOfInterest';
+import CelestialBody, { CelestialBodyProps } from './celestial-body/CelestialBody';
 import styles from './Planet.module.scss';
 
 /** Represents details used for the moon of a planet. */

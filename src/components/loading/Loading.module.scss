@@ -1,0 +1,69 @@
+.centred {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.ring {
+  border: 1px solid #fefefe;
+  border-radius: 50%;
+}
+
+.loading {
+  composes: centred;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+}
+
+.middleOrb {
+  composes: ring;
+  background-color: #fefefe;
+  width: 20px;
+  height: 20px;
+}
+
+.ringOne {
+  animation: orbit 3s linear infinite;
+  composes: centred ring;
+  position: relative;
+  height: 60px;
+  width: 60px;
+}
+
+.orbOne {
+  composes: ring;
+  position: absolute;
+  background-color: #fefefe;
+  width: 5px;
+  height: 5px;
+  left: -3px;
+}
+
+.ringTwo {
+  animation: orbit 5s linear infinite;
+  composes: centred ring;
+  position: relative;
+  height: 100px;
+  width: 100px;
+}
+
+.orbTwo {
+  composes: ring;
+  position: absolute;
+  background-color: #fefefe;
+  width: 9px;
+  height: 9px;
+  right: -5px;
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-359deg);
+  }
+}

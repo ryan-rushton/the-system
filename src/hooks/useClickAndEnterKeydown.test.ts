@@ -1,5 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks';
-
+import { act, renderHook } from '@testing-library/react-hooks';
 import useClickAndEnterKeyDown from './useClickAndEnterKeydown';
 
 describe('useClickAndEnterKeyDown', () => {

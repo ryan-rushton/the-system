@@ -1,10 +1,9 @@
-import React, { useContext, FC } from 'react';
 import clsx from 'clsx';
+import React, { FC, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import AppContext, { systemSize, SystemContext } from '../../../context/SystemContext';
-import styles from './InfoMenu.module.scss';
+import AppContext, { SystemContext, systemSize } from '../../../context/SystemContext';
 import useClickAndEnterKeyDown from '../../../hooks/useClickAndEnterKeydown';
+import styles from './InfoMenu.module.scss';
 
 interface Props {
   /** Whether the component is currently visible. */

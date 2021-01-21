@@ -1,9 +1,8 @@
-import React, { RefObject, ReactElement, ReactNode, FC, useContext } from 'react';
-
+import React, { FC, ReactElement, ReactNode, RefObject, useContext } from 'react';
 import AppContext from '../../../context/SystemContext';
-import styles from './TheBelt.module.scss';
-import BeltLayer from './BeltLayer';
 import { pointsOfInterest } from '../../../PointsOfInterest';
+import BeltLayer from './BeltLayer';
+import styles from './TheBelt.module.scss';
 
 /**
  * We cache both sizes of the belt as the are relatively expensive to generate. Memo would

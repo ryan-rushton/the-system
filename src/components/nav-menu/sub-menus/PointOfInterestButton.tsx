@@ -1,7 +1,6 @@
-import React, { FC } from 'react';
 import clsx from 'clsx';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import useClickAndEnterKeyDown from '../../../hooks/useClickAndEnterKeydown';
 import styles from './PointOfInterestButton.module.scss';
 

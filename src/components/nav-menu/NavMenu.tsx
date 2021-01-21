@@ -1,16 +1,15 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { CSSProperties, FC, useState, useRef, RefObject } from 'react';
+import React, { CSSProperties, FC, RefObject, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { getDistanceToTop } from '../../utils/DomUtil';
-import NavMenuSubsection from './NavMenuSubsection';
-import styles from './NavMenu.module.scss';
-import InfoMenu from './sub-menus/InfoMenu';
-import PointOfInterestButton from './sub-menus/PointOfInterestButton';
-import { pointsOfInterest } from '../../PointsOfInterest';
 import { SystemContext } from '../../context/SystemContext';
 import useClickAndEnterKeyDown from '../../hooks/useClickAndEnterKeydown';
+import { pointsOfInterest } from '../../PointsOfInterest';
+import { getDistanceToTop } from '../../utils/DomUtil';
+import styles from './NavMenu.module.scss';
+import NavMenuSubsection from './NavMenuSubsection';
+import InfoMenu from './sub-menus/InfoMenu';
+import PointOfInterestButton from './sub-menus/PointOfInterestButton';
 
 interface Props {
   /** Whether the red orbit lines are visible. */
