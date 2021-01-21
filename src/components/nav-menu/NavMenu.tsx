@@ -61,8 +61,6 @@ const NavMenu: FC<Props> = ({
       : `translateX(calc(${menuRef.current.offsetWidth}px + 2vw))`;
   }
 
-  console.log(transformStyles);
-
   return (
     <div className={styles.nav}>
       <div className={styles.header}>
