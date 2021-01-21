@@ -11,8 +11,8 @@ i18n
     backend: {
       loadPath: '/locales/{{lng}}.json',
     },
-    fallbackLng: 'en',
-    preload: ['en'],
+    fallbackLng: 'en-GB',
+    preload: ['en-GB'],
     debug: process.env.REACT_APP_DEBUG === 'ON',
     interpolation: {
       escapeValue: false,
