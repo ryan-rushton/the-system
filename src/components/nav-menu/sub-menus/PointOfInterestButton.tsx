@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import clsx from 'clsx';
+import { useTranslation } from 'react-i18next';
 
 import useClickAndEnterKeyDown from '../../../hooks/useClickAndEnterKeydown';
 import styles from './PointOfInterestButton.module.scss';
@@ -8,7 +9,7 @@ interface Props {
   /** Whether the component is currently visible. */
   isVisible: boolean;
   /** Point of interest object. */
-  pointOfInterest: { display: string };
+  pointOfInterest: { id: string };
   /** Whether the point of interest is currently being followed on screen. */
   isBeingFollowed: boolean;
   /** Click handler for when the button is clicked. */
@@ -20,21 +21,21 @@ interface Props {
  * the button is clicked again or another poi is clicked.
  */
 const PointOfInterestButton: FC<Props> = ({ isVisible, pointOfInterest, isBeingFollowed, onPoiClick }) => {
-  const title = isBeingFollowed ? 'Click again to stop following.' : undefined;
+  const { t } = useTranslation();
 
   const [onClick, onEnter] = useClickAndEnterKeyDown(onPoiClick);
+  const displayName = t(`pointsOfInterest.${pointOfInterest.id}`);
   return (
-    <div key={pointOfInterest.display}>
+    <div key={pointOfInterest.id}>
       <div
         className={clsx(styles.navItem, { [styles.navItemFollowed]: isBeingFollowed })}
         onClick={onClick}
         onKeyDown={onEnter}
         role="button"
         tabIndex={isVisible ? 0 : undefined}
-        title={title}
-        aria-label={pointOfInterest.display}
+        aria-label={displayName}
       >
-        {pointOfInterest.display}
+        {displayName}
       </div>
     </div>
   );

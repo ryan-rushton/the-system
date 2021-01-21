@@ -1,6 +1,7 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { CSSProperties, FC, useState, useRef, RefObject } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { getDistanceToTop } from '../../utils/DomUtil';
 import NavMenuSubsection from './NavMenuSubsection';
@@ -43,6 +44,7 @@ const NavMenu: FC<Props> = ({
   const [menuVisible, setMenuVisible] = useState(false);
   const [openSubsection, setOpenSubsection] = useState<OpenSubsectionState>();
   const menuRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   const [onMenuClick, onMenuEnter] = useClickAndEnterKeyDown(() => setMenuVisible((oldState) => !oldState));
   const onSubsectionClick = (clicked: 'info' | 'nav') =>
@@ -52,21 +54,30 @@ const NavMenu: FC<Props> = ({
 
   if (menuRef.current) {
     const maxHeight = `calc(100vh - ${getDistanceToTop(menuRef.current)}px)`;
-    const visibleTransform = `translateX(calc(-8vw - ${menuRef.current.offsetWidth}px))`;
     transformStyles.maxHeight = maxHeight;
-    transformStyles.transform = menuVisible ? visibleTransform : 'translateX(0px)';
+    // the 2vw is because we have a 2vw right indent on the navMenu style
+    transformStyles.transform = menuVisible
+      ? 'translateX(0px)'
+      : `translateX(calc(${menuRef.current.offsetWidth}px + 2vw))`;
   }
 
   return (
-    <div data-testid="nav-menu-button" className={styles.nav}>
+    <div className={styles.nav}>
       <div className={styles.header}>
-        <div className={styles.headerButton} onClick={onMenuClick} onKeyPress={onMenuEnter} role="button" tabIndex={0}>
+        <div
+          data-testid="nav-menu-button"
+          className={styles.headerButton}
+          onClick={onMenuClick}
+          onKeyPress={onMenuEnter}
+          role="button"
+          tabIndex={0}
+        >
           <FontAwesomeIcon icon={faBars} />
         </div>
       </div>
       <div data-testid="nav-menu" className={styles.menu} ref={menuRef} style={transformStyles}>
         <NavMenuSubsection
-          title={'Info'}
+          title={t('info')}
           isVisible={openSubsection === 'info'}
           onHeaderClick={() => onSubsectionClick('info')}
         >
@@ -78,21 +89,21 @@ const NavMenu: FC<Props> = ({
           />
         </NavMenuSubsection>
         <NavMenuSubsection
-          title={'Navigation'}
+          title={t('navigation')}
           isVisible={openSubsection === 'nav'}
           onHeaderClick={() => onSubsectionClick('nav')}
         >
-          <>
+          <div className={styles.navButtons}>
             {Object.values(pointsOfInterest).map((poi) => (
               <PointOfInterestButton
                 isBeingFollowed={poi === followedPointOfInterest}
                 isVisible={openSubsection === 'nav'}
-                key={poi.display}
+                key={poi.id}
                 pointOfInterest={poi}
                 onPoiClick={() => onFollowPointOfInterest(poi)}
               />
             ))}
-          </>
+          </div>
         </NavMenuSubsection>
       </div>
     </div>

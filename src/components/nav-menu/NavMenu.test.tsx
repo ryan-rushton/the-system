@@ -8,7 +8,7 @@ describe('NavMenu', () => {
     render(
       <NavMenu
         orbitsVisible={false}
-        pointsOfInterestMap={{ somePoint: { display: 'Some point', ref: React.createRef() } }}
+        pointsOfInterestMap={{ somePoint: { id: 'somePoint', ref: React.createRef() } }}
         onChangeSystemSize={jest.fn()}
         onFollowPointOfInterest={jest.fn()}
         onOrbitsVisibleChange={jest.fn()}
@@ -22,7 +22,7 @@ describe('NavMenu', () => {
     const { container } = render(
       <NavMenu
         orbitsVisible={false}
-        pointsOfInterestMap={{ somePoint: { display: 'Some point', ref: React.createRef() } }}
+        pointsOfInterestMap={{ somePoint: { id: 'somePoint', ref: React.createRef() } }}
         onChangeSystemSize={jest.fn()}
         onFollowPointOfInterest={jest.fn()}
         onOrbitsVisibleChange={jest.fn()}

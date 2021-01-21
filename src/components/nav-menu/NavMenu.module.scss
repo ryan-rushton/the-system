@@ -8,16 +8,25 @@
   z-index: 2;
 }
 
+.header {
+  padding: 0 4px;
+}
+
 .headerButton {
   composes: button from './CommonStyles.module.scss';
+  display: inline-block;
   font-size: 1.8em;
+  padding: 2px 2px 0 2px;
 }
 
 .menu {
-  left: 10vw;
-  overflow-y: scroll;
-  position: absolute;
+  position: relative;
   transition: transform 0.6s;
+  padding: 4px;
+}
+
+.navButtons {
+  padding: 4px 0;
 }
 
 @keyframes fadeIn {

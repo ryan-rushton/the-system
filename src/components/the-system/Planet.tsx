@@ -8,7 +8,7 @@ import styles from './Planet.module.scss';
 /** Represents details used for the moon of a planet. */
 interface Satellite {
   /** A value to use on data-testid for cypress tests. Likely the display from pointsOfInterest. */
-  testId: string;
+  id: string;
   /** The radius in km */
   radius: number;
   /** The distance from what it is orbiting in km */
@@ -19,7 +19,7 @@ interface Satellite {
 
 interface Props {
   /** A value to use on data-testid for cypress tests. Likely the display from pointsOfInterest. */
-  testId: string;
+  id: string;
   /** Class name to give the element, passed to CelestialBody. */
   className: string;
   /** A ref so that we can scroll to planet when it is selected in the nav menu. */
@@ -37,7 +37,7 @@ interface Props {
 /**
  * A planet in the solar system. This applies multipliers to values before they get passed to CelestialBody.
  */
-const Planet: FC<Props> = ({ testId, className, distance, radius, orbitalPeriod, scrollToRef, satellites }) => {
+const Planet: FC<Props> = ({ id, className, distance, radius, orbitalPeriod, scrollToRef, satellites }) => {
   const {
     systemRadius,
     multipliers: { distanceMultiplier, sizeMultiplier, orbitalPeriodMultiplier, satelliteDist },
@@ -52,7 +52,7 @@ const Planet: FC<Props> = ({ testId, className, distance, radius, orbitalPeriod,
     const satelliteRadius = Math.max(1, satellite.radius * sizeMultiplier);
 
     return {
-      testId: satellite.testId,
+      id: satellite.id,
       className: styles.satellite,
       distance: satellite.distance * satelliteDist + adjustedRadius - satelliteRadius,
       hasOrbitLine: true,
@@ -64,7 +64,7 @@ const Planet: FC<Props> = ({ testId, className, distance, radius, orbitalPeriod,
 
   return (
     <CelestialBody
-      testId={testId}
+      id={id}
       className={className}
       distance={adjustedDistance}
       hasOrbitLine={true}

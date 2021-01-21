@@ -1,5 +1,6 @@
 import React, { useState, FC, useEffect, useCallback, RefObject } from 'react';
 import clsx from 'clsx';
+import { useTranslation } from 'react-i18next';
 
 import TheSystem from './components/the-system/TheSystem';
 import AppContext, { SystemContext, systemSize } from './context/SystemContext';
@@ -22,6 +23,7 @@ const App: FC = () => {
   const [systemSizeContext, setSystemSizeContext] = useState(systemSize.enhancedVisibility);
   const [orbitsVisible, setOrbitsVisible] = useState(false);
   const [follower, setFollower] = useState<FollowerState>({});
+  const { t } = useTranslation();
 
   const clearFollower = useCallback(() => {
     if (follower.interval) {
@@ -77,7 +79,7 @@ const App: FC = () => {
     <AppContext.Provider value={systemSizeContext}>
       <div className={clsx({ [styles.orbitsVisible]: orbitsVisible })}>
         <div className={styles.title}>
-          <span>The System</span>
+          <span>{t('theSystem')}</span>
         </div>
         <NavMenu
           followedPointOfInterest={follower.pointOfInterest}

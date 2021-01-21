@@ -3,13 +3,13 @@
 exports[`NavMenu it matches snapshot 1`] = `
 <div
   class="nav"
-  data-testid="nav-menu-button"
 >
   <div
     class="header"
   >
     <div
       class="headerButton"
+      data-testid="nav-menu-button"
       role="button"
       tabindex="0"
     >
@@ -127,103 +127,107 @@ exports[`NavMenu it matches snapshot 1`] = `
       class="content"
       style="max-height: 0;"
     >
-      <div>
-        <div
-          aria-label="Sun"
-          class="navItem"
-          role="button"
-        >
-          Sun
+      <div
+        class="navButtons"
+      >
+        <div>
+          <div
+            aria-label="Sun"
+            class="navItem"
+            role="button"
+          >
+            Sun
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Mercury"
-          class="navItem"
-          role="button"
-        >
-          Mercury
+        <div>
+          <div
+            aria-label="Mercury"
+            class="navItem"
+            role="button"
+          >
+            Mercury
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Venus"
-          class="navItem"
-          role="button"
-        >
-          Venus
+        <div>
+          <div
+            aria-label="Venus"
+            class="navItem"
+            role="button"
+          >
+            Venus
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Earth"
-          class="navItem"
-          role="button"
-        >
-          Earth
+        <div>
+          <div
+            aria-label="Earth"
+            class="navItem"
+            role="button"
+          >
+            Earth
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Mars"
-          class="navItem"
-          role="button"
-        >
-          Mars
+        <div>
+          <div
+            aria-label="Mars"
+            class="navItem"
+            role="button"
+          >
+            Mars
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="The Belt"
-          class="navItem"
-          role="button"
-        >
-          The Belt
+        <div>
+          <div
+            aria-label="The Belt"
+            class="navItem"
+            role="button"
+          >
+            The Belt
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Jupiter"
-          class="navItem"
-          role="button"
-        >
-          Jupiter
+        <div>
+          <div
+            aria-label="Jupiter"
+            class="navItem"
+            role="button"
+          >
+            Jupiter
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Saturn"
-          class="navItem"
-          role="button"
-        >
-          Saturn
+        <div>
+          <div
+            aria-label="Saturn"
+            class="navItem"
+            role="button"
+          >
+            Saturn
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Uranus"
-          class="navItem"
-          role="button"
-        >
-          Uranus
+        <div>
+          <div
+            aria-label="Uranus"
+            class="navItem"
+            role="button"
+          >
+            Uranus
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Neptune"
-          class="navItem"
-          role="button"
-        >
-          Neptune
+        <div>
+          <div
+            aria-label="Neptune"
+            class="navItem"
+            role="button"
+          >
+            Neptune
+          </div>
         </div>
-      </div>
-      <div>
-        <div
-          aria-label="Pluto"
-          class="navItem"
-          role="button"
-        >
-          Pluto
+        <div>
+          <div
+            aria-label="Pluto"
+            class="navItem"
+            role="button"
+          >
+            Pluto
+          </div>
         </div>
       </div>
     </div>

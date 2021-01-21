@@ -5,7 +5,7 @@ import React from 'react';
  * Values are obtained from either https://nssdc.gsfc.nasa.gov/planetary/factsheet/ or wikipedia.
  *
  * The following properties may or may not exist on each point of interest,
- * - testId: string - A unique string used for data-testid identifiers for tests.
+ * - id: string - A unique string used for data-testid identifiers for tests.
  * - ref: RefObject<HTMLDivElement> - A ref so that we can scroll to the object when it is selected in the nav menu.
  * - display: string - The name of the point.
  * - radius: number - The radius of the point of interest (includes rings if visible), units are km.
@@ -16,39 +16,35 @@ import React from 'react';
  */
 export const pointsOfInterest = {
   sun: {
-    testId: 'sun',
+    id: 'sun',
     ref: React.createRef<HTMLDivElement>(),
-    display: 'Sun',
     radius: 695508,
     distance: 0,
     orbitalPeriod: 1,
   },
   mercury: {
-    testId: 'mercury',
+    id: 'mercury',
     ref: React.createRef<HTMLDivElement>(),
-    display: 'Mercury',
     radius: 2440,
     distance: 57900000,
     orbitalPeriod: 88,
   },
   venus: {
-    testId: 'venus',
+    id: 'venus',
     ref: React.createRef<HTMLDivElement>(),
-    display: 'Venus',
     radius: 6052,
     distance: 108200000,
     orbitalPeriod: 224.7,
   },
   earth: {
-    testId: 'earth',
+    id: 'earth',
     ref: React.createRef<HTMLDivElement>(),
-    display: 'Earth',
     radius: 6378,
     distance: 149600000,
     orbitalPeriod: 365.2,
     satellites: [
       {
-        testId: 'moon',
+        id: 'moon',
         distance: 384400,
         orbitalPeriod: 27.3,
         radius: 1737,
@@ -56,45 +52,43 @@ export const pointsOfInterest = {
     ],
   },
   mars: {
-    testId: 'mars',
+    id: 'mars',
     ref: React.createRef<HTMLDivElement>(),
-    display: 'Mars',
     radius: 3396,
     distance: 227900000,
     orbitalPeriod: 687,
   },
   theBelt: {
+    id: 'theBelt',
     ref: React.createRef<HTMLDivElement>(),
-    display: 'The Belt',
   },
   jupiter: {
-    testId: 'jupiter',
+    id: 'jupiter',
     ref: React.createRef<HTMLDivElement>(),
-    display: 'Jupiter',
     radius: 71498,
     distance: 778600000,
     orbitalPeriod: 4331,
     satellites: [
       {
-        testId: 'io',
+        id: 'io',
         distance: 421700,
         orbitalPeriod: 1.77,
         radius: 1822,
       },
       {
-        testId: 'europa',
+        id: 'europa',
         distance: 670900,
         orbitalPeriod: 3.55,
         radius: 1561,
       },
       {
-        testId: 'ganymede',
+        id: 'ganymede',
         distance: 1070400,
         orbitalPeriod: 7.15,
         radius: 2634,
       },
       {
-        testId: 'callisto',
+        id: 'callisto',
         distance: 1882700,
         orbitalPeriod: 16.69,
         radius: 2410,
@@ -102,21 +96,20 @@ export const pointsOfInterest = {
     ],
   },
   saturn: {
-    testId: 'saturn',
+    id: 'saturn',
     ref: React.createRef<HTMLDivElement>(),
-    display: 'Saturn',
     radius: 80000 + 58232, // making the ring radius clear
     distance: 1433500000,
     orbitalPeriod: 10747,
     satellites: [
       {
-        testId: 'titan',
+        id: 'titan',
         distance: 1221870,
         orbitalPeriod: 15.95,
         radius: 2574,
       },
       {
-        testId: 'rhea',
+        id: 'rhea',
         distance: 527108,
         orbitalPeriod: 1.77,
         radius: 764,
@@ -124,25 +117,22 @@ export const pointsOfInterest = {
     ],
   },
   uranus: {
-    testId: 'uranus',
+    id: 'uranus',
     ref: React.createRef<HTMLDivElement>(),
-    display: 'Uranus',
     radius: 25559,
     distance: 2872500000,
     orbitalPeriod: 30589,
   },
   neptune: {
-    testId: 'neptune',
+    id: 'neptune',
     ref: React.createRef<HTMLDivElement>(),
-    display: 'Neptune',
     radius: 24764,
     distance: 4495100000,
     orbitalPeriod: 59800,
   },
   pluto: {
-    testId: 'pluto',
+    id: 'pluto',
     ref: React.createRef<HTMLDivElement>(),
-    display: 'Pluto',
     radius: 1185,
     distance: 5906400000,
     orbitalPeriod: 90560,
