@@ -30,3 +30,4 @@ To run the browser tests locally use `yarn run cypress open` to open the cypress
 - Cache buster when the app version is updated so we can utilise the service worker for caching images.
 - Add another i18n language.
 - Test and ensure screen readers works, not really something that is useful for this site but something I think is neglected in a lot of applications.
+- User interaction statistics, maybe google analytics?
