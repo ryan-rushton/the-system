@@ -50,16 +50,14 @@ const NavMenu: FC<Props> = ({
   const onSubsectionClick = (clicked: 'info' | 'nav') =>
     setOpenSubsection((oldState) => (clicked === oldState ? undefined : clicked));
 
-  const transformStyles: CSSProperties = {};
+  // on first render we dont have the offset so just push it way off the screen
+  const transformDistance = menuRef.current ? `calc(${menuRef.current.offsetWidth}px + 2vw)` : '100vw';
 
-  if (menuRef.current) {
-    const maxHeight = `calc(100vh - ${getDistanceToTop(menuRef.current)}px)`;
-    transformStyles.maxHeight = maxHeight;
+  const transformStyles: CSSProperties = {
+    maxHeight: menuRef.current ? `calc(100vh - ${getDistanceToTop(menuRef.current)}px)` : undefined,
     // the 2vw is because we have a 2vw right indent on the navMenu style
-    transformStyles.transform = menuVisible
-      ? 'translateX(0px)'
-      : `translateX(calc(${menuRef.current.offsetWidth}px + 2vw))`;
-  }
+    transform: menuVisible ? 'translateX(0px)' : `translateX(${transformDistance})`,
+  };
 
   return (
     <div className={styles.nav}>

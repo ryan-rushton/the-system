@@ -33,6 +33,7 @@ exports[`NavMenu it matches snapshot 1`] = `
   <div
     class="menu"
     data-testid="nav-menu"
+    style="transform: translateX(100vw);"
   >
     <div
       class="title"
