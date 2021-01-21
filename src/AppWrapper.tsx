@@ -9,8 +9,13 @@ import packageJson from '../package.json';
 import './i18n';
 
 Sentry.init({
-  dsn: process.env.production && 'https://e090fb4038584bd7a40ea8b9ce981213@o508541.ingest.sentry.io/5601190',
+  // this turns off sentry for everything but production
+  dsn:
+    process.env.NODE_ENV === 'production'
+      ? 'https://e090fb4038584bd7a40ea8b9ce981213@o508541.ingest.sentry.io/5601190'
+      : '',
   autoSessionTracking: true,
+  environment: process.env.NODE_ENV,
   integrations: [new Integrations.BrowserTracing()],
   release: packageJson.version,
   tracesSampleRate: 0.5,
