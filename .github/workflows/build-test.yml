@@ -51,6 +51,7 @@ jobs:
       - name: Cypress Browser Tests
         uses: cypress-io/github-action@v2
         with:
+          browser: chrome
           start: yarn start
 
       - name: Archive Cypress screenshots
