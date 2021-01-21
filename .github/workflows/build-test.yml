@@ -50,11 +50,12 @@ jobs:
 
       - name: Cypress Browser Tests
         uses: cypress-io/github-action@v2
-        env:
-          REACT_APP_DEBUG: ON
         with:
           browser: chrome
           start: yarn start
+        # Uncomment to enable i18n debug logging which will be shown in the step logs.
+        # env:
+        #   REACT_APP_DEBUG: ON
 
       - name: Archive Cypress screenshots
         if: ${{ always() }}
