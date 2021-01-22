@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { pointsOfInterest } from '../PointsOfInterest';
 
 /**

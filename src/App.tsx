@@ -1,14 +1,13 @@
-import React, { useState, FC, useEffect, useCallback, RefObject } from 'react';
-import clsx from 'clsx';
-import { useTranslation } from 'react-i18next';
 import * as Sentry from '@sentry/react';
-
-import TheSystem from './components/the-system/TheSystem';
-import AppContext, { SystemContext, systemSize } from './context/SystemContext';
+import clsx from 'clsx';
+import React, { FC, RefObject, useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styles from './App.module.scss';
 import NavMenu from './components/nav-menu/NavMenu';
-import { doCallbackAfterElementIsVisible, scrollOptions, scrollToElementIfNotVisible } from './utils/DomUtil';
+import TheSystem from './components/the-system/TheSystem';
+import AppContext, { SystemContext, systemSize } from './context/SystemContext';
 import { pointsOfInterest } from './PointsOfInterest';
+import { doCallbackAfterElementIsVisible, scrollOptions, scrollToElementIfNotVisible } from './utils/DomUtil';
 
 interface FollowerState {
   /** The point of interest being followed. */

@@ -1,7 +1,6 @@
 import React, { FC, useRef } from 'react';
-
-import styles from './NavMenuSubsection.module.scss';
 import useClickAndEnterKeyDown from '../../hooks/useClickAndEnterKeydown';
+import styles from './NavMenuSubsection.module.scss';
 
 interface Props {
   title: string;

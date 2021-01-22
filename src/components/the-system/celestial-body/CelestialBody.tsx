@@ -1,6 +1,5 @@
 import clsx from 'clsx';
-import React, { RefObject, FC } from 'react';
-
+import React, { FC, RefObject } from 'react';
 import styles from './CelestialBody.module.scss';
 import './CelestialBodyAnimations.scss';
 
