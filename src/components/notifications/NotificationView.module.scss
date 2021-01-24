@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column-reverse;
+  position: fixed;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  height: calc(100vh - 50px);
+  width: 20vw;
+}
+
+.notification {
+  position: relative;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+  margin-top: 8px;
+}
+
+.messageList {
+  padding-inline-start: 1em;
+}
+
+.info {
+  background-color: rgb(97, 179, 206);
+}
+
+.success {
+  background-color: rgb(105, 219, 105);
+}
+
+.warning {
+  background-color: rgb(255, 134, 77);
+}
+
+.error {
+  background-color: rgb(255, 80, 80);
+}

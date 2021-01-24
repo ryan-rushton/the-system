@@ -2,7 +2,7 @@ import { KeyboardEvent, useCallback } from 'react';
 
 /**
  * Provides memoized functions that will activate onClick and on Enter Keydown.
- * @param callback The callback
+ * @param callback The callback fired on enter keydown or click.
  */
 const useClickAndEnterKeyDown = (callback: () => void): [() => void, (event: KeyboardEvent<HTMLElement>) => void] => {
   const onClick = useCallback(callback, [callback]);
