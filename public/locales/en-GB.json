@@ -27,6 +27,6 @@
     "pluto": "Pluto"
   },
   "notifications": {
-    "followingPoint": "You will now follow {{point}} around the system. Click {{point}} again to stop following.`"
+    "followingPoint": "You will now follow {{point}} around the system. Click {{point}} again to stop following."
   }
 }

@@ -41,13 +41,19 @@ const NotificationView: FC = () => {
                 [styles.warning]: notification.severity === 'warning',
                 [styles.error]: notification.severity === 'error',
               })}
-              initial={{ opacity: 0, y: 0, scale: 0.3 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.5, delay: 0.5 } }}
+              initial={{ opacity: 0, scale: 0.3, y: 50 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{
+                opacity: 0,
+                scale: 0.5,
+                transition: { duration: 0.3 },
+              }}
             >
               <div className={styles.message}>{notification.message}</div>
               <CloseButton
-                onClose={() => setNotifications((oldState) => oldState.filter((n) => n.id !== notification.id))}
+                onClose={() => {
+                  setNotifications((oldState) => oldState.filter((n) => n.id !== notification.id));
+                }}
               />
             </motion.li>
           ))}
