@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './App.module.scss';
 import NavMenu from './components/nav-menu/NavMenu';
 import { showNotification } from './components/notifications/notifications';
-import NotificationView from './components/notifications/NotificationView';
+import NotificationView from './components/notifications/NotificationsList';
 import TheSystem from './components/the-system/TheSystem';
 import AppContext, { SystemContext, systemSize } from './context/SystemContext';
 import { pointsOfInterest } from './PointsOfInterest';
