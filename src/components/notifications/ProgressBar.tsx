@@ -3,13 +3,17 @@ import React, { FC } from 'react';
 import styles from './ProgressBar.module.scss';
 
 interface Props {
-  duration: number;
+  duration?: number;
   onCompletion?(): void;
 }
 
 const ProgressBar: FC<Props> = ({ duration, onCompletion }) => {
+  if (duration === undefined) {
+    return null;
+  }
+
   return (
-    <div className={styles.container}>
+    <div data-testid="progress-bar" className={styles.container}>
       <motion.div
         className={styles.progress}
         initial={{ width: '0%' }}

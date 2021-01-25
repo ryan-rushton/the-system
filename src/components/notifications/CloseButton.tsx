@@ -16,7 +16,7 @@ interface Props {
  * isolate the svg creation.
  */
 const CloseButton: FC<Props> = ({ onClose }) => (
-  <button onClick={onClose} className={styles.close}>
+  <button data-testid="close-button" onClick={onClose} className={styles.close}>
     <svg width="12" height="12" viewBox="0 0 12 12">
       <Path d="M 1 1 L 11 11" />
       <Path d="M 1 11 L 11 1" />

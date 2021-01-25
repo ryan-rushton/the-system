@@ -10,6 +10,8 @@ export interface Notification {
   message: string;
   /** Where the notification originated from, allows us to conditionally clear old notifications. */
   origin: string;
+  /** How long the notification is displayed for. If undefined the notification stays until closed. */
+  duration?: number;
 }
 
 export interface UniqueNotification extends Notification {

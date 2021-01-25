@@ -11,6 +11,10 @@ interface Props {
   onClose(): void;
 }
 
+/**
+ * A view for a single notification. This includes the close button and the progress bar.
+ * When the progress bar fills the notification will close.
+ */
 const NotificationView: FC<Props> = ({ notification, onClose }) => {
   return (
     <motion.li
@@ -32,7 +36,7 @@ const NotificationView: FC<Props> = ({ notification, onClose }) => {
         <div className={styles.message}>{notification.message}</div>
         <CloseButton onClose={onClose} />
       </div>
-      <ProgressBar duration={5} onCompletion={onClose} />
+      <ProgressBar duration={notification.duration} onCompletion={onClose} />
     </motion.li>
   );
 };

@@ -52,6 +52,7 @@ const App: FC = () => {
         severity: 'info',
         message: t('notifications.followingPoint', { point: t(`pointsOfInterest.${pointOfInterest.id}`) }),
         origin: 'follower',
+        duration: 5,
       });
     },
     [setFollower, t]
