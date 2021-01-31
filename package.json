@@ -6,7 +6,7 @@
         "@fortawesome/fontawesome-svg-core": "^1.2.34",
         "@fortawesome/free-solid-svg-icons": "^5.15.2",
         "@fortawesome/react-fontawesome": "^0.1.14",
-        "@sentry/react": "^6.0.1",
+        "@sentry/react": "^6.0.3",
         "@sentry/tracing": "^6.0.1",
         "clsx": "^1.1.1",
         "framer-motion": "^3.2.2-rc.1",
