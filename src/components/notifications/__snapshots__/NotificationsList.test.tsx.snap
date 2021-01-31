@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotificationsList it matches snapshot 1`] = `
+<div
+  class="container"
+  data-testid="notifications-list"
+>
+  <ul
+    class="messageList"
+  />
+</div>
+`;

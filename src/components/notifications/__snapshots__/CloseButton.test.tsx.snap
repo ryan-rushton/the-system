@@ -13,14 +13,14 @@ exports[`NavMenu it matches snapshot 1`] = `
     <path
       d="M 1 1 L 11 11"
       fill="transparent"
-      stroke="hsl(0, 0%, 18%)"
+      stroke="#fefefe"
       stroke-linecap="round"
       stroke-width="3"
     />
     <path
       d="M 1 11 L 11 1"
       fill="transparent"
-      stroke="hsl(0, 0%, 18%)"
+      stroke="#fefefe"
       stroke-linecap="round"
       stroke-width="3"
     />

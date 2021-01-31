@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import styles from './CloseButton.module.scss';
 
 const Path = ({ d }: { d: string }) => (
-  <motion.path fill="transparent" strokeWidth="3" stroke="hsl(0, 0%, 18%)" strokeLinecap="round" d={d} />
+  <motion.path fill="transparent" strokeWidth="3" stroke="#fefefe" strokeLinecap="round" d={d} />
 );
 
 interface Props {

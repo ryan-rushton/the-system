@@ -1,9 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import React from 'react';
 import { pointsOfInterest } from '../../../PointsOfInterest';
 import CelestialBody from './CelestialBody';
 
-describe('C', () => {
+describe('CelestialBody', () => {
+  afterEach(cleanup);
+
   test('it matches the snapshot', () => {
     const { jupiter } = pointsOfInterest;
     const { container } = render(

@@ -20,14 +20,14 @@ export interface UniqueNotification extends Notification {
 }
 
 /** An rxjs Subject for notifications. */
-export let notifications$ = new Subject<UniqueNotification>();
+export const notifications$ = new Subject<UniqueNotification>();
 
 /** Queues a new notification to be shown in the notification view. */
 export const showNotification = (nextNotification: Notification): void => {
-  if (notifications$.closed || notifications$.hasError) {
-    console.warn(`Notifications not available, reinitialising`);
-    notifications$ = new Subject<UniqueNotification>();
-  }
+  // if (notifications$.closed || notifications$.hasError) {
+  //   console.warn(`Notifications not available, reinitialising`);
+  //   notifications$ = new Subject<UniqueNotification>();
+  // }
 
   notifications$.next({ ...nextNotification, id: id++ });
 };

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`C it matches the snapshot 1`] = `
+exports[`CelestialBody it matches the snapshot 1`] = `
 <div
   class="orbit"
   data-testid="undefined-orbit-line"

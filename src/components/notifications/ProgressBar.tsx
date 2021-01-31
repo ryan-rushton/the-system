@@ -3,10 +3,15 @@ import React, { FC } from 'react';
 import styles from './ProgressBar.module.scss';
 
 interface Props {
+  /** The time in seconds at which the animation will finish and onCompletion will be invoked. */
   duration?: number;
+  /** A function that gets called after the duration has completed. */
   onCompletion?(): void;
 }
 
+/**
+ * A animated bar to indicate that the notification will close itself after the nominated duration.
+ */
 const ProgressBar: FC<Props> = ({ duration, onCompletion }) => {
   if (duration === undefined) {
     return null;

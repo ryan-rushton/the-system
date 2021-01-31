@@ -16,7 +16,7 @@ const NotificationsList: FC = () => {
 
   // subscribe to the notifications stream and update state when new ones come in.
   useEffect(() => {
-    notifications$.subscribe((newNotification: UniqueNotification): void => {
+    const subscription = notifications$.subscribe((newNotification: UniqueNotification): void => {
       setNotifications((oldState) => {
         const newState =
           newNotification.origin === 'follower' ? oldState.filter((n) => n.origin !== 'follower') : [...oldState];
@@ -24,11 +24,11 @@ const NotificationsList: FC = () => {
       });
     });
 
-    return (): void => notifications$.unsubscribe();
+    return (): void => subscription.unsubscribe();
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div data-testid="notifications-list" className={styles.container}>
       <ul className={styles.messageList}>
         <AnimatePresence initial={false}>
           {notifications.map((notification) => (
