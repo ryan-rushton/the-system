@@ -4,6 +4,8 @@ import React, { FC, RefObject, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './App.module.scss';
 import NavMenu from './components/nav-menu/NavMenu';
+import { showNotification } from './components/notifications/notifications';
+import NotificationView from './components/notifications/NotificationsList';
 import TheSystem from './components/the-system/TheSystem';
 import AppContext, { SystemContext, systemSize } from './context/SystemContext';
 import { pointsOfInterest } from './PointsOfInterest';
@@ -11,7 +13,7 @@ import { doCallbackAfterElementIsVisible, scrollOptions, scrollToElementIfNotVis
 
 interface FollowerState {
   /** The point of interest being followed. */
-  pointOfInterest?: { ref: RefObject<HTMLDivElement> };
+  pointOfInterest?: { ref: RefObject<HTMLDivElement>; id: string };
   /**
    * The interval at which the point of interest is being checked to see whether it is visible on screen.
    * This can be cleared when the point of interest is no longer being followed.
@@ -42,20 +44,29 @@ const App: FC = () => {
     setSystemSizeContext(newSystemSizeContext);
   };
 
-  const createIntervalAndSetFollower = (pointOfInterest: { ref: RefObject<HTMLDivElement> }) => {
-    const interval = setInterval(() => scrollToElementIfNotVisible(pointOfInterest.ref.current), 1000);
-    setFollower({ pointOfInterest, interval });
-  };
+  const createIntervalAndSetFollower = useCallback(
+    (pointOfInterest: { ref: RefObject<HTMLDivElement>; id: string }) => {
+      const interval = setInterval(() => scrollToElementIfNotVisible(pointOfInterest.ref.current), 1000);
+      setFollower({ pointOfInterest, interval });
+      showNotification({
+        severity: 'info',
+        message: t('notifications.followingPoint', { point: t(`pointsOfInterest.${pointOfInterest.id}`) }),
+        origin: 'follower',
+        duration: 5,
+      });
+    },
+    [setFollower, t]
+  );
 
   /**
    * Function for following points of interest around the solar system.
    *
    * If something is already being followed, calling this will stop following.
    * If the sun or the belt is selected it will just scroll them into view.
-   * If anything else is selected it will set an interval to scroll the element into view if it isn't already
+   * If anything else is selected it will set an interval to scroll the element into view if it isn't already.
    * */
   const poiOnClick = useCallback(
-    (pointOfInterest: { ref: RefObject<HTMLDivElement> }): void => {
+    (pointOfInterest: { ref: RefObject<HTMLDivElement>; id: string }): void => {
       if (pointOfInterest === follower.pointOfInterest) {
         // clear if already followed
         clearFollower();
@@ -72,7 +83,7 @@ const App: FC = () => {
         );
       }
     },
-    [clearFollower, follower]
+    [createIntervalAndSetFollower, clearFollower, follower]
   );
 
   return (
@@ -99,6 +110,7 @@ const App: FC = () => {
         </Sentry.ErrorBoundary>
         <TheSystem />
       </div>
+      <NotificationView />
     </AppContext.Provider>
   );
 };

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavMenu it matches snapshot 1`] = `
+<button
+  class="close"
+  data-testid="close-button"
+>
+  <svg
+    height="12"
+    viewBox="0 0 12 12"
+    width="12"
+  >
+    <path
+      d="M 1 1 L 11 11"
+      fill="transparent"
+      stroke="#fefefe"
+      stroke-linecap="round"
+      stroke-width="3"
+    />
+    <path
+      d="M 1 11 L 11 1"
+      fill="transparent"
+      stroke="#fefefe"
+      stroke-linecap="round"
+      stroke-width="3"
+    />
+  </svg>
+</button>
+`;

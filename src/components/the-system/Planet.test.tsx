@@ -1,9 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import React from 'react';
 import { pointsOfInterest } from '../../PointsOfInterest';
 import Planet from './Planet';
 
 describe('Planet', () => {
+  afterEach(cleanup);
+
   test('it matches the snapshot', () => {
     const { jupiter } = pointsOfInterest;
     const { container } = render(

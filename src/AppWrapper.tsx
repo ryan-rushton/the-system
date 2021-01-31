@@ -24,7 +24,7 @@ Sentry.init({
 const AppWrapper: FC = () => {
   return (
     // Error boundary to catch any errors at the highest level.
-    <Sentry.ErrorBoundary fallback={ErrorFallback} showDialog={true}>
+    <Sentry.ErrorBoundary fallback={<ErrorFallback />} showDialog={true}>
       <Suspense fallback={<Loading />}>
         <App />
       </Suspense>

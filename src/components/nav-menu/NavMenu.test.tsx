@@ -1,8 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import React from 'react';
 import NavMenu from './NavMenu';
 
 describe('NavMenu', () => {
+  afterEach(cleanup);
+
   test('it renders', () => {
     render(
       <NavMenu

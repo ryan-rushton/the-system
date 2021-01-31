@@ -1,0 +1,31 @@
+.notification {
+  position: relative;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  overflow: hidden;
+  color: #fefefe;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  padding: 12px;
+}
+
+.info {
+  background-color: rgb(33, 150, 243);
+}
+
+.success {
+  background-color: rgb(65, 165, 68);
+}
+
+.warning {
+  background-color: rgb(255, 152, 0);
+}
+
+.error {
+  background-color: rgb(230, 59, 46);
+}

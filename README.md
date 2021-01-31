@@ -25,9 +25,9 @@ To run the browser tests locally use `yarn run cypress open` to open the cypress
 ## TODO
 
 - Move belt generation to a web worker and show loading screen while we wait for it all to be generated. Div creation still needs to happen at render time but we can generate the properties and random numbers while we show a loading screen.
-- Notifications of how the follower system work. Currently there is no indication of what is happening and that is very bad UX.
 - Get sentry source maps working correctly.
 - Cache buster when the app version is updated so we can utilise the service worker for caching images.
 - Add another i18n language.
 - Test and ensure screen readers works, not really something that is useful for this site but something I think is neglected in a lot of applications.
 - User interaction statistics, maybe google analytics?
+- Create my own svg's so I can ditch fontawesome as a dep.
