@@ -1,9 +1,11 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import PointOfInterestButton from './PointOfInterestButton';
 
 describe('PointOfInterestButton', () => {
+  afterEach(cleanup);
+
   test('it renders', () => {
     const poi = { id: 'somePoint', ref: React.createRef() };
     render(<PointOfInterestButton pointOfInterest={poi} isBeingFollowed={false} onPoiClick={jest.fn()} />);

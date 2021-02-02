@@ -1,11 +1,5 @@
 import { RefObject, useEffect } from 'react';
 
-const handleClick = (event: MouseEvent, ref: RefObject<HTMLElement | null>, callback: () => void): void => {
-  if (ref.current && event.target instanceof Element && !ref.current.contains(event.target)) {
-    callback();
-  }
-};
-
 /**
  * This hook will detect clicks outside where the ref is not a parent of the clicked object.
  * It uses the `mousedown` event to ensure it runs before onClick events.
@@ -17,8 +11,14 @@ const handleClick = (event: MouseEvent, ref: RefObject<HTMLElement | null>, call
 const useClickOutside = (ref: RefObject<HTMLElement | null>, enabled: boolean, callback: () => void): void => {
   useEffect(() => {
     if (enabled) {
-      const eventHandler = (event: MouseEvent): void => handleClick(event, ref, callback);
+      const eventHandler = (event: MouseEvent): void => {
+        if (ref.current && event.target instanceof Element && !ref.current.contains(event.target)) {
+          callback();
+        }
+      };
+
       document.addEventListener('mousedown', eventHandler);
+
       return () => document.removeEventListener('mousedown', eventHandler);
     }
   }, [ref, enabled, callback]);
