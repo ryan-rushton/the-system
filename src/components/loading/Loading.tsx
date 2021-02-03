@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import styles from './Loading.module.scss';
 
+// TODO use SVG's instead of divs?
+/** A loading page that has a few rotation orbs on orbit lines. This is intended to use the whole viewport. */
 const Loading: FC = () => {
   return (
     <div className={styles.loading}>
