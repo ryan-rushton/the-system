@@ -26,7 +26,6 @@
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:prettier/recommended",
-    "prettier/@typescript-eslint",
     // Tests
     "plugin:cypress/recommended"
   ],
