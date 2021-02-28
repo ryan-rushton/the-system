@@ -9,7 +9,7 @@
         "@sentry/react": "^6.2.0",
         "@sentry/tracing": "^6.2.0",
         "clsx": "^1.1.1",
-        "framer-motion": "^3.6.2",
+        "framer-motion": "^3.7.0",
         "i18next": "^19.9.0",
         "i18next-browser-languagedetector": "^6.0.1",
         "i18next-http-backend": "^1.1.1",
