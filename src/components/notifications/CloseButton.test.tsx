@@ -13,9 +13,9 @@ describe('NavMenu', () => {
   });
 
   test('it matches snapshot', () => {
-    const { container } = render(<CloseButton onClose={jest.fn()} />);
+    render(<CloseButton onClose={jest.fn()} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByTestId('close-button')).toMatchSnapshot();
   });
 
   // Don't need an on Enter keydown test as the main element is a button

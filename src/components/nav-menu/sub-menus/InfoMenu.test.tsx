@@ -15,11 +15,9 @@ describe('InfoMenu', () => {
   });
 
   test('it matches snapshot', () => {
-    const { container } = render(
-      <InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={jest.fn()} />
-    );
+    render(<InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={jest.fn()} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByTestId('info-menu')).toMatchSnapshot();
   });
 
   test('it changes orbits visible when Show Orbits clicked', () => {

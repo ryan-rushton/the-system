@@ -14,9 +14,9 @@ describe('NotificationsList', () => {
   });
 
   test('it matches snapshot', () => {
-    const { container } = render(<NotificationsList />);
+    render(<NotificationsList />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByTestId('notifications-list')).toMatchSnapshot();
   });
 
   test('it renders a notification', async () => {

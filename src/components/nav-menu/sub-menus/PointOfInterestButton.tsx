@@ -25,7 +25,7 @@ const PointOfInterestButton: FC<Props> = ({ isVisible, pointOfInterest, isBeingF
   const [onClick, onEnter] = useClickAndEnterKeyDown(onPoiClick);
   const displayName = t(`pointsOfInterest.${pointOfInterest.id}`);
   return (
-    <div key={pointOfInterest.id}>
+    <div key={pointOfInterest.id} data-testid={`${pointOfInterest.id}-button`}>
       <div
         className={clsx(styles.navItem, { [styles.navItemFollowed]: isBeingFollowed })}
         onClick={onClick}

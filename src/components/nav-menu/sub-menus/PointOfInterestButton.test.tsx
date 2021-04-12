@@ -16,11 +16,9 @@ describe('PointOfInterestButton', () => {
 
   test('it matches snapshot', () => {
     const poi = { id: 'somePoint', ref: React.createRef() };
-    const { container } = render(
-      <PointOfInterestButton pointOfInterest={poi} isBeingFollowed={false} onPoiClick={jest.fn()} />
-    );
+    render(<PointOfInterestButton pointOfInterest={poi} isBeingFollowed={false} onPoiClick={jest.fn()} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByTestId('somePoint-button')).toMatchSnapshot();
   });
 
   test('it changes orbits visible when Show Orbits clicked', () => {

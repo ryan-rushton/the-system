@@ -59,7 +59,7 @@ const NavMenu: FC<Props> = ({
   };
 
   return (
-    <div className={styles.nav}>
+    <div data-testid="nav-menu-container" className={styles.nav}>
       <div className={styles.header}>
         <div
           data-testid="nav-menu-button"

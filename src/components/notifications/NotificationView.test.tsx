@@ -12,9 +12,9 @@ describe('NotificationView', () => {
   });
 
   test('it matches snapshot', () => {
-    const { container } = render(<NotificationView notification={{ severity: 'error', message: 'Some error!' }} />);
+    render(<NotificationView notification={{ severity: 'error', message: 'Some error!' }} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByTestId('notification-view')).toMatchSnapshot();
   });
 
   test('it renders the error icon correctly', () => {

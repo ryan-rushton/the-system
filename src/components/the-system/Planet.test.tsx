@@ -8,7 +8,7 @@ describe('Planet', () => {
 
   test('it matches the snapshot', () => {
     const { jupiter } = pointsOfInterest;
-    const { container } = render(
+    render(
       <Planet
         id={jupiter.id}
         className={'some-styles'}
@@ -20,7 +20,7 @@ describe('Planet', () => {
       />
     );
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByTestId('jupiter-orbit-line')).toMatchSnapshot();
   });
 
   test('it renders the correct number of celestial bodies', () => {
