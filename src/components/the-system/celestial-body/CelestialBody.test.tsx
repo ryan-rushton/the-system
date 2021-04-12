@@ -8,8 +8,9 @@ describe('CelestialBody', () => {
 
   test('it matches the snapshot', () => {
     const { jupiter } = pointsOfInterest;
-    const { container } = render(
+    render(
       <CelestialBody
+        id={jupiter.id}
         className={'some-styles'}
         distance={jupiter.distance}
         orbitalPeriod={jupiter.orbitalPeriod}
@@ -18,7 +19,7 @@ describe('CelestialBody', () => {
       />
     );
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByTestId('jupiter-orbit-line')).toMatchSnapshot();
   });
 
   test('it renders the correct number of celestial bodies', () => {

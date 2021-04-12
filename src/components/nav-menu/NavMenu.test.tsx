@@ -20,7 +20,7 @@ describe('NavMenu', () => {
   });
 
   test('it matches snapshot', () => {
-    const { container } = render(
+    render(
       <NavMenu
         orbitsVisible={false}
         pointsOfInterestMap={{ somePoint: { id: 'somePoint', ref: React.createRef() } }}
@@ -30,6 +30,6 @@ describe('NavMenu', () => {
       />
     );
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByTestId('nav-menu-container')).toMatchSnapshot();
   });
 });

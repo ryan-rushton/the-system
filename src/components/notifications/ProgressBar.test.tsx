@@ -12,9 +12,9 @@ describe('NavMenu', () => {
   });
 
   test('it matches snapshot', () => {
-    const { container } = render(<ProgressBar duration={0} />);
+    render(<ProgressBar duration={0} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByTestId('progress-bar')).toMatchSnapshot();
   });
 
   test('it renders nothing when no duration', () => {

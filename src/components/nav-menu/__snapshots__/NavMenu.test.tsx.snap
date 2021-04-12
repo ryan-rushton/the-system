@@ -3,6 +3,7 @@
 exports[`NavMenu it matches snapshot 1`] = `
 <div
   class="nav"
+  data-testid="nav-menu-container"
 >
   <div
     class="header"
@@ -129,7 +130,9 @@ exports[`NavMenu it matches snapshot 1`] = `
       <div
         class="navButtons"
       >
-        <div>
+        <div
+          data-testid="sun-button"
+        >
           <div
             aria-label="Sun"
             class="navItem"
@@ -138,7 +141,9 @@ exports[`NavMenu it matches snapshot 1`] = `
             Sun
           </div>
         </div>
-        <div>
+        <div
+          data-testid="mercury-button"
+        >
           <div
             aria-label="Mercury"
             class="navItem"
@@ -147,7 +152,9 @@ exports[`NavMenu it matches snapshot 1`] = `
             Mercury
           </div>
         </div>
-        <div>
+        <div
+          data-testid="venus-button"
+        >
           <div
             aria-label="Venus"
             class="navItem"
@@ -156,7 +163,9 @@ exports[`NavMenu it matches snapshot 1`] = `
             Venus
           </div>
         </div>
-        <div>
+        <div
+          data-testid="earth-button"
+        >
           <div
             aria-label="Earth"
             class="navItem"
@@ -165,7 +174,9 @@ exports[`NavMenu it matches snapshot 1`] = `
             Earth
           </div>
         </div>
-        <div>
+        <div
+          data-testid="mars-button"
+        >
           <div
             aria-label="Mars"
             class="navItem"
@@ -174,7 +185,9 @@ exports[`NavMenu it matches snapshot 1`] = `
             Mars
           </div>
         </div>
-        <div>
+        <div
+          data-testid="theBelt-button"
+        >
           <div
             aria-label="The Belt"
             class="navItem"
@@ -183,7 +196,9 @@ exports[`NavMenu it matches snapshot 1`] = `
             The Belt
           </div>
         </div>
-        <div>
+        <div
+          data-testid="jupiter-button"
+        >
           <div
             aria-label="Jupiter"
             class="navItem"
@@ -192,7 +207,9 @@ exports[`NavMenu it matches snapshot 1`] = `
             Jupiter
           </div>
         </div>
-        <div>
+        <div
+          data-testid="saturn-button"
+        >
           <div
             aria-label="Saturn"
             class="navItem"
@@ -201,7 +218,9 @@ exports[`NavMenu it matches snapshot 1`] = `
             Saturn
           </div>
         </div>
-        <div>
+        <div
+          data-testid="uranus-button"
+        >
           <div
             aria-label="Uranus"
             class="navItem"
@@ -210,7 +229,9 @@ exports[`NavMenu it matches snapshot 1`] = `
             Uranus
           </div>
         </div>
-        <div>
+        <div
+          data-testid="neptune-button"
+        >
           <div
             aria-label="Neptune"
             class="navItem"
@@ -219,7 +240,9 @@ exports[`NavMenu it matches snapshot 1`] = `
             Neptune
           </div>
         </div>
-        <div>
+        <div
+          data-testid="pluto-button"
+        >
           <div
             aria-label="Pluto"
             class="navItem"
