@@ -1,6 +1,7 @@
 describe('System display', () => {
   before(() => {
-    cy.visit('http://localhost:3000');
+    // Increase the initial loading timeout as we wait for the app to get served in CI
+    cy.visit('http://localhost:3000', { timeout: 120_000 });
   });
 
   it('can open the menu', () => {
