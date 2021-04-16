@@ -53,6 +53,8 @@ jobs:
         with:
           browser: chrome
           start: yarn start
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 180
         # Uncomment to enable i18n debug logging which will be shown in the step logs.
         # env:
         #   REACT_APP_DEBUG: ON
