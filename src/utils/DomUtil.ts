@@ -66,12 +66,6 @@ export const doCallbackAfterElementIsVisible = (element: HTMLElement, callback: 
  * scroll to the element the UI feels quite janky.
  */
 export const scrollToElementIfNotVisible = (element?: HTMLDivElement | null): void => {
-  const scrollOptions: ScrollIntoViewOptions = {
-    behavior: 'smooth',
-    block: 'center',
-    inline: 'center',
-  };
-
   if (element && !isElementInViewport(element)) {
     element?.scrollIntoView(scrollOptions);
   }

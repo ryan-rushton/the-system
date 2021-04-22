@@ -17,7 +17,7 @@ describe('useClickAndEnterKeyDown', () => {
   test('it calls the callback correctly with enter', () => {
     const callback = jest.fn();
     const { result } = renderHook(() => useClickAndEnterKeyDown(callback));
-    const [ignored, onEnter] = result.current;
+    const [_ignored, onEnter] = result.current;
 
     act(() => onEnter({ key: 'Enter' }));
 
