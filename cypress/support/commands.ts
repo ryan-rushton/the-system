@@ -23,6 +23,8 @@ Cypress.Commands.add('isNotInViewport', (element) => {
     const right = Cypress.$(cy.state('window')).width();
     const rect = $el[0].getBoundingClientRect();
 
-    expect(rect).to.satisfy((rect) => rect.bottom < 0 || rect.top > bottom || rect.right < 0 || rect.left > right);
+    expect(rect).to.satisfy(
+      (toCheck) => toCheck.bottom < 0 || toCheck.top > bottom || toCheck.right < 0 || toCheck.left > right
+    );
   });
 });
