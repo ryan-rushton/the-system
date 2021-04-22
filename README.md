@@ -1,6 +1,6 @@
 # The System
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/245f7f94-8e6e-4beb-bfbb-af9ce9c68105/deploy-status)](https://app.netlify.com/sites/the-system/deploys) ![Build+Test](https://github.com/ryan-rushton/the-system/workflows/Build+Test/badge.svg?branch=master)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/245f7f94-8e6e-4beb-bfbb-af9ce9c68105/deploy-status)](https://app.netlify.com/sites/the-system/deploys) ![Build+Test](https://github.com/ryan-rushton/the-system/workflows/Build+Test/badge.svg?branch=master) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=ryan-rushton_the-system&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=ryan-rushton_the-system)
 
 The solar system in your browser. Check it out [here](https://the-system.netlify.app/).
 
