@@ -1,6 +1,4 @@
 {
-  "auto-close-tag.enableAutoCloseSelfClosingTag": false,
-  "auto-close-tag.enableAutoCloseTag": false,
   "cSpell.words": [
     "clsx",
     "consts",
@@ -23,6 +21,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "eslint.packageManager": "yarn",
   "html.autoClosingTags": false,
@@ -42,9 +41,6 @@
     "typescriptreact"
   ],
   "editor.tabSize": 2,
-  "jest.restartJestOnSnapshotUpdate": true,
-  "jest.disabledWorkspaceFolders": [
-    "node_modules/",
-    "cypress/"
-  ]
+  "editor.detectIndentation": false,
+  "jest.disabledWorkspaceFolders": ["node_modules/", "cypress/"]
 }
