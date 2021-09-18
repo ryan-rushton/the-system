@@ -37,7 +37,7 @@ jobs:
             ${{ runner.os }}-${{ env.cache-name }}-
 
       - name: Install
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable --immutable-cache --check-cache
 
       - name: Test
         run: yarn test
