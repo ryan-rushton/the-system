@@ -94,7 +94,6 @@ const App: FC = () => {
         </div>
         {/* Wrap the nav menu in a sentry error boundary so users can still scroll around manually. */}
         <Sentry.ErrorBoundary
-          fallback={() => null}
           showDialog={true}
           beforeCapture={(scope) => {
             scope.setTag('location', 'nav-menu');
