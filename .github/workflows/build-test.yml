@@ -25,10 +25,10 @@ jobs:
 
       # Cypress recommends to cache ~/.cache and not to cache node_modules, see
       # https://docs.cypress.io/guides/guides/continuous-integration.html#Caching
-      - name: Cache yarn and cypress
+      - name: Cache
         uses: actions/cache@v2
         env:
-          cache-name: cache-yarn-and-cypress
+          cache-name: cache
         with:
           path: ~/.cache
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
