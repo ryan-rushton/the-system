@@ -58,7 +58,7 @@
     "eslint-plugin-testing-library": "4.12.3",
     "jest-dom": "4.0.0",
     "prettier": "2.4.1",
-    "prettier-plugin-organize-imports": "2.3.3",
+    "prettier-plugin-organize-imports": "2.3.4",
     "ts-node": "10.2.1"
   },
   "browserslist": [
