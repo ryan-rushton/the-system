@@ -9910,12 +9910,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"i18next@npm:20.6.1":
-  version: 20.6.1
-  resolution: "i18next@npm:20.6.1"
+"i18next@npm:21.0.2":
+  version: 21.0.2
+  resolution: "i18next@npm:21.0.2"
   dependencies:
     "@babel/runtime": ^7.12.0
-  checksum: 313cd4b17f9092eaf8ca92a02bb74d099f4a8b26de6e38018f438ce6f706220e5f72d865e1f50d815e13504ec38bc77e0f6341f670ca5162689f8d11a859e564
+  checksum: f090f7f000e10aac18a54cee25c9635ad366b53dc6b4646c9d1224d9224fc903707f85ffc1a003f35ae427526ef191ef71a6c4e9042b05bb3bd6f027d589fa86
   languageName: node
   linkType: hard
 
@@ -17058,7 +17058,7 @@ resolve@^2.0.0-next.3:
     eslint-plugin-react-hooks: 4.2.0
     eslint-plugin-testing-library: 4.12.3
     framer-motion: 4.1.17
-    i18next: 20.6.1
+    i18next: 21.0.2
     i18next-browser-languagedetector: 6.1.2
     i18next-http-backend: 1.3.1
     jest-dom: 4.0.0
