@@ -6912,9 +6912,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:8.4.1":
-  version: 8.4.1
-  resolution: "cypress@npm:8.4.1"
+"cypress@npm:8.5.0":
+  version: 8.5.0
+  resolution: "cypress@npm:8.5.0"
   dependencies:
     "@cypress/request": ^2.88.6
     "@cypress/xvfb": ^1.2.4
@@ -6950,6 +6950,7 @@ __metadata:
     minimist: ^1.2.5
     ospath: ^1.2.2
     pretty-bytes: ^5.6.0
+    proxy-from-env: 1.0.0
     ramda: ~0.27.1
     request-progress: ^3.0.0
     supports-color: ^8.1.1
@@ -6959,7 +6960,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: d06e91df458d8052971a6992c0d0e74451bf916ceba0599e9bf0287022b60e831a2ef0b9be64af03894101d06c3fc21b98fed9a3e9f6a0818ee75f0b7358d033
+  checksum: 2e8ec5681a70d89419de1e2e4124c8c76890b732224d8d48c3d6902abe6e317289d513f191bc6d438a9374555a1b6212ca351d177b74f55718c07b8c15372f8c
   languageName: node
   linkType: hard
 
@@ -14563,6 +14564,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"proxy-from-env@npm:1.0.0":
+  version: 1.0.0
+  resolution: "proxy-from-env@npm:1.0.0"
+  checksum: 292e28d1de0c315958d71d8315eb546dd3cd8c8cbc2dab7c54eeb9f5c17f421771964ad0b5e1f77011bab2305bdae42e1757ce33bdb1ccc3e87732322a8efcf1
+  languageName: node
+  linkType: hard
+
 "prr@npm:~1.0.1":
   version: 1.0.1
   resolution: "prr@npm:1.0.1"
@@ -17043,7 +17051,7 @@ resolve@^2.0.0-next.3:
     "@typescript-eslint/eslint-plugin": 4.32.0
     "@typescript-eslint/parser": 4.32.0
     clsx: 1.1.1
-    cypress: 8.4.1
+    cypress: 8.5.0
     cypress-log-to-output: 1.1.2
     eslint: 7.32.0
     eslint-config-prettier: 8.3.0
