@@ -3329,9 +3329,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:8.7.0":
-  version: 8.7.0
-  resolution: "@testing-library/dom@npm:8.7.0"
+"@testing-library/dom@npm:8.7.1":
+  version: 8.7.1
+  resolution: "@testing-library/dom@npm:8.7.1"
   dependencies:
     "@babel/code-frame": ^7.10.4
     "@babel/runtime": ^7.12.5
@@ -3341,7 +3341,7 @@ __metadata:
     dom-accessibility-api: ^0.5.6
     lz-string: ^1.4.4
     pretty-format: ^27.0.2
-  checksum: b9874666d0facb1268b33c16150e82a72544b207b0e271ba5fd7662ada36bac7a773e55b8f45248ed3923c780b055743fdca318914647950ee1b32a1196858d6
+  checksum: 9d8dc39affe183e2a6ef843d65a886928978332cfb097bf456c567702d9fa0dfa3efc5e7fbf8bbdacc4af4652151c3712b5c1345ff6ea99fa597cad4443125f2
   languageName: node
   linkType: hard
 
@@ -17039,7 +17039,7 @@ resolve@^2.0.0-next.3:
     "@fortawesome/react-fontawesome": 0.1.15
     "@sentry/react": 6.13.2
     "@sentry/tracing": 6.13.2
-    "@testing-library/dom": 8.7.0
+    "@testing-library/dom": 8.7.1
     "@testing-library/jest-dom": 5.14.1
     "@testing-library/react": 12.1.1
     "@testing-library/react-hooks": 7.0.2
