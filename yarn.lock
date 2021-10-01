@@ -15655,12 +15655,12 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"rxjs@npm:7.3.0":
-  version: 7.3.0
-  resolution: "rxjs@npm:7.3.0"
+"rxjs@npm:7.3.1":
+  version: 7.3.1
+  resolution: "rxjs@npm:7.3.1"
   dependencies:
     tslib: ~2.1.0
-  checksum: e63adb8808ea6c299a020d56d2af92bcf71efe641adf838499932e29b8f5fd5ff00873653ad48ba3ecf6c9fc11c3c595acf995e8d456f9d8cb85c7d37a1fd72e
+  checksum: a97ab220f3ea125ff02f2e9b08dce721d703ec42375c316e8bad3fe8e38b221669aa1b68130fe764729190eba7410238c63466e28e483e4e500c83cded97d106
   languageName: node
   linkType: hard
 
@@ -17077,7 +17077,7 @@ resolve@^2.0.0-next.3:
     react-dom: 17.0.2
     react-i18next: 11.12.0
     react-scripts: 4.0.3
-    rxjs: 7.3.0
+    rxjs: 7.3.1
     sass: 1.42.1
     ts-node: 10.2.1
     typescript: 4.4.3
