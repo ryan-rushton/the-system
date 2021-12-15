@@ -8,6 +8,7 @@ exports[`PointOfInterestButton it matches snapshot 1`] = `
     aria-label="Some point"
     class="navItem"
     role="button"
+    tabindex="0"
   >
     Some point
   </div>

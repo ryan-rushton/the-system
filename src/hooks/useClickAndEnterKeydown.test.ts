@@ -1,4 +1,5 @@
 import { act, cleanup, renderHook } from '@testing-library/react-hooks';
+import { KeyboardEvent } from 'react';
 import useClickAndEnterKeyDown from './useClickAndEnterKeydown';
 
 describe('useClickAndEnterKeyDown', () => {
@@ -19,7 +20,7 @@ describe('useClickAndEnterKeyDown', () => {
     const { result } = renderHook(() => useClickAndEnterKeyDown(callback));
     const [_ignored, onEnter] = result.current;
 
-    act(() => onEnter({ key: 'Enter' }));
+    act(() => onEnter({ key: 'Enter' } as KeyboardEvent<HTMLElement>));
 
     expect(callback).toBeCalledTimes(1);
   });

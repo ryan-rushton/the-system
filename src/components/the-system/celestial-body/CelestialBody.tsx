@@ -7,7 +7,7 @@ export interface CelestialBodyProps {
   /** A value to use on data-testid for cypress tests. Likely the display from pointsOfInterest. */
   id: string;
   /** Class name for the celestial body */
-  className: string;
+  className?: string;
   /** Distance from the sun with distance multiplier context applied */
   distance: number;
   /** Orbital period for the body orbital period multiplier context applied */
