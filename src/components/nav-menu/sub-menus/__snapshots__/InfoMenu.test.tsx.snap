@@ -55,6 +55,7 @@ exports[`InfoMenu it matches snapshot 1`] = `
       aria-label="Normalise Distance"
       class="button"
       role="button"
+      tabindex="0"
     >
       Normalise Distance
     </div>
@@ -66,6 +67,7 @@ exports[`InfoMenu it matches snapshot 1`] = `
       aria-label="Show Orbits"
       class="button"
       role="button"
+      tabindex="0"
     >
       Show Orbits
     </div>

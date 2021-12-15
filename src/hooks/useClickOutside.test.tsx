@@ -9,8 +9,8 @@ const TestComponent: FC<{
   parentFn: () => void;
   childFn: () => void;
 }> = ({ parentEnabled, parentFn, childFn }) => {
-  const parentRef = useRef<HTMLDivElement>();
-  const childRef = useRef<HTMLDivElement>();
+  const parentRef = useRef<HTMLDivElement | null>(null);
+  const childRef = useRef<HTMLDivElement | null>(null);
 
   useClickOutside(parentRef, parentEnabled, parentFn);
   useClickOutside(childRef, true, childFn);

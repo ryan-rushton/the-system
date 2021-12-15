@@ -8,7 +8,7 @@ describe('NavMenuSubsection', () => {
 
   test('it renders', () => {
     render(
-      <NavMenuSubsection title="Some menu" isVisible={true} onHeaderClick={jest.fn()}>
+      <NavMenuSubsection title="Some menu" canTabInto={true} isVisible={true} onHeaderClick={jest.fn()}>
         <div>{"I'm a child!"}</div>
       </NavMenuSubsection>
     );
@@ -20,7 +20,7 @@ describe('NavMenuSubsection', () => {
   test('it calls onHeaderClick when the header is clicked', () => {
     const onHeaderClick = jest.fn();
     render(
-      <NavMenuSubsection title="Some menu" isVisible={true} onHeaderClick={onHeaderClick}>
+      <NavMenuSubsection title="Some menu" canTabInto={true} isVisible={true} onHeaderClick={onHeaderClick}>
         <div>{"I'm a child!"}</div>
       </NavMenuSubsection>
     );
@@ -33,7 +33,7 @@ describe('NavMenuSubsection', () => {
   test('it calls onHeaderClick when the header receives an enter keydown', () => {
     const onHeaderClick = jest.fn();
     render(
-      <NavMenuSubsection title="Some menu" isVisible={true} onHeaderClick={onHeaderClick}>
+      <NavMenuSubsection title="Some menu" canTabInto={true} isVisible={true} onHeaderClick={onHeaderClick}>
         <div>{"I'm a child!"}</div>
       </NavMenuSubsection>
     );

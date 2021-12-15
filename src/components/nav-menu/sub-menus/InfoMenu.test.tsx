@@ -8,21 +8,42 @@ describe('InfoMenu', () => {
   afterEach(cleanup);
 
   test('it renders', () => {
-    render(<InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={jest.fn()} />);
+    render(
+      <InfoMenu
+        orbitsVisible={false}
+        isVisible={true}
+        onOrbitsVisibleChange={jest.fn()}
+        onChangeSystemSize={jest.fn()}
+      />
+    );
     const element = screen.getByTestId('info-menu');
 
     expect(element).toBeInTheDocument();
   });
 
   test('it matches snapshot', () => {
-    render(<InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={jest.fn()} />);
+    render(
+      <InfoMenu
+        orbitsVisible={false}
+        isVisible={true}
+        onOrbitsVisibleChange={jest.fn()}
+        onChangeSystemSize={jest.fn()}
+      />
+    );
 
     expect(screen.getByTestId('info-menu')).toMatchSnapshot();
   });
 
   test('it changes orbits visible when Show Orbits clicked', () => {
     const onOrbitsChange = jest.fn();
-    render(<InfoMenu orbitsVisible={false} onOrbitsVisibleChange={onOrbitsChange} onChangeSystemSize={jest.fn()} />);
+    render(
+      <InfoMenu
+        orbitsVisible={false}
+        isVisible={true}
+        onOrbitsVisibleChange={onOrbitsChange}
+        onChangeSystemSize={jest.fn()}
+      />
+    );
     userEvent.click(screen.getByText(/^Show Orbits$/));
 
     expect(onOrbitsChange).toBeCalledTimes(1);
@@ -31,7 +52,14 @@ describe('InfoMenu', () => {
 
   test('it changes orbits visible when Show Orbits enter pressed', () => {
     const onOrbitsChange = jest.fn();
-    render(<InfoMenu orbitsVisible={false} onOrbitsVisibleChange={onOrbitsChange} onChangeSystemSize={jest.fn()} />);
+    render(
+      <InfoMenu
+        orbitsVisible={false}
+        isVisible={true}
+        onOrbitsVisibleChange={onOrbitsChange}
+        onChangeSystemSize={jest.fn()}
+      />
+    );
 
     fireEvent.keyDown(screen.getByText(/^Show Orbits$/), { key: 'Enter' });
 
@@ -42,7 +70,12 @@ describe('InfoMenu', () => {
   test('it changes system size when Normalise Distance clicked', () => {
     const onChangeSystemSize = jest.fn();
     render(
-      <InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={onChangeSystemSize} />
+      <InfoMenu
+        orbitsVisible={false}
+        isVisible={true}
+        onOrbitsVisibleChange={jest.fn()}
+        onChangeSystemSize={onChangeSystemSize}
+      />
     );
     userEvent.click(screen.getByText(/^Normalise Distance$/));
 
@@ -53,7 +86,12 @@ describe('InfoMenu', () => {
   test('it changes system size when Normalise Distance enter pressed', () => {
     const onChangeSystemSize = jest.fn();
     render(
-      <InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={onChangeSystemSize} />
+      <InfoMenu
+        orbitsVisible={false}
+        isVisible={true}
+        onOrbitsVisibleChange={jest.fn()}
+        onChangeSystemSize={onChangeSystemSize}
+      />
     );
     fireEvent.keyDown(screen.getByText(/^Normalise Distance$/), { key: 'Enter' });
 
@@ -62,7 +100,14 @@ describe('InfoMenu', () => {
   });
 
   test('it has correct days per second for enhanced visibility context', () => {
-    render(<InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={jest.fn()} />);
+    render(
+      <InfoMenu
+        orbitsVisible={false}
+        isVisible={true}
+        onOrbitsVisibleChange={jest.fn()}
+        onChangeSystemSize={jest.fn()}
+      />
+    );
 
     const timeDetails = screen.getByTestId('time');
 
@@ -72,7 +117,12 @@ describe('InfoMenu', () => {
   test('it has correct days per second for even size context', () => {
     render(
       <AppContext.Provider value={systemSize.evenSpace}>
-        <InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={jest.fn()} />
+        <InfoMenu
+          orbitsVisible={false}
+          isVisible={true}
+          onOrbitsVisibleChange={jest.fn()}
+          onChangeSystemSize={jest.fn()}
+        />
       </AppContext.Provider>
     );
 
@@ -82,7 +132,14 @@ describe('InfoMenu', () => {
   });
 
   test('it has correct planet distance for enhanced visibility context', () => {
-    render(<InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={jest.fn()} />);
+    render(
+      <InfoMenu
+        orbitsVisible={false}
+        isVisible={true}
+        onOrbitsVisibleChange={jest.fn()}
+        onChangeSystemSize={jest.fn()}
+      />
+    );
 
     const timeDetails = screen.getByTestId('planet-distance');
 
@@ -92,7 +149,12 @@ describe('InfoMenu', () => {
   test('it has correct planet distance for even size context', () => {
     render(
       <AppContext.Provider value={systemSize.evenSpace}>
-        <InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={jest.fn()} />
+        <InfoMenu
+          orbitsVisible={false}
+          isVisible={true}
+          onOrbitsVisibleChange={jest.fn()}
+          onChangeSystemSize={jest.fn()}
+        />
       </AppContext.Provider>
     );
 
@@ -102,7 +164,14 @@ describe('InfoMenu', () => {
   });
 
   test('it has correct satellite distance for enhanced visibility context', () => {
-    render(<InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={jest.fn()} />);
+    render(
+      <InfoMenu
+        orbitsVisible={false}
+        isVisible={true}
+        onOrbitsVisibleChange={jest.fn()}
+        onChangeSystemSize={jest.fn()}
+      />
+    );
 
     const timeDetails = screen.getByTestId('satellite-distance');
 
@@ -112,7 +181,12 @@ describe('InfoMenu', () => {
   test('it has correct satellite distance for even size context', () => {
     render(
       <AppContext.Provider value={systemSize.evenSpace}>
-        <InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={jest.fn()} />
+        <InfoMenu
+          orbitsVisible={false}
+          isVisible={true}
+          onOrbitsVisibleChange={jest.fn()}
+          onChangeSystemSize={jest.fn()}
+        />
       </AppContext.Provider>
     );
 
@@ -122,7 +196,14 @@ describe('InfoMenu', () => {
   });
 
   test('it has correct planet size for enhanced visibility context', () => {
-    render(<InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={jest.fn()} />);
+    render(
+      <InfoMenu
+        orbitsVisible={false}
+        isVisible={true}
+        onOrbitsVisibleChange={jest.fn()}
+        onChangeSystemSize={jest.fn()}
+      />
+    );
 
     const timeDetails = screen.getByTestId('planet-size');
 
@@ -132,7 +213,12 @@ describe('InfoMenu', () => {
   test('it has correct planet size for even size context', () => {
     render(
       <AppContext.Provider value={systemSize.evenSpace}>
-        <InfoMenu orbitsVisible={false} onOrbitsVisibleChange={jest.fn()} onChangeSystemSize={jest.fn()} />
+        <InfoMenu
+          orbitsVisible={false}
+          isVisible={true}
+          onOrbitsVisibleChange={jest.fn()}
+          onChangeSystemSize={jest.fn()}
+        />
       </AppContext.Provider>
     );
 

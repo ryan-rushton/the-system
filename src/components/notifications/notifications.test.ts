@@ -1,9 +1,9 @@
-import { notifications$, showNotification } from './notifications';
+import { Notification, notifications$, showNotification } from './notifications';
 
 describe('notifications', () => {
   test('it sends out notifications', () => {
     const subFn = jest.fn();
-    const notification = { severity: 'info', message: "I'm a notification!" };
+    const notification: Notification = { origin: 'origin', severity: 'info', message: "I'm a notification!" };
 
     notifications$.subscribe(subFn);
     showNotification(notification);
@@ -13,7 +13,7 @@ describe('notifications', () => {
 
   test('it increments the id correctly', () => {
     const subFn = jest.fn();
-    const notification = { severity: 'info', message: "I'm a notification!" };
+    const notification: Notification = { origin: 'origin', severity: 'info', message: "I'm a notification!" };
 
     notifications$.subscribe(subFn);
     showNotification(notification);
