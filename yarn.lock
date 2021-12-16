@@ -8325,9 +8325,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:5.5.3":
-  version: 5.5.3
-  resolution: "framer-motion@npm:5.5.3"
+"framer-motion@npm:5.5.4":
+  version: 5.5.4
+  resolution: "framer-motion@npm:5.5.4"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     framesync: 6.0.1
@@ -8350,7 +8350,7 @@ __metadata:
       optional: true
     three:
       optional: true
-  checksum: 8edcb39e1bc9216b36ebc924e18e36f2ad105e2a0ecddce9bfd551e770cd81994811445061514dbb0cc320b2d020f226523869408c5dd505a027f41fa2dad843
+  checksum: 7d2eb75848edf1afba5b44ea70922503beb6a5233e7909039a897e0c1607519a875f5d5aabab5d1a9b06ef30293ea2cd47db82b5fac592cbd110d081337793e7
   languageName: node
   linkType: hard
 
@@ -14911,7 +14911,7 @@ resolve@^2.0.0-next.3:
     eslint-plugin-react: 7.27.1
     eslint-plugin-react-hooks: 4.3.0
     eslint-plugin-testing-library: 5.0.1
-    framer-motion: 5.5.3
+    framer-motion: 5.5.4
     i18next: 21.6.0
     i18next-browser-languagedetector: 6.1.2
     i18next-http-backend: 1.3.1
