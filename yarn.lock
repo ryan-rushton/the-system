@@ -2660,7 +2660,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2, @babel/runtime@npm:^7.9.6":
+"@babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.13.9
   resolution: "@babel/runtime@npm:7.13.9"
   dependencies:
@@ -3648,19 +3648,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^7.28.1":
-  version: 7.31.0
-  resolution: "@testing-library/dom@npm:7.31.0"
+"@testing-library/dom@npm:^7.31.2":
+  version: 7.31.2
+  resolution: "@testing-library/dom@npm:7.31.2"
   dependencies:
     "@babel/code-frame": ^7.10.4
     "@babel/runtime": ^7.12.5
     "@types/aria-query": ^4.2.0
     aria-query: ^4.2.2
     chalk: ^4.1.0
-    dom-accessibility-api: ^0.5.4
+    dom-accessibility-api: ^0.5.6
     lz-string: ^1.4.4
     pretty-format: ^26.6.2
-  checksum: 4214612561da33e4667ecb56d10ce8e2fe40b341b43802e9fb41790a807d962c2f4d45929647eef9a0b5787cb3a96a96d004f2ab1537a0e934975122bfdbda82
+  checksum: 54fbedd1ecdfe1d47be2e592b98d18b2ab9d7e731f57231caf9b152593fe7329fe5ebe219e0e5d1e0df5b1ab803121cb8acd8b73bd1fb292bfdc2c55663eb01d
   languageName: node
   linkType: hard
 
@@ -7047,13 +7047,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dom-accessibility-api@npm:^0.5.4":
-  version: 0.5.4
-  resolution: "dom-accessibility-api@npm:0.5.4"
-  checksum: 1fb22b351984564212b41bd7265ad1288322ad72e7367753f589facaeb98c2e3515502396acf2463f71dbaa1e238d6e006ec144a6217f1cd42e962b9bebd2dee
-  languageName: node
-  linkType: hard
-
 "dom-accessibility-api@npm:^0.5.6":
   version: 0.5.6
   resolution: "dom-accessibility-api@npm:0.5.6"
@@ -7638,16 +7631,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jest-dom@npm:3.9.2":
-  version: 3.9.2
-  resolution: "eslint-plugin-jest-dom@npm:3.9.2"
+"eslint-plugin-jest-dom@npm:3.9.4":
+  version: 3.9.4
+  resolution: "eslint-plugin-jest-dom@npm:3.9.4"
   dependencies:
-    "@babel/runtime": ^7.9.6
-    "@testing-library/dom": ^7.28.1
+    "@babel/runtime": ^7.16.3
+    "@testing-library/dom": ^7.31.2
     requireindex: ^1.2.0
   peerDependencies:
     eslint: ">=6.8"
-  checksum: 8e80694d2de144d2bb45b049be68e5ef055feb23fae27727b0b3b1583aa2220afa9facc50098b6bf2e8a1b933c62ddcf0be44cfe759e5725c73d44229d88025a
+  checksum: aebe76d38bfff381bab17f7917010f7d0278786cf869e8945981ec94393a090e1a04fd7298c5f48cf2ba74e17fba8359fe2da1e703bc63d56d5eece919529797
   languageName: node
   linkType: hard
 
@@ -15005,7 +14998,7 @@ resolve@^2.0.0-next.3:
     eslint-plugin-cypress: 2.12.1
     eslint-plugin-import: 2.25.3
     eslint-plugin-jest: 25.3.0
-    eslint-plugin-jest-dom: 3.9.2
+    eslint-plugin-jest-dom: 3.9.4
     eslint-plugin-jsx-a11y: 6.5.1
     eslint-plugin-prettier: 4.0.0
     eslint-plugin-react: 7.27.1
