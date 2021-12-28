@@ -13275,9 +13275,9 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:11.15.1":
-  version: 11.15.1
-  resolution: "react-i18next@npm:11.15.1"
+"react-i18next@npm:11.15.2":
+  version: 11.15.2
+  resolution: "react-i18next@npm:11.15.2"
   dependencies:
     "@babel/runtime": ^7.14.5
     html-escaper: ^2.0.2
@@ -13285,7 +13285,12 @@ fsevents@~2.3.1:
   peerDependencies:
     i18next: ">= 19.0.0"
     react: ">= 16.8.0"
-  checksum: 0cf2e475af95fa0007a026590402dc50cb325b146e5636b5d396b5381c74c9a1c34a37b24486a2d9b3a62b7c728cd3b1e7bc41c7b8a02da6b4cf8cc4a1a0a49f
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 1b8ef84ef4223bb8c92aa91f965a61f84f67d5014f6426439adc55f3f87ed531653a4d5d271a9e1fe8a0faf099f9458fbeeb9df282e45d80ab3bc8187e6b2333
   languageName: node
   linkType: hard
 
@@ -15030,7 +15035,7 @@ resolve@^2.0.0-next.3:
     prettier-plugin-organize-imports: 2.3.4
     react: 17.0.2
     react-dom: 17.0.2
-    react-i18next: 11.15.1
+    react-i18next: 11.15.2
     react-scripts: 5.0.0
     rxjs: 7.4.0
     sass: 1.45.1
