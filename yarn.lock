@@ -6740,9 +6740,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:9.3.0":
-  version: 9.3.0
-  resolution: "cypress@npm:9.3.0"
+"cypress@npm:9.3.1":
+  version: 9.3.1
+  resolution: "cypress@npm:9.3.1"
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -6788,7 +6788,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: a40009b3dcb4c269f7d935b6c5a9c77feab1bb96e79d59684f153a3a53a1c059af60f5ca117438afb3812006c8914b8890d05541621dce494dfae141217a99ce
+  checksum: 6992e0f293618d1dec2cbd278fae08c9c3375ce462a1f767f735b06faa9a52ad375d174f2371103e443f3dc1d5cbb2c93d2ca73204d99bbd845db033d9891270
   languageName: node
   linkType: hard
 
@@ -15157,7 +15157,7 @@ resolve@^2.0.0-next.3:
     "@typescript-eslint/eslint-plugin": 5.10.0
     "@typescript-eslint/parser": 5.10.0
     clsx: 1.1.1
-    cypress: 9.3.0
+    cypress: 9.3.1
     cypress-log-to-output: 1.1.2
     eslint: 8.4.1
     eslint-config-prettier: 8.3.0
