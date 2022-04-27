@@ -1,5 +1,4 @@
 import React, { FC, useRef } from 'react';
-import useClickAndEnterKeyDown from '../../hooks/useClickAndEnterKeydown';
 import styles from './NavMenuSubsection.module.scss';
 
 interface Props {
@@ -14,7 +13,6 @@ interface Props {
  */
 const NavMenuSubsection: FC<Props> = ({ children, title, isVisible, canTabInto, onHeaderClick }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [onClick, onEnter] = useClickAndEnterKeyDown(onHeaderClick);
 
   let actualHeight = 0;
 
@@ -27,20 +25,14 @@ const NavMenuSubsection: FC<Props> = ({ children, title, isVisible, canTabInto, 
   }
 
   return (
-    <>
-      <div
-        className={styles.title}
-        onClick={onClick}
-        onKeyDown={onEnter}
-        role="button"
-        tabIndex={canTabInto ? 0 : undefined}
-      >
+    <div className={styles.subsection}>
+      <button className={styles.title} onClick={onHeaderClick} tabIndex={canTabInto ? 0 : undefined}>
         {title}
-      </div>
+      </button>
       <div className={styles.content} ref={ref} style={{ maxHeight: isVisible ? actualHeight : 0 }}>
         {children}
       </div>
-    </>
+    </div>
   );
 };
 

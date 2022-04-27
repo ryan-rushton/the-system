@@ -1,8 +1,7 @@
 import clsx from 'clsx';
-import React, { FC, useContext } from 'react';
+import React, { FC, useCallback, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import AppContext, { SystemContext, systemSize } from '../../../context/SystemContext';
-import useClickAndEnterKeyDown from '../../../hooks/useClickAndEnterKeydown';
 import styles from './InfoMenu.module.scss';
 
 interface Props {
@@ -31,15 +30,16 @@ const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onO
   const kmPerPixelSatellite = Math.round(1 / satelliteDist).toLocaleString();
   const kmPerPixelSize = Math.round(1 / sizeMultiplier).toLocaleString();
 
-  const [onOrbitChangeClick, onOrbitChangeEnter] = useClickAndEnterKeyDown((): void =>
-    onOrbitsVisibleChange(!orbitsVisible)
+  const onOrbitChangeClick = useCallback(
+    () => onOrbitsVisibleChange(!orbitsVisible),
+    [onOrbitsVisibleChange, orbitsVisible]
   );
 
-  const [onSizeChangeClick, onSizeChangeEnter] = useClickAndEnterKeyDown(() => {
+  const onSizeChangeClick = useCallback(() => {
     const { enhancedVisibility, evenSpace } = systemSize;
     const systemSizeContext = evenSpace === context ? enhancedVisibility : evenSpace;
     onChangeSystemSize(systemSizeContext);
-  });
+  }, [context, onChangeSystemSize]);
 
   return (
     <div data-testid="info-menu">
@@ -60,28 +60,24 @@ const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onO
         {t('infoMenu.kmPerPixel', { km: kmPerPixelSize })}
       </div>
       <div className={styles.buttonWrapper}>
-        <div
+        <button
           className={clsx(styles.button, { [styles.buttonActive]: systemSize.evenSpace === context })}
           onClick={onSizeChangeClick}
-          onKeyDown={onSizeChangeEnter}
-          role="button"
           tabIndex={isVisible ? 0 : undefined}
           aria-label={t('infoMenu.normaliseDistance')}
         >
           {t('infoMenu.normaliseDistance')}
-        </div>
+        </button>
       </div>
       <div className={styles.buttonWrapper}>
-        <div
+        <button
           className={clsx(styles.button, { [styles.buttonActive]: orbitsVisible })}
           onClick={onOrbitChangeClick}
-          onKeyDown={onOrbitChangeEnter}
-          role="button"
           tabIndex={isVisible ? 0 : undefined}
           aria-label={t('infoMenu.showOrbits')}
         >
           {t('infoMenu.showOrbits')}
-        </div>
+        </button>
       </div>
     </div>
   );

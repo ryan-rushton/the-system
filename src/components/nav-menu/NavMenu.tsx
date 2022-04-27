@@ -1,9 +1,9 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { CSSProperties, FC, RefObject, useRef, useState } from 'react';
+import React, { CSSProperties, FC, RefObject, useCallback, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SystemContext } from '../../context/SystemContext';
-import useClickAndEnterKeyDown from '../../hooks/useClickAndEnterKeydown';
+import { useClickOutside } from '../../hooks/useClickOutside';
 import { pointsOfInterest } from '../../PointsOfInterest';
 import { getDistanceToTop } from '../../utils/DomUtil';
 import styles from './NavMenu.module.scss';
@@ -41,12 +41,14 @@ const NavMenu: FC<Props> = ({
 }) => {
   const [menuVisible, setMenuVisible] = useState(false);
   const [openSubsection, setOpenSubsection] = useState<OpenSubsectionState>();
+  const containerRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
 
-  const [onMenuClick, onMenuEnter] = useClickAndEnterKeyDown(() => setMenuVisible((oldState) => !oldState));
+  const onMenuClick = useCallback(() => setMenuVisible((oldState) => !oldState), []);
   const onSubsectionClick = (clicked: 'info' | 'nav') =>
     setOpenSubsection((oldState) => (clicked === oldState ? undefined : clicked));
+  useClickOutside(containerRef, menuVisible, () => setMenuVisible(false));
 
   // on first render we dont have the offset so just push it way off the screen
   const transformDistance = menuRef.current ? `calc(${menuRef.current.offsetWidth}px + 2vw)` : '100vw';
@@ -58,18 +60,11 @@ const NavMenu: FC<Props> = ({
   };
 
   return (
-    <div data-testid="nav-menu-container" className={styles.nav}>
+    <div ref={containerRef} data-testid="nav-menu-container" className={styles.nav}>
       <div className={styles.header}>
-        <div
-          data-testid="nav-menu-button"
-          className={styles.headerButton}
-          onClick={onMenuClick}
-          onKeyPress={onMenuEnter}
-          role="button"
-          tabIndex={0}
-        >
+        <button data-testid="nav-menu-button" className={styles.headerButton} onClick={onMenuClick}>
           <FontAwesomeIcon icon={faBars} />
-        </div>
+        </button>
       </div>
       <div data-testid="nav-menu" className={styles.menu} ref={menuRef} style={transformStyles}>
         <NavMenuSubsection

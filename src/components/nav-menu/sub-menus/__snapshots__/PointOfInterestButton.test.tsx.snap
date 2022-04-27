@@ -1,16 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PointOfInterestButton it matches snapshot 1`] = `
-<div
+<button
+  aria-label="Some point"
+  class="navItem"
   data-testid="somePoint-button"
+  tabindex="0"
 >
-  <div
-    aria-label="Some point"
-    class="navItem"
-    role="button"
-    tabindex="0"
-  >
+  <span>
     Some point
-  </div>
-</div>
+  </span>
+</button>
 `;

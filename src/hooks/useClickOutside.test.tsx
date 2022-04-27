@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React, { FC, useRef } from 'react';
-import useClickOutside from './useClickOutside';
+import { useClickOutside } from './useClickOutside';
 
 /** A component just to test this hook. */
 const TestComponent: FC<{

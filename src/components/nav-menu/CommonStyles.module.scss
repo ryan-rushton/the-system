@@ -1,6 +1,11 @@
 .button {
-  &:hover {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: white;
+
+  &:hover,
+  &:focus {
     color: lightblue;
-    cursor: pointer;
   }
 }
