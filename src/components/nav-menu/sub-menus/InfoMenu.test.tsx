@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import AppContext, { systemSize } from '../../../context/SystemContext';
@@ -50,23 +50,6 @@ describe('InfoMenu', () => {
     expect(onOrbitsChange).toBeCalledWith(true);
   });
 
-  test('it changes orbits visible when Show Orbits enter pressed', () => {
-    const onOrbitsChange = jest.fn();
-    render(
-      <InfoMenu
-        orbitsVisible={false}
-        isVisible={true}
-        onOrbitsVisibleChange={onOrbitsChange}
-        onChangeSystemSize={jest.fn()}
-      />
-    );
-
-    fireEvent.keyDown(screen.getByText(/^Show Orbits$/), { key: 'Enter' });
-
-    expect(onOrbitsChange).toBeCalledTimes(1);
-    expect(onOrbitsChange).toBeCalledWith(true);
-  });
-
   test('it changes system size when Normalise Distance clicked', () => {
     const onChangeSystemSize = jest.fn();
     render(
@@ -78,22 +61,6 @@ describe('InfoMenu', () => {
       />
     );
     userEvent.click(screen.getByText(/^Normalise Distance$/));
-
-    expect(onChangeSystemSize).toBeCalledTimes(1);
-    expect(onChangeSystemSize).toBeCalledWith(systemSize.evenSpace);
-  });
-
-  test('it changes system size when Normalise Distance enter pressed', () => {
-    const onChangeSystemSize = jest.fn();
-    render(
-      <InfoMenu
-        orbitsVisible={false}
-        isVisible={true}
-        onOrbitsVisibleChange={jest.fn()}
-        onChangeSystemSize={onChangeSystemSize}
-      />
-    );
-    fireEvent.keyDown(screen.getByText(/^Normalise Distance$/), { key: 'Enter' });
 
     expect(onChangeSystemSize).toBeCalledTimes(1);
     expect(onChangeSystemSize).toBeCalledWith(systemSize.evenSpace);

@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import PointOfInterestButton from './PointOfInterestButton';
@@ -34,19 +34,6 @@ describe('PointOfInterestButton', () => {
     );
 
     userEvent.click(screen.getByText(/^Some point$/));
-
-    expect(onPoiClick).toBeCalledTimes(1);
-  });
-
-  test('it changes orbits visible when Show Orbits enter pressed', () => {
-    const poi = { id: 'somePoint', ref: React.createRef() };
-    const onPoiClick = jest.fn();
-
-    render(
-      <PointOfInterestButton pointOfInterest={poi} isVisible={true} isBeingFollowed={false} onPoiClick={onPoiClick} />
-    );
-
-    fireEvent.keyDown(screen.getByText(/^Some point$/), { key: 'Enter', keyCode: 13 });
 
     expect(onPoiClick).toBeCalledTimes(1);
   });

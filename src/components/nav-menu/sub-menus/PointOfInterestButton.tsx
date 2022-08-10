@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import useClickAndEnterKeyDown from '../../../hooks/useClickAndEnterKeydown';
 import styles from './PointOfInterestButton.module.scss';
 
 interface Props {
@@ -22,21 +21,18 @@ interface Props {
 const PointOfInterestButton: FC<Props> = ({ isVisible, pointOfInterest, isBeingFollowed, onPoiClick }) => {
   const { t } = useTranslation();
 
-  const [onClick, onEnter] = useClickAndEnterKeyDown(onPoiClick);
   const displayName = t(`pointsOfInterest.${pointOfInterest.id}`);
   return (
-    <div key={pointOfInterest.id} data-testid={`${pointOfInterest.id}-button`}>
-      <div
-        className={clsx(styles.navItem, { [styles.navItemFollowed]: isBeingFollowed })}
-        onClick={onClick}
-        onKeyDown={onEnter}
-        role="button"
-        tabIndex={isVisible ? 0 : undefined}
-        aria-label={displayName}
-      >
-        {displayName}
-      </div>
-    </div>
+    <button
+      key={pointOfInterest.id}
+      data-testid={`${pointOfInterest.id}-button`}
+      className={clsx(styles.navItem, { [styles.navItemFollowed]: isBeingFollowed })}
+      onClick={onPoiClick}
+      tabIndex={isVisible ? 0 : undefined}
+      aria-label={displayName}
+    >
+      <span>{displayName}</span>
+    </button>
   );
 };
 

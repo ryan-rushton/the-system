@@ -1,13 +1,23 @@
+.subsection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
 .title {
   composes: button from './CommonStyles.module.scss';
-  display: inline-block;
   font-size: 1.5em;
   font-weight: bolder;
   margin-bottom: 4px;
   padding: 0 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .content {
   overflow-y: hidden;
-  transition: max-height 0.6s linear;
+  transition: max-height 0.3s linear;
+  width: 100%;
 }

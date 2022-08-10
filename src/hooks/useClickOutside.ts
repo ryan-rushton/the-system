@@ -8,7 +8,11 @@ import { MutableRefObject, useEffect } from 'react';
  * @param enabled Whether the event should be listening. For example if a modal isn't open, you don't need this to be enabled.
  * @param callback The function to call when a click outside is detected.
  */
-const useClickOutside = (ref: MutableRefObject<HTMLElement | null>, enabled: boolean, callback: () => void): void => {
+export function useClickOutside(
+  ref: MutableRefObject<HTMLElement | null>,
+  enabled: boolean,
+  callback: () => void
+): void {
   useEffect(() => {
     if (enabled) {
       const eventHandler = (event: MouseEvent): void => {
@@ -22,6 +26,4 @@ const useClickOutside = (ref: MutableRefObject<HTMLElement | null>, enabled: boo
       return () => document.removeEventListener('mousedown', eventHandler);
     }
   }, [ref, enabled, callback]);
-};
-
-export default useClickOutside;
+}

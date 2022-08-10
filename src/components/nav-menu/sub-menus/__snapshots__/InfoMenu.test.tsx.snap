@@ -29,7 +29,8 @@ exports[`InfoMenu it matches snapshot 1`] = `
   <div
     class="heading"
   >
-    Distance Between Planets And Moons
+    Distance Between
+Planets And Moons
   </div>
   <div
     class="stat"
@@ -51,26 +52,24 @@ exports[`InfoMenu it matches snapshot 1`] = `
   <div
     class="buttonWrapper"
   >
-    <div
+    <button
       aria-label="Normalise Distance"
       class="button"
-      role="button"
       tabindex="0"
     >
       Normalise Distance
-    </div>
+    </button>
   </div>
   <div
     class="buttonWrapper"
   >
-    <div
+    <button
       aria-label="Show Orbits"
       class="button"
-      role="button"
       tabindex="0"
     >
       Show Orbits
-    </div>
+    </button>
   </div>
 </div>
 `;

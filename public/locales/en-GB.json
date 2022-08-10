@@ -7,7 +7,7 @@
     "time": "Time",
     "secondsForOneDay": "{{seconds}} s = 1 day",
     "distanceBetweenPlanets": "Distance Between Planets",
-    "distanceBetweenPlanetsAndMoons": "Distance Between Planets And Moons",
+    "distanceBetweenPlanetsAndMoons": "Distance Between\nPlanets And Moons",
     "kmPerPixel": "1 pixel = {{km}} km",
     "planetSize": "Planet Size",
     "normaliseDistance": "Normalise Distance",

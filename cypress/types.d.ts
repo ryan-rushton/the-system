@@ -6,7 +6,7 @@ declare namespace Cypress {
   // add custom Cypress command to the interface Chainable<Subject>
   // eslint-disable-next-line
   interface Chainable<Subject = any> {
-    isInViewport(element: Element): void;
-    isNotInViewport(element: Element): void;
+    isInViewport(selector: string): void;
+    isNotInViewport(selector: string): void;
   }
 }

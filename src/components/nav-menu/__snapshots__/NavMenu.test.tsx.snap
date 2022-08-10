@@ -8,11 +8,9 @@ exports[`NavMenu it matches snapshot 1`] = `
   <div
     class="header"
   >
-    <div
+    <button
       class="headerButton"
       data-testid="nav-menu-button"
-      role="button"
-      tabindex="0"
     >
       <svg
         aria-hidden="true"
@@ -29,7 +27,7 @@ exports[`NavMenu it matches snapshot 1`] = `
           fill="currentColor"
         />
       </svg>
-    </div>
+    </button>
   </div>
   <div
     class="menu"
@@ -37,219 +35,202 @@ exports[`NavMenu it matches snapshot 1`] = `
     style="transform: translateX(100vw);"
   >
     <div
-      class="title"
-      role="button"
+      class="subsection"
     >
-      Info
-    </div>
-    <div
-      class="content"
-      style="max-height: 0;"
-    >
+      <button
+        class="title"
+      >
+        Info
+      </button>
       <div
-        data-testid="info-menu"
+        class="content"
+        style="max-height: 0;"
       >
         <div
-          class="heading"
-        >
-          Time
-        </div>
-        <div
-          class="stat"
-          data-testid="time"
-        >
-          1 s = 1 day
-        </div>
-        <div
-          class="heading"
-        >
-          Distance Between Planets
-        </div>
-        <div
-          class="stat"
-          data-testid="planet-distance"
-        >
-          1 pixel = 100,000 km
-        </div>
-        <div
-          class="heading"
-        >
-          Distance Between Planets And Moons
-        </div>
-        <div
-          class="stat"
-          data-testid="satellite-distance"
-        >
-          1 pixel = 10,000 km
-        </div>
-        <div
-          class="heading"
-        >
-          Planet Size
-        </div>
-        <div
-          class="stat"
-          data-testid="planet-size"
-        >
-          1 pixel = 2,000 km
-        </div>
-        <div
-          class="buttonWrapper"
+          data-testid="info-menu"
         >
           <div
-            aria-label="Normalise Distance"
-            class="button"
-            role="button"
+            class="heading"
           >
-            Normalise Distance
+            Time
           </div>
-        </div>
-        <div
-          class="buttonWrapper"
-        >
           <div
-            aria-label="Show Orbits"
-            class="button"
-            role="button"
+            class="stat"
+            data-testid="time"
           >
-            Show Orbits
+            1 s = 1 day
+          </div>
+          <div
+            class="heading"
+          >
+            Distance Between Planets
+          </div>
+          <div
+            class="stat"
+            data-testid="planet-distance"
+          >
+            1 pixel = 100,000 km
+          </div>
+          <div
+            class="heading"
+          >
+            Distance Between
+Planets And Moons
+          </div>
+          <div
+            class="stat"
+            data-testid="satellite-distance"
+          >
+            1 pixel = 10,000 km
+          </div>
+          <div
+            class="heading"
+          >
+            Planet Size
+          </div>
+          <div
+            class="stat"
+            data-testid="planet-size"
+          >
+            1 pixel = 2,000 km
+          </div>
+          <div
+            class="buttonWrapper"
+          >
+            <button
+              aria-label="Normalise Distance"
+              class="button"
+            >
+              Normalise Distance
+            </button>
+          </div>
+          <div
+            class="buttonWrapper"
+          >
+            <button
+              aria-label="Show Orbits"
+              class="button"
+            >
+              Show Orbits
+            </button>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="title"
-      role="button"
+      class="subsection"
     >
-      Navigation
-    </div>
-    <div
-      class="content"
-      style="max-height: 0;"
-    >
+      <button
+        class="title"
+      >
+        Navigation
+      </button>
       <div
-        class="navButtons"
+        class="content"
+        style="max-height: 0;"
       >
         <div
-          data-testid="sun-button"
+          class="navButtons"
         >
-          <div
+          <button
             aria-label="Sun"
             class="navItem"
-            role="button"
+            data-testid="sun-button"
           >
-            Sun
-          </div>
-        </div>
-        <div
-          data-testid="mercury-button"
-        >
-          <div
+            <span>
+              Sun
+            </span>
+          </button>
+          <button
             aria-label="Mercury"
             class="navItem"
-            role="button"
+            data-testid="mercury-button"
           >
-            Mercury
-          </div>
-        </div>
-        <div
-          data-testid="venus-button"
-        >
-          <div
+            <span>
+              Mercury
+            </span>
+          </button>
+          <button
             aria-label="Venus"
             class="navItem"
-            role="button"
+            data-testid="venus-button"
           >
-            Venus
-          </div>
-        </div>
-        <div
-          data-testid="earth-button"
-        >
-          <div
+            <span>
+              Venus
+            </span>
+          </button>
+          <button
             aria-label="Earth"
             class="navItem"
-            role="button"
+            data-testid="earth-button"
           >
-            Earth
-          </div>
-        </div>
-        <div
-          data-testid="mars-button"
-        >
-          <div
+            <span>
+              Earth
+            </span>
+          </button>
+          <button
             aria-label="Mars"
             class="navItem"
-            role="button"
+            data-testid="mars-button"
           >
-            Mars
-          </div>
-        </div>
-        <div
-          data-testid="theBelt-button"
-        >
-          <div
+            <span>
+              Mars
+            </span>
+          </button>
+          <button
             aria-label="The Belt"
             class="navItem"
-            role="button"
+            data-testid="theBelt-button"
           >
-            The Belt
-          </div>
-        </div>
-        <div
-          data-testid="jupiter-button"
-        >
-          <div
+            <span>
+              The Belt
+            </span>
+          </button>
+          <button
             aria-label="Jupiter"
             class="navItem"
-            role="button"
+            data-testid="jupiter-button"
           >
-            Jupiter
-          </div>
-        </div>
-        <div
-          data-testid="saturn-button"
-        >
-          <div
+            <span>
+              Jupiter
+            </span>
+          </button>
+          <button
             aria-label="Saturn"
             class="navItem"
-            role="button"
+            data-testid="saturn-button"
           >
-            Saturn
-          </div>
-        </div>
-        <div
-          data-testid="uranus-button"
-        >
-          <div
+            <span>
+              Saturn
+            </span>
+          </button>
+          <button
             aria-label="Uranus"
             class="navItem"
-            role="button"
+            data-testid="uranus-button"
           >
-            Uranus
-          </div>
-        </div>
-        <div
-          data-testid="neptune-button"
-        >
-          <div
+            <span>
+              Uranus
+            </span>
+          </button>
+          <button
             aria-label="Neptune"
             class="navItem"
-            role="button"
+            data-testid="neptune-button"
           >
-            Neptune
-          </div>
-        </div>
-        <div
-          data-testid="pluto-button"
-        >
-          <div
+            <span>
+              Neptune
+            </span>
+          </button>
+          <button
             aria-label="Pluto"
             class="navItem"
-            role="button"
+            data-testid="pluto-button"
           >
-            Pluto
-          </div>
+            <span>
+              Pluto
+            </span>
+          </button>
         </div>
       </div>
     </div>
