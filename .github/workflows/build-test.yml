@@ -38,7 +38,7 @@ jobs:
             ${{ runner.os }}-${{ env.cache-name }}-v${{ env.cache-version }}-
 
       - name: Install
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
 
       - name: Test
         run: yarn test
