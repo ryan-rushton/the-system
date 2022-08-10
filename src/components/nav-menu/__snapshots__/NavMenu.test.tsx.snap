@@ -74,7 +74,8 @@ exports[`NavMenu it matches snapshot 1`] = `
           <div
             class="heading"
           >
-            Distance Between Planets And Moons
+            Distance Between
+Planets And Moons
           </div>
           <div
             class="stat"
