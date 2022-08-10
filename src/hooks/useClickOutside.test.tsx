@@ -43,27 +43,27 @@ describe('useClickOutside', () => {
     expect(childFn).toHaveBeenCalledTimes(1);
   });
 
-  test("it doesn't call the function when the element is clicked", () => {
+  test("it doesn't call the function when the element is clicked", async () => {
     const parentFn = jest.fn();
     render(<TestComponent parentEnabled={true} parentFn={parentFn} childFn={jest.fn()} />);
 
-    userEvent.click(screen.getByText(/^Parent$/));
+    await userEvent.click(screen.getByText(/^Parent$/));
     expect(parentFn).not.toHaveBeenCalled();
   });
 
-  test("it doesn't call the function when the a child is clicked", () => {
+  test("it doesn't call the function when the a child is clicked", async () => {
     const parentFn = jest.fn();
     render(<TestComponent parentEnabled={true} parentFn={parentFn} childFn={jest.fn()} />);
 
-    userEvent.click(screen.getByText(/^Child$/));
+    await userEvent.click(screen.getByText(/^Child$/));
     expect(parentFn).not.toHaveBeenCalled();
   });
 
-  test("it doesn't call the function when it is disabled", () => {
+  test("it doesn't call the function when it is disabled", async () => {
     const parentFn = jest.fn();
     render(<TestComponent parentEnabled={false} parentFn={parentFn} childFn={jest.fn()} />);
 
-    userEvent.click(screen.getByText(/^Parent$/));
+    await userEvent.click(screen.getByText(/^Parent$/));
     expect(parentFn).not.toHaveBeenCalled();
   });
 });

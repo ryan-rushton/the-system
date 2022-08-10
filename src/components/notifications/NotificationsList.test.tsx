@@ -1,8 +1,8 @@
 import { act, cleanup, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React from 'react';
 import { showNotification } from './notifications';
 import NotificationsList from './NotificationsList';
+import React from 'react';
 
 describe('NotificationsList', () => {
   afterEach(cleanup);
@@ -35,7 +35,7 @@ describe('NotificationsList', () => {
     expect(screen.getByText(/^Some error!$/)).toBeInTheDocument();
 
     // click the close button and check it goes away
-    userEvent.click(screen.getByTestId('close-button'));
+    await userEvent.click(screen.getByTestId('close-button'));
     await waitFor(() => expect(screen.queryByText(/^Some error!$/)).not.toBeInTheDocument());
   });
 });
