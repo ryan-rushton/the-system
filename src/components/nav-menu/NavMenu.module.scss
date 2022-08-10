@@ -23,10 +23,14 @@
   position: relative;
   transition: transform 0.3s;
   padding: 4px;
+  margin-top: 8px;
 }
 
 .navButtons {
   padding: 4px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 @keyframes fadeIn {
