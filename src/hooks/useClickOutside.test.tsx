@@ -27,19 +27,19 @@ const TestComponent: FC<{
 };
 
 describe('useClickOutside', () => {
-  test('it calls the function when a sibling is clicked', () => {
+  test('it calls the function when a sibling is clicked', async () => {
     const parentFn = jest.fn();
     render(<TestComponent parentEnabled={true} parentFn={parentFn} childFn={jest.fn()} />);
 
-    userEvent.click(screen.getByText(/^Sibling$/));
+    await userEvent.click(screen.getByText(/^Sibling$/));
     expect(parentFn).toHaveBeenCalledTimes(1);
   });
 
-  test('it calls the function when a parent is clicked', () => {
+  test('it calls the function when a parent is clicked', async () => {
     const childFn = jest.fn();
     render(<TestComponent parentEnabled={true} parentFn={jest.fn()} childFn={childFn} />);
 
-    userEvent.click(screen.getByText(/^Parent$/));
+    await userEvent.click(screen.getByText(/^Parent$/));
     expect(childFn).toHaveBeenCalledTimes(1);
   });
 

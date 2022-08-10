@@ -17,7 +17,7 @@ describe('NavMenuSubsection', () => {
     expect(title).toBeInTheDocument();
   });
 
-  test('it calls onHeaderClick when the header is clicked', () => {
+  test('it calls onHeaderClick when the header is clicked', async () => {
     const onHeaderClick = jest.fn();
     render(
       <NavMenuSubsection title="Some menu" canTabInto={true} isVisible={true} onHeaderClick={onHeaderClick}>
@@ -25,7 +25,7 @@ describe('NavMenuSubsection', () => {
       </NavMenuSubsection>
     );
 
-    userEvent.click(screen.getByText(/^Some menu$/));
+    await userEvent.click(screen.getByText(/^Some menu$/));
 
     expect(onHeaderClick).toBeCalledTimes(1);
   });
