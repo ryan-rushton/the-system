@@ -1,10 +1,10 @@
 /**
  * A custom command to check whether the element is visible within the viewport.
  */
-Cypress.Commands.add('isInViewport', (element) => {
-  cy.get(element).should(($el) => {
-    const bottom = Cypress.$(cy.state('window')).height();
-    const right = Cypress.$(cy.state('window')).width();
+Cypress.Commands.add('isInViewport', (selector) => {
+  cy.get(selector).should(($el) => {
+    const bottom = Cypress.config('viewportHeight');
+    const right = Cypress.config('viewportWidth');
     const rect = $el[0].getBoundingClientRect();
 
     expect(rect.top).to.be.within(0, bottom);
@@ -17,10 +17,10 @@ Cypress.Commands.add('isInViewport', (element) => {
 /**
  * A custom command to check whether the element is not visible within the viewport.
  */
-Cypress.Commands.add('isNotInViewport', (element) => {
-  cy.get(element).should(($el) => {
-    const bottom = Cypress.$(cy.state('window')).height();
-    const right = Cypress.$(cy.state('window')).width();
+Cypress.Commands.add('isNotInViewport', (selector) => {
+  cy.get(selector).should(($el) => {
+    const bottom = Cypress.config('viewportHeight');
+    const right = Cypress.config('viewportWidth');
     const rect = $el[0].getBoundingClientRect();
 
     expect(rect).to.satisfy(

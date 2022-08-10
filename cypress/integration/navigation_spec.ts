@@ -34,7 +34,7 @@ describe('System navigation', () => {
 
   it('follows a planet', () => {
     cy.get('[data-testid=nav-menu').contains('Venus').click();
-    cy.get('[data-testid=nav-menu').contains('Venus').should('have.css', 'border-color', activeButtonColor);
+    cy.get('[data-testid=nav-menu').contains('Venus').should('have.css', 'color', activeButtonColor);
     cy.isInViewport('[data-testid=venus');
     cy.get('[data-testid=jupiter').scrollIntoView();
     cy.isInViewport('[data-testid=venus');
@@ -42,7 +42,7 @@ describe('System navigation', () => {
 
   it('shows a notification when you follow a planet', () => {
     cy.get('[data-testid=nav-menu').contains('Uranus').click();
-    cy.get('[data-testid=nav-menu').contains('Uranus').should('have.css', 'border-color', activeButtonColor);
+    cy.get('[data-testid=nav-menu').contains('Uranus').should('have.css', 'color', activeButtonColor);
     cy.isInViewport('[data-testid=uranus');
     cy.get('[data-testid=notification-view').should(
       'have.text',
@@ -52,11 +52,11 @@ describe('System navigation', () => {
 
   it('a second click cancels following a planet', () => {
     cy.get('[data-testid=nav-menu').contains('Earth').click();
-    cy.get('[data-testid=nav-menu').contains('Earth').should('have.css', 'border-color', activeButtonColor);
+    cy.get('[data-testid=nav-menu').contains('Earth').should('have.css', 'color', activeButtonColor);
 
     cy.isInViewport('[data-testid=earth');
     cy.get('[data-testid=nav-menu').contains('Earth').click();
-    cy.get('[data-testid=nav-menu').contains('Earth').should('not.have.css', 'border-color', activeButtonColor);
+    cy.get('[data-testid=nav-menu').contains('Earth').should('not.have.css', 'color', activeButtonColor);
 
     cy.get('[data-testid=jupiter').scrollIntoView();
     cy.isNotInViewport('[data-testid=earth');
