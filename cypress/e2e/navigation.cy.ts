@@ -8,7 +8,7 @@ describe('System navigation', () => {
 
   before(() => {
     // Increase the initial loading timeout as we wait for the app to get served in CI
-    cy.visit('http://localhost:3000', { timeout: 120_000 });
+    cy.visit('/', { timeout: 120_000 });
   });
 
   it('can open the navigation menu', () => {

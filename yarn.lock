@@ -1459,7 +1459,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.17.2, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.5, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.17.2, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.18.9
   resolution: "@babel/runtime@npm:7.18.9"
   dependencies:
@@ -2400,82 +2400,82 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:7.9.0":
-  version: 7.9.0
-  resolution: "@sentry/browser@npm:7.9.0"
+"@sentry/browser@npm:7.10.0":
+  version: 7.10.0
+  resolution: "@sentry/browser@npm:7.10.0"
   dependencies:
-    "@sentry/core": 7.9.0
-    "@sentry/types": 7.9.0
-    "@sentry/utils": 7.9.0
+    "@sentry/core": 7.10.0
+    "@sentry/types": 7.10.0
+    "@sentry/utils": 7.10.0
     tslib: ^1.9.3
-  checksum: bf80fc12eef6e7c599958040913e3329d006e1c3b2449499567bf668e297de7561416a94ad8c6f969b2e8848f1ba9cd629d9d5b480f36891e27e451e8553d178
+  checksum: 90208a9ba36c409aaf28e2325fdfb54ebc25bd326bfd6ea4f7b92481181382b921bf3dfacd2d9dbbef9ac4a29465493dc6360fa1a80b1af2da82cc5271e1e5b0
   languageName: node
   linkType: hard
 
-"@sentry/core@npm:7.9.0":
-  version: 7.9.0
-  resolution: "@sentry/core@npm:7.9.0"
+"@sentry/core@npm:7.10.0":
+  version: 7.10.0
+  resolution: "@sentry/core@npm:7.10.0"
   dependencies:
-    "@sentry/hub": 7.9.0
-    "@sentry/types": 7.9.0
-    "@sentry/utils": 7.9.0
+    "@sentry/hub": 7.10.0
+    "@sentry/types": 7.10.0
+    "@sentry/utils": 7.10.0
     tslib: ^1.9.3
-  checksum: 427d66d53e2af6797c1fbb0f186db596802d8e498bae32a56be89caa2f0a91cd73aa5689943ddd4cd1c9e4afc0259cdecf496733fa220ee3c0c3bfe21e676d08
+  checksum: e99627e7c863619f8698cced5d4aa518ca456ad10084f53325bdaa3645e355e5e1cb029438ddab480801b578d3b1f0a44b0fb9dba9240fd7eced6d7bc7e407ca
   languageName: node
   linkType: hard
 
-"@sentry/hub@npm:7.9.0":
-  version: 7.9.0
-  resolution: "@sentry/hub@npm:7.9.0"
+"@sentry/hub@npm:7.10.0":
+  version: 7.10.0
+  resolution: "@sentry/hub@npm:7.10.0"
   dependencies:
-    "@sentry/types": 7.9.0
-    "@sentry/utils": 7.9.0
+    "@sentry/types": 7.10.0
+    "@sentry/utils": 7.10.0
     tslib: ^1.9.3
-  checksum: 594558fc360a5765389891f807119d2906da1c60b101862b9b13afdc0954b948495fb885471f6bfbf3c7e9bceeedb0111b84833ac1c7c974be7bf5e8b2dcfb8b
+  checksum: b5710a358d48b9f25fb7b31fe83bfd43e813162a0035e472b3e78d448a6f0beed49aa945770f4e474d29e36d560d6d9696be4067de359480bd1df247d0dadf16
   languageName: node
   linkType: hard
 
-"@sentry/react@npm:7.9.0":
-  version: 7.9.0
-  resolution: "@sentry/react@npm:7.9.0"
+"@sentry/react@npm:7.10.0":
+  version: 7.10.0
+  resolution: "@sentry/react@npm:7.10.0"
   dependencies:
-    "@sentry/browser": 7.9.0
-    "@sentry/types": 7.9.0
-    "@sentry/utils": 7.9.0
+    "@sentry/browser": 7.10.0
+    "@sentry/types": 7.10.0
+    "@sentry/utils": 7.10.0
     hoist-non-react-statics: ^3.3.2
     tslib: ^1.9.3
   peerDependencies:
     react: 15.x || 16.x || 17.x || 18.x
-  checksum: d4fffafc65dcd906693d34c38cd230bddc7a87bd5138f92fdf8a6c334906c6f1e7fa522419304d6a329897e0a3b5f377eb99013a5c36c17524665f28b28eb2b7
+  checksum: 3fac4510151730d8348ee90a33d6199b6243fcd411e409133c7e97cafa4eae4a19691434472eeede49ea8de74cfcf73d66df5e0af68f3085d920ec57e93d5ddc
   languageName: node
   linkType: hard
 
-"@sentry/tracing@npm:7.9.0":
-  version: 7.9.0
-  resolution: "@sentry/tracing@npm:7.9.0"
+"@sentry/tracing@npm:7.10.0":
+  version: 7.10.0
+  resolution: "@sentry/tracing@npm:7.10.0"
   dependencies:
-    "@sentry/hub": 7.9.0
-    "@sentry/types": 7.9.0
-    "@sentry/utils": 7.9.0
+    "@sentry/hub": 7.10.0
+    "@sentry/types": 7.10.0
+    "@sentry/utils": 7.10.0
     tslib: ^1.9.3
-  checksum: e8e8cfecbb4647aeea849225c7c898bde1c9029b0bdf75984109a19668fcd99a62abe93d4115b5dccd484f0f7e0b378a0715f830bcf5a2788e23e69c8199145d
+  checksum: e8bd8663746e3c6f694d003b743c86d304fd765d164e4d14f09d3a63359ccccf4beb99efc1437c0f60874ddc3cb7be2727c0d59ab23dddf4f895a48f45c65f6a
   languageName: node
   linkType: hard
 
-"@sentry/types@npm:7.9.0":
-  version: 7.9.0
-  resolution: "@sentry/types@npm:7.9.0"
-  checksum: 5f56d27454cab0344554bd85e9db8c34827dffa61145150664dc1ff478aaf599bffceb3a6bb20f592f0d8080b1f26b7af03c306a09c6463b8de4bdfdd10eecba
+"@sentry/types@npm:7.10.0":
+  version: 7.10.0
+  resolution: "@sentry/types@npm:7.10.0"
+  checksum: f5b02c60b8c485a32221baa97d5bbf6a4ca3473464b71b7a7b58f81946d4135dd8e038791e999802c50b4f1da3ed303ddc62c4c889080e9835f6abc1415873b2
   languageName: node
   linkType: hard
 
-"@sentry/utils@npm:7.9.0":
-  version: 7.9.0
-  resolution: "@sentry/utils@npm:7.9.0"
+"@sentry/utils@npm:7.10.0":
+  version: 7.10.0
+  resolution: "@sentry/utils@npm:7.10.0"
   dependencies:
-    "@sentry/types": 7.9.0
+    "@sentry/types": 7.10.0
     tslib: ^1.9.3
-  checksum: 414a81ae8005d12ba22578606dff57b906598fc8b761cb3b4143a87fe20226bc90f9018a8930df11625a69cf5706d6f834191ef01d3ee8362ca6078e59108d9c
+  checksum: 9006835d150c2a47ba5240c257192ea42d5961f99e8f0952edf8870f431ff6430de6e86b7588aa9c495ca29c5e3a083548099cfff8602c9df5c32524f2662087
   languageName: node
   linkType: hard
 
@@ -2663,7 +2663,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/jest-dom@npm:5.16.5":
+"@testing-library/jest-dom@npm:^5.16.5":
   version: 5.16.5
   resolution: "@testing-library/jest-dom@npm:5.16.5"
   dependencies:
@@ -3005,17 +3005,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
+"@types/node@npm:*, @types/node@npm:18.7.1":
   version: 18.7.1
   resolution: "@types/node@npm:18.7.1"
   checksum: f1e2b701b107f97be01da4c46845cd23bcdcb2865f9abbb2847546d09587e726ea207daca6f0d1e72196875ef8c62feeeff5f1c1f2070445acd6d1a61d815c7c
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:18.6.5":
-  version: 18.6.5
-  resolution: "@types/node@npm:18.6.5"
-  checksum: e3e66c9a84b94010a57c1b9dac882c08484278d74f9d120dbe6a3e45d00740d178bd1d34a5deee28197c94b9f4359153b637bab9b305328e865027e9987a0f3d
   languageName: node
   linkType: hard
 
@@ -6991,16 +6984,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:7.0.0":
-  version: 7.0.0
-  resolution: "framer-motion@npm:7.0.0"
+"framer-motion@npm:7.1.0":
+  version: 7.1.0
+  resolution: "framer-motion@npm:7.1.0"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     "@motionone/dom": 10.13.1
-    framesync: 6.0.1
+    framesync: 6.1.1
     hey-listen: ^1.0.8
-    popmotion: 11.0.3
-    style-value-types: 5.1.0
+    popmotion: 11.0.4
+    style-value-types: 5.1.1
     tslib: ^2.1.0
   peerDependencies:
     react: ^18.0.0
@@ -7008,16 +7001,16 @@ __metadata:
   dependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  checksum: 13d4f1e0a74025404fc09665f5e54ed99a7f0a33a89accdd9f96be1686725620b73a92f922ecb2a48618529aca61b0a95be1de06f823ee784442caba88c38064
+  checksum: 499eddd14a0d72c41ddb0e9a3ced5021c1cd25695f98ab7b81659df60e14380f62e5bf45d2c49466a85ce64b33ae79b3fd760374f215abdb3818450d54f3f9be
   languageName: node
   linkType: hard
 
-"framesync@npm:6.0.1":
-  version: 6.0.1
-  resolution: "framesync@npm:6.0.1"
+"framesync@npm:6.1.1":
+  version: 6.1.1
+  resolution: "framesync@npm:6.1.1"
   dependencies:
-    tslib: ^2.1.0
-  checksum: a23ebe8f7e20a32c0b99c2f8175b6f07af3ec6316aad52a2316316a6d011d717af8d2175dcc2827031c59fabb30232ed3e19a720a373caba7f070e1eae436325
+    tslib: ^2.3.1
+  checksum: f75f77bb3fcb1874fd05e5d254c075c97f431cb74e1d11982661a77248bba442f7d2f251e0c4a019ba9293336bc941b42c7f760b926bd1ff3d3c269c0c7f1a8a
   languageName: node
   linkType: hard
 
@@ -7730,12 +7723,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next-browser-languagedetector@npm:6.1.4":
-  version: 6.1.4
-  resolution: "i18next-browser-languagedetector@npm:6.1.4"
+"i18next-browser-languagedetector@npm:6.1.5":
+  version: 6.1.5
+  resolution: "i18next-browser-languagedetector@npm:6.1.5"
   dependencies:
-    "@babel/runtime": ^7.14.6
-  checksum: 379dba3527c359c3adeb26c1e16e6b7e007989763c4361d43662e4d9412c538ca35e28a6a12df0654edc0adb78b44ff5afdf4c5d842bbf0e83db59d5e9e02f55
+    "@babel/runtime": ^7.18.9
+  checksum: af3a785454dfb7e3595215c3738062b82173601a788b0a7c6fe78b6c50f0f46cd89508300f694c324d4a07b19743d2410be50aa6e6494967a75aedb17ad5033f
   languageName: node
   linkType: hard
 
@@ -10369,15 +10362,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"popmotion@npm:11.0.3":
-  version: 11.0.3
-  resolution: "popmotion@npm:11.0.3"
+"popmotion@npm:11.0.4":
+  version: 11.0.4
+  resolution: "popmotion@npm:11.0.4"
   dependencies:
-    framesync: 6.0.1
+    framesync: 6.1.1
     hey-listen: ^1.0.8
-    style-value-types: 5.0.0
+    style-value-types: 5.1.1
     tslib: ^2.1.0
-  checksum: 9fe7d03b4ec0e85bfb9dadc23b745147bfe42e16f466ba06e6327197d0e38b72015afc2f918a8051dedc3680310417f346ffdc463be6518e2e92e98f48e30268
+  checksum: ecfa6fbfcbb418386ddab7ee10b52b848c163586bcc8c31a322d09c3b897d1833415729567b0ee252f5c23007382a6d6cfe3458b9af1f2367a3389cccb7bc65f
   languageName: node
   linkType: hard
 
@@ -12813,23 +12806,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"style-value-types@npm:5.0.0":
-  version: 5.0.0
-  resolution: "style-value-types@npm:5.0.0"
-  dependencies:
-    hey-listen: ^1.0.8
-    tslib: ^2.1.0
-  checksum: 16d198302cd102edf9dba94e7752a2364c93b1eaa5cc7c32b42b28eef4af4ccb5149a3f16bc2a256adc02616a2404f4612bd15f3081c1e8ca06132cae78be6c0
-  languageName: node
-  linkType: hard
-
-"style-value-types@npm:5.1.0":
-  version: 5.1.0
-  resolution: "style-value-types@npm:5.1.0"
+"style-value-types@npm:5.1.1":
+  version: 5.1.1
+  resolution: "style-value-types@npm:5.1.1"
   dependencies:
     hey-listen: ^1.0.8
     tslib: ^2.3.1
-  checksum: 25af60d2ea8e2c64a405f377e3208fe3cad672a115417748d72c3d515809655d8468b3ee2dbdef19bade4aa0dc4a07086c63faa2b10ef39673a2ab01a35b9cfa
+  checksum: 108ff80c7b94e7345b708cdb4870efb9286c89ceb17398f157dd797b1ccb3252476517a10b43c4ad4136401946a190b1f50ea9b31c01ccce20a04542a14a2c3f
   languageName: node
   linkType: hard
 
@@ -13106,15 +13089,15 @@ __metadata:
     "@fortawesome/fontawesome-svg-core": 6.1.2
     "@fortawesome/free-solid-svg-icons": 6.1.2
     "@fortawesome/react-fontawesome": 0.2.0
-    "@sentry/react": 7.9.0
-    "@sentry/tracing": 7.9.0
+    "@sentry/react": 7.10.0
+    "@sentry/tracing": 7.10.0
     "@testing-library/dom": 8.17.1
-    "@testing-library/jest-dom": 5.16.5
+    "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": 13.3.0
     "@testing-library/react-hooks": 8.0.1
     "@testing-library/user-event": 14.4.3
     "@types/jest": 28.1.6
-    "@types/node": 18.6.5
+    "@types/node": 18.7.1
     "@types/react": 18.0.17
     "@types/react-dom": 18.0.6
     "@typescript-eslint/eslint-plugin": 5.33.0
@@ -13135,9 +13118,9 @@ __metadata:
     eslint-plugin-react: 7.30.1
     eslint-plugin-react-hooks: 4.6.0
     eslint-plugin-testing-library: 5.6.0
-    framer-motion: 7.0.0
+    framer-motion: 7.1.0
     i18next: 21.9.0
-    i18next-browser-languagedetector: 6.1.4
+    i18next-browser-languagedetector: 6.1.5
     i18next-http-backend: 1.4.1
     jest-dom: 4.0.0
     prettier: 2.7.1
