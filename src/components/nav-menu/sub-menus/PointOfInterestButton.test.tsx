@@ -25,7 +25,7 @@ describe('PointOfInterestButton', () => {
     expect(screen.getByTestId('somePoint-button')).toMatchSnapshot();
   });
 
-  test('it changes orbits visible when Show Orbits clicked', () => {
+  test('it changes orbits visible when Show Orbits clicked', async () => {
     const poi = { id: 'somePoint', ref: React.createRef() };
     const onPoiClick = jest.fn();
 
@@ -33,7 +33,7 @@ describe('PointOfInterestButton', () => {
       <PointOfInterestButton pointOfInterest={poi} isVisible={true} isBeingFollowed={false} onPoiClick={onPoiClick} />
     );
 
-    userEvent.click(screen.getByText(/^Some point$/));
+    await userEvent.click(screen.getByText(/^Some point$/));
 
     expect(onPoiClick).toBeCalledTimes(1);
   });

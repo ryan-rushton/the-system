@@ -35,7 +35,7 @@ describe('NotificationsList', () => {
     expect(screen.getByText(/^Some error!$/)).toBeInTheDocument();
 
     // click the close button and check it goes away
-    userEvent.click(screen.getByTestId('close-button'));
+    await userEvent.click(screen.getByTestId('close-button'));
     await waitFor(() => expect(screen.queryByText(/^Some error!$/)).not.toBeInTheDocument());
   });
 });

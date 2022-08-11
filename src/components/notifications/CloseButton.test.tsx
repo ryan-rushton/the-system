@@ -19,11 +19,11 @@ describe('NavMenu', () => {
   });
 
   // Don't need an on Enter keydown test as the main element is a button
-  test('it calls the onClose prop on click', () => {
+  test('it calls the onClose prop on click', async () => {
     const onClose = jest.fn();
     render(<CloseButton onClose={onClose} />);
 
-    userEvent.click(screen.getByTestId('close-button'));
+    await userEvent.click(screen.getByTestId('close-button'));
 
     expect(onClose).toHaveBeenCalledTimes(1);
   });

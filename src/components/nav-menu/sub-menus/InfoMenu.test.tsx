@@ -34,7 +34,7 @@ describe('InfoMenu', () => {
     expect(screen.getByTestId('info-menu')).toMatchSnapshot();
   });
 
-  test('it changes orbits visible when Show Orbits clicked', () => {
+  test('it changes orbits visible when Show Orbits clicked', async () => {
     const onOrbitsChange = jest.fn();
     render(
       <InfoMenu
@@ -44,13 +44,13 @@ describe('InfoMenu', () => {
         onChangeSystemSize={jest.fn()}
       />
     );
-    userEvent.click(screen.getByText(/^Show Orbits$/));
+    await userEvent.click(screen.getByText(/^Show Orbits$/));
 
     expect(onOrbitsChange).toBeCalledTimes(1);
     expect(onOrbitsChange).toBeCalledWith(true);
   });
 
-  test('it changes system size when Normalise Distance clicked', () => {
+  test('it changes system size when Normalise Distance clicked', async () => {
     const onChangeSystemSize = jest.fn();
     render(
       <InfoMenu
@@ -60,7 +60,7 @@ describe('InfoMenu', () => {
         onChangeSystemSize={onChangeSystemSize}
       />
     );
-    userEvent.click(screen.getByText(/^Normalise Distance$/));
+    await userEvent.click(screen.getByText(/^Normalise Distance$/));
 
     expect(onChangeSystemSize).toBeCalledTimes(1);
     expect(onChangeSystemSize).toBeCalledWith(systemSize.evenSpace);
