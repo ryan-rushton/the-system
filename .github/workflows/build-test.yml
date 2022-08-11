@@ -38,7 +38,7 @@ jobs:
             ${{ runner.os }}-${{ env.cache-name }}-v${{ env.cache-version }}-
 
       - name: Install
-        run: yarn install --immutable
+        run: yarn install --immutable --immutable-cache
 
       - name: Test
         run: yarn test
@@ -50,7 +50,7 @@ jobs:
         run: yarn build
 
       - name: Cypress Browser Tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           browser: chrome
           start: yarn start
