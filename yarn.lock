@@ -8033,12 +8033,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next-http-backend@npm:1.4.2":
-  version: 1.4.2
-  resolution: "i18next-http-backend@npm:1.4.2"
+"i18next-http-backend@npm:1.4.4":
+  version: 1.4.4
+  resolution: "i18next-http-backend@npm:1.4.4"
   dependencies:
     cross-fetch: 3.1.5
-  checksum: 3fc649d88e1a66782ab32c737267e4214976e8c879d11a924329b3822e97e26e99b71cde68d56f645cebb466c63fbef0b716f95c6295ec7e0a874079c054741d
+  checksum: 760a5f96a97f2cbcb0db1ec84dd29781592d11360ad96493ade66300c4013e7cef8f978c790db8c123fab1d21c672248e0c78a1eded5031e68372fe1c4055858
   languageName: node
   linkType: hard
 
@@ -13502,7 +13502,7 @@ __metadata:
     framer-motion: 7.1.2
     i18next: 21.9.2
     i18next-browser-languagedetector: 6.1.5
-    i18next-http-backend: 1.4.2
+    i18next-http-backend: 1.4.4
     jest-dom: 4.0.0
     prettier: 2.7.1
     prettier-plugin-organize-imports: 3.1.1
