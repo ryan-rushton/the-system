@@ -35,6 +35,6 @@ describe('PointOfInterestButton', () => {
 
     await userEvent.click(screen.getByText(/^Some point$/));
 
-    expect(onPoiClick).toBeCalledTimes(1);
+    expect(onPoiClick).toHaveBeenCalledTimes(1);
   });
 });

@@ -27,6 +27,6 @@ describe('NavMenuSubsection', () => {
 
     await userEvent.click(screen.getByText(/^Some menu$/));
 
-    expect(onHeaderClick).toBeCalledTimes(1);
+    expect(onHeaderClick).toHaveBeenCalledTimes(1);
   });
 });

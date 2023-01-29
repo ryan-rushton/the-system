@@ -8,7 +8,7 @@ describe('notifications', () => {
     notifications$.subscribe(subFn);
     showNotification(notification);
 
-    expect(subFn).toBeCalledWith({ ...notification, id: 0 });
+    expect(subFn).toHaveBeenCalledWith({ ...notification, id: 0 });
   });
 
   test('it increments the id correctly', () => {
