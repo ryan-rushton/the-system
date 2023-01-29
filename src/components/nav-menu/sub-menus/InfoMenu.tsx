@@ -64,7 +64,7 @@ const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onO
           className={clsx(styles.button, { [styles.buttonActive]: systemSize.evenSpace === context })}
           onClick={onSizeChangeClick}
           tabIndex={isVisible ? 0 : undefined}
-          aria-label={t('infoMenu.normaliseDistance')}
+          aria-label={t('infoMenu.normaliseDistance') || undefined}
         >
           {t('infoMenu.normaliseDistance')}
         </button>
@@ -74,7 +74,7 @@ const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onO
           className={clsx(styles.button, { [styles.buttonActive]: orbitsVisible })}
           onClick={onOrbitChangeClick}
           tabIndex={isVisible ? 0 : undefined}
-          aria-label={t('infoMenu.showOrbits')}
+          aria-label={t('infoMenu.showOrbits') || undefined}
         >
           {t('infoMenu.showOrbits')}
         </button>
