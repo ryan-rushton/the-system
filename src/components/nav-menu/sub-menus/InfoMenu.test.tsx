@@ -46,8 +46,8 @@ describe('InfoMenu', () => {
     );
     await userEvent.click(screen.getByText(/^Show Orbits$/));
 
-    expect(onOrbitsChange).toBeCalledTimes(1);
-    expect(onOrbitsChange).toBeCalledWith(true);
+    expect(onOrbitsChange).toHaveBeenCalledTimes(1);
+    expect(onOrbitsChange).toHaveBeenCalledWith(true);
   });
 
   test('it changes system size when Normalise Distance clicked', async () => {
@@ -62,8 +62,8 @@ describe('InfoMenu', () => {
     );
     await userEvent.click(screen.getByText(/^Normalise Distance$/));
 
-    expect(onChangeSystemSize).toBeCalledTimes(1);
-    expect(onChangeSystemSize).toBeCalledWith(systemSize.evenSpace);
+    expect(onChangeSystemSize).toHaveBeenCalledTimes(1);
+    expect(onChangeSystemSize).toHaveBeenCalledWith(systemSize.evenSpace);
   });
 
   test('it has correct days per second for enhanced visibility context', () => {
