@@ -3,12 +3,12 @@ import clsx from 'clsx';
 import React, { FC, RefObject, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './App.module.scss';
+import { pointsOfInterest } from './PointsOfInterest';
 import NavMenu from './components/nav-menu/NavMenu';
-import { showNotification } from './components/notifications/notifications';
 import NotificationView from './components/notifications/NotificationsList';
+import { showNotification } from './components/notifications/notifications';
 import TheSystem from './components/the-system/TheSystem';
 import AppContext, { SystemContext, systemSize } from './context/SystemContext';
-import { pointsOfInterest } from './PointsOfInterest';
 import { doCallbackAfterElementIsVisible, scrollOptions, scrollToElementIfNotVisible } from './utils/DomUtil';
 
 interface FollowerState {

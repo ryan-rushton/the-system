@@ -1,8 +1,8 @@
 import { AnimatePresence } from 'framer-motion';
 import React, { FC, useEffect, useState } from 'react';
-import { notifications$, UniqueNotification } from './notifications';
-import styles from './NotificationsList.module.scss';
 import NotificationView from './NotificationView';
+import styles from './NotificationsList.module.scss';
+import { UniqueNotification, notifications$ } from './notifications';
 
 /**
  * A view for notifications. This should be placed on either side of the screen. It will take up a 20vw column that

@@ -1,8 +1,8 @@
 import { act, cleanup, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
-import { showNotification } from './notifications';
 import NotificationsList from './NotificationsList';
+import { showNotification } from './notifications';
 
 describe('NotificationsList', () => {
   afterEach(cleanup);
