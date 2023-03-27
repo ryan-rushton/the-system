@@ -1,6 +1,6 @@
 import React, { FC, ReactElement, ReactNode, RefObject, useContext } from 'react';
-import AppContext from '../../../context/SystemContext';
 import { pointsOfInterest } from '../../../PointsOfInterest';
+import AppContext from '../../../context/SystemContext';
 import BeltLayer from './BeltLayer';
 import styles from './TheBelt.module.scss';
 

@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import React, { FC } from 'react';
 import CloseButton from './CloseButton';
 import { Error, Info, Success, Warning } from './Icons';
-import { UniqueNotification } from './notifications';
 import styles from './NotificationView.module.scss';
 import ProgressBar from './ProgressBar';
+import { UniqueNotification } from './notifications';
 
 interface Props {
   /** The notification to show. */
