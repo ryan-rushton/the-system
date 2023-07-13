@@ -4,9 +4,6 @@
     ":prHourlyLimitNone",
     ":automergePatch"
   ],
-  "assignees": [
-    "ryan-rushton"
-  ],
   "packageRules": [
     {
       "matchDepTypes": [
