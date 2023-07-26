@@ -32,7 +32,7 @@ const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onO
 
   const onOrbitChangeClick = useCallback(
     () => onOrbitsVisibleChange(!orbitsVisible),
-    [onOrbitsVisibleChange, orbitsVisible]
+    [onOrbitsVisibleChange, orbitsVisible],
   );
 
   const onSizeChangeClick = useCallback(() => {

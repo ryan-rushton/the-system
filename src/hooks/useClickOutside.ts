@@ -11,7 +11,7 @@ import { MutableRefObject, useEffect } from 'react';
 export function useClickOutside(
   ref: MutableRefObject<HTMLElement | null>,
   enabled: boolean,
-  callback: () => void
+  callback: () => void,
 ): void {
   useEffect(() => {
     if (enabled) {

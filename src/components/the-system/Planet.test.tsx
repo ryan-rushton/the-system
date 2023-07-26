@@ -17,7 +17,7 @@ describe('Planet', () => {
         radius={jupiter.radius}
         satellites={jupiter.satellites}
         scrollToRef={jupiter.ref}
-      />
+      />,
     );
 
     expect(screen.getByTestId('jupiter-orbit-line')).toMatchSnapshot();
@@ -34,7 +34,7 @@ describe('Planet', () => {
         radius={jupiter.radius}
         satellites={jupiter.satellites}
         scrollToRef={jupiter.ref}
-      />
+      />,
     );
     expect(screen.getByTestId('jupiter')).toBeInTheDocument();
     for (const satellite of jupiter.satellites) {
