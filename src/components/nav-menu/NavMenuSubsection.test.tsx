@@ -10,7 +10,7 @@ describe('NavMenuSubsection', () => {
     render(
       <NavMenuSubsection title="Some menu" canTabInto={true} isVisible={true} onHeaderClick={jest.fn()}>
         <div>{"I'm a child!"}</div>
-      </NavMenuSubsection>
+      </NavMenuSubsection>,
     );
     const title = screen.getByText('Some menu');
 
@@ -22,7 +22,7 @@ describe('NavMenuSubsection', () => {
     render(
       <NavMenuSubsection title="Some menu" canTabInto={true} isVisible={true} onHeaderClick={onHeaderClick}>
         <div>{"I'm a child!"}</div>
-      </NavMenuSubsection>
+      </NavMenuSubsection>,
     );
 
     await userEvent.click(screen.getByText(/^Some menu$/));

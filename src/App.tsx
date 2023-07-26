@@ -11,9 +11,22 @@ import TheSystem from './components/the-system/TheSystem';
 import AppContext, { SystemContext, systemSize } from './context/SystemContext';
 import { doCallbackAfterElementIsVisible, scrollOptions, scrollToElementIfNotVisible } from './utils/DomUtil';
 
+type PointOfInterestIds =
+  | 'sun'
+  | 'mercury'
+  | 'venus'
+  | 'earth'
+  | 'mars'
+  | 'theBelt'
+  | 'jupiter'
+  | 'saturn'
+  | 'uranus'
+  | 'neptune'
+  | 'pluto';
+
 interface FollowerState {
   /** The point of interest being followed. */
-  pointOfInterest?: { ref: RefObject<HTMLDivElement>; id: string };
+  pointOfInterest?: { ref: RefObject<HTMLDivElement>; id: PointOfInterestIds };
   /**
    * The interval at which the point of interest is being checked to see whether it is visible on screen.
    * This can be cleared when the point of interest is no longer being followed.
@@ -45,17 +58,17 @@ const App: FC = () => {
   };
 
   const createIntervalAndSetFollower = useCallback(
-    (pointOfInterest: { ref: RefObject<HTMLDivElement>; id: string }) => {
+    (pointOfInterest: { ref: RefObject<HTMLDivElement>; id: PointOfInterestIds }) => {
       const interval = setInterval(() => scrollToElementIfNotVisible(pointOfInterest.ref.current), 1000);
       setFollower({ pointOfInterest, interval });
       showNotification({
         severity: 'info',
-        message: t('notifications.followingPoint', { point: t(`pointsOfInterest.${pointOfInterest.id}`) }),
+        message: t('notifications.followingPoint', { point: t(`pointsOfInterest.${pointOfInterest.id}`).toString() }),
         origin: 'follower',
         duration: 5,
       });
     },
-    [setFollower, t]
+    [setFollower, t],
   );
 
   /**
@@ -66,7 +79,7 @@ const App: FC = () => {
    * If anything else is selected it will set an interval to scroll the element into view if it isn't already.
    * */
   const poiOnClick = useCallback(
-    (pointOfInterest: { ref: RefObject<HTMLDivElement>; id: string }): void => {
+    (pointOfInterest: { ref: RefObject<HTMLDivElement>; id: PointOfInterestIds }): void => {
       if (pointOfInterest === follower.pointOfInterest) {
         // clear if already followed
         clearFollower();
@@ -79,11 +92,11 @@ const App: FC = () => {
         clearFollower();
         pointOfInterest.ref.current.scrollIntoView(scrollOptions);
         doCallbackAfterElementIsVisible(pointOfInterest.ref.current, () =>
-          createIntervalAndSetFollower(pointOfInterest)
+          createIntervalAndSetFollower(pointOfInterest),
         );
       }
     },
-    [createIntervalAndSetFollower, clearFollower, follower]
+    [createIntervalAndSetFollower, clearFollower, follower],
   );
 
   return (

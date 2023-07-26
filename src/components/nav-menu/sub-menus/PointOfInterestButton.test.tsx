@@ -9,7 +9,7 @@ describe('PointOfInterestButton', () => {
   test('it renders', () => {
     const poi = { id: 'somePoint', ref: React.createRef() };
     render(
-      <PointOfInterestButton pointOfInterest={poi} isVisible={true} isBeingFollowed={false} onPoiClick={jest.fn()} />
+      <PointOfInterestButton pointOfInterest={poi} isVisible={true} isBeingFollowed={false} onPoiClick={jest.fn()} />,
     );
     const element = screen.getByText(/^Some point$/);
 
@@ -19,7 +19,7 @@ describe('PointOfInterestButton', () => {
   test('it matches snapshot', () => {
     const poi = { id: 'somePoint', ref: React.createRef() };
     render(
-      <PointOfInterestButton pointOfInterest={poi} isVisible={true} isBeingFollowed={false} onPoiClick={jest.fn()} />
+      <PointOfInterestButton pointOfInterest={poi} isVisible={true} isBeingFollowed={false} onPoiClick={jest.fn()} />,
     );
 
     expect(screen.getByTestId('somePoint-button')).toMatchSnapshot();
@@ -30,7 +30,7 @@ describe('PointOfInterestButton', () => {
     const onPoiClick = jest.fn();
 
     render(
-      <PointOfInterestButton pointOfInterest={poi} isVisible={true} isBeingFollowed={false} onPoiClick={onPoiClick} />
+      <PointOfInterestButton pointOfInterest={poi} isVisible={true} isBeingFollowed={false} onPoiClick={onPoiClick} />,
     );
 
     await userEvent.click(screen.getByText(/^Some point$/));

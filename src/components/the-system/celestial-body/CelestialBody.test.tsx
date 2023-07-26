@@ -16,7 +16,7 @@ describe('CelestialBody', () => {
         orbitalPeriod={jupiter.orbitalPeriod}
         radius={jupiter.radius}
         referenceRadius={1000}
-      />
+      />,
     );
 
     expect(screen.getByTestId('jupiter-orbit-line')).toMatchSnapshot();
@@ -33,7 +33,7 @@ describe('CelestialBody', () => {
         radius={jupiter.radius}
         referenceRadius={1000}
         satellites={jupiter.satellites.map((s) => ({ ...s, referenceRadius: jupiter.radius }))}
-      />
+      />,
     );
 
     expect(screen.getByTestId('jupiter')).toBeInTheDocument();

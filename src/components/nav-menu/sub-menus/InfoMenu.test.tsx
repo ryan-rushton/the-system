@@ -14,7 +14,7 @@ describe('InfoMenu', () => {
         isVisible={true}
         onOrbitsVisibleChange={jest.fn()}
         onChangeSystemSize={jest.fn()}
-      />
+      />,
     );
     const element = screen.getByTestId('info-menu');
 
@@ -28,7 +28,7 @@ describe('InfoMenu', () => {
         isVisible={true}
         onOrbitsVisibleChange={jest.fn()}
         onChangeSystemSize={jest.fn()}
-      />
+      />,
     );
 
     expect(screen.getByTestId('info-menu')).toMatchSnapshot();
@@ -42,7 +42,7 @@ describe('InfoMenu', () => {
         isVisible={true}
         onOrbitsVisibleChange={onOrbitsChange}
         onChangeSystemSize={jest.fn()}
-      />
+      />,
     );
     await userEvent.click(screen.getByText(/^Show Orbits$/));
 
@@ -58,7 +58,7 @@ describe('InfoMenu', () => {
         isVisible={true}
         onOrbitsVisibleChange={jest.fn()}
         onChangeSystemSize={onChangeSystemSize}
-      />
+      />,
     );
     await userEvent.click(screen.getByText(/^Normalise Distance$/));
 
@@ -73,7 +73,7 @@ describe('InfoMenu', () => {
         isVisible={true}
         onOrbitsVisibleChange={jest.fn()}
         onChangeSystemSize={jest.fn()}
-      />
+      />,
     );
 
     const timeDetails = screen.getByTestId('time');
@@ -90,7 +90,7 @@ describe('InfoMenu', () => {
           onOrbitsVisibleChange={jest.fn()}
           onChangeSystemSize={jest.fn()}
         />
-      </AppContext.Provider>
+      </AppContext.Provider>,
     );
 
     const timeDetails = screen.getByTestId('time');
@@ -105,7 +105,7 @@ describe('InfoMenu', () => {
         isVisible={true}
         onOrbitsVisibleChange={jest.fn()}
         onChangeSystemSize={jest.fn()}
-      />
+      />,
     );
 
     const timeDetails = screen.getByTestId('planet-distance');
@@ -122,7 +122,7 @@ describe('InfoMenu', () => {
           onOrbitsVisibleChange={jest.fn()}
           onChangeSystemSize={jest.fn()}
         />
-      </AppContext.Provider>
+      </AppContext.Provider>,
     );
 
     const timeDetails = screen.getByTestId('planet-distance');
@@ -137,7 +137,7 @@ describe('InfoMenu', () => {
         isVisible={true}
         onOrbitsVisibleChange={jest.fn()}
         onChangeSystemSize={jest.fn()}
-      />
+      />,
     );
 
     const timeDetails = screen.getByTestId('satellite-distance');
@@ -154,7 +154,7 @@ describe('InfoMenu', () => {
           onOrbitsVisibleChange={jest.fn()}
           onChangeSystemSize={jest.fn()}
         />
-      </AppContext.Provider>
+      </AppContext.Provider>,
     );
 
     const timeDetails = screen.getByTestId('satellite-distance');
@@ -169,7 +169,7 @@ describe('InfoMenu', () => {
         isVisible={true}
         onOrbitsVisibleChange={jest.fn()}
         onChangeSystemSize={jest.fn()}
-      />
+      />,
     );
 
     const timeDetails = screen.getByTestId('planet-size');
@@ -186,7 +186,7 @@ describe('InfoMenu', () => {
           onOrbitsVisibleChange={jest.fn()}
           onChangeSystemSize={jest.fn()}
         />
-      </AppContext.Provider>
+      </AppContext.Provider>,
     );
 
     const timeDetails = screen.getByTestId('planet-size');

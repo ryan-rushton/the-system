@@ -10,7 +10,7 @@ describe('NotificationView', () => {
       <NotificationView
         notification={{ id: 1, severity: 'error', message: 'Some error!', origin: 'origin' }}
         onClose={jest.fn()}
-      />
+      />,
     );
 
     expect(screen.getByTestId('notification-view')).toBeInTheDocument();
@@ -21,7 +21,7 @@ describe('NotificationView', () => {
       <NotificationView
         notification={{ id: 1, severity: 'error', message: 'Some error!', origin: 'origin' }}
         onClose={jest.fn()}
-      />
+      />,
     );
 
     expect(screen.getByTestId('notification-view')).toMatchSnapshot();
@@ -32,7 +32,7 @@ describe('NotificationView', () => {
       <NotificationView
         notification={{ id: 1, severity: 'error', message: 'Some error!', origin: 'origin' }}
         onClose={jest.fn()}
-      />
+      />,
     );
 
     expect(screen.getByTestId('error-icon')).toBeInTheDocument();
@@ -43,7 +43,7 @@ describe('NotificationView', () => {
       <NotificationView
         notification={{ id: 1, severity: 'warning', message: 'Some warning!', origin: 'origin' }}
         onClose={jest.fn()}
-      />
+      />,
     );
     expect(screen.getByTestId('warning-icon')).toBeInTheDocument();
   });
@@ -53,7 +53,7 @@ describe('NotificationView', () => {
       <NotificationView
         notification={{ id: 1, severity: 'info', message: 'Some info!', origin: 'origin' }}
         onClose={jest.fn()}
-      />
+      />,
     );
     expect(screen.getByTestId('info-icon')).toBeInTheDocument();
   });
@@ -63,7 +63,7 @@ describe('NotificationView', () => {
       <NotificationView
         notification={{ id: 1, severity: 'success', message: 'Some success!', origin: 'origin' }}
         onClose={jest.fn()}
-      />
+      />,
     );
     expect(screen.getByTestId('success-icon')).toBeInTheDocument();
   });

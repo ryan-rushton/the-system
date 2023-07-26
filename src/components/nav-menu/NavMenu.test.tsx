@@ -12,7 +12,7 @@ describe('NavMenu', () => {
         onChangeSystemSize={jest.fn()}
         onFollowPointOfInterest={jest.fn()}
         onOrbitsVisibleChange={jest.fn()}
-      />
+      />,
     );
 
     expect(screen.getByTestId('nav-menu-button')).toBeInTheDocument();
@@ -25,7 +25,7 @@ describe('NavMenu', () => {
         onChangeSystemSize={jest.fn()}
         onFollowPointOfInterest={jest.fn()}
         onOrbitsVisibleChange={jest.fn()}
-      />
+      />,
     );
 
     expect(screen.getByTestId('nav-menu-container')).toMatchSnapshot();

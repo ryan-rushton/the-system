@@ -46,7 +46,7 @@ describe('System navigation', () => {
     cy.isInViewport('[data-testid=uranus');
     cy.get('[data-testid=notification-view').should(
       'have.text',
-      'You will now follow Uranus around the system. Click Uranus again to stop following.'
+      'You will now follow Uranus around the system. Click Uranus again to stop following.',
     );
   });
 
