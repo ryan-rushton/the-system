@@ -7710,9 +7710,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:10.13.1":
-  version: 10.13.1
-  resolution: "framer-motion@npm:10.13.1"
+"framer-motion@npm:10.13.2":
+  version: 10.13.2
+  resolution: "framer-motion@npm:10.13.2"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     tslib: ^2.4.0
@@ -7727,7 +7727,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 3df72d5ba72312dcec73044bf5478e89e099e7cee7f2996db15305a0e5a799909e6e782770ba8e3cfc44059093dfd06043b9a157e1faa85977930846a0ea4fd1
+  checksum: d99e257e737a5ed1ea8a46da5205f3ad3e4f9ea2b53090fc352a800c9521a428c5006f795339d9d885436ac8e225e43d27768b88c18a12c47e6d4a0564ab33b8
   languageName: node
   linkType: hard
 
@@ -14208,7 +14208,7 @@ __metadata:
     eslint-plugin-jsx-a11y: 6.7.1
     eslint-plugin-prettier: 5.0.0
     eslint-plugin-testing-library: 5.11.0
-    framer-motion: 10.13.1
+    framer-motion: 10.13.2
     i18next: 23.2.11
     i18next-browser-languagedetector: 7.1.0
     i18next-http-backend: 2.2.1
