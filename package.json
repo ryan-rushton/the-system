@@ -43,7 +43,7 @@
     "@typescript-eslint/parser": "6.4.1",
     "cypress": "12.17.4",
     "cypress-log-to-output": "1.1.2",
-    "eslint": "8.47.0",
+    "eslint": "8.48.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-import-resolver-typescript": "3.6.0",
     "eslint-plugin-babel": "5.3.1",
