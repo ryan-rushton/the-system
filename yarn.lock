@@ -13406,16 +13406,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.64.2":
-  version: 1.64.2
-  resolution: "sass@npm:1.64.2"
+"sass@npm:1.72.0":
+  version: 1.72.0
+  resolution: "sass@npm:1.72.0"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 43a5c9b9b3b6ba27feb5c45eba90edc437b15a30fd443f5d2623bbd59fe4a922f2a6a9990296c6a6c2b5bce7f401922c5049357415f50b745952c2d478bc5526
+  checksum: f420079c7d51660b7256ee52463c1499ede36f7fd5c8ef50c687451777ad641509001454dea45244073cedd7c00e7a3bc1c362e55206ac6686171b994edb41e4
   languageName: node
   linkType: hard
 
@@ -14453,7 +14453,7 @@ __metadata:
     react-i18next: 13.0.3
     react-scripts: 5.0.1
     rxjs: 7.8.1
-    sass: 1.64.2
+    sass: 1.72.0
     ts-node: 10.9.1
     typescript: 5.3.3
   languageName: unknown
