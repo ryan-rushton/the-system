@@ -1,11 +1,9 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import NavMenuSubsection from './NavMenuSubsection';
 
 describe('NavMenuSubsection', () => {
-  afterEach(cleanup);
-
   test('it renders', () => {
     render(
       <NavMenuSubsection title="Some menu" canTabInto={true} isVisible={true} onHeaderClick={jest.fn()}>

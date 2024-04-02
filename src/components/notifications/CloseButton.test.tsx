@@ -1,11 +1,9 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import CloseButton from './CloseButton';
 
 describe('NavMenu', () => {
-  afterEach(cleanup);
-
   test('it renders', () => {
     render(<CloseButton onClose={jest.fn()} />);
 

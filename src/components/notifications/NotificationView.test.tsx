@@ -1,10 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import NotificationView from './NotificationView';
 
 describe('NotificationView', () => {
-  afterEach(cleanup);
-
   test('it renders', () => {
     render(
       <NotificationView
