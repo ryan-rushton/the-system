@@ -1,12 +1,10 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import AppContext, { systemSize } from '../../../context/SystemContext';
 import InfoMenu from './InfoMenu';
 
 describe('InfoMenu', () => {
-  afterEach(cleanup);
-
   test('it renders', () => {
     render(
       <InfoMenu

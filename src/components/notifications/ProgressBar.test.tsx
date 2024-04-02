@@ -1,10 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import ProgressBar from './ProgressBar';
 
 describe('NavMenu', () => {
-  afterEach(cleanup);
-
   test('it renders', () => {
     render(<ProgressBar duration={0} />);
 
