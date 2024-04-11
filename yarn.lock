@@ -8207,9 +8207,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:11.0.27":
-  version: 11.0.27
-  resolution: "framer-motion@npm:11.0.27"
+"framer-motion@npm:11.0.28":
+  version: 11.0.28
+  resolution: "framer-motion@npm:11.0.28"
   dependencies:
     tslib: ^2.4.0
   peerDependencies:
@@ -8223,7 +8223,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 07809e386288350547bd9193143d9e33e6ab2d1357152b4d90acf50a445437b59ddb1653dcedde75579d3af8c7904c158fdfa6ad97d65786855eb002634bb38b
+  checksum: 70d70af69f254ac07e0b2345fb630d389f92b130c7a86703c7626c62297bc2d627ea1f37a973a67c3ec82d4c09213af40b78f8903d13899a9dc8bd3fc213b7a2
   languageName: node
   linkType: hard
 
@@ -15052,7 +15052,7 @@ __metadata:
     eslint-plugin-jsx-a11y: 6.8.0
     eslint-plugin-prettier: 5.1.3
     eslint-plugin-testing-library: 6.2.0
-    framer-motion: 11.0.27
+    framer-motion: 11.0.28
     i18next: 23.10.1
     i18next-browser-languagedetector: 7.2.1
     i18next-http-backend: 2.5.0
