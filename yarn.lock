@@ -13281,9 +13281,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:14.1.0":
-  version: 14.1.0
-  resolution: "react-i18next@npm:14.1.0"
+"react-i18next@npm:14.1.1":
+  version: 14.1.1
+  resolution: "react-i18next@npm:14.1.1"
   dependencies:
     "@babel/runtime": ^7.23.9
     html-parse-stringify: ^3.0.1
@@ -13295,7 +13295,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 96fbc4b0919b9f0c639f9f3eb35eecac528174aa97e3b1af469cfdbff4b34e40ae8969c26c0b737691a5fa9b56bb13093524cfca79b93cbd58f1319530da31b2
+  checksum: e1a00f82f355c439bc9e98cb8bc6fccbab769fa8f0e5da1545cfb262dc228183615aa89bad91b90db6d8de1949bb54f0c1655aec04c8947daf8383af07b1eff3
   languageName: node
   linkType: hard
 
@@ -15061,7 +15061,7 @@ __metadata:
     prettier-plugin-organize-imports: 3.2.4
     react: 18.2.0
     react-dom: 18.2.0
-    react-i18next: 14.1.0
+    react-i18next: 14.1.1
     react-scripts: 5.0.1
     rxjs: 7.8.1
     sass: 1.72.0
