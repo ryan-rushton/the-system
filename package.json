@@ -17,7 +17,7 @@
     "babel-preset-react-app": "^10.0.1",
     "bfj": "^7.1.0",
     "browserslist": "^4.23.0",
-    "camelcase": "^6.3.0",
+    "camelcase": "^8.0.0",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "clsx": "2.1.1",
     "css-loader": "^6.11.0",
