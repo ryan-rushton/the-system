@@ -159,11 +159,11 @@ dependencies:
     specifier: 7.8.1
     version: 7.8.1
   sass:
-    specifier: 1.72.0
-    version: 1.72.0
+    specifier: 1.76.0
+    version: 1.76.0
   sass-loader:
     specifier: ^12.6.0
-    version: 12.6.0(sass@1.72.0)(webpack@5.91.0)
+    version: 12.6.0(sass@1.76.0)(webpack@5.91.0)
   semver:
     specifier: ^7.6.0
     version: 7.6.0
@@ -10152,7 +10152,7 @@ packages:
     resolution: {integrity: sha512-ZRwKbh/eQ6w9vmTjkuG0Ioi3HBwPFce0O+v//ve+aOq1oeCy7jMV2qzzAlpsNuqpqCBjjriM1lbtZbF/Q8jVyA==}
     dev: false
 
-  /sass-loader@12.6.0(sass@1.72.0)(webpack@5.91.0):
+  /sass-loader@12.6.0(sass@1.76.0)(webpack@5.91.0):
     resolution: {integrity: sha512-oLTaH0YCtX4cfnJZxKSLAyglED0naiYfNG1iXfU5w1LNZ+ukoA5DtyDIN5zmKVZwYNJP4KRc5Y3hkWga+7tYfA==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
@@ -10173,12 +10173,12 @@ packages:
     dependencies:
       klona: 2.0.6
       neo-async: 2.6.2
-      sass: 1.72.0
+      sass: 1.76.0
       webpack: 5.91.0
     dev: false
 
-  /sass@1.72.0:
-    resolution: {integrity: sha512-Gpczt3WA56Ly0Mn8Sl21Vj94s1axi9hDIzDFn9Ph9x3C3p4nNyvsqJoQyVXKou6cBlfFWEgRW4rT8Tb4i3XnVA==}
+  /sass@1.76.0:
+    resolution: {integrity: sha512-nc3LeqvF2FNW5xGF1zxZifdW3ffIz5aBb7I7tSvOoNu7z1RQ6pFt9MBuiPtjgaI62YWrM/txjWlOCFiGtf2xpw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
