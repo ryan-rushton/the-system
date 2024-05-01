@@ -10,7 +10,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.13",
     "@sentry/react": "7.112.2",
     "@sentry/tracing": "7.112.2",
-    "@svgr/webpack": "^5.5.0",
+    "@svgr/webpack": "^8.0.0",
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.3.0",
     "babel-plugin-named-asset-import": "^0.3.8",
