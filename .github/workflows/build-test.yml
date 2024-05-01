@@ -16,31 +16,6 @@ jobs:
           node-version: 20.x
           cache: 'pnpm'
 
-      - name: Cache eslint
-        uses: actions/cache@v4
-        env:
-          cache-name: cache-eslint
-        with:
-          path: ~/.eslintcache
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('.eslintrc') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('.eslintrc') }}
-            ${{ runner.os }}-${{ env.cache-name }}-
-
-      # Cypress recommends to cache ~/.cache and not to cache node_modules, see
-      # https://docs.cypress.io/guides/guides/continuous-integration.html#Caching
-      - name: Cache
-        uses: actions/cache@v4
-        env:
-          cache-name: cache
-          cache-version: 2
-        with:
-          path: ~/.cache
-          key: ${{ runner.os }}-${{ env.cache-name }}-v${{ env.cache-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ env.cache-name }}-v${{ env.cache-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-            ${{ runner.os }}-${{ env.cache-name }}-v${{ env.cache-version }}-
-
       - name: Install
         run: pnpm install --frozen-lockfile
 
