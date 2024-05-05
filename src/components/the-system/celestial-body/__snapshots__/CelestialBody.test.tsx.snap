@@ -1,13 +1,13 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CelestialBody it matches the snapshot 1`] = `
+exports[`CelestialBody > it matches the snapshot 1`] = `
 <div
-  class="orbit"
+  class="_orbit_ff166d"
   data-testid="jupiter-orbit-line"
   style="animation: orbit 4331s linear infinite; height: 1557342996px; left: -778670498px; top: -778670498px; width: 1557342996px;"
 >
   <div
-    class="celestialBody some-styles"
+    class="_celestialBody_ff166d some-styles"
     data-testid="jupiter"
     style="animation: planet-rotation 4331s linear infinite; height: 142996px; left: -71498px; top: 50%; width: 142996px;"
     title="some-styles"

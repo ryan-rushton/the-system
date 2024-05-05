@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import CloseButton from './CloseButton';
 import { Error, Info, Success, Warning } from './Icons';
 import styles from './NotificationView.module.scss';

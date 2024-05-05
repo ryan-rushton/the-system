@@ -1,15 +1,15 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NavMenu it matches snapshot 1`] = `
+exports[`NavMenu > it matches snapshot 1`] = `
 <div
-  class="nav"
+  class="_nav_1f2e59"
   data-testid="nav-menu-container"
 >
   <div
-    class="header"
+    class="_header_1f2e59"
   >
     <button
-      class="headerButton"
+      class="_headerButton_1f2e59 _button_fb7df1"
       data-testid="nav-menu-button"
     >
       <svg
@@ -30,86 +30,86 @@ exports[`NavMenu it matches snapshot 1`] = `
     </button>
   </div>
   <div
-    class="menu"
+    class="_menu_1f2e59"
     data-testid="nav-menu"
-    style="transform: translateX(100vw);"
+    style="transform: translateX(1024px);"
   >
     <div
-      class="subsection"
+      class="_subsection_de5574"
     >
       <button
-        class="title"
+        class="_title_de5574 _button_fb7df1"
       >
         Info
       </button>
       <div
-        class="content"
+        class="_content_de5574"
         style="max-height: 0;"
       >
         <div
           data-testid="info-menu"
         >
           <div
-            class="heading"
+            class="_heading_46b9c4"
           >
             Time
           </div>
           <div
-            class="stat"
+            class="_stat_46b9c4"
             data-testid="time"
           >
             1 s = 1 day
           </div>
           <div
-            class="heading"
+            class="_heading_46b9c4"
           >
             Distance Between Planets
           </div>
           <div
-            class="stat"
+            class="_stat_46b9c4"
             data-testid="planet-distance"
           >
             1 pixel = 100,000 km
           </div>
           <div
-            class="heading"
+            class="_heading_46b9c4"
           >
             Distance Between
 Planets And Moons
           </div>
           <div
-            class="stat"
+            class="_stat_46b9c4"
             data-testid="satellite-distance"
           >
             1 pixel = 10,000 km
           </div>
           <div
-            class="heading"
+            class="_heading_46b9c4"
           >
             Planet Size
           </div>
           <div
-            class="stat"
+            class="_stat_46b9c4"
             data-testid="planet-size"
           >
             1 pixel = 2,000 km
           </div>
           <div
-            class="buttonWrapper"
+            class="_buttonWrapper_46b9c4"
           >
             <button
               aria-label="Normalise Distance"
-              class="button"
+              class="_button_46b9c4"
             >
               Normalise Distance
             </button>
           </div>
           <div
-            class="buttonWrapper"
+            class="_buttonWrapper_46b9c4"
           >
             <button
               aria-label="Show Orbits"
-              class="button"
+              class="_button_46b9c4"
             >
               Show Orbits
             </button>
@@ -118,23 +118,23 @@ Planets And Moons
       </div>
     </div>
     <div
-      class="subsection"
+      class="_subsection_de5574"
     >
       <button
-        class="title"
+        class="_title_de5574 _button_fb7df1"
       >
         Navigation
       </button>
       <div
-        class="content"
+        class="_content_de5574"
         style="max-height: 0;"
       >
         <div
-          class="navButtons"
+          class="_navButtons_1f2e59"
         >
           <button
             aria-label="Sun"
-            class="navItem"
+            class="_navItem_e88351 _button_fb7df1"
             data-testid="sun-button"
           >
             <span>
@@ -143,7 +143,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Mercury"
-            class="navItem"
+            class="_navItem_e88351 _button_fb7df1"
             data-testid="mercury-button"
           >
             <span>
@@ -152,7 +152,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Venus"
-            class="navItem"
+            class="_navItem_e88351 _button_fb7df1"
             data-testid="venus-button"
           >
             <span>
@@ -161,7 +161,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Earth"
-            class="navItem"
+            class="_navItem_e88351 _button_fb7df1"
             data-testid="earth-button"
           >
             <span>
@@ -170,7 +170,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Mars"
-            class="navItem"
+            class="_navItem_e88351 _button_fb7df1"
             data-testid="mars-button"
           >
             <span>
@@ -179,7 +179,7 @@ Planets And Moons
           </button>
           <button
             aria-label="The Belt"
-            class="navItem"
+            class="_navItem_e88351 _button_fb7df1"
             data-testid="theBelt-button"
           >
             <span>
@@ -188,7 +188,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Jupiter"
-            class="navItem"
+            class="_navItem_e88351 _button_fb7df1"
             data-testid="jupiter-button"
           >
             <span>
@@ -197,7 +197,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Saturn"
-            class="navItem"
+            class="_navItem_e88351 _button_fb7df1"
             data-testid="saturn-button"
           >
             <span>
@@ -206,7 +206,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Uranus"
-            class="navItem"
+            class="_navItem_e88351 _button_fb7df1"
             data-testid="uranus-button"
           >
             <span>
@@ -215,7 +215,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Neptune"
-            class="navItem"
+            class="_navItem_e88351 _button_fb7df1"
             data-testid="neptune-button"
           >
             <span>
@@ -224,7 +224,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Pluto"
-            class="navItem"
+            class="_navItem_e88351 _button_fb7df1"
             data-testid="pluto-button"
           >
             <span>

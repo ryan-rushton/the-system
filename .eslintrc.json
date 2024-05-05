@@ -1,15 +1,5 @@
 {
-  "plugins": [
-    "@typescript-eslint",
-    "import",
-    "jsx-a11y",
-    "prettier",
-    "react-hooks",
-    "jest",
-    "testing-library",
-    "jest-dom",
-    "cypress"
-  ],
+  "plugins": ["@typescript-eslint", "import", "jsx-a11y", "prettier", "react-hooks", "testing-library", "cypress"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -26,6 +16,7 @@
     "plugin:import/react",
     "plugin:import/typescript",
     "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
@@ -37,7 +28,6 @@
     "browser": true,
     "commonjs": true,
     "es2020": true,
-    "jest": true,
     "node": true
   },
   "settings": {
@@ -77,9 +67,7 @@
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:prettier/recommended",
-        "plugin:jest/recommended",
-        "plugin:testing-library/react",
-        "plugin:jest-dom/recommended"
+        "plugin:testing-library/react"
       ],
       "rules": {
         "@typescript-eslint/no-unsafe-assignment": "off",

@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
-import React, { FC, Suspense } from 'react';
+import { FC, Suspense } from 'react';
 import packageJson from '../package.json';
 import App from './App';
 import ErrorFallback from './components/error-fallback/ErrorFallback';

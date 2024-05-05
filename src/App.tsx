@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react';
 import clsx from 'clsx';
-import React, { FC, RefObject, useCallback, useEffect, useState } from 'react';
+import { RefObject, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './App.module.scss';
 import { pointsOfInterest } from './PointsOfInterest';
@@ -34,7 +34,7 @@ interface FollowerState {
   interval?: NodeJS.Timeout;
 }
 
-const App: FC = () => {
+function App() {
   const [systemSizeContext, setSystemSizeContext] = useState(systemSize.enhancedVisibility);
   const [orbitsVisible, setOrbitsVisible] = useState(false);
   const [follower, setFollower] = useState<FollowerState>({});
@@ -125,6 +125,6 @@ const App: FC = () => {
       <NotificationView />
     </AppContext.Provider>
   );
-};
+}
 
 export default App;

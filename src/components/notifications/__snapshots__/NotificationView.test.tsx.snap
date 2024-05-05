@@ -1,16 +1,16 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NotificationView it matches snapshot 1`] = `
+exports[`NotificationView > it matches snapshot 1`] = `
 <li
-  class="notification error"
+  class="_notification_43395a _error_43395a"
   data-testid="notification-view"
   style="opacity: 0; transform: translateY(50px) scale(0.3) translateZ(0);"
 >
   <div
-    class="content"
+    class="_content_43395a"
   >
     <div
-      class="icon"
+      class="_icon_caffd4"
       data-testid="error-icon"
     >
       <svg
@@ -29,13 +29,11 @@ exports[`NotificationView it matches snapshot 1`] = `
         />
       </svg>
     </div>
-    <div
-      class="message"
-    >
+    <div>
       Some error!
     </div>
     <button
-      class="close"
+      class="_close_241e48"
       data-testid="close-button"
     >
       <svg

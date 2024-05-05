@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren, useRef } from 'react';
+import { FC, PropsWithChildren, useRef } from 'react';
 import styles from './NavMenuSubsection.module.scss';
 
 interface Props {

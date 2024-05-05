@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { FC, memo, useContext } from 'react';
 import { pointsOfInterest } from '../../PointsOfInterest';
 import AppContext from '../../context/SystemContext';
 import TheBelt from './ the-belt/TheBelt';
@@ -111,4 +111,4 @@ const TheSystem: FC = () => {
   );
 };
 
-export default React.memo(TheSystem);
+export default memo(TheSystem);

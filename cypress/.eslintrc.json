@@ -1,16 +1,6 @@
 {
   "root": true,
-  "plugins": [
-    "@typescript-eslint",
-    "import",
-    "jsx-a11y",
-    "prettier",
-    "react-hooks",
-    "jest",
-    "testing-library",
-    "jest-dom",
-    "cypress"
-  ],
+  "plugins": ["@typescript-eslint", "import", "jsx-a11y", "prettier", "react-hooks", "testing-library", "cypress"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {

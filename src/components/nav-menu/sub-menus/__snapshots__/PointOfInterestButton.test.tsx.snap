@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`PointOfInterestButton it matches snapshot 1`] = `
+exports[`PointOfInterestButton > it matches snapshot 1`] = `
 <button
   aria-label="Some point"
-  class="navItem"
+  class="_navItem_e88351 _button_fb7df1"
   data-testid="somePoint-button"
   tabindex="0"
 >

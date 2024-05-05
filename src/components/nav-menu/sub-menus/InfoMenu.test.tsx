@@ -1,18 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 import AppContext, { systemSize } from '../../../context/SystemContext';
 import InfoMenu from './InfoMenu';
 
 describe('InfoMenu', () => {
   test('it renders', () => {
     render(
-      <InfoMenu
-        orbitsVisible={false}
-        isVisible={true}
-        onOrbitsVisibleChange={jest.fn()}
-        onChangeSystemSize={jest.fn()}
-      />,
+      <InfoMenu orbitsVisible={false} isVisible={true} onOrbitsVisibleChange={vi.fn()} onChangeSystemSize={vi.fn()} />,
     );
     const element = screen.getByTestId('info-menu');
 
@@ -21,25 +16,20 @@ describe('InfoMenu', () => {
 
   test('it matches snapshot', () => {
     render(
-      <InfoMenu
-        orbitsVisible={false}
-        isVisible={true}
-        onOrbitsVisibleChange={jest.fn()}
-        onChangeSystemSize={jest.fn()}
-      />,
+      <InfoMenu orbitsVisible={false} isVisible={true} onOrbitsVisibleChange={vi.fn()} onChangeSystemSize={vi.fn()} />,
     );
 
     expect(screen.getByTestId('info-menu')).toMatchSnapshot();
   });
 
   test('it changes orbits visible when Show Orbits clicked', async () => {
-    const onOrbitsChange = jest.fn();
+    const onOrbitsChange = vi.fn();
     render(
       <InfoMenu
         orbitsVisible={false}
         isVisible={true}
         onOrbitsVisibleChange={onOrbitsChange}
-        onChangeSystemSize={jest.fn()}
+        onChangeSystemSize={vi.fn()}
       />,
     );
     await userEvent.click(screen.getByText(/^Show Orbits$/));
@@ -49,12 +39,12 @@ describe('InfoMenu', () => {
   });
 
   test('it changes system size when Normalise Distance clicked', async () => {
-    const onChangeSystemSize = jest.fn();
+    const onChangeSystemSize = vi.fn();
     render(
       <InfoMenu
         orbitsVisible={false}
         isVisible={true}
-        onOrbitsVisibleChange={jest.fn()}
+        onOrbitsVisibleChange={vi.fn()}
         onChangeSystemSize={onChangeSystemSize}
       />,
     );
@@ -66,12 +56,7 @@ describe('InfoMenu', () => {
 
   test('it has correct days per second for enhanced visibility context', () => {
     render(
-      <InfoMenu
-        orbitsVisible={false}
-        isVisible={true}
-        onOrbitsVisibleChange={jest.fn()}
-        onChangeSystemSize={jest.fn()}
-      />,
+      <InfoMenu orbitsVisible={false} isVisible={true} onOrbitsVisibleChange={vi.fn()} onChangeSystemSize={vi.fn()} />,
     );
 
     const timeDetails = screen.getByTestId('time');
@@ -82,12 +67,7 @@ describe('InfoMenu', () => {
   test('it has correct days per second for even size context', () => {
     render(
       <AppContext.Provider value={systemSize.evenSpace}>
-        <InfoMenu
-          orbitsVisible={false}
-          isVisible={true}
-          onOrbitsVisibleChange={jest.fn()}
-          onChangeSystemSize={jest.fn()}
-        />
+        <InfoMenu orbitsVisible={false} isVisible={true} onOrbitsVisibleChange={vi.fn()} onChangeSystemSize={vi.fn()} />
       </AppContext.Provider>,
     );
 
@@ -98,12 +78,7 @@ describe('InfoMenu', () => {
 
   test('it has correct planet distance for enhanced visibility context', () => {
     render(
-      <InfoMenu
-        orbitsVisible={false}
-        isVisible={true}
-        onOrbitsVisibleChange={jest.fn()}
-        onChangeSystemSize={jest.fn()}
-      />,
+      <InfoMenu orbitsVisible={false} isVisible={true} onOrbitsVisibleChange={vi.fn()} onChangeSystemSize={vi.fn()} />,
     );
 
     const timeDetails = screen.getByTestId('planet-distance');
@@ -114,12 +89,7 @@ describe('InfoMenu', () => {
   test('it has correct planet distance for even size context', () => {
     render(
       <AppContext.Provider value={systemSize.evenSpace}>
-        <InfoMenu
-          orbitsVisible={false}
-          isVisible={true}
-          onOrbitsVisibleChange={jest.fn()}
-          onChangeSystemSize={jest.fn()}
-        />
+        <InfoMenu orbitsVisible={false} isVisible={true} onOrbitsVisibleChange={vi.fn()} onChangeSystemSize={vi.fn()} />
       </AppContext.Provider>,
     );
 
@@ -130,12 +100,7 @@ describe('InfoMenu', () => {
 
   test('it has correct satellite distance for enhanced visibility context', () => {
     render(
-      <InfoMenu
-        orbitsVisible={false}
-        isVisible={true}
-        onOrbitsVisibleChange={jest.fn()}
-        onChangeSystemSize={jest.fn()}
-      />,
+      <InfoMenu orbitsVisible={false} isVisible={true} onOrbitsVisibleChange={vi.fn()} onChangeSystemSize={vi.fn()} />,
     );
 
     const timeDetails = screen.getByTestId('satellite-distance');
@@ -146,12 +111,7 @@ describe('InfoMenu', () => {
   test('it has correct satellite distance for even size context', () => {
     render(
       <AppContext.Provider value={systemSize.evenSpace}>
-        <InfoMenu
-          orbitsVisible={false}
-          isVisible={true}
-          onOrbitsVisibleChange={jest.fn()}
-          onChangeSystemSize={jest.fn()}
-        />
+        <InfoMenu orbitsVisible={false} isVisible={true} onOrbitsVisibleChange={vi.fn()} onChangeSystemSize={vi.fn()} />
       </AppContext.Provider>,
     );
 
@@ -162,12 +122,7 @@ describe('InfoMenu', () => {
 
   test('it has correct planet size for enhanced visibility context', () => {
     render(
-      <InfoMenu
-        orbitsVisible={false}
-        isVisible={true}
-        onOrbitsVisibleChange={jest.fn()}
-        onChangeSystemSize={jest.fn()}
-      />,
+      <InfoMenu orbitsVisible={false} isVisible={true} onOrbitsVisibleChange={vi.fn()} onChangeSystemSize={vi.fn()} />,
     );
 
     const timeDetails = screen.getByTestId('planet-size');
@@ -178,12 +133,7 @@ describe('InfoMenu', () => {
   test('it has correct planet size for even size context', () => {
     render(
       <AppContext.Provider value={systemSize.evenSpace}>
-        <InfoMenu
-          orbitsVisible={false}
-          isVisible={true}
-          onOrbitsVisibleChange={jest.fn()}
-          onChangeSystemSize={jest.fn()}
-        />
+        <InfoMenu orbitsVisible={false} isVisible={true} onOrbitsVisibleChange={vi.fn()} onChangeSystemSize={vi.fn()} />
       </AppContext.Provider>,
     );
 

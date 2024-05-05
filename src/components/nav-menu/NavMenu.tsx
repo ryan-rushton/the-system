@@ -1,6 +1,6 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { CSSProperties, FC, RefObject, useCallback, useRef, useState } from 'react';
+import { CSSProperties, FC, RefObject, useCallback, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { pointsOfInterest } from '../../PointsOfInterest';
 import { SystemContext } from '../../context/SystemContext';
@@ -43,6 +43,7 @@ const NavMenu: FC<Props> = ({
   const [openSubsection, setOpenSubsection] = useState<OpenSubsectionState>();
   const containerRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const { t } = useTranslation();
 
   const onMenuClick = useCallback(() => setMenuVisible((oldState) => !oldState), []);
@@ -50,19 +51,24 @@ const NavMenu: FC<Props> = ({
     setOpenSubsection((oldState) => (clicked === oldState ? undefined : clicked));
   useClickOutside(containerRef, menuVisible, () => setMenuVisible(false));
 
+  const leftEdgeOfContainerToRightViewport =
+    window.innerWidth - (containerRef.current?.getBoundingClientRect().left || 0);
+  const rightEdgeOfButtonToRightViewport = window.innerWidth - (buttonRef.current?.getBoundingClientRect().right || 0);
   // on first render we dont have the offset so just push it way off the screen
-  const transformDistance = menuRef.current ? `calc(${menuRef.current.offsetWidth}px + 2vw)` : '100vw';
+  const transformDistance = menuRef.current
+    ? `calc(-${menuRef.current.getBoundingClientRect().width}px + ${rightEdgeOfButtonToRightViewport}px + 4px)`
+    : '-100vw';
 
   const transformStyles: CSSProperties = {
     maxHeight: menuRef.current ? `calc(100vh - ${getDistanceToTop(menuRef.current)}px)` : undefined,
     // the 2vw is because we have a 2vw right indent on the navMenu style
-    transform: menuVisible ? 'translateX(0px)' : `translateX(${transformDistance})`,
+    transform: menuVisible ? `translateX(${transformDistance})` : `translateX(${leftEdgeOfContainerToRightViewport}px)`,
   };
 
   return (
     <div ref={containerRef} data-testid="nav-menu-container" className={styles.nav}>
       <div className={styles.header}>
-        <button data-testid="nav-menu-button" className={styles.headerButton} onClick={onMenuClick}>
+        <button ref={buttonRef} data-testid="nav-menu-button" className={styles.headerButton} onClick={onMenuClick}>
           <FontAwesomeIcon icon={faBars} />
         </button>
       </div>
