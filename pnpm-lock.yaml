@@ -193,15 +193,15 @@ dependencies:
     version: 4.1.1(webpack@5.91.0)
   workbox-webpack-plugin:
     specifier: ^6.6.0
-    version: 6.6.0(webpack@5.91.0)
+    version: 6.6.1(webpack@5.91.0)
 
 devDependencies:
   '@testing-library/dom':
     specifier: 10.1.0
     version: 10.1.0
   '@testing-library/jest-dom':
-    specifier: 6.4.2
-    version: 6.4.2(@types/jest@29.5.12)(jest@27.5.1)
+    specifier: 6.4.5
+    version: 6.4.5(@types/jest@29.5.12)(jest@27.5.1)
   '@testing-library/react':
     specifier: 15.0.6
     version: 15.0.6(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)
@@ -2732,8 +2732,8 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/jest-dom@6.4.2(@types/jest@29.5.12)(jest@27.5.1):
-    resolution: {integrity: sha512-CzqH0AFymEMG48CpzXFriYYkOjk6ZGPCLMhW9e9jg3KMCn5OfJecF8GtGW7yGfR/IgCe3SX8BSwjdzI6BBbZLw==}
+  /@testing-library/jest-dom@6.4.5(@types/jest@29.5.12)(jest@27.5.1):
+    resolution: {integrity: sha512-AguB9yvTXmCnySBP1lWjfNNUwpbElsaQ567lt2VdGqAdHtpieLgjmcVyv1q7PMIvLbgpDdkWV5Ydv3FEejyp2A==}
     engines: {node: '>=14', npm: '>=6', yarn: '>=1'}
     peerDependencies:
       '@jest/globals': '>= 28'
@@ -3906,7 +3906,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001614
+      caniuse-lite: 1.0.30001616
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -4199,10 +4199,10 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001614
-      electron-to-chromium: 1.4.753
+      caniuse-lite: 1.0.30001616
+      electron-to-chromium: 1.4.756
       node-releases: 2.0.14
-      update-browserslist-db: 1.0.14(browserslist@4.23.0)
+      update-browserslist-db: 1.0.15(browserslist@4.23.0)
 
   /bser@2.1.1:
     resolution: {integrity: sha512-gQxTNE/GAfIIrmHLUE3oJyp5FO6HRBfhjnw4/wMmA63ZGDJnWBmgY/lyQBpnDUkGmAhbSe39tx2d/iTOAfglwQ==}
@@ -4281,13 +4281,13 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001614
+      caniuse-lite: 1.0.30001616
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: false
 
-  /caniuse-lite@1.0.30001614:
-    resolution: {integrity: sha512-jmZQ1VpmlRwHgdP1/uiKzgiAuGOfLEJsYFP4+GBou/QQ4U6IOJCB4NP1c+1p9RGLpwObcT94jA5/uO+F1vBbog==}
+  /caniuse-lite@1.0.30001616:
+    resolution: {integrity: sha512-RHVYKov7IcdNjVHJFNY/78RdG4oGVjbayxv8u5IO74Wv7Hlq4PnJE6mo/OjFijjVFNy5ijnCt6H3IIo4t+wfEw==}
 
   /case-sensitive-paths-webpack-plugin@2.4.0:
     resolution: {integrity: sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==}
@@ -5265,11 +5265,11 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
     dependencies:
-      jake: 10.8.7
+      jake: 10.9.1
     dev: false
 
-  /electron-to-chromium@1.4.753:
-    resolution: {integrity: sha512-Wn1XKa0Lc5kMe5UIwQc4+i5lhhBggF0l82C1bE3oOMASt4JVqdOyRIVc8mh0kiuL5CCptqwQJBmFbaPglLrN0Q==}
+  /electron-to-chromium@1.4.756:
+    resolution: {integrity: sha512-RJKZ9+vEBMeiPAvKNWyZjuYyUqMndcP1f335oHqn3BEQbs2NFtVrnK5+6Xg5wSM9TknNNpWghGDUCKGYF+xWXw==}
 
   /emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -6565,7 +6565,7 @@ packages:
       foreground-child: 3.1.1
       jackspeak: 2.3.6
       minimatch: 9.0.4
-      minipass: 7.0.4
+      minipass: 7.1.0
       path-scurry: 1.10.2
     dev: false
 
@@ -7310,8 +7310,8 @@ packages:
       '@pkgjs/parseargs': 0.11.0
     dev: false
 
-  /jake@10.8.7:
-    resolution: {integrity: sha512-ZDi3aP+fG/LchyBzUM804VjddnwfSfsdeYkwt8NcbKRvo4rFkjhs456iLFn3k2ZUWvNe4i48WACDbza8fhq2+w==}
+  /jake@10.9.1:
+    resolution: {integrity: sha512-61btcOHNnLnsOdtLgA5efqQWjnSi/vow5HbI7HMdKKWqvrKR1bLK3BPlJn9gcSaP2ewuamUSMB5XEy76KUIS2w==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -7832,16 +7832,6 @@ packages:
       '@types/node': 20.12.8
       merge-stream: 2.0.0
       supports-color: 8.1.1
-
-  /jest-worker@29.7.0:
-    resolution: {integrity: sha512-eIz2msL/EzL9UFTFFx7jBTkeZfku0yUAyZZZmJ93H2TYEiroIx2PQjEXcwYtYl8zXCxb+PAmA2hLIt/6ZEkPHw==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    dependencies:
-      '@types/node': 20.12.8
-      jest-util: 29.7.0
-      merge-stream: 2.0.0
-      supports-color: 8.1.1
-    dev: false
 
   /jest-worker@29.7.0:
     resolution: {integrity: sha512-eIz2msL/EzL9UFTFFx7jBTkeZfku0yUAyZZZmJ93H2TYEiroIx2PQjEXcwYtYl8zXCxb+PAmA2hLIt/6ZEkPHw==}
@@ -8380,8 +8370,8 @@ packages:
   /minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
 
-  /minipass@7.0.4:
-    resolution: {integrity: sha512-jYofLM5Dam9279rdkWzqHozUo4ybjdZmCsDHePy5V/PbBcVMiSZR97gmAy45aqi8CK1lG2ECd356FU86avfwUQ==}
+  /minipass@7.1.0:
+    resolution: {integrity: sha512-oGZRv2OT1lO2UF1zUcwdTb3wqUwI0kBGTgt/T7OdSj6M6N5m3o5uPf0AIW6lVxGGoiWUR7e2AwTE+xiwK8WQig==}
     engines: {node: '>=16 || 14 >=14.17'}
     dev: false
 
@@ -8749,7 +8739,7 @@ packages:
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       lru-cache: 10.2.2
-      minipass: 7.0.4
+      minipass: 7.1.0
     dev: false
 
   /path-to-regexp@0.1.7:
@@ -11206,8 +11196,8 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /update-browserslist-db@1.0.14(browserslist@4.23.0):
-    resolution: {integrity: sha512-JixKH8GR2pWYshIPUg/NujK3JO7JiqEEUiNArE86NQyrgUuZeTlZQN3xuS/yiV5Kb48ev9K6RqNkaJjXsdg7Jw==}
+  /update-browserslist-db@1.0.15(browserslist@4.23.0):
+    resolution: {integrity: sha512-K9HWH62x3/EalU1U6sjSZiylm9C8tgq2mSvshZpqc7QE69RaA2qjhkW2HlNA0tFpEbtyFz7HTqbSdN4MSwUodA==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
@@ -11569,22 +11559,25 @@ packages:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
 
-  /workbox-background-sync@6.6.0:
-    resolution: {integrity: sha512-jkf4ZdgOJxC9u2vztxLuPT/UjlH7m/nWRQ/MgGL0v8BJHoZdVGJd18Kck+a0e55wGXdqyHO+4IQTk0685g4MUw==}
+  /workbox-background-sync@6.6.1:
+    resolution: {integrity: sha512-trJd3ovpWCvzu4sW0E8rV3FUyIcC0W8G+AZ+VcqzzA890AsWZlUGOTSxIMmIHVusUw/FDq1HFWfy/kC/WTRqSg==}
+    deprecated: this package has been deprecated
     dependencies:
       idb: 7.1.1
-      workbox-core: 6.6.0
+      workbox-core: 6.6.1
     dev: false
 
-  /workbox-broadcast-update@6.6.0:
-    resolution: {integrity: sha512-nm+v6QmrIFaB/yokJmQ/93qIJ7n72NICxIwQwe5xsZiV2aI93MGGyEyzOzDPVz5THEr5rC3FJSsO3346cId64Q==}
+  /workbox-broadcast-update@6.6.1:
+    resolution: {integrity: sha512-fBhffRdaANdeQ1V8s692R9l/gzvjjRtydBOvR6WCSB0BNE2BacA29Z4r9/RHd9KaXCPl6JTdI9q0bR25YKP8TQ==}
+    deprecated: this package has been deprecated
     dependencies:
-      workbox-core: 6.6.0
+      workbox-core: 6.6.1
     dev: false
 
-  /workbox-build@6.6.0:
-    resolution: {integrity: sha512-Tjf+gBwOTuGyZwMz2Nk/B13Fuyeo0Q84W++bebbVsfr9iLkDSo6j6PST8tET9HYA58mlRXwlMGpyWO8ETJiXdQ==}
-    engines: {node: '>=10.0.0'}
+  /workbox-build@6.6.1:
+    resolution: {integrity: sha512-INPgDx6aRycAugUixbKgiEQBWD0MPZqU5r0jyr24CehvNuLPSXp/wGOpdRJmts656lNiXwqV7dC2nzyrzWEDnw==}
+    engines: {node: '>=16.0.0'}
+    deprecated: this package has been deprecated
     dependencies:
       '@apideck/better-ajv-errors': 0.3.6(ajv@8.13.0)
       '@babel/core': 7.24.5
@@ -11608,111 +11601,122 @@ packages:
       strip-comments: 2.0.1
       tempy: 0.6.0
       upath: 1.2.0
-      workbox-background-sync: 6.6.0
-      workbox-broadcast-update: 6.6.0
-      workbox-cacheable-response: 6.6.0
-      workbox-core: 6.6.0
-      workbox-expiration: 6.6.0
-      workbox-google-analytics: 6.6.0
-      workbox-navigation-preload: 6.6.0
-      workbox-precaching: 6.6.0
-      workbox-range-requests: 6.6.0
-      workbox-recipes: 6.6.0
-      workbox-routing: 6.6.0
-      workbox-strategies: 6.6.0
-      workbox-streams: 6.6.0
-      workbox-sw: 6.6.0
-      workbox-window: 6.6.0
+      workbox-background-sync: 6.6.1
+      workbox-broadcast-update: 6.6.1
+      workbox-cacheable-response: 6.6.1
+      workbox-core: 6.6.1
+      workbox-expiration: 6.6.1
+      workbox-google-analytics: 6.6.1
+      workbox-navigation-preload: 6.6.1
+      workbox-precaching: 6.6.1
+      workbox-range-requests: 6.6.1
+      workbox-recipes: 6.6.1
+      workbox-routing: 6.6.1
+      workbox-strategies: 6.6.1
+      workbox-streams: 6.6.1
+      workbox-sw: 6.6.1
+      workbox-window: 6.6.1
     transitivePeerDependencies:
       - '@types/babel__core'
       - supports-color
     dev: false
 
-  /workbox-cacheable-response@6.6.0:
-    resolution: {integrity: sha512-JfhJUSQDwsF1Xv3EV1vWzSsCOZn4mQ38bWEBR3LdvOxSPgB65gAM6cS2CX8rkkKHRgiLrN7Wxoyu+TuH67kHrw==}
-    deprecated: workbox-background-sync@6.6.0
+  /workbox-cacheable-response@6.6.1:
+    resolution: {integrity: sha512-85LY4veT2CnTCDxaVG7ft3NKaFbH6i4urZXgLiU4AiwvKqS2ChL6/eILiGRYXfZ6gAwDnh5RkuDbr/GMS4KSag==}
+    deprecated: workbox-background-sync@6.6.1
     dependencies:
-      workbox-core: 6.6.0
+      workbox-core: 6.6.1
     dev: false
 
-  /workbox-core@6.6.0:
-    resolution: {integrity: sha512-GDtFRF7Yg3DD859PMbPAYPeJyg5gJYXuBQAC+wyrWuuXgpfoOrIQIvFRZnQ7+czTIQjIr1DhLEGFzZanAT/3bQ==}
+  /workbox-core@6.6.1:
+    resolution: {integrity: sha512-ZrGBXjjaJLqzVothoE12qTbVnOAjFrHDXpZe7coCb6q65qI/59rDLwuFMO4PcZ7jcbxY+0+NhUVztzR/CbjEFw==}
+    deprecated: this package has been deprecated
     dev: false
 
-  /workbox-expiration@6.6.0:
-    resolution: {integrity: sha512-baplYXcDHbe8vAo7GYvyAmlS4f6998Jff513L4XvlzAOxcl8F620O91guoJ5EOf5qeXG4cGdNZHkkVAPouFCpw==}
+  /workbox-expiration@6.6.1:
+    resolution: {integrity: sha512-qFiNeeINndiOxaCrd2DeL1Xh1RFug3JonzjxUHc5WkvkD2u5abY3gZL1xSUNt3vZKsFFGGORItSjVTVnWAZO4A==}
+    deprecated: this package has been deprecated
     dependencies:
       idb: 7.1.1
-      workbox-core: 6.6.0
+      workbox-core: 6.6.1
     dev: false
 
-  /workbox-google-analytics@6.6.0:
-    resolution: {integrity: sha512-p4DJa6OldXWd6M9zRl0H6vB9lkrmqYFkRQ2xEiNdBFp9U0LhsGO7hsBscVEyH9H2/3eZZt8c97NB2FD9U2NJ+Q==}
+  /workbox-google-analytics@6.6.1:
+    resolution: {integrity: sha512-1TjSvbFSLmkpqLcBsF7FuGqqeDsf+uAXO/pjiINQKg3b1GN0nBngnxLcXDYo1n/XxK4N7RaRrpRlkwjY/3ocuA==}
     deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
-      workbox-background-sync: 6.6.0
-      workbox-core: 6.6.0
-      workbox-routing: 6.6.0
-      workbox-strategies: 6.6.0
+      workbox-background-sync: 6.6.1
+      workbox-core: 6.6.1
+      workbox-routing: 6.6.1
+      workbox-strategies: 6.6.1
     dev: false
 
-  /workbox-navigation-preload@6.6.0:
-    resolution: {integrity: sha512-utNEWG+uOfXdaZmvhshrh7KzhDu/1iMHyQOV6Aqup8Mm78D286ugu5k9MFD9SzBT5TcwgwSORVvInaXWbvKz9Q==}
+  /workbox-navigation-preload@6.6.1:
+    resolution: {integrity: sha512-DQCZowCecO+wRoIxJI2V6bXWK6/53ff+hEXLGlQL4Rp9ZaPDLrgV/32nxwWIP7QpWDkVEtllTAK5h6cnhxNxDA==}
+    deprecated: this package has been deprecated
     dependencies:
-      workbox-core: 6.6.0
+      workbox-core: 6.6.1
     dev: false
 
-  /workbox-precaching@6.6.0:
-    resolution: {integrity: sha512-eYu/7MqtRZN1IDttl/UQcSZFkHP7dnvr/X3Vn6Iw6OsPMruQHiVjjomDFCNtd8k2RdjLs0xiz9nq+t3YVBcWPw==}
+  /workbox-precaching@6.6.1:
+    resolution: {integrity: sha512-K4znSJ7IKxCnCYEdhNkMr7X1kNh8cz+mFgx9v5jFdz1MfI84pq8C2zG+oAoeE5kFrUf7YkT5x4uLWBNg0DVZ5A==}
+    deprecated: this package has been deprecated
     dependencies:
-      workbox-core: 6.6.0
-      workbox-routing: 6.6.0
-      workbox-strategies: 6.6.0
+      workbox-core: 6.6.1
+      workbox-routing: 6.6.1
+      workbox-strategies: 6.6.1
     dev: false
 
-  /workbox-range-requests@6.6.0:
-    resolution: {integrity: sha512-V3aICz5fLGq5DpSYEU8LxeXvsT//mRWzKrfBOIxzIdQnV/Wj7R+LyJVTczi4CQ4NwKhAaBVaSujI1cEjXW+hTw==}
+  /workbox-range-requests@6.6.1:
+    resolution: {integrity: sha512-4BDzk28govqzg2ZpX0IFkthdRmCKgAKreontYRC5YsAPB2jDtPNxqx3WtTXgHw1NZalXpcH/E4LqUa9+2xbv1g==}
+    deprecated: this package has been deprecated
     dependencies:
-      workbox-core: 6.6.0
+      workbox-core: 6.6.1
     dev: false
 
-  /workbox-recipes@6.6.0:
-    resolution: {integrity: sha512-TFi3kTgYw73t5tg73yPVqQC8QQjxJSeqjXRO4ouE/CeypmP2O/xqmB/ZFBBQazLTPxILUQ0b8aeh0IuxVn9a6A==}
+  /workbox-recipes@6.6.1:
+    resolution: {integrity: sha512-/oy8vCSzromXokDA+X+VgpeZJvtuf8SkQ8KL0xmRivMgJZrjwM3c2tpKTJn6PZA6TsbxGs3Sc7KwMoZVamcV2g==}
+    deprecated: this package has been deprecated
     dependencies:
-      workbox-cacheable-response: 6.6.0
-      workbox-core: 6.6.0
-      workbox-expiration: 6.6.0
-      workbox-precaching: 6.6.0
-      workbox-routing: 6.6.0
-      workbox-strategies: 6.6.0
+      workbox-cacheable-response: 6.6.1
+      workbox-core: 6.6.1
+      workbox-expiration: 6.6.1
+      workbox-precaching: 6.6.1
+      workbox-routing: 6.6.1
+      workbox-strategies: 6.6.1
     dev: false
 
-  /workbox-routing@6.6.0:
-    resolution: {integrity: sha512-x8gdN7VDBiLC03izAZRfU+WKUXJnbqt6PG9Uh0XuPRzJPpZGLKce/FkOX95dWHRpOHWLEq8RXzjW0O+POSkKvw==}
+  /workbox-routing@6.6.1:
+    resolution: {integrity: sha512-j4ohlQvfpVdoR8vDYxTY9rA9VvxTHogkIDwGdJ+rb2VRZQ5vt1CWwUUZBeD/WGFAni12jD1HlMXvJ8JS7aBWTg==}
+    deprecated: this package has been deprecated
     dependencies:
-      workbox-core: 6.6.0
+      workbox-core: 6.6.1
     dev: false
 
-  /workbox-strategies@6.6.0:
-    resolution: {integrity: sha512-eC07XGuINAKUWDnZeIPdRdVja4JQtTuc35TZ8SwMb1ztjp7Ddq2CJ4yqLvWzFWGlYI7CG/YGqaETntTxBGdKgQ==}
+  /workbox-strategies@6.6.1:
+    resolution: {integrity: sha512-WQLXkRnsk4L81fVPkkgon1rZNxnpdO5LsO+ws7tYBC6QQQFJVI6v98klrJEjFtZwzw/mB/HT5yVp7CcX0O+mrw==}
+    deprecated: this package has been deprecated
     dependencies:
-      workbox-core: 6.6.0
+      workbox-core: 6.6.1
     dev: false
 
-  /workbox-streams@6.6.0:
-    resolution: {integrity: sha512-rfMJLVvwuED09CnH1RnIep7L9+mj4ufkTyDPVaXPKlhi9+0czCu+SJggWCIFbPpJaAZmp2iyVGLqS3RUmY3fxg==}
+  /workbox-streams@6.6.1:
+    resolution: {integrity: sha512-maKG65FUq9e4BLotSKWSTzeF0sgctQdYyTMq529piEN24Dlu9b6WhrAfRpHdCncRS89Zi2QVpW5V33NX8PgH3Q==}
+    deprecated: this package has been deprecated
     dependencies:
-      workbox-core: 6.6.0
-      workbox-routing: 6.6.0
+      workbox-core: 6.6.1
+      workbox-routing: 6.6.1
     dev: false
 
-  /workbox-sw@6.6.0:
-    resolution: {integrity: sha512-R2IkwDokbtHUE4Kus8pKO5+VkPHD2oqTgl+XJwh4zbF1HyjAbgNmK/FneZHVU7p03XUt9ICfuGDYISWG9qV/CQ==}
+  /workbox-sw@6.6.1:
+    resolution: {integrity: sha512-R7whwjvU2abHH/lR6kQTTXLHDFU2izht9kJOvBRYK65FbwutT4VvnUAJIgHvfWZ/fokrOPhfoWYoPCMpSgUKHQ==}
+    deprecated: this package has been deprecated
     dev: false
 
-  /workbox-webpack-plugin@6.6.0(webpack@5.91.0):
-    resolution: {integrity: sha512-xNZIZHalboZU66Wa7x1YkjIqEy1gTR+zPM+kjrYJzqN7iurYZBctBLISyScjhkJKYuRrZUP0iqViZTh8rS0+3A==}
-    engines: {node: '>=10.0.0'}
+  /workbox-webpack-plugin@6.6.1(webpack@5.91.0):
+    resolution: {integrity: sha512-zpZ+ExFj9NmiI66cFEApyjk7hGsfJ1YMOaLXGXBoZf0v7Iu6hL0ZBe+83mnDq3YYWAfA3fnyFejritjOHkFcrA==}
+    engines: {node: '>=16.0.0'}
+    deprecated: this package has been deprecated
     peerDependencies:
       webpack: ^4.4.0 || ^5.9.0
     dependencies:
@@ -11721,17 +11725,18 @@ packages:
       upath: 1.2.0
       webpack: 5.91.0
       webpack-sources: 1.4.3
-      workbox-build: 6.6.0
+      workbox-build: 6.6.1
     transitivePeerDependencies:
       - '@types/babel__core'
       - supports-color
     dev: false
 
-  /workbox-window@6.6.0:
-    resolution: {integrity: sha512-L4N9+vka17d16geaJXXRjENLFldvkWy7JyGxElRD0JvBxvFEd8LOhr+uXCcar/NzAmIBRv9EZ+M+Qr4mOoBITw==}
+  /workbox-window@6.6.1:
+    resolution: {integrity: sha512-wil4nwOY58nTdCvif/KEZjQ2NP8uk3gGeRNy2jPBbzypU4BT4D9L8xiwbmDBpZlSgJd2xsT9FvSNU0gsxV51JQ==}
+    deprecated: this package has been deprecated
     dependencies:
       '@types/trusted-types': 2.0.7
-      workbox-core: 6.6.0
+      workbox-core: 6.6.1
     dev: false
 
   /wrap-ansi@6.2.0:
