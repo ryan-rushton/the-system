@@ -29,12 +29,12 @@ jobs:
         run: pnpm build
 
       - name: Cypress Browser Tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         with:
           browser: chrome
           start: pnpm start
           wait-on: 'http://localhost:5173/'
-          wait-on-timeout: 180
+          wait-on-timeout: 30
         # Uncomment to enable i18n debug logging which will be shown in the step logs.
         # env:
         #   REACT_APP_DEBUG: ON
