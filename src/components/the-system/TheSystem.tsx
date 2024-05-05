@@ -1,4 +1,4 @@
-import React, { FC, memo, useContext } from 'react';
+import { FC, memo, useContext } from 'react';
 import { pointsOfInterest } from '../../PointsOfInterest';
 import AppContext from '../../context/SystemContext';
 import TheBelt from './ the-belt/TheBelt';
