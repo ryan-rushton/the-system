@@ -1,4 +1,4 @@
-import React from 'react';
+import { createRef } from 'react';
 
 /**
  * All the points of interest in the solar system that get rendered.
@@ -17,28 +17,28 @@ import React from 'react';
 export const pointsOfInterest = {
   sun: {
     id: 'sun',
-    ref: React.createRef<HTMLDivElement>(),
+    ref: createRef<HTMLDivElement>(),
     radius: 695508,
     distance: 0,
     orbitalPeriod: 1,
   },
   mercury: {
     id: 'mercury',
-    ref: React.createRef<HTMLDivElement>(),
+    ref: createRef<HTMLDivElement>(),
     radius: 2440,
     distance: 57900000,
     orbitalPeriod: 88,
   },
   venus: {
     id: 'venus',
-    ref: React.createRef<HTMLDivElement>(),
+    ref: createRef<HTMLDivElement>(),
     radius: 6052,
     distance: 108200000,
     orbitalPeriod: 224.7,
   },
   earth: {
     id: 'earth',
-    ref: React.createRef<HTMLDivElement>(),
+    ref: createRef<HTMLDivElement>(),
     radius: 6378,
     distance: 149600000,
     orbitalPeriod: 365.2,
@@ -53,18 +53,18 @@ export const pointsOfInterest = {
   },
   mars: {
     id: 'mars',
-    ref: React.createRef<HTMLDivElement>(),
+    ref: createRef<HTMLDivElement>(),
     radius: 3396,
     distance: 227900000,
     orbitalPeriod: 687,
   },
   theBelt: {
     id: 'theBelt',
-    ref: React.createRef<HTMLDivElement>(),
+    ref: createRef<HTMLDivElement>(),
   },
   jupiter: {
     id: 'jupiter',
-    ref: React.createRef<HTMLDivElement>(),
+    ref: createRef<HTMLDivElement>(),
     radius: 71498,
     distance: 778600000,
     orbitalPeriod: 4331,
@@ -97,7 +97,7 @@ export const pointsOfInterest = {
   },
   saturn: {
     id: 'saturn',
-    ref: React.createRef<HTMLDivElement>(),
+    ref: createRef<HTMLDivElement>(),
     radius: 80000 + 58232, // making the ring radius clear
     distance: 1433500000,
     orbitalPeriod: 10747,
@@ -118,21 +118,21 @@ export const pointsOfInterest = {
   },
   uranus: {
     id: 'uranus',
-    ref: React.createRef<HTMLDivElement>(),
+    ref: createRef<HTMLDivElement>(),
     radius: 25559,
     distance: 2872500000,
     orbitalPeriod: 30589,
   },
   neptune: {
     id: 'neptune',
-    ref: React.createRef<HTMLDivElement>(),
+    ref: createRef<HTMLDivElement>(),
     radius: 24764,
     distance: 4495100000,
     orbitalPeriod: 59800,
   },
   pluto: {
     id: 'pluto',
-    ref: React.createRef<HTMLDivElement>(),
+    ref: createRef<HTMLDivElement>(),
     radius: 1185,
     distance: 5906400000,
     orbitalPeriod: 90560,

@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import React from 'react';
+import { createRef } from 'react';
+import { describe, expect, test } from 'vitest';
 import BeltLayer from './BeltLayer';
 
 describe('BeltLayer', () => {
@@ -10,7 +11,7 @@ describe('BeltLayer', () => {
   });
 
   test('it renders the ref object when the ref is passed in', () => {
-    render(<BeltLayer innerBoundary={100} outerBoundary={200} scrollToRef={React.createRef()} />);
+    render(<BeltLayer innerBoundary={100} outerBoundary={200} scrollToRef={createRef()} />);
     expect(screen.getByTestId('belt-ref')).toBeInTheDocument();
   });
 });

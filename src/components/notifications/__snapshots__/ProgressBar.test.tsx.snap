@@ -1,12 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NavMenu it matches snapshot 1`] = `
+exports[`NavMenu > it matches snapshot 1`] = `
 <div
-  class="container"
+  class="_container_c5e3a7"
   data-testid="progress-bar"
 >
   <div
-    class="progress"
+    class="_progress_c5e3a7"
     style="width: 0%;"
   />
 </div>

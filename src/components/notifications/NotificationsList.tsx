@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import NotificationView from './NotificationView';
 import styles from './NotificationsList.module.scss';
 import { UniqueNotification, notifications$ } from './notifications';

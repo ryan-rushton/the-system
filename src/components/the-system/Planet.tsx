@@ -1,4 +1,4 @@
-import React, { FC, RefObject, useContext } from 'react';
+import { FC, RefObject, useContext } from 'react';
 import { pointsOfInterest } from '../../PointsOfInterest';
 import AppContext from '../../context/SystemContext';
 import styles from './Planet.module.scss';

@@ -1,8 +1,9 @@
+import { describe, expect, test, vi } from 'vitest';
 import { Notification, notifications$, showNotification } from './notifications';
 
 describe('notifications', () => {
   test('it sends out notifications', () => {
-    const subFn = jest.fn();
+    const subFn = vi.fn();
     const notification: Notification = { origin: 'origin', severity: 'info', message: "I'm a notification!" };
 
     notifications$.subscribe(subFn);
@@ -12,7 +13,7 @@ describe('notifications', () => {
   });
 
   test('it increments the id correctly', () => {
-    const subFn = jest.fn();
+    const subFn = vi.fn();
     const notification: Notification = { origin: 'origin', severity: 'info', message: "I'm a notification!" };
 
     notifications$.subscribe(subFn);

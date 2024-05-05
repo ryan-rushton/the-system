@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NavMenu it matches snapshot 1`] = `
+exports[`NavMenu > it matches snapshot 1`] = `
 <button
-  class="close"
+  class="_close_241e48"
   data-testid="close-button"
 >
   <svg

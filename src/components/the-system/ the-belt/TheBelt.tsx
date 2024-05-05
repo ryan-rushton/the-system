@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ReactNode, RefObject, useContext } from 'react';
+import { FC, ReactElement, ReactNode, RefObject, useContext } from 'react';
 import { pointsOfInterest } from '../../../PointsOfInterest';
 import AppContext from '../../../context/SystemContext';
 import BeltLayer from './BeltLayer';

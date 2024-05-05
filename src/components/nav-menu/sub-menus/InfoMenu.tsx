@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { FC, useCallback, useContext } from 'react';
+import { FC, useCallback, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import AppContext, { SystemContext, systemSize } from '../../../context/SystemContext';
 import styles from './InfoMenu.module.scss';

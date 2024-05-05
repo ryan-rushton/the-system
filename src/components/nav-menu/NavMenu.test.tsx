@@ -1,28 +1,28 @@
 import { render, screen } from '@testing-library/react';
-import React from 'react';
+import { describe, expect, it, vi } from 'vitest';
 import NavMenu from './NavMenu';
 
 describe('NavMenu', () => {
-  test('it renders', () => {
+  it('renders', () => {
     render(
       <NavMenu
         orbitsVisible={false}
-        onChangeSystemSize={jest.fn()}
-        onFollowPointOfInterest={jest.fn()}
-        onOrbitsVisibleChange={jest.fn()}
+        onChangeSystemSize={vi.fn()}
+        onFollowPointOfInterest={vi.fn()}
+        onOrbitsVisibleChange={vi.fn()}
       />,
     );
 
     expect(screen.getByTestId('nav-menu-button')).toBeInTheDocument();
   });
 
-  test('it matches snapshot', () => {
+  it('it matches snapshot', () => {
     render(
       <NavMenu
         orbitsVisible={false}
-        onChangeSystemSize={jest.fn()}
-        onFollowPointOfInterest={jest.fn()}
-        onOrbitsVisibleChange={jest.fn()}
+        onChangeSystemSize={vi.fn()}
+        onFollowPointOfInterest={vi.fn()}
+        onOrbitsVisibleChange={vi.fn()}
       />,
     );
 

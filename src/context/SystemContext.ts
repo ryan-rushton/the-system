@@ -1,4 +1,4 @@
-import React from 'react';
+import { Context, createContext } from 'react';
 import { pointsOfInterest } from '../PointsOfInterest';
 
 /**
@@ -93,6 +93,6 @@ export const systemSize: { enhancedVisibility: SystemContext; evenSpace: SystemC
   evenSpace,
 };
 
-const AppContext: React.Context<SystemContext> = React.createContext<SystemContext>(enhancedVisibility);
+const AppContext: Context<SystemContext> = createContext<SystemContext>(enhancedVisibility);
 
 export default AppContext;
