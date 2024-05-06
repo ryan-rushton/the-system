@@ -3,26 +3,14 @@ import clsx from 'clsx';
 import { RefObject, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './App.module.scss';
+import type { PointOfInterestIds } from './PointsOfInterest';
 import { pointsOfInterest } from './PointsOfInterest';
-import NavMenu from './components/nav-menu/NavMenu';
-import NotificationView from './components/notifications/NotificationsList';
+import { NavMenu } from './components/nav-menu/NavMenu';
+import { NotificationsList } from './components/notifications/NotificationsList';
 import { showNotification } from './components/notifications/notifications';
-import TheSystem from './components/the-system/TheSystem';
-import AppContext, { SystemContext, systemSize } from './context/SystemContext';
+import { TheSystem } from './components/the-system/TheSystem';
+import { AppContext, SystemContext, systemSize } from './context/SystemContext';
 import { doCallbackAfterElementIsVisible, scrollOptions, scrollToElementIfNotVisible } from './utils/DomUtil';
-
-type PointOfInterestIds =
-  | 'sun'
-  | 'mercury'
-  | 'venus'
-  | 'earth'
-  | 'mars'
-  | 'theBelt'
-  | 'jupiter'
-  | 'saturn'
-  | 'uranus'
-  | 'neptune'
-  | 'pluto';
 
 interface FollowerState {
   /** The point of interest being followed. */
@@ -34,7 +22,7 @@ interface FollowerState {
   interval?: NodeJS.Timeout;
 }
 
-function App() {
+export function App() {
   const [systemSizeContext, setSystemSizeContext] = useState(systemSize.enhancedVisibility);
   const [orbitsVisible, setOrbitsVisible] = useState(false);
   const [follower, setFollower] = useState<FollowerState>({});
@@ -122,9 +110,7 @@ function App() {
         </Sentry.ErrorBoundary>
         <TheSystem />
       </div>
-      <NotificationView />
+      <NotificationsList />
     </AppContext.Provider>
   );
 }
-
-export default App;

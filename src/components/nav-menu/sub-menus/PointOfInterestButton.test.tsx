@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createRef } from 'react';
 import { describe, expect, test, vi } from 'vitest';
-import PointOfInterestButton from './PointOfInterestButton';
+import { PointOfInterestButton } from './PointOfInterestButton';
 
 describe('PointOfInterestButton', () => {
   test('it renders', () => {

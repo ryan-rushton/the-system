@@ -1,12 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import NavMenu from './NavMenu';
+import { NavMenu } from './NavMenu';
 
 describe('NavMenu', () => {
   it('renders', () => {
     render(
       <NavMenu
         orbitsVisible={false}
+        followedPointOfInterest={undefined}
         onChangeSystemSize={vi.fn()}
         onFollowPointOfInterest={vi.fn()}
         onOrbitsVisibleChange={vi.fn()}
@@ -20,6 +21,7 @@ describe('NavMenu', () => {
     render(
       <NavMenu
         orbitsVisible={false}
+        followedPointOfInterest={undefined}
         onChangeSystemSize={vi.fn()}
         onFollowPointOfInterest={vi.fn()}
         onOrbitsVisibleChange={vi.fn()}

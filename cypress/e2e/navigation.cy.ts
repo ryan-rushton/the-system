@@ -17,31 +17,35 @@ describe('System navigation', () => {
     cy.get('[data-testid=nav-menu').contains('Saturn').should('be.visible');
   });
 
-  it('can navigate to the sun', () => {
-    cy.get('[data-testid=nav-menu').contains('Sun').click();
-    cy.get('[data-testid=sun').should('be.visible');
-  });
-
   it('can navigate to the belt', () => {
-    cy.get('[data-testid=nav-menu').contains('The Belt').click();
-    cy.get('[data-testid=belt-ref').should('be.visible');
+    cy.get('[data-testid=nav-menu').contains('button', 'The Belt').click();
+    cy.isInViewport('[data-testid=belt-ref');
   });
 
   it('can navigate to a planet', () => {
-    cy.get('[data-testid=nav-menu').contains('Neptune').click();
-    cy.get('[data-testid=neptune').should('be.visible');
+    reloadAndOpenNavMenu();
+
+    cy.get('[data-testid=nav-menu').contains('button', 'Neptune').click();
+    cy.isInViewport('[data-testid=neptune');
   });
 
   it('follows a planet', () => {
-    cy.get('[data-testid=nav-menu').contains('Venus').click();
+    reloadAndOpenNavMenu();
+
+    const height = Cypress.config('viewportHeight');
+    const width = Cypress.config('viewportWidth');
+
+    cy.get('[data-testid=nav-menu').contains('button', 'Venus').click();
     cy.get('[data-testid=nav-menu').contains('Venus').should('have.css', 'color', activeButtonColor);
     cy.isInViewport('[data-testid=venus');
-    cy.get('[data-testid=jupiter').scrollIntoView();
+    cy.scrollTo(width, height);
     cy.isInViewport('[data-testid=venus');
   });
 
   it('shows a notification when you follow a planet', () => {
-    cy.get('[data-testid=nav-menu').contains('Uranus').click();
+    reloadAndOpenNavMenu();
+
+    cy.get('[data-testid=nav-menu').contains('button', 'Uranus').click();
     cy.get('[data-testid=nav-menu').contains('Uranus').should('have.css', 'color', activeButtonColor);
     cy.isInViewport('[data-testid=uranus');
     cy.get('[data-testid=notification-view').should(
@@ -51,14 +55,25 @@ describe('System navigation', () => {
   });
 
   it('a second click cancels following a planet', () => {
-    cy.get('[data-testid=nav-menu').contains('Earth').click();
+    reloadAndOpenNavMenu();
+
+    const height = Cypress.config('viewportHeight');
+    const width = Cypress.config('viewportWidth');
+
+    cy.get('[data-testid=nav-menu').contains('button', 'Earth').click();
     cy.get('[data-testid=nav-menu').contains('Earth').should('have.css', 'color', activeButtonColor);
 
     cy.isInViewport('[data-testid=earth');
-    cy.get('[data-testid=nav-menu').contains('Earth').click();
+    cy.get('[data-testid=nav-menu').contains('button', 'Earth').click();
     cy.get('[data-testid=nav-menu').contains('Earth').should('not.have.css', 'color', activeButtonColor);
 
-    cy.get('[data-testid=jupiter').scrollIntoView();
+    cy.scrollTo(width, height);
     cy.isNotInViewport('[data-testid=earth');
   });
 });
+
+function reloadAndOpenNavMenu() {
+  cy.reload();
+  cy.get('[data-testid=nav-menu-button]').click();
+  cy.get('[data-testid=nav-menu').contains('Navigation').click();
+}

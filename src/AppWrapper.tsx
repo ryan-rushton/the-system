@@ -1,10 +1,10 @@
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
-import { FC, Suspense } from 'react';
+import { Suspense } from 'react';
 import packageJson from '../package.json';
-import App from './App';
-import ErrorFallback from './components/error-fallback/ErrorFallback';
-import Loading from './components/loading/Loading';
+import { App } from './App';
+import { ErrorFallback } from './components/error-fallback/ErrorFallback';
+import { Loading } from './components/loading/Loading';
 import './i18n';
 
 Sentry.init({
@@ -21,7 +21,7 @@ Sentry.init({
 });
 
 /** A component to put any wrappers for the application such as a main sentry error boundary. */
-const AppWrapper: FC = () => {
+export function AppWrapper() {
   return (
     // Error boundary to catch any errors at the highest level.
     <Sentry.ErrorBoundary fallback={<ErrorFallback />} showDialog={true}>
@@ -30,6 +30,4 @@ const AppWrapper: FC = () => {
       </Suspense>
     </Sentry.ErrorBoundary>
   );
-};
-
-export default AppWrapper;
+}

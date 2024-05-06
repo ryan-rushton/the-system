@@ -7,10 +7,10 @@ Cypress.Commands.add('isInViewport', (selector) => {
     const right = Cypress.config('viewportWidth');
     const rect = $el[0].getBoundingClientRect();
 
-    expect(rect.top).to.be.within(0, bottom);
-    expect(rect.bottom).to.be.within(0, bottom);
-    expect(rect.left).to.be.within(0, right);
-    expect(rect.right).to.be.within(0, right);
+    expect(rect.top).to.be.within(0, bottom, `${selector} is above the viewport`);
+    expect(rect.bottom).to.be.within(0, bottom, `${selector} is below the viewport`);
+    expect(rect.left).to.be.within(0, right, `${selector} is to the left of the viewport`);
+    expect(rect.right).to.be.within(0, right, `${selector} is to the right of the viewport`);
   });
 });
 
@@ -25,6 +25,7 @@ Cypress.Commands.add('isNotInViewport', (selector) => {
 
     expect(rect).to.satisfy(
       (toCheck) => toCheck.bottom < 0 || toCheck.top > bottom || toCheck.right < 0 || toCheck.left > right,
+      `${selector} is within 0, 0, ${right}, ${bottom}`,
     );
   });
 });

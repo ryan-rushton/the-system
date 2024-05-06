@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
-import TheBelt from './TheBelt';
+import { TheBelt } from './TheBelt';
 
 describe('TheBelt', () => {
   test('it renders', () => {

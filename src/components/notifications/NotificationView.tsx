@@ -1,24 +1,24 @@
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { FC } from 'react';
-import CloseButton from './CloseButton';
-import { Error, Info, Success, Warning } from './Icons';
+import { CloseButton } from './CloseButton';
+import { ErrorIcon, InfoIcon, SuccessIcon, WarningIcon } from './Icons';
 import styles from './NotificationView.module.scss';
-import ProgressBar from './ProgressBar';
+import { ProgressBar } from './ProgressBar';
 import { UniqueNotification } from './notifications';
-
-interface Props {
-  /** The notification to show. */
-  notification: UniqueNotification;
-  /** Function to call when the close button is pressed or the duration runs out. */
-  onClose(): void;
-}
 
 /**
  * A view for a single  This includes the close button and the progress bar.
  * When the progress bar fills the notification will close.
  */
-const NotificationView: FC<Props> = ({ notification: { severity, message, duration }, onClose }) => {
+export function NotificationView({
+  notification: { severity, message, duration },
+  onClose,
+}: {
+  /** The notification to show. */
+  notification: UniqueNotification;
+  /** Function to call when the close button is pressed or the duration runs out. */
+  onClose(): void;
+}) {
   return (
     <motion.li
       data-testid="notification-view"
@@ -37,16 +37,14 @@ const NotificationView: FC<Props> = ({ notification: { severity, message, durati
       }}
     >
       <div className={styles.content}>
-        {severity === 'error' && <Error />}
-        {severity === 'warning' && <Warning />}
-        {severity === 'info' && <Info />}
-        {severity === 'success' && <Success />}
+        {severity === 'error' && <ErrorIcon />}
+        {severity === 'warning' && <WarningIcon />}
+        {severity === 'info' && <InfoIcon />}
+        {severity === 'success' && <SuccessIcon />}
         <div className={styles.message}>{message}</div>
         <CloseButton onClose={onClose} />
       </div>
       {duration !== undefined && <ProgressBar duration={duration} onCompletion={onClose} />}
     </motion.li>
   );
-};
-
-export default NotificationView;
+}

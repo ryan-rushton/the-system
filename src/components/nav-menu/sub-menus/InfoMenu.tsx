@@ -1,10 +1,20 @@
 import clsx from 'clsx';
-import { FC, useCallback, useContext } from 'react';
+import { useCallback, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import AppContext, { SystemContext, systemSize } from '../../../context/SystemContext';
+import { AppContext, SystemContext, systemSize } from '../../../context/SystemContext';
 import styles from './InfoMenu.module.scss';
 
-interface Props {
+/**
+ * An info menu for the system. This shows a bunch of stats like km per pixel for different distances
+ * (not all distances are equal by default). It also has buttons to show the red orbit lines and to
+ * normalise the distances per pixel.
+ */
+export function InfoMenu({
+  isVisible,
+  orbitsVisible,
+  onChangeSystemSize,
+  onOrbitsVisibleChange,
+}: {
   /** Whether the component is currently visible. */
   isVisible: boolean;
   /** Whether the red orbit lines are visible */
@@ -13,14 +23,7 @@ interface Props {
   onOrbitsVisibleChange(newOrbitsVisible: boolean): void;
   /** Change handler for normalising km per pixel. */
   onChangeSystemSize(newContext: SystemContext): void;
-}
-
-/**
- * An info menu for the system. This shows a bunch of stats like km per pixel for different distances
- * (not all distances are equal by default). It also has buttons to show the red orbit lines and to
- * normalise the distances per pixel.
- */
-const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onOrbitsVisibleChange }) => {
+}) {
   const context = useContext(AppContext);
   const { t } = useTranslation();
   const { orbitalPeriodMultiplier, distanceMultiplier, sizeMultiplier, satelliteDist } = context.multipliers;
@@ -81,6 +84,4 @@ const InfoMenu: FC<Props> = ({ isVisible, orbitsVisible, onChangeSystemSize, onO
       </div>
     </div>
   );
-};
-
-export default InfoMenu;
+}

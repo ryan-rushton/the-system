@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
 import { pointsOfInterest } from '../../../PointsOfInterest';
-import CelestialBody from './CelestialBody';
+import { CelestialBody } from './CelestialBody';
 
 describe('CelestialBody', () => {
   test('it matches the snapshot', () => {
