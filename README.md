@@ -6,7 +6,7 @@ The solar system in your browser. Check it out [here](https://the-system.netlify
 
 ## What is this site?
 
-This site initially started as an investigation into performance of react, mainly though rendering many elements. Now it's a demo project for how I like to write frontend applications. It is simple but I have implemented unit and browser tests, i18n, keyboard accessibility, and error reporting through sentry.
+This site initially started as an investigation into performance of react, mainly though rendering many elements. Now it's a demo project for how I like to write frontend applications (may be out of date) and a testing ground for new features that make sense. It is simple but I have implemented unit and browser tests, i18n, keyboard accessibility, and error reporting through sentry.
 
 There are still a few things I would like to add that I think are necessary in frontend applications but they don't currently make sense. These are user login (this would be done through GitHub or Google) and user preferences (through a backend which would be Nest.js or Java and Spring). Any other things I would like to do that do make sense you will find in the [TODO](#todo) section below or in GitHub issues.
 
@@ -14,13 +14,13 @@ When this was an investigation into frontend performance I was initially trying 
 
 ## Running
 
-This is built with create react app so to install and run simply do `yarn && yarn start`.
+This is built with vite so to install and run simply do `pnpm install && pnpm start`.
 
 ## Tests
 
-To run the unit tests use `yarn test`.
+To run the unit tests use `pnpm test`.
 
-To run the browser tests locally use `yarn run cypress open` to open the cypress app, from here you can run specific tests. See https://docs.cypress.io/ for more information.
+To run the browser tests locally use `pnpm run cypress open` to open the cypress app, from here you can run specific tests. See https://docs.cypress.io/ for more information.
 
 ## TODO
 
