@@ -2,7 +2,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CSSProperties, RefObject, useCallback, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { pointsOfInterest } from '../../PointsOfInterest';
+import { PointOfInterestIds, pointsOfInterest } from '../../PointsOfInterest';
 import { SystemContext } from '../../context/SystemContext';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { getDistanceToTop } from '../../utils/DomUtil';
@@ -29,7 +29,7 @@ export function NavMenu({
   /** Whether the red orbit lines are visible. */
   orbitsVisible: boolean;
   /** The point of interest currently being followed. */
-  followedPointOfInterest?: { ref: RefObject<HTMLDivElement> };
+  followedPointOfInterest: { ref: RefObject<HTMLDivElement>; id: PointOfInterestIds } | undefined;
   /** Change handler for whether the red orbit lines are visible. */
   onOrbitsVisibleChange(orbitsVisible: boolean): void;
   /** Change handler for normalising km per pixel. */
@@ -93,7 +93,7 @@ export function NavMenu({
           <div className={styles.navButtons}>
             {Object.values(pointsOfInterest).map((poi) => (
               <PointOfInterestButton
-                isBeingFollowed={poi === followedPointOfInterest}
+                isBeingFollowed={poi.id === followedPointOfInterest?.id}
                 isVisible={menuVisible && openSubsection === 'nav'}
                 key={poi.id}
                 pointOfInterest={poi}

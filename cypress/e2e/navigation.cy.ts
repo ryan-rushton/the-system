@@ -23,11 +23,15 @@ describe('System navigation', () => {
   });
 
   it('can navigate to a planet', () => {
+    reloadAndOpenNavMenu();
+
     cy.get('[data-testid=nav-menu').contains('button', 'Neptune').click();
     cy.isInViewport('[data-testid=neptune');
   });
 
   it('follows a planet', () => {
+    reloadAndOpenNavMenu();
+
     const height = Cypress.config('viewportHeight');
     const width = Cypress.config('viewportWidth');
 
@@ -39,6 +43,8 @@ describe('System navigation', () => {
   });
 
   it('shows a notification when you follow a planet', () => {
+    reloadAndOpenNavMenu();
+
     cy.get('[data-testid=nav-menu').contains('button', 'Uranus').click();
     cy.get('[data-testid=nav-menu').contains('Uranus').should('have.css', 'color', activeButtonColor);
     cy.isInViewport('[data-testid=uranus');
@@ -49,6 +55,8 @@ describe('System navigation', () => {
   });
 
   it('a second click cancels following a planet', () => {
+    reloadAndOpenNavMenu();
+
     const height = Cypress.config('viewportHeight');
     const width = Cypress.config('viewportWidth');
 
@@ -63,3 +71,9 @@ describe('System navigation', () => {
     cy.isNotInViewport('[data-testid=earth');
   });
 });
+
+function reloadAndOpenNavMenu() {
+  cy.reload();
+  cy.get('[data-testid=nav-menu-button]').click();
+  cy.get('[data-testid=nav-menu').contains('Navigation').click();
+}

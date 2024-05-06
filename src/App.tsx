@@ -3,26 +3,13 @@ import clsx from 'clsx';
 import { RefObject, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './App.module.scss';
-import { pointsOfInterest } from './PointsOfInterest';
+import { PointOfInterestIds, pointsOfInterest } from './PointsOfInterest';
 import { NavMenu } from './components/nav-menu/NavMenu';
 import { NotificationsList } from './components/notifications/NotificationsList';
 import { showNotification } from './components/notifications/notifications';
 import { TheSystem } from './components/the-system/TheSystem';
 import { AppContext, SystemContext, systemSize } from './context/SystemContext';
 import { doCallbackAfterElementIsVisible, scrollOptions, scrollToElementIfNotVisible } from './utils/DomUtil';
-
-type PointOfInterestIds =
-  | 'sun'
-  | 'mercury'
-  | 'venus'
-  | 'earth'
-  | 'mars'
-  | 'theBelt'
-  | 'jupiter'
-  | 'saturn'
-  | 'uranus'
-  | 'neptune'
-  | 'pluto';
 
 interface FollowerState {
   /** The point of interest being followed. */
