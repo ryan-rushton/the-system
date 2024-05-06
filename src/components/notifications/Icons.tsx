@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './Icons.module.scss';
 
 /** Error icon for notifications. */
-export function Error() {
+export function ErrorIcon() {
   return (
     <div data-testid="error-icon" className={styles.icon}>
       <FontAwesomeIcon icon={faExclamationCircle} size="lg" />
@@ -17,7 +17,7 @@ export function Error() {
 }
 
 /** Warning icon for notifications. */
-export function Warning() {
+export function WarningIcon() {
   return (
     <div data-testid="warning-icon" className={styles.icon}>
       <FontAwesomeIcon icon={faExclamationTriangle} size="lg" />
@@ -26,7 +26,7 @@ export function Warning() {
 }
 
 /** Info icon for notifications. */
-export function Info() {
+export function InfoIcon() {
   return (
     <div data-testid="info-icon" className={styles.icon}>
       <FontAwesomeIcon icon={faInfoCircle} size="lg" />
@@ -35,7 +35,7 @@ export function Info() {
 }
 
 /** Success icon for notifications. */
-export function Success() {
+export function SuccessIcon() {
   return (
     <div data-testid="success-icon" className={styles.icon}>
       <FontAwesomeIcon icon={faCheckCircle} size="lg" />

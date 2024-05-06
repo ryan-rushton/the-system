@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { CloseButton } from './CloseButton';
-import { Error, Info, Success, Warning } from './Icons';
+import { ErrorIcon, InfoIcon, SuccessIcon, WarningIcon } from './Icons';
 import styles from './NotificationView.module.scss';
 import { ProgressBar } from './ProgressBar';
 import { UniqueNotification } from './notifications';
@@ -37,10 +37,10 @@ export function NotificationView({
       }}
     >
       <div className={styles.content}>
-        {severity === 'error' && <Error />}
-        {severity === 'warning' && <Warning />}
-        {severity === 'info' && <Info />}
-        {severity === 'success' && <Success />}
+        {severity === 'error' && <ErrorIcon />}
+        {severity === 'warning' && <WarningIcon />}
+        {severity === 'info' && <InfoIcon />}
+        {severity === 'success' && <SuccessIcon />}
         <div className={styles.message}>{message}</div>
         <CloseButton onClose={onClose} />
       </div>
