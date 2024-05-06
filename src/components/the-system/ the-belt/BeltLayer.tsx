@@ -1,23 +1,25 @@
-import { CSSProperties, FC, RefObject } from 'react';
+import { CSSProperties, RefObject } from 'react';
 
 /** The number of divs each layer of the belt renders */
 const ROCK_COUNT = 7_500;
 
 const ROCK_COLOUR = '#d2d2d2';
 
-interface Props {
+/**
+ * A single layer of divs that make up the asteroid belt.
+ */
+export function BeltLayer({
+  innerBoundary,
+  outerBoundary,
+  scrollToRef,
+}: {
   /** The inner boundary for the belt. */
   innerBoundary: number;
   /** The outer boundary of the belt. */
   outerBoundary: number;
   /** The ref to place in the belt so we can scroll to the edge of the belt. */
   scrollToRef?: RefObject<HTMLDivElement>;
-}
-
-/**
- * A single layer of divs that make up the asteroid belt.
- */
-const BeltLayer: FC<Props> = ({ innerBoundary, outerBoundary, scrollToRef }) => {
+}) {
   const rocks = [];
   const beltWidth = outerBoundary - innerBoundary;
 
@@ -68,6 +70,4 @@ const BeltLayer: FC<Props> = ({ innerBoundary, outerBoundary, scrollToRef }) => 
   }
 
   return <>{rocks}</>;
-};
-
-export default BeltLayer;
+}

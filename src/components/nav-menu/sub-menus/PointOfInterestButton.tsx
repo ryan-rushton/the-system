@@ -1,9 +1,17 @@
 import clsx from 'clsx';
-import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './PointOfInterestButton.module.scss';
 
-interface Props {
+/**
+ * A button for points of interest. When Clicked the screen will follow the poi until
+ * the button is clicked again or another poi is clicked.
+ */
+export function PointOfInterestButton({
+  isVisible,
+  pointOfInterest,
+  isBeingFollowed,
+  onPoiClick,
+}: {
   /** Whether the component is currently visible. */
   isVisible: boolean;
   /** Point of interest object. */
@@ -12,13 +20,7 @@ interface Props {
   isBeingFollowed: boolean;
   /** Click handler for when the button is clicked. */
   onPoiClick(): void;
-}
-
-/**
- * A button for points of interest. When Clicked the screen will follow the poi until
- * the button is clicked again or another poi is clicked.
- */
-const PointOfInterestButton: FC<Props> = ({ isVisible, pointOfInterest, isBeingFollowed, onPoiClick }) => {
+}) {
   const { t } = useTranslation();
 
   const displayName = t(`pointsOfInterest.${pointOfInterest.id}`);
@@ -34,6 +36,4 @@ const PointOfInterestButton: FC<Props> = ({ isVisible, pointOfInterest, isBeingF
       <span>{displayName}</span>
     </button>
   );
-};
-
-export default PointOfInterestButton;
+}

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, test, vi } from 'vitest';
-import NavMenuSubsection from './NavMenuSubsection';
+import { NavMenuSubsection } from './NavMenuSubsection';
 
 describe('NavMenuSubsection', () => {
   test('it renders', () => {

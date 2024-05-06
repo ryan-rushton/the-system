@@ -1,17 +1,31 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { CSSProperties, FC, RefObject, useCallback, useRef, useState } from 'react';
+import { CSSProperties, RefObject, useCallback, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { pointsOfInterest } from '../../PointsOfInterest';
 import { SystemContext } from '../../context/SystemContext';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { getDistanceToTop } from '../../utils/DomUtil';
 import styles from './NavMenu.module.scss';
-import NavMenuSubsection from './NavMenuSubsection';
-import InfoMenu from './sub-menus/InfoMenu';
-import PointOfInterestButton from './sub-menus/PointOfInterestButton';
+import { NavMenuSubsection } from './NavMenuSubsection';
+import { InfoMenu } from './sub-menus/InfoMenu';
+import { PointOfInterestButton } from './sub-menus/PointOfInterestButton';
 
-interface Props {
+type OpenSubsectionState = 'info' | 'nav' | undefined;
+
+/**
+ * A sliding nav menu. When the burger icon is clicked the menu will slide into view. Each section will slide
+ * open on clicking the title for it, any other open section will be closed at this point.
+ *
+ * There are no unit tests for this unfortunately as all the logic is based around extracting details from refs.
+ */
+export function NavMenu({
+  orbitsVisible,
+  followedPointOfInterest,
+  onChangeSystemSize,
+  onOrbitsVisibleChange,
+  onFollowPointOfInterest,
+}: {
   /** Whether the red orbit lines are visible. */
   orbitsVisible: boolean;
   /** The point of interest currently being followed. */
@@ -22,23 +36,7 @@ interface Props {
   onChangeSystemSize(systemSizeContext: SystemContext): void;
   /** A handler for following a point of interest around the solar system. */
   onFollowPointOfInterest(pointOfInterest: { ref: RefObject<HTMLDivElement> }): void;
-}
-
-type OpenSubsectionState = 'info' | 'nav' | undefined;
-
-/**
- * A sliding nav menu. When the burger icon is clicked the menu will slide into view. Each section will slide
- * open on clicking the title for it, any other open section will be closed at this point.
- *
- * There are no unit tests for this unfortunately as all the logic is based around extracting details from refs.
- */
-const NavMenu: FC<Props> = ({
-  orbitsVisible,
-  followedPointOfInterest,
-  onChangeSystemSize,
-  onOrbitsVisibleChange,
-  onFollowPointOfInterest,
-}) => {
+}) {
   const [menuVisible, setMenuVisible] = useState(false);
   const [openSubsection, setOpenSubsection] = useState<OpenSubsectionState>();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -107,6 +105,4 @@ const NavMenu: FC<Props> = ({
       </div>
     </div>
   );
-};
-
-export default NavMenu;
+}

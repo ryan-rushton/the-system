@@ -1,6 +1,6 @@
 import { AnimatePresence } from 'framer-motion';
-import { FC, useEffect, useState } from 'react';
-import NotificationView from './NotificationView';
+import { useEffect, useState } from 'react';
+import { NotificationView } from './NotificationView';
 import styles from './NotificationsList.module.scss';
 import { UniqueNotification, notifications$ } from './notifications';
 
@@ -11,7 +11,7 @@ import { UniqueNotification, notifications$ } from './notifications';
  * Notifications will have a close icon and follower notifications will disappear when a new follower notification
  * is shown.
  */
-const NotificationsList: FC = () => {
+export function NotificationsList() {
   const [notifications, setNotifications] = useState<UniqueNotification[]>([]);
 
   // subscribe to the notifications stream and update state when new ones come in.
@@ -44,6 +44,4 @@ const NotificationsList: FC = () => {
       </ul>
     </div>
   );
-};
-
-export default NotificationsList;
+}

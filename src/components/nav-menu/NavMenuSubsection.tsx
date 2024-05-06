@@ -1,17 +1,22 @@
-import { FC, PropsWithChildren, useRef } from 'react';
+import { ReactNode, useRef } from 'react';
 import styles from './NavMenuSubsection.module.scss';
-
-interface Props {
-  title: string;
-  isVisible: boolean;
-  canTabInto: boolean;
-  onHeaderClick(): void;
-}
 
 /**
  * This provides the up and down slide when opening the subsections.
  */
-const NavMenuSubsection: FC<PropsWithChildren<Props>> = ({ children, title, isVisible, canTabInto, onHeaderClick }) => {
+export function NavMenuSubsection({
+  children,
+  title,
+  isVisible,
+  canTabInto,
+  onHeaderClick,
+}: {
+  children: ReactNode;
+  title: string;
+  isVisible: boolean;
+  canTabInto: boolean;
+  onHeaderClick(): void;
+}) {
   const ref = useRef<HTMLDivElement>(null);
 
   let actualHeight = 0;
@@ -34,6 +39,4 @@ const NavMenuSubsection: FC<PropsWithChildren<Props>> = ({ children, title, isVi
       </div>
     </div>
   );
-};
-
-export default NavMenuSubsection;
+}

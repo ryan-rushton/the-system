@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
-import ProgressBar from './ProgressBar';
+import { ProgressBar } from './ProgressBar';
 
 describe('NavMenu', () => {
   test('it renders', () => {

@@ -1,15 +1,15 @@
-import { FC, memo, useContext } from 'react';
+import { memo, useContext } from 'react';
 import { pointsOfInterest } from '../../PointsOfInterest';
-import AppContext from '../../context/SystemContext';
-import TheBelt from './ the-belt/TheBelt';
-import Planet from './Planet';
+import { AppContext } from '../../context/SystemContext';
+import { TheBelt } from './ the-belt/TheBelt';
+import { Planet } from './Planet';
 import styles from './TheSystem.module.scss';
-import CelestialBody from './celestial-body/CelestialBody';
+import { CelestialBody } from './celestial-body/CelestialBody';
 
 /**
  * The Solar System! It is memoized so this only re-renders when the context is changed.
  */
-const TheSystem: FC = () => {
+export const TheSystem = memo(function TheSystem() {
   const { sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto } = pointsOfInterest;
   const { systemRadius, multipliers } = useContext(AppContext);
 
@@ -109,6 +109,4 @@ const TheSystem: FC = () => {
       </div>
     </div>
   );
-};
-
-export default memo(TheSystem);
+});
