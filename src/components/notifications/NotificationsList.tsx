@@ -1,8 +1,12 @@
 import { AnimatePresence } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import { NotificationView } from './NotificationView';
+import { lazy, useEffect, useState } from 'react';
 import styles from './NotificationsList.module.scss';
 import { UniqueNotification, notifications$ } from './notifications';
+
+const LazyNotificationView = lazy(async () => {
+  const { NotificationView } = await import('./NotificationView');
+  return { default: NotificationView };
+});
 
 /**
  * A view for notifications. This should be placed on either side of the screen. It will take up a 20vw column that
@@ -32,7 +36,7 @@ export function NotificationsList() {
       <ul className={styles.messageList}>
         <AnimatePresence initial={false}>
           {notifications.map((notification) => (
-            <NotificationView
+            <LazyNotificationView
               key={notification.id}
               notification={notification}
               onClose={() => {
