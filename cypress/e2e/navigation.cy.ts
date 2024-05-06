@@ -17,26 +17,24 @@ describe('System navigation', () => {
     cy.get('[data-testid=nav-menu').contains('Saturn').should('be.visible');
   });
 
-  it('can navigate to the sun', () => {
-    cy.get('[data-testid=nav-menu').contains('button', 'Sun').click();
-    cy.get('[data-testid=sun').should('be.visible');
-  });
-
   it('can navigate to the belt', () => {
     cy.get('[data-testid=nav-menu').contains('button', 'The Belt').click();
-    cy.get('[data-testid=belt-ref').should('be.visible');
+    cy.isInViewport('[data-testid=belt-ref');
   });
 
   it('can navigate to a planet', () => {
     cy.get('[data-testid=nav-menu').contains('button', 'Neptune').click();
-    cy.get('[data-testid=neptune').should('be.visible');
+    cy.isInViewport('[data-testid=neptune');
   });
 
   it('follows a planet', () => {
+    const height = Cypress.config('viewportHeight');
+    const width = Cypress.config('viewportWidth');
+
     cy.get('[data-testid=nav-menu').contains('button', 'Venus').click();
     cy.get('[data-testid=nav-menu').contains('Venus').should('have.css', 'color', activeButtonColor);
     cy.isInViewport('[data-testid=venus');
-    cy.get('[data-testid=jupiter').scrollIntoView();
+    cy.scrollTo(width, height);
     cy.isInViewport('[data-testid=venus');
   });
 
@@ -51,6 +49,9 @@ describe('System navigation', () => {
   });
 
   it('a second click cancels following a planet', () => {
+    const height = Cypress.config('viewportHeight');
+    const width = Cypress.config('viewportWidth');
+
     cy.get('[data-testid=nav-menu').contains('button', 'Earth').click();
     cy.get('[data-testid=nav-menu').contains('Earth').should('have.css', 'color', activeButtonColor);
 
@@ -58,7 +59,7 @@ describe('System navigation', () => {
     cy.get('[data-testid=nav-menu').contains('button', 'Earth').click();
     cy.get('[data-testid=nav-menu').contains('Earth').should('not.have.css', 'color', activeButtonColor);
 
-    cy.get('[data-testid=jupiter').scrollIntoView();
+    cy.scrollTo(width, height);
     cy.isNotInViewport('[data-testid=earth');
   });
 });

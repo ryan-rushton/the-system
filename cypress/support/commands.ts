@@ -25,7 +25,7 @@ Cypress.Commands.add('isNotInViewport', (selector) => {
 
     expect(rect).to.satisfy(
       (toCheck) => toCheck.bottom < 0 || toCheck.top > bottom || toCheck.right < 0 || toCheck.left > right,
-      `${selector} is withing 0, 0, ${right}, ${bottom}`,
+      `${selector} is within 0, 0, ${right}, ${bottom}`,
     );
   });
 });
