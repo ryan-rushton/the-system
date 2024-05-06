@@ -7,6 +7,7 @@ describe('NavMenu', () => {
     render(
       <NavMenu
         orbitsVisible={false}
+        followedPointOfInterest={undefined}
         onChangeSystemSize={vi.fn()}
         onFollowPointOfInterest={vi.fn()}
         onOrbitsVisibleChange={vi.fn()}
@@ -20,6 +21,7 @@ describe('NavMenu', () => {
     render(
       <NavMenu
         orbitsVisible={false}
+        followedPointOfInterest={undefined}
         onChangeSystemSize={vi.fn()}
         onFollowPointOfInterest={vi.fn()}
         onOrbitsVisibleChange={vi.fn()}
