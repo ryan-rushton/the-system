@@ -10,7 +10,7 @@
     "@sentry/react": "7.113.0",
     "@sentry/tracing": "7.113.0",
     "clsx": "2.1.1",
-    "framer-motion": "11.1.7",
+    "framer-motion": "11.1.8",
     "i18next": "23.11.3",
     "i18next-browser-languagedetector": "7.2.1",
     "i18next-http-backend": "2.5.1",
