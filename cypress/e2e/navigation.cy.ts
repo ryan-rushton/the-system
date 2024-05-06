@@ -18,22 +18,22 @@ describe('System navigation', () => {
   });
 
   it('can navigate to the sun', () => {
-    cy.get('[data-testid=nav-menu').contains('Sun').click();
+    cy.get('[data-testid=nav-menu').contains('button', 'Sun').click();
     cy.get('[data-testid=sun').should('be.visible');
   });
 
   it('can navigate to the belt', () => {
-    cy.get('[data-testid=nav-menu').contains('The Belt').click();
+    cy.get('[data-testid=nav-menu').contains('button', 'The Belt').click();
     cy.get('[data-testid=belt-ref').should('be.visible');
   });
 
   it('can navigate to a planet', () => {
-    cy.get('[data-testid=nav-menu').contains('Neptune').click();
+    cy.get('[data-testid=nav-menu').contains('button', 'Neptune').click();
     cy.get('[data-testid=neptune').should('be.visible');
   });
 
   it('follows a planet', () => {
-    cy.get('[data-testid=nav-menu').contains('Venus').click();
+    cy.get('[data-testid=nav-menu').contains('button', 'Venus').click();
     cy.get('[data-testid=nav-menu').contains('Venus').should('have.css', 'color', activeButtonColor);
     cy.isInViewport('[data-testid=venus');
     cy.get('[data-testid=jupiter').scrollIntoView();
@@ -41,7 +41,7 @@ describe('System navigation', () => {
   });
 
   it('shows a notification when you follow a planet', () => {
-    cy.get('[data-testid=nav-menu').contains('Uranus').click();
+    cy.get('[data-testid=nav-menu').contains('button', 'Uranus').click();
     cy.get('[data-testid=nav-menu').contains('Uranus').should('have.css', 'color', activeButtonColor);
     cy.isInViewport('[data-testid=uranus');
     cy.get('[data-testid=notification-view').should(
@@ -51,11 +51,11 @@ describe('System navigation', () => {
   });
 
   it('a second click cancels following a planet', () => {
-    cy.get('[data-testid=nav-menu').contains('Earth').click();
+    cy.get('[data-testid=nav-menu').contains('button', 'Earth').click();
     cy.get('[data-testid=nav-menu').contains('Earth').should('have.css', 'color', activeButtonColor);
 
     cy.isInViewport('[data-testid=earth');
-    cy.get('[data-testid=nav-menu').contains('Earth').click();
+    cy.get('[data-testid=nav-menu').contains('button', 'Earth').click();
     cy.get('[data-testid=nav-menu').contains('Earth').should('not.have.css', 'color', activeButtonColor);
 
     cy.get('[data-testid=jupiter').scrollIntoView();
