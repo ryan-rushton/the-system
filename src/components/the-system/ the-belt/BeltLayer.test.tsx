@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { createRef } from 'react';
 import { describe, expect, test } from 'vitest';
-import BeltLayer from './BeltLayer';
+import { BeltLayer } from './BeltLayer';
 
 describe('BeltLayer', () => {
   test('it renders without the scroll to ref', () => {

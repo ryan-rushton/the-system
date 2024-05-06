@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, test, vi } from 'vitest';
-import NotificationView from './NotificationView';
+import { NotificationView } from './NotificationView';
 
 describe('NotificationView', () => {
   test('it renders', () => {

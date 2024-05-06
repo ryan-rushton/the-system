@@ -1,8 +1,8 @@
-import { FC, RefObject, useContext } from 'react';
+import { RefObject, useContext } from 'react';
 import { pointsOfInterest } from '../../PointsOfInterest';
-import AppContext from '../../context/SystemContext';
+import { AppContext } from '../../context/SystemContext';
 import styles from './Planet.module.scss';
-import CelestialBody, { CelestialBodyProps } from './celestial-body/CelestialBody';
+import { CelestialBody, CelestialBodyProps } from './celestial-body/CelestialBody';
 
 /** Represents details used for the moon of a planet. */
 interface Satellite {
@@ -16,7 +16,18 @@ interface Satellite {
   orbitalPeriod: number;
 }
 
-interface Props {
+/**
+ * A planet in the solar system. This applies multipliers to values before they get passed to CelestialBody.
+ */
+export function Planet({
+  id,
+  className,
+  distance,
+  radius,
+  orbitalPeriod,
+  scrollToRef,
+  satellites,
+}: {
   /** A value to use on data-testid for cypress tests. Likely the display from pointsOfInterest. */
   id: string;
   /** Class name to give the element, passed to CelestialBody. */
@@ -31,12 +42,7 @@ interface Props {
   orbitalPeriod: number;
   /** Things that orbit the planet, all moons at this stage. */
   satellites?: readonly Satellite[];
-}
-
-/**
- * A planet in the solar system. This applies multipliers to values before they get passed to CelestialBody.
- */
-const Planet: FC<Props> = ({ id, className, distance, radius, orbitalPeriod, scrollToRef, satellites }) => {
+}) {
   const {
     systemRadius,
     multipliers: { distanceMultiplier, sizeMultiplier, orbitalPeriodMultiplier, satelliteDist },
@@ -74,6 +80,4 @@ const Planet: FC<Props> = ({ id, className, distance, radius, orbitalPeriod, scr
       scrollToRef={scrollToRef}
     />
   );
-};
-
-export default Planet;
+}

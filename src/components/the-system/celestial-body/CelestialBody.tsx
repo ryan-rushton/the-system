@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { FC, RefObject } from 'react';
+import { RefObject } from 'react';
 import styles from './CelestialBody.module.scss';
 import './CelestialBodyAnimations.scss';
 
@@ -37,7 +37,7 @@ export interface CelestialBodyProps {
  * Satellite's are also CelestialBody's and are placed underneath the visual element of the body.
  * Basically this whole things is a bunch of spinning discs sitting on top of one another.
  */
-const CelestialBody: FC<CelestialBodyProps> = ({
+export function CelestialBody({
   id,
   className,
   distance,
@@ -47,7 +47,7 @@ const CelestialBody: FC<CelestialBodyProps> = ({
   referenceRadius,
   satellites,
   scrollToRef,
-}) => {
+}: CelestialBodyProps) {
   // orbit calcs and style
   const edgeOffset = referenceRadius - distance - radius;
   const heightWidth = 2 * (distance + radius);
@@ -102,6 +102,4 @@ const CelestialBody: FC<CelestialBodyProps> = ({
       </div>
     </div>
   );
-};
-
-export default CelestialBody;
+}

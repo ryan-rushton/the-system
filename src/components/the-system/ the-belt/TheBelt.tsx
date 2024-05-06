@@ -1,7 +1,7 @@
-import { FC, ReactElement, ReactNode, RefObject, useContext } from 'react';
+import { ReactElement, ReactNode, RefObject, useContext } from 'react';
 import { pointsOfInterest } from '../../../PointsOfInterest';
-import AppContext from '../../../context/SystemContext';
-import BeltLayer from './BeltLayer';
+import { AppContext } from '../../../context/SystemContext';
+import { BeltLayer } from './BeltLayer';
 import styles from './TheBelt.module.scss';
 
 /**
@@ -21,7 +21,7 @@ const beltCache = new Map<string, ReactElement>();
  * collections of elements. I wanted to keep some of that since it is now just a demo project. It lead to
  * the discovery of an issue in React Dev Tools, https://github.com/facebook/react/issues/16501.
  */
-const TheBelt: FC = () => {
+export function TheBelt() {
   const {
     multipliers: { distanceMultiplier, sizeMultiplier, orbitalPeriodMultiplier },
     systemRadius,
@@ -85,6 +85,4 @@ const TheBelt: FC = () => {
       {memoizedLayer(600)}
     </div>
   );
-};
-
-export default TheBelt;
+}

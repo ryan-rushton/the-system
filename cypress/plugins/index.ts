@@ -17,7 +17,7 @@ import * as logToOutput from 'cypress-log-to-output';
 /**
  * @type {Cypress.PluginConfig}
  */
-module.exports = (on) => {
+export default (on) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
   logToOutput.install(on);

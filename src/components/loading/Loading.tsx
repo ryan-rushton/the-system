@@ -2,7 +2,7 @@ import styles from './Loading.module.scss';
 
 // TODO use SVG's instead of divs?
 /** A loading page that has a few rotation orbs on orbit lines. This is intended to use the whole viewport. */
-function Loading() {
+export function Loading() {
   return (
     <div className={styles.loading}>
       <div className={styles.ringTwo}>
@@ -15,5 +15,3 @@ function Loading() {
     </div>
   );
 }
-
-export default Loading;

@@ -93,6 +93,4 @@ export const systemSize: { enhancedVisibility: SystemContext; evenSpace: SystemC
   evenSpace,
 };
 
-const AppContext: Context<SystemContext> = createContext<SystemContext>(enhancedVisibility);
-
-export default AppContext;
+export const AppContext: Context<SystemContext> = createContext<SystemContext>(enhancedVisibility);

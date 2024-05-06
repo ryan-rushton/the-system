@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, test, vi } from 'vitest';
-import CloseButton from './CloseButton';
+import { CloseButton } from './CloseButton';
 
 describe('NavMenu', () => {
   test('it renders', () => {

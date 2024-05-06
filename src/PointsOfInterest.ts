@@ -1,5 +1,18 @@
 import { createRef } from 'react';
 
+export type PointOfInterestIds =
+  | 'sun'
+  | 'mercury'
+  | 'venus'
+  | 'earth'
+  | 'mars'
+  | 'theBelt'
+  | 'jupiter'
+  | 'saturn'
+  | 'uranus'
+  | 'neptune'
+  | 'pluto';
+
 /**
  * All the points of interest in the solar system that get rendered.
  * Values are obtained from either https://nssdc.gsfc.nasa.gov/planetary/factsheet/ or wikipedia.

@@ -1,28 +1,16 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { CSSProperties, FC, RefObject, useCallback, useRef, useState } from 'react';
+import { CSSProperties, RefObject, useCallback, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import type { PointOfInterestIds } from '../../PointsOfInterest';
 import { pointsOfInterest } from '../../PointsOfInterest';
 import { SystemContext } from '../../context/SystemContext';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { getDistanceToTop } from '../../utils/DomUtil';
 import styles from './NavMenu.module.scss';
-import NavMenuSubsection from './NavMenuSubsection';
-import InfoMenu from './sub-menus/InfoMenu';
-import PointOfInterestButton from './sub-menus/PointOfInterestButton';
-
-interface Props {
-  /** Whether the red orbit lines are visible. */
-  orbitsVisible: boolean;
-  /** The point of interest currently being followed. */
-  followedPointOfInterest?: { ref: RefObject<HTMLDivElement> };
-  /** Change handler for whether the red orbit lines are visible. */
-  onOrbitsVisibleChange(orbitsVisible: boolean): void;
-  /** Change handler for normalising km per pixel. */
-  onChangeSystemSize(systemSizeContext: SystemContext): void;
-  /** A handler for following a point of interest around the solar system. */
-  onFollowPointOfInterest(pointOfInterest: { ref: RefObject<HTMLDivElement> }): void;
-}
+import { NavMenuSubsection } from './NavMenuSubsection';
+import { InfoMenu } from './sub-menus/InfoMenu';
+import { PointOfInterestButton } from './sub-menus/PointOfInterestButton';
 
 type OpenSubsectionState = 'info' | 'nav' | undefined;
 
@@ -32,13 +20,24 @@ type OpenSubsectionState = 'info' | 'nav' | undefined;
  *
  * There are no unit tests for this unfortunately as all the logic is based around extracting details from refs.
  */
-const NavMenu: FC<Props> = ({
+export function NavMenu({
   orbitsVisible,
   followedPointOfInterest,
   onChangeSystemSize,
   onOrbitsVisibleChange,
   onFollowPointOfInterest,
-}) => {
+}: {
+  /** Whether the red orbit lines are visible. */
+  orbitsVisible: boolean;
+  /** The point of interest currently being followed. */
+  followedPointOfInterest: { ref: RefObject<HTMLDivElement>; id: PointOfInterestIds } | undefined;
+  /** Change handler for whether the red orbit lines are visible. */
+  onOrbitsVisibleChange(orbitsVisible: boolean): void;
+  /** Change handler for normalising km per pixel. */
+  onChangeSystemSize(systemSizeContext: SystemContext): void;
+  /** A handler for following a point of interest around the solar system. */
+  onFollowPointOfInterest(pointOfInterest: { ref: RefObject<HTMLDivElement> }): void;
+}) {
   const [menuVisible, setMenuVisible] = useState(false);
   const [openSubsection, setOpenSubsection] = useState<OpenSubsectionState>();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -95,7 +94,7 @@ const NavMenu: FC<Props> = ({
           <div className={styles.navButtons}>
             {Object.values(pointsOfInterest).map((poi) => (
               <PointOfInterestButton
-                isBeingFollowed={poi === followedPointOfInterest}
+                isBeingFollowed={poi.id === followedPointOfInterest?.id}
                 isVisible={menuVisible && openSubsection === 'nav'}
                 key={poi.id}
                 pointOfInterest={poi}
@@ -107,6 +106,4 @@ const NavMenu: FC<Props> = ({
       </div>
     </div>
   );
-};
-
-export default NavMenu;
+}
