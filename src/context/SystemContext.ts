@@ -1,4 +1,4 @@
-import { Context, createContext } from 'react';
+import { createContext, type Context } from 'react';
 import { pointsOfInterest } from '../PointsOfInterest';
 
 /**

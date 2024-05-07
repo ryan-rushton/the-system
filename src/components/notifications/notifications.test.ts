@@ -1,5 +1,5 @@
 import { describe, expect, test, vi } from 'vitest';
-import { Notification, notifications$, showNotification } from './notifications';
+import { notifications$, showNotification, type Notification, type UniqueNotification } from './notifications';
 
 describe('notifications', () => {
   test('it sends out notifications', () => {
@@ -13,7 +13,7 @@ describe('notifications', () => {
   });
 
   test('it increments the id correctly', () => {
-    const subFn = vi.fn();
+    const subFn = vi.fn<[UniqueNotification], unknown>();
     const notification: Notification = { origin: 'origin', severity: 'info', message: "I'm a notification!" };
 
     notifications$.subscribe(subFn);

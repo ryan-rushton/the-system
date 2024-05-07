@@ -4,7 +4,7 @@ import { CloseButton } from './CloseButton';
 import { ErrorIcon, InfoIcon, SuccessIcon, WarningIcon } from './Icons';
 import styles from './NotificationView.module.scss';
 import { ProgressBar } from './ProgressBar';
-import { UniqueNotification } from './notifications';
+import { type UniqueNotification } from './notifications';
 
 /**
  * A view for a single  This includes the close button and the progress bar.

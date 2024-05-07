@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react';
 import clsx from 'clsx';
-import { RefObject, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, type RefObject } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './App.module.scss';
 import type { PointOfInterestIds } from './PointsOfInterest';
@@ -9,7 +9,7 @@ import { NavMenu } from './components/nav-menu/NavMenu';
 import { NotificationsList } from './components/notifications/NotificationsList';
 import { showNotification } from './components/notifications/notifications';
 import { TheSystem } from './components/the-system/TheSystem';
-import { AppContext, SystemContext, systemSize } from './context/SystemContext';
+import { AppContext, systemSize, type SystemContext } from './context/SystemContext';
 import { doCallbackAfterElementIsVisible, scrollOptions, scrollToElementIfNotVisible } from './utils/DomUtil';
 
 interface FollowerState {
@@ -37,7 +37,11 @@ export function App() {
 
   // Make sure we cleanup the follower timeout when the component unmounts.
   useEffect(() => {
-    return () => follower.interval && clearInterval(follower.interval);
+    return () => {
+      if (follower.interval) {
+        clearInterval(follower.interval);
+      }
+    };
   }, [follower.interval]);
 
   const onChangeSystemSizeWithClear = (newSystemSizeContext: SystemContext): void => {
@@ -47,7 +51,9 @@ export function App() {
 
   const createIntervalAndSetFollower = useCallback(
     (pointOfInterest: { ref: RefObject<HTMLDivElement>; id: PointOfInterestIds }) => {
-      const interval = setInterval(() => scrollToElementIfNotVisible(pointOfInterest.ref.current), 1000);
+      const interval = setInterval(() => {
+        scrollToElementIfNotVisible(pointOfInterest.ref.current);
+      }, 1000);
       setFollower({ pointOfInterest, interval });
       showNotification({
         severity: 'info',
@@ -79,9 +85,9 @@ export function App() {
         // scroll and set follower for most object
         clearFollower();
         pointOfInterest.ref.current.scrollIntoView(scrollOptions);
-        doCallbackAfterElementIsVisible(pointOfInterest.ref.current, () =>
-          createIntervalAndSetFollower(pointOfInterest),
-        );
+        doCallbackAfterElementIsVisible(pointOfInterest.ref.current, () => {
+          createIntervalAndSetFollower(pointOfInterest);
+        });
       }
     },
     [createIntervalAndSetFollower, clearFollower, follower],

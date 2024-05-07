@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useCallback, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AppContext, SystemContext, systemSize } from '../../../context/SystemContext';
+import { AppContext, systemSize, type SystemContext } from '../../../context/SystemContext';
 import styles from './InfoMenu.module.scss';
 
 /**
@@ -33,10 +33,9 @@ export function InfoMenu({
   const kmPerPixelSatellite = Math.round(1 / satelliteDist).toLocaleString();
   const kmPerPixelSize = Math.round(1 / sizeMultiplier).toLocaleString();
 
-  const onOrbitChangeClick = useCallback(
-    () => onOrbitsVisibleChange(!orbitsVisible),
-    [onOrbitsVisibleChange, orbitsVisible],
-  );
+  const onOrbitChangeClick = useCallback(() => {
+    onOrbitsVisibleChange(!orbitsVisible);
+  }, [onOrbitsVisibleChange, orbitsVisible]);
 
   const onSizeChangeClick = useCallback(() => {
     const { enhancedVisibility, evenSpace } = systemSize;

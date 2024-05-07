@@ -1,4 +1,4 @@
-import { CSSProperties, RefObject } from 'react';
+import { type CSSProperties, type RefObject } from 'react';
 
 /** The number of divs each layer of the belt renders */
 const ROCK_COUNT = 7_500;

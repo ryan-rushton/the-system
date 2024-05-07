@@ -19,7 +19,9 @@ describe('NotificationsList', () => {
 
   test('it renders a notification', async () => {
     render(<NotificationsList />);
-    act(() => showNotification({ origin: 'origin', severity: 'error', message: 'Some error!' }));
+    act(() => {
+      showNotification({ origin: 'origin', severity: 'error', message: 'Some error!' });
+    });
     await screen.findByTestId('notification-view');
     expect(screen.getByText(/^Some error!$/)).toBeInTheDocument();
   });
@@ -28,7 +30,9 @@ describe('NotificationsList', () => {
     render(<NotificationsList />);
 
     // show notification and check it's present
-    act(() => showNotification({ origin: 'origin', severity: 'error', message: 'Some error!' }));
+    act(() => {
+      showNotification({ origin: 'origin', severity: 'error', message: 'Some error!' });
+    });
     await screen.findByTestId('notification-view');
     expect(screen.getByText(/^Some error!$/)).toBeInTheDocument();
 
