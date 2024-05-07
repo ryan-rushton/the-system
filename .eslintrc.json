@@ -1,5 +1,14 @@
 {
-  "plugins": ["@typescript-eslint", "import", "jsx-a11y", "prettier", "react-hooks", "testing-library", "cypress"],
+  "plugins": [
+    "@typescript-eslint",
+    "cypress",
+    "import",
+    "jsx-a11y",
+    "prettier",
+    "react-hooks",
+    "sonarjs",
+    "testing-library"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -15,11 +24,12 @@
     "plugin:import/typescript",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/strict-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
-    "plugin:prettier/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:sonarjs/recommended-legacy",
+    "plugin:prettier/recommended"
   ],
   "env": {
     "browser": true,
@@ -44,11 +54,12 @@
     "import/no-named-as-default": "off",
     "import/order": "off", // using prettier plugin
     "prettier/prettier": "error",
-    "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "_[iI]gnored" }],
+    "sonarjs/no-duplicate-string": "off",
     "@typescript-eslint/consistent-type-imports": [
       "error",
       { "prefer": "type-imports", "disallowTypeAnnotations": true, "fixStyle": "inline-type-imports" }
     ],
+    "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "_[iI]gnored" }],
     "@typescript-eslint/restrict-template-expressions": [
       "error",
       {

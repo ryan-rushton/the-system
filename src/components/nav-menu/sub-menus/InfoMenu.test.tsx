@@ -93,9 +93,9 @@ describe('InfoMenu', () => {
       </AppContext.Provider>,
     );
 
-    const timeDetails = screen.getByTestId('planet-distance');
+    const distanceDetails = screen.getByTestId('planet-distance');
 
-    expect(timeDetails).toHaveTextContent('1 pixel = 2,000 km');
+    expect(distanceDetails).toHaveTextContent('1 pixel = 2,000 km');
   });
 
   test('it has correct satellite distance for enhanced visibility context', () => {
@@ -103,9 +103,9 @@ describe('InfoMenu', () => {
       <InfoMenu orbitsVisible={false} isVisible={true} onOrbitsVisibleChange={vi.fn()} onChangeSystemSize={vi.fn()} />,
     );
 
-    const timeDetails = screen.getByTestId('satellite-distance');
+    const distanceDetails = screen.getByTestId('satellite-distance');
 
-    expect(timeDetails).toHaveTextContent('1 pixel = 10,000 km');
+    expect(distanceDetails).toHaveTextContent('1 pixel = 10,000 km');
   });
 
   test('it has correct satellite distance for even size context', () => {
@@ -115,9 +115,9 @@ describe('InfoMenu', () => {
       </AppContext.Provider>,
     );
 
-    const timeDetails = screen.getByTestId('satellite-distance');
+    const distanceDetails = screen.getByTestId('satellite-distance');
 
-    expect(timeDetails).toHaveTextContent('1 pixel = 2,000 km');
+    expect(distanceDetails).toHaveTextContent('1 pixel = 2,000 km');
   });
 
   test('it has correct planet size for enhanced visibility context', () => {
@@ -125,9 +125,9 @@ describe('InfoMenu', () => {
       <InfoMenu orbitsVisible={false} isVisible={true} onOrbitsVisibleChange={vi.fn()} onChangeSystemSize={vi.fn()} />,
     );
 
-    const timeDetails = screen.getByTestId('planet-size');
+    const sizeDetails = screen.getByTestId('planet-size');
 
-    expect(timeDetails).toHaveTextContent('1 pixel = 2,000 km');
+    expect(sizeDetails).toHaveTextContent('1 pixel = 2,000 km');
   });
 
   test('it has correct planet size for even size context', () => {
@@ -137,8 +137,8 @@ describe('InfoMenu', () => {
       </AppContext.Provider>,
     );
 
-    const timeDetails = screen.getByTestId('planet-size');
+    const sizeDetails = screen.getByTestId('planet-size');
 
-    expect(timeDetails).toHaveTextContent('1 pixel = 2,000 km');
+    expect(sizeDetails).toHaveTextContent('1 pixel = 2,000 km');
   });
 });
