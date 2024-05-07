@@ -1,7 +1,7 @@
 import { AnimatePresence } from 'framer-motion';
 import { lazy, useEffect, useState } from 'react';
 import styles from './NotificationsList.module.scss';
-import { UniqueNotification, notifications$ } from './notifications';
+import { notifications$, type UniqueNotification } from './notifications';
 
 const LazyNotificationView = lazy(async () => {
   const { NotificationView } = await import('./NotificationView');
@@ -28,7 +28,9 @@ export function NotificationsList() {
       });
     });
 
-    return (): void => subscription.unsubscribe();
+    return (): void => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   return (

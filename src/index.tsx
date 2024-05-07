@@ -3,6 +3,9 @@ import { AppWrapper } from './AppWrapper';
 import './index.css';
 
 const container = document.getElementById('root');
-const root = createRoot(container!);
+if (container == null) {
+  throw new Error('Unable to get document root');
+}
+const root = createRoot(container);
 
 root.render(<AppWrapper />);

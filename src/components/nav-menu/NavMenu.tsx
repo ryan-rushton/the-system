@@ -1,10 +1,10 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { CSSProperties, RefObject, useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState, type CSSProperties, type RefObject } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { PointOfInterestIds } from '../../PointsOfInterest';
 import { pointsOfInterest } from '../../PointsOfInterest';
-import { SystemContext } from '../../context/SystemContext';
+import { type SystemContext } from '../../context/SystemContext';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { getDistanceToTop } from '../../utils/DomUtil';
 import styles from './NavMenu.module.scss';
@@ -45,14 +45,19 @@ export function NavMenu({
   const buttonRef = useRef<HTMLButtonElement>(null);
   const { t } = useTranslation();
 
-  const onMenuClick = useCallback(() => setMenuVisible((oldState) => !oldState), []);
-  const onSubsectionClick = (clicked: 'info' | 'nav') =>
+  const onMenuClick = useCallback(() => {
+    setMenuVisible((oldState) => !oldState);
+  }, []);
+  const onSubsectionClick = (clicked: 'info' | 'nav') => {
     setOpenSubsection((oldState) => (clicked === oldState ? undefined : clicked));
-  useClickOutside(containerRef, menuVisible, () => setMenuVisible(false));
+  };
+  useClickOutside(containerRef, menuVisible, () => {
+    setMenuVisible(false);
+  });
 
   const leftEdgeOfContainerToRightViewport =
-    window.innerWidth - (containerRef.current?.getBoundingClientRect().left || 0);
-  const rightEdgeOfButtonToRightViewport = window.innerWidth - (buttonRef.current?.getBoundingClientRect().right || 0);
+    window.innerWidth - (containerRef.current?.getBoundingClientRect().left ?? 0);
+  const rightEdgeOfButtonToRightViewport = window.innerWidth - (buttonRef.current?.getBoundingClientRect().right ?? 0);
   // on first render we dont have the offset so just push it way off the screen
   const transformDistance = menuRef.current
     ? `calc(-${menuRef.current.getBoundingClientRect().width}px + ${rightEdgeOfButtonToRightViewport}px + 4px)`
@@ -76,7 +81,9 @@ export function NavMenu({
           title={t('info')}
           isVisible={openSubsection === 'info'}
           canTabInto={menuVisible}
-          onHeaderClick={() => onSubsectionClick('info')}
+          onHeaderClick={() => {
+            onSubsectionClick('info');
+          }}
         >
           <InfoMenu
             isVisible={menuVisible && openSubsection === 'info'}
@@ -89,7 +96,9 @@ export function NavMenu({
           title={t('navigation')}
           isVisible={openSubsection === 'nav'}
           canTabInto={menuVisible}
-          onHeaderClick={() => onSubsectionClick('nav')}
+          onHeaderClick={() => {
+            onSubsectionClick('nav');
+          }}
         >
           <div className={styles.navButtons}>
             {Object.values(pointsOfInterest).map((poi) => (
@@ -98,7 +107,9 @@ export function NavMenu({
                 isVisible={menuVisible && openSubsection === 'nav'}
                 key={poi.id}
                 pointOfInterest={poi}
-                onPoiClick={() => onFollowPointOfInterest(poi)}
+                onPoiClick={() => {
+                  onFollowPointOfInterest(poi);
+                }}
               />
             ))}
           </div>

@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect } from 'react';
+import { useEffect, type MutableRefObject } from 'react';
 
 /**
  * This hook will detect clicks outside where the ref is not a parent of the clicked object.
@@ -23,7 +23,9 @@ export function useClickOutside(
 
       document.addEventListener('mousedown', eventHandler);
 
-      return () => document.removeEventListener('mousedown', eventHandler);
+      return () => {
+        document.removeEventListener('mousedown', eventHandler);
+      };
     }
   }, [ref, enabled, callback]);
 }

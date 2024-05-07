@@ -1,4 +1,4 @@
-import { ReactNode, useRef } from 'react';
+import { useRef, type ReactNode } from 'react';
 import styles from './NavMenuSubsection.module.scss';
 
 /**
@@ -24,7 +24,7 @@ export function NavMenuSubsection({
   if (ref.current?.children) {
     for (const child of ref.current.children) {
       if (child instanceof HTMLElement) {
-        actualHeight += child?.offsetHeight || 0;
+        actualHeight += child.offsetHeight || 0;
       }
     }
   }

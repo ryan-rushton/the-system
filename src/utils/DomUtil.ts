@@ -15,15 +15,15 @@ export const scrollOptions: ScrollIntoViewOptions = {
  * Gets the distance from the element to the top of the viewport.
  */
 export const getDistanceToTop = (element: HTMLElement): number => {
-  let elem: HTMLElement = element;
+  let elem: HTMLElement | null = element;
   let distanceToTop = 0;
 
-  while (elem) {
+  while (elem !== null) {
     distanceToTop += elem.offsetTop;
     if (isHTMLElement(elem.offsetParent)) {
       elem = elem.offsetParent;
     } else {
-      break;
+      elem = null;
     }
   }
 
@@ -53,7 +53,9 @@ const isElementInViewport = (element: HTMLElement): boolean => {
  */
 export const doCallbackAfterElementIsVisible = (element: HTMLElement, callback: () => void): void => {
   if (!isElementInViewport(element)) {
-    setTimeout(() => doCallbackAfterElementIsVisible(element, callback), 100);
+    setTimeout(() => {
+      doCallbackAfterElementIsVisible(element, callback);
+    }, 100);
   } else {
     callback();
   }
@@ -67,6 +69,6 @@ export const doCallbackAfterElementIsVisible = (element: HTMLElement, callback: 
  */
 export const scrollToElementIfNotVisible = (element?: HTMLDivElement | null): void => {
   if (element && !isElementInViewport(element)) {
-    element?.scrollIntoView(scrollOptions);
+    element.scrollIntoView(scrollOptions);
   }
 };

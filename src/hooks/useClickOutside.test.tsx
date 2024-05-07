@@ -1,15 +1,19 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FC, useRef } from 'react';
+import { useRef } from 'react';
 import { describe, expect, test, vi } from 'vitest';
 import { useClickOutside } from './useClickOutside';
 
 /** A component just to test this hook. */
-const TestComponent: FC<{
+function TestComponent({
+  parentEnabled,
+  parentFn,
+  childFn,
+}: {
   parentEnabled: boolean;
   parentFn: () => void;
   childFn: () => void;
-}> = ({ parentEnabled, parentFn, childFn }) => {
+}) {
   const parentRef = useRef<HTMLDivElement | null>(null);
   const childRef = useRef<HTMLDivElement | null>(null);
 
@@ -25,7 +29,7 @@ const TestComponent: FC<{
       <div>{'Sibling'}</div>
     </div>
   );
-};
+}
 
 describe('useClickOutside', () => {
   test('it calls the function when a sibling is clicked', async () => {

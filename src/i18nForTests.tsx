@@ -1,8 +1,8 @@
-import i18n from 'i18next';
+import * as i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import translations from '../public/locales/en-GB.json';
 
-i18n.use(initReactI18next).init({
+void i18n.use(initReactI18next).init({
   lng: 'en-GB',
   fallbackLng: 'en-GB',
   debug: !process.env.CI, // don't span the ci logs with setup logs
