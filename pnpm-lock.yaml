@@ -88,8 +88,8 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0(vitest@1.6.0(@types/node@20.14.10)(jsdom@24.1.0)(sass@1.77.8))
       cypress:
-        specifier: 13.13.0
-        version: 13.13.0
+        specifier: 13.13.1
+        version: 13.13.1
       cypress-log-to-output:
         specifier: 1.1.2
         version: 1.1.2
@@ -1379,8 +1379,8 @@ packages:
   cypress-log-to-output@1.1.2:
     resolution: {integrity: sha512-C1+ECMc/XXc4HqAEHdlw0X2wFhcoZZ/4qXHZkOAU/rRXMQXnbiO7JJtpLCKrLfOXlxB+jFwDAIdlPxPMfV3cFw==}
 
-  cypress@13.13.0:
-    resolution: {integrity: sha512-ou/MQUDq4tcDJI2FsPaod2FZpex4kpIK43JJlcBgWrX8WX7R/05ZxGTuxedOuZBfxjZxja+fbijZGyxiLP6CFA==}
+  cypress@13.13.1:
+    resolution: {integrity: sha512-8F9UjL5MDUdgC/S5hr8CGLHbS5gGht5UOV184qc2pFny43fnkoaKxlzH/U6//zmGu/xRTaKimNfjknLT8+UDFg==}
     engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
 
@@ -4583,7 +4583,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  cypress@13.13.0:
+  cypress@13.13.1:
     dependencies:
       '@cypress/request': 3.0.1
       '@cypress/xvfb': 1.2.4(supports-color@8.1.1)
