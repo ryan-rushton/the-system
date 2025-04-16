@@ -9,11 +9,11 @@ function TestComponent({
   parentEnabled,
   parentFn,
   childFn,
-}: {
+}: Readonly<{
   parentEnabled: boolean;
   parentFn: () => void;
   childFn: () => void;
-}) {
+}>) {
   const parentRef = useRef<HTMLDivElement | null>(null);
   const childRef = useRef<HTMLDivElement | null>(null);
 

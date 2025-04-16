@@ -13,7 +13,7 @@ describe('notifications', () => {
   });
 
   test('it increments the id correctly', () => {
-    const subFn = vi.fn<[UniqueNotification], unknown>();
+    const subFn = vi.fn<(x: UniqueNotification) => void>();
     const notification: Notification = { origin: 'origin', severity: 'info', message: "I'm a notification!" };
 
     notifications$.subscribe(subFn);

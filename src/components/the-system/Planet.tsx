@@ -27,13 +27,13 @@ export function Planet({
   orbitalPeriod,
   scrollToRef,
   satellites,
-}: {
+}: Readonly<{
   /** A value to use on data-testid for cypress tests. Likely the display from pointsOfInterest. */
   id: string;
   /** Class name to give the element, passed to CelestialBody. */
   className: string;
   /** A ref so that we can scroll to planet when it is selected in the nav menu. */
-  scrollToRef: RefObject<HTMLDivElement>;
+  scrollToRef: RefObject<HTMLDivElement | null>;
   /** The radius of the planet in km's. */
   radius: number;
   /** The distance from the planet to the Sun. */
@@ -42,7 +42,7 @@ export function Planet({
   orbitalPeriod: number;
   /** Things that orbit the planet, all moons at this stage. */
   satellites?: readonly Satellite[];
-}) {
+}>) {
   const {
     systemRadius,
     multipliers: { distanceMultiplier, sizeMultiplier, orbitalPeriodMultiplier, satelliteDist },

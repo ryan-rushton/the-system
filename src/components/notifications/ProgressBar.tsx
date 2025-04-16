@@ -7,12 +7,12 @@ import styles from './ProgressBar.module.scss';
 export function ProgressBar({
   duration,
   onCompletion,
-}: {
+}: Readonly<{
   /** The time in seconds at which the animation will finish and onCompletion will be invoked. */
   duration?: number;
   /** A function that gets called after the duration has completed. */
   onCompletion?(): void;
-}) {
+}>) {
   if (duration === undefined) {
     return null;
   }

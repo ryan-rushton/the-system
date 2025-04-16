@@ -13,12 +13,12 @@ import { type UniqueNotification } from './notifications';
 export function NotificationView({
   notification: { severity, message, duration },
   onClose,
-}: {
+}: Readonly<{
   /** The notification to show. */
   notification: UniqueNotification;
   /** Function to call when the close button is pressed or the duration runs out. */
   onClose(): void;
-}) {
+}>) {
   return (
     <motion.li
       data-testid="notification-view"

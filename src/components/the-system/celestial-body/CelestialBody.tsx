@@ -25,7 +25,7 @@ export interface CelestialBodyProps {
   /** Any satellites that are orbiting this body. */
   satellites?: CelestialBodyProps[];
   /** A ref so that we can scroll to this body. */
-  scrollToRef?: RefObject<HTMLDivElement>;
+  scrollToRef?: RefObject<HTMLDivElement | null>;
 }
 
 /**
@@ -47,7 +47,7 @@ export function CelestialBody({
   referenceRadius,
   satellites,
   scrollToRef,
-}: CelestialBodyProps) {
+}: Readonly<CelestialBodyProps>) {
   // orbit calcs and style
   const edgeOffset = referenceRadius - distance - radius;
   const heightWidth = 2 * (distance + radius);

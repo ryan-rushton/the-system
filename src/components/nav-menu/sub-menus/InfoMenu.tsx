@@ -14,7 +14,7 @@ export function InfoMenu({
   orbitsVisible,
   onChangeSystemSize,
   onOrbitsVisibleChange,
-}: {
+}: Readonly<{
   /** Whether the component is currently visible. */
   isVisible: boolean;
   /** Whether the red orbit lines are visible */
@@ -23,7 +23,7 @@ export function InfoMenu({
   onOrbitsVisibleChange(newOrbitsVisible: boolean): void;
   /** Change handler for normalising km per pixel. */
   onChangeSystemSize(newContext: SystemContext): void;
-}) {
+}>) {
   const context = useContext(AppContext);
   const { t } = useTranslation();
   const { orbitalPeriodMultiplier, distanceMultiplier, sizeMultiplier, satelliteDist } = context.multipliers;

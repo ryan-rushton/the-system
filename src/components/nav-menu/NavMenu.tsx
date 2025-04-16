@@ -26,18 +26,18 @@ export function NavMenu({
   onChangeSystemSize,
   onOrbitsVisibleChange,
   onFollowPointOfInterest,
-}: {
+}: Readonly<{
   /** Whether the red orbit lines are visible. */
   orbitsVisible: boolean;
   /** The point of interest currently being followed. */
-  followedPointOfInterest: { ref: RefObject<HTMLDivElement>; id: PointOfInterestIds } | undefined;
+  followedPointOfInterest: { ref: RefObject<HTMLDivElement | null>; id: PointOfInterestIds } | undefined;
   /** Change handler for whether the red orbit lines are visible. */
   onOrbitsVisibleChange(orbitsVisible: boolean): void;
   /** Change handler for normalising km per pixel. */
   onChangeSystemSize(systemSizeContext: SystemContext): void;
   /** A handler for following a point of interest around the solar system. */
-  onFollowPointOfInterest(pointOfInterest: { ref: RefObject<HTMLDivElement> }): void;
-}) {
+  onFollowPointOfInterest(pointOfInterest: { ref: RefObject<HTMLDivElement | null> }): void;
+}>) {
   const [menuVisible, setMenuVisible] = useState(false);
   const [openSubsection, setOpenSubsection] = useState<OpenSubsectionState>();
   const containerRef = useRef<HTMLDivElement>(null);

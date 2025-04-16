@@ -1,5 +1,5 @@
+import { browserTracingIntegration } from '@sentry/browser';
 import * as Sentry from '@sentry/react';
-import { Integrations } from '@sentry/tracing';
 import { Suspense } from 'react';
 import packageJson from '../package.json';
 import { App } from './App';
@@ -13,9 +13,8 @@ Sentry.init({
     process.env.NODE_ENV === 'production'
       ? 'https://e090fb4038584bd7a40ea8b9ce981213@o508541.ingest.sentry.io/5601190'
       : '',
-  autoSessionTracking: true,
   environment: process.env.NODE_ENV,
-  integrations: [new Integrations.BrowserTracing()],
+  integrations: [browserTracingIntegration],
   release: packageJson.version,
   tracesSampleRate: 0.5,
 });

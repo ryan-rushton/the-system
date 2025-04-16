@@ -12,23 +12,26 @@ export function BeltLayer({
   innerBoundary,
   outerBoundary,
   scrollToRef,
-}: {
+}: Readonly<{
   /** The inner boundary for the belt. */
   innerBoundary: number;
   /** The outer boundary of the belt. */
   outerBoundary: number;
   /** The ref to place in the belt so we can scroll to the edge of the belt. */
-  scrollToRef?: RefObject<HTMLDivElement>;
-}) {
+  scrollToRef?: RefObject<HTMLDivElement | null>;
+}>) {
   const rocks = [];
   const beltWidth = outerBoundary - innerBoundary;
 
   for (let i = 0; i < ROCK_COUNT; i += 1) {
     // Distance from the center of the sun
+    // eslint-disable-next-line sonarjs/pseudo-random
     const distance = innerBoundary + beltWidth * Math.sin(Math.PI * Math.random());
     // Randomise the starting angular position.
+    // eslint-disable-next-line sonarjs/pseudo-random
     const angularPosition = 2 * Math.PI * Math.random();
     // Randomise the size between 1 and 2 pixels
+    // eslint-disable-next-line sonarjs/pseudo-random
     const size = 1 + Math.random();
 
     // x & y coordinates relative to the center of the sun. Probably not needed but they make it clear how left
@@ -44,6 +47,7 @@ export function BeltLayer({
       backgroundColor: ROCK_COLOUR,
       height: size,
       left,
+      // eslint-disable-next-line sonarjs/pseudo-random
       opacity: 0.5 * (1 + Math.random()),
       position: 'absolute',
       top,
