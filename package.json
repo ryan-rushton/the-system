@@ -77,5 +77,5 @@
     "last 1 firefox version",
     "last 1 safari version"
   ],
-  "packageManager": "pnpm@9.1.0"
+  "packageManager": "pnpm@10.8.1"
 }
