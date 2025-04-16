@@ -1,4 +1,4 @@
-import { useEffect, type MutableRefObject } from 'react';
+import { useEffect, type RefObject } from 'react';
 
 /**
  * This hook will detect clicks outside where the ref is not a parent of the clicked object.
@@ -8,11 +8,7 @@ import { useEffect, type MutableRefObject } from 'react';
  * @param enabled Whether the event should be listening. For example if a modal isn't open, you don't need this to be enabled.
  * @param callback The function to call when a click outside is detected.
  */
-export function useClickOutside(
-  ref: MutableRefObject<HTMLElement | null>,
-  enabled: boolean,
-  callback: () => void,
-): void {
+export function useClickOutside(ref: RefObject<HTMLElement | null>, enabled: boolean, callback: () => void): void {
   useEffect(() => {
     if (enabled) {
       const eventHandler = (event: MouseEvent): void => {

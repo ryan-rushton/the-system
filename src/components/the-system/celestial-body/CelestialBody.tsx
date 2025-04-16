@@ -47,7 +47,7 @@ export function CelestialBody({
   referenceRadius,
   satellites,
   scrollToRef,
-}: CelestialBodyProps) {
+}: Readonly<CelestialBodyProps>) {
   // orbit calcs and style
   const edgeOffset = referenceRadius - distance - radius;
   const heightWidth = 2 * (distance + radius);

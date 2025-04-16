@@ -11,7 +11,7 @@ export function PointOfInterestButton({
   pointOfInterest,
   isBeingFollowed,
   onPoiClick,
-}: {
+}: Readonly<{
   /** Whether the component is currently visible. */
   isVisible: boolean;
   /** Point of interest object. */
@@ -20,7 +20,7 @@ export function PointOfInterestButton({
   isBeingFollowed: boolean;
   /** Click handler for when the button is clicked. */
   onPoiClick(): void;
-}) {
+}>) {
   const { t } = useTranslation();
 
   const displayName = t(`pointsOfInterest.${pointOfInterest.id}`);

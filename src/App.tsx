@@ -14,7 +14,7 @@ import { doCallbackAfterElementIsVisible, scrollOptions, scrollToElementIfNotVis
 
 interface FollowerState {
   /** The point of interest being followed. */
-  pointOfInterest?: { ref: RefObject<HTMLDivElement>; id: PointOfInterestIds };
+  pointOfInterest?: { ref: RefObject<HTMLDivElement | null>; id: PointOfInterestIds };
   /**
    * The interval at which the point of interest is being checked to see whether it is visible on screen.
    * This can be cleared when the point of interest is no longer being followed.
@@ -50,7 +50,7 @@ export function App() {
   };
 
   const createIntervalAndSetFollower = useCallback(
-    (pointOfInterest: { ref: RefObject<HTMLDivElement>; id: PointOfInterestIds }) => {
+    (pointOfInterest: { ref: RefObject<HTMLDivElement | null>; id: PointOfInterestIds }) => {
       const interval = setInterval(() => {
         scrollToElementIfNotVisible(pointOfInterest.ref.current);
       }, 1000);
@@ -73,11 +73,11 @@ export function App() {
    * If anything else is selected it will set an interval to scroll the element into view if it isn't already.
    * */
   const poiOnClick = useCallback(
-    (pointOfInterest: { ref: RefObject<HTMLDivElement>; id: PointOfInterestIds }): void => {
-      if (pointOfInterest === follower.pointOfInterest) {
+    (pointOfInterest: { ref: RefObject<HTMLDivElement | null>; id: PointOfInterestIds }): void => {
+      if (pointOfInterest.id === follower.pointOfInterest?.id) {
         // clear if already followed
         clearFollower();
-      } else if (pointOfInterest === pointsOfInterest.sun || pointOfInterest === pointsOfInterest.theBelt) {
+      } else if (pointOfInterest.id === pointsOfInterest.sun.id || pointOfInterest.id === pointsOfInterest.theBelt.id) {
         // scroll to without follow for sun and the belt
         clearFollower();
         pointOfInterest.ref.current?.scrollIntoView(scrollOptions);

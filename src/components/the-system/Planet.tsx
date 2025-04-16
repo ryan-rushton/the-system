@@ -27,7 +27,7 @@ export function Planet({
   orbitalPeriod,
   scrollToRef,
   satellites,
-}: {
+}: Readonly<{
   /** A value to use on data-testid for cypress tests. Likely the display from pointsOfInterest. */
   id: string;
   /** Class name to give the element, passed to CelestialBody. */
@@ -42,7 +42,7 @@ export function Planet({
   orbitalPeriod: number;
   /** Things that orbit the planet, all moons at this stage. */
   satellites?: readonly Satellite[];
-}) {
+}>) {
   const {
     systemRadius,
     multipliers: { distanceMultiplier, sizeMultiplier, orbitalPeriodMultiplier, satelliteDist },

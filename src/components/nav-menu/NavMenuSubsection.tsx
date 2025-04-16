@@ -10,13 +10,13 @@ export function NavMenuSubsection({
   isVisible,
   canTabInto,
   onHeaderClick,
-}: {
+}: Readonly<{
   children: ReactNode;
   title: string;
   isVisible: boolean;
   canTabInto: boolean;
   onHeaderClick(): void;
-}) {
+}>) {
   const ref = useRef<HTMLDivElement>(null);
 
   let actualHeight = 0;

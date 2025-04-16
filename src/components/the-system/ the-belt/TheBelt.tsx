@@ -36,47 +36,50 @@ export function TheBelt() {
    * @param baseOrbitalPeriod The orbital period for the layer of the belt
    * @param includedRef The ref so we can scroll to the edge of the belt
    */
-  const memoizedLayer = (baseOrbitalPeriod: number, includedRef?: RefObject<HTMLDivElement>): ReactNode => {
+  // eslint-disable-next-line sonarjs/function-return-type
+  const memoizedLayer = (baseOrbitalPeriod: number, includedRef?: RefObject<HTMLDivElement | null>): ReactNode => {
     // The system radius should identify which context we are using.
     const key = `${systemRadius}-${baseOrbitalPeriod}-${Boolean(includedRef)}`;
     const { mars, sun, jupiter } = pointsOfInterest;
 
-    if (!beltCache.has(key)) {
-      // The distance from the middle of the sun to the furthest point of Mats.
-      const outerMars = mars.distance * distanceMultiplier + sun.radius * sizeMultiplier + mars.radius * sizeMultiplier;
-
-      // The distance from the middle of the sun to the closet point of Jupiter
-      const innerJupiter =
-        jupiter.distance * distanceMultiplier + sun.radius * sizeMultiplier - jupiter.radius * sizeMultiplier;
-
-      const distanceBetweenMarsAndJupiter = innerJupiter - outerMars;
-
-      // I couldn't find any decent numbers on how far the belt is from Mars and Jupiter so I went with
-      // some values that looked good with the enhanced visibility context.
-      const innerBelt = outerMars + distanceBetweenMarsAndJupiter * 0.1;
-      const outerBelt = outerMars + distanceBetweenMarsAndJupiter * 0.7;
-      const distanceFromSystemOuterEdge = systemRadius - outerBelt;
-
-      const orbitalPeriod = baseOrbitalPeriod * orbitalPeriodMultiplier;
-
-      const style = {
-        animation: `orbit ${orbitalPeriod}s linear infinite`,
-        height: outerBelt * 2,
-        left: distanceFromSystemOuterEdge,
-        top: distanceFromSystemOuterEdge,
-        width: outerBelt * 2,
-      };
-
-      const result = (
-        <div className={styles.beltLayer} style={style}>
-          <BeltLayer innerBoundary={innerBelt} outerBoundary={outerBelt} scrollToRef={includedRef} />
-        </div>
-      );
-
-      beltCache.set(key, result);
+    if (beltCache.has(key)) {
+      return beltCache.get(key);
     }
 
-    return beltCache.get(key);
+    // The distance from the middle of the sun to the furthest point of Mats.
+    const outerMars = mars.distance * distanceMultiplier + sun.radius * sizeMultiplier + mars.radius * sizeMultiplier;
+
+    // The distance from the middle of the sun to the closet point of Jupiter
+    const innerJupiter =
+      jupiter.distance * distanceMultiplier + sun.radius * sizeMultiplier - jupiter.radius * sizeMultiplier;
+
+    const distanceBetweenMarsAndJupiter = innerJupiter - outerMars;
+
+    // I couldn't find any decent numbers on how far the belt is from Mars and Jupiter so I went with
+    // some values that looked good with the enhanced visibility context.
+    const innerBelt = outerMars + distanceBetweenMarsAndJupiter * 0.1;
+    const outerBelt = outerMars + distanceBetweenMarsAndJupiter * 0.7;
+    const distanceFromSystemOuterEdge = systemRadius - outerBelt;
+
+    const orbitalPeriod = baseOrbitalPeriod * orbitalPeriodMultiplier;
+
+    const style = {
+      animation: `orbit ${orbitalPeriod}s linear infinite`,
+      height: outerBelt * 2,
+      left: distanceFromSystemOuterEdge,
+      top: distanceFromSystemOuterEdge,
+      width: outerBelt * 2,
+    };
+
+    const result: ReactNode = (
+      <div className={styles.beltLayer} style={style}>
+        <BeltLayer innerBoundary={innerBelt} outerBoundary={outerBelt} scrollToRef={includedRef} />
+      </div>
+    );
+
+    beltCache.set(key, result);
+
+    return result;
   };
 
   return (
