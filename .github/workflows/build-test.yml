@@ -19,9 +19,6 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
-      - name: Approve builds
-        run: pnpm approve-builds --approve
-
       - name: Test
         run: pnpm test
 
