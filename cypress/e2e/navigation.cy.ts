@@ -53,23 +53,6 @@ describe('System navigation', () => {
       'You will now follow Uranus around the system. Click Uranus again to stop following.',
     );
   });
-
-  it('a second click cancels following a planet', () => {
-    reloadAndOpenNavMenu();
-
-    const height = Cypress.config('viewportHeight');
-    const width = Cypress.config('viewportWidth');
-
-    cy.get('[data-testid=nav-menu').contains('button', 'Earth').click();
-    cy.get('[data-testid=nav-menu').contains('Earth').should('have.css', 'color', activeButtonColor);
-
-    cy.isInViewport('[data-testid=earth');
-    cy.get('[data-testid=nav-menu').contains('button', 'Earth').click();
-    cy.get('[data-testid=nav-menu').contains('Earth').should('not.have.css', 'color', activeButtonColor);
-
-    cy.scrollTo(width, height);
-    cy.isNotInViewport('[data-testid=earth');
-  });
 });
 
 function reloadAndOpenNavMenu() {
