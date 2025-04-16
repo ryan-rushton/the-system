@@ -3,7 +3,7 @@
 exports[`PointOfInterestButton > it matches snapshot 1`] = `
 <button
   aria-label="Some point"
-  class="_navItem_e88351 _button_fb7df1"
+  class="_navItem_e88351"
   data-testid="somePoint-button"
   tabindex="0"
 >

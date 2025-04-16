@@ -9,7 +9,7 @@ exports[`NavMenu > it matches snapshot 1`] = `
     class="_header_1f2e59"
   >
     <button
-      class="_headerButton_1f2e59 _button_fb7df1"
+      class="_headerButton_1f2e59"
       data-testid="nav-menu-button"
     >
       <svg
@@ -23,7 +23,7 @@ exports[`NavMenu > it matches snapshot 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
+          d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"
           fill="currentColor"
         />
       </svg>
@@ -38,7 +38,7 @@ exports[`NavMenu > it matches snapshot 1`] = `
       class="_subsection_de5574"
     >
       <button
-        class="_title_de5574 _button_fb7df1"
+        class="_title_de5574"
       >
         Info
       </button>
@@ -121,7 +121,7 @@ Planets And Moons
       class="_subsection_de5574"
     >
       <button
-        class="_title_de5574 _button_fb7df1"
+        class="_title_de5574"
       >
         Navigation
       </button>
@@ -134,7 +134,7 @@ Planets And Moons
         >
           <button
             aria-label="Sun"
-            class="_navItem_e88351 _button_fb7df1"
+            class="_navItem_e88351"
             data-testid="sun-button"
           >
             <span>
@@ -143,7 +143,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Mercury"
-            class="_navItem_e88351 _button_fb7df1"
+            class="_navItem_e88351"
             data-testid="mercury-button"
           >
             <span>
@@ -152,7 +152,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Venus"
-            class="_navItem_e88351 _button_fb7df1"
+            class="_navItem_e88351"
             data-testid="venus-button"
           >
             <span>
@@ -161,7 +161,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Earth"
-            class="_navItem_e88351 _button_fb7df1"
+            class="_navItem_e88351"
             data-testid="earth-button"
           >
             <span>
@@ -170,7 +170,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Mars"
-            class="_navItem_e88351 _button_fb7df1"
+            class="_navItem_e88351"
             data-testid="mars-button"
           >
             <span>
@@ -179,7 +179,7 @@ Planets And Moons
           </button>
           <button
             aria-label="The Belt"
-            class="_navItem_e88351 _button_fb7df1"
+            class="_navItem_e88351"
             data-testid="theBelt-button"
           >
             <span>
@@ -188,7 +188,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Jupiter"
-            class="_navItem_e88351 _button_fb7df1"
+            class="_navItem_e88351"
             data-testid="jupiter-button"
           >
             <span>
@@ -197,7 +197,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Saturn"
-            class="_navItem_e88351 _button_fb7df1"
+            class="_navItem_e88351"
             data-testid="saturn-button"
           >
             <span>
@@ -206,7 +206,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Uranus"
-            class="_navItem_e88351 _button_fb7df1"
+            class="_navItem_e88351"
             data-testid="uranus-button"
           >
             <span>
@@ -215,7 +215,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Neptune"
-            class="_navItem_e88351 _button_fb7df1"
+            class="_navItem_e88351"
             data-testid="neptune-button"
           >
             <span>
@@ -224,7 +224,7 @@ Planets And Moons
           </button>
           <button
             aria-label="Pluto"
-            class="_navItem_e88351 _button_fb7df1"
+            class="_navItem_e88351"
             data-testid="pluto-button"
           >
             <span>
