@@ -1,5 +1,5 @@
 {
-  "extends": ["config:base", ":prHourlyLimitNone", ":automergePatch"],
+  "extends": ["config:recommended", ":prHourlyLimitNone", ":automergePatch"],
   "packageRules": [
     {
       "matchDepTypes": ["devDependencies"],
