@@ -33,7 +33,7 @@ export function Planet({
   /** Class name to give the element, passed to CelestialBody. */
   className: string;
   /** A ref so that we can scroll to planet when it is selected in the nav menu. */
-  scrollToRef: RefObject<HTMLDivElement>;
+  scrollToRef: RefObject<HTMLDivElement | null>;
   /** The radius of the planet in km's. */
   radius: number;
   /** The distance from the planet to the Sun. */

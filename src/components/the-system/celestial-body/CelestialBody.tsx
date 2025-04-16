@@ -25,7 +25,7 @@ export interface CelestialBodyProps {
   /** Any satellites that are orbiting this body. */
   satellites?: CelestialBodyProps[];
   /** A ref so that we can scroll to this body. */
-  scrollToRef?: RefObject<HTMLDivElement>;
+  scrollToRef?: RefObject<HTMLDivElement | null>;
 }
 
 /**
